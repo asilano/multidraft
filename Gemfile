@@ -1,6 +1,7 @@
 source 'https://rubygems.org'
 
-gem 'rails', '3.2.1'
+ruby '1.9.3'
+gem 'rails', '~> 3.2.1'
 
 # Bundle edge Rails instead:
 # gem 'rails', :git => 'git://github.com/rails/rails.git'
@@ -20,7 +21,34 @@ group :assets do
   gem 'uglifier', '>= 1.0.3'
 end
 
+group :development, :test do
+  gem "rspec-rails"
+  gem "factory_girl_rails"
+end
+
+group :development do
+  gem "quiet_assets"
+  gem "better_errors"
+  gem "binding_of_caller"
+end
+
+group :test do
+  gem "database_cleaner"
+  gem "email_spec"
+  gem "launchy"
+  gem "capybara"
+end
+
 gem 'jquery-rails'
+
+# github.com/laserlemon/figaro - provide config in .gitignored application.yml
+# accessible through ENV (like Heroku does)
+gem 'figaro'
+
+# User authentication by devise and OpenID
+gem 'devise'
+gem 'devise_openid_authenticatable'
+
 
 # To use ActiveModel has_secure_password
 # gem 'bcrypt-ruby', '~> 3.0.0'

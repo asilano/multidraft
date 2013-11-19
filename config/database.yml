@@ -18,7 +18,7 @@ development:
   database: multidraft_development
   pool: 5
   username: multidraft
-  password:
+  password: multidraft
 
   # Connect on a TCP socket. Omitted by default since the client uses a
   # domain socket that doesn't need configuration. Windows does not have
@@ -44,7 +44,7 @@ test:
   database: multidraft_test
   pool: 5
   username: multidraft
-  password:
+  password: multidraft
 
 production:
   adapter: postgresql
@@ -52,4 +52,4 @@ production:
   database: multidraft_production
   pool: 5
   username: multidraft
-  password:
+  password: multidraft
