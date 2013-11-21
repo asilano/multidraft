@@ -24,6 +24,7 @@ end
 group :development, :test do
   gem "rspec-rails"
   gem "factory_girl_rails"
+  gem "spork-rails"
 end
 
 group :development do
@@ -40,6 +41,7 @@ group :test do
 end
 
 gem 'jquery-rails'
+gem 'haml'
 
 # github.com/laserlemon/figaro - provide config in .gitignored application.yml
 # accessible through ENV (like Heroku does)
