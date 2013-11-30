@@ -43,6 +43,7 @@ end
 
 gem 'jquery-rails'
 gem 'haml'
+gem 'haml-rails'
 
 # github.com/laserlemon/figaro - provide config in .gitignored application.yml
 # accessible through ENV (like Heroku does)
