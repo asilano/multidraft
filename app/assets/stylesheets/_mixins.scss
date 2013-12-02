@@ -1,0 +1,3 @@
+@mixin small-screen {
+  @media (max-width: 650px) { @content; }
+}
