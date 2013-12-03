@@ -26,10 +26,6 @@ group :development, :test do
   gem "rspec-rails"
   gem "factory_girl_rails"
   gem "spork-rails"
-
-  # Use thin web-server
-  gem 'eventmachine'
-  gem 'thin'
 end
 
 group :development do
@@ -68,6 +64,8 @@ gem 'figaro'
 gem 'devise'
 gem 'devise_openid_authenticatable'
 
+# Use thin web-server in dev - install it here for Travis
+gem 'thin'
 
 # To use ActiveModel has_secure_password
 # gem 'bcrypt-ruby', '~> 3.0.0'

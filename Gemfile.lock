@@ -118,6 +118,8 @@ GEM
     mime-types (1.25)
     mini_portile (0.5.2)
     multi_json (1.8.2)
+    nokogiri (1.6.0)
+      mini_portile (~> 0.5.0)
     nokogiri (1.6.0-x86-mingw32)
       mini_portile (~> 0.5.0)
     orm_adapter (0.5.0)
@@ -226,7 +228,6 @@ DEPENDENCIES
   devise_openid_authenticatable
   email_spec
   erb2haml
-  eventmachine
   factory_girl_rails
   figaro
   haml
