@@ -65,7 +65,8 @@ gem 'devise'
 gem 'devise_openid_authenticatable'
 
 # Use thin web-server in dev - install it here for Travis
-gem 'thin'
+# Travis doesn't like thin, for some reason
+# gem 'thin'
 
 # To use ActiveModel has_secure_password
 # gem 'bcrypt-ruby', '~> 3.0.0'
