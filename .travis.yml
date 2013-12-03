@@ -1,6 +1,8 @@
 language: ruby
 rvm:
   - 1.9.3
+before_install:
+  - rm Gemfile.lock
 script:
   - RAILS_ENV=test bundle exec rake db:migrate --trace
 before_script:
