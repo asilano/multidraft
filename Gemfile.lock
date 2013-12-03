@@ -236,6 +236,7 @@ DEPENDENCIES
   quiet_assets
   rails (~> 3.2.1)
   rails_12factor
+  rake
   rspec-rails
   sass-rails (~> 3.2.3)
   spork-rails

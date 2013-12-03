@@ -43,6 +43,9 @@ group :test do
   gem "email_spec"
   gem "launchy"
   gem "capybara"
+
+  # Let Travis see Rake
+  gem 'rake'
 end
 
 group :production do
