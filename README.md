@@ -1,4 +1,4 @@
-multidraft
+multidraft [![Code Climate](https://codeclimate.com/github/asilano/multidraft.png)](https://codeclimate.com/github/asilano/multidraft)
 ==========
 
 A multi-purpose draft server, interfacing with alextfish/multiverse
