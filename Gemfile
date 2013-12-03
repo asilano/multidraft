@@ -26,6 +26,9 @@ group :development, :test do
   gem "rspec-rails"
   gem "factory_girl_rails"
   gem "spork-rails"
+
+  # Use thin web-server
+  gem 'thin'
 end
 
 group :development do
@@ -40,6 +43,13 @@ group :test do
   gem "email_spec"
   gem "launchy"
   gem "capybara"
+end
+
+group :production do
+  gem 'rails_12factor'
+
+  # Use unicorn as the web server
+  gem 'unicorn'
 end
 
 gem 'jquery-rails'
@@ -60,9 +70,6 @@ gem 'devise_openid_authenticatable'
 
 # To use Jbuilder templates for JSON
 # gem 'jbuilder'
-
-# Use unicorn as the web server
-# gem 'unicorn'
 
 # Deploy with Capistrano
 # gem 'capistrano'
