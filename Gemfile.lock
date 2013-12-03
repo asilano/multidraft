@@ -226,6 +226,7 @@ DEPENDENCIES
   devise_openid_authenticatable
   email_spec
   erb2haml
+  eventmachine
   factory_girl_rails
   figaro
   haml

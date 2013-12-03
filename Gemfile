@@ -28,6 +28,7 @@ group :development, :test do
   gem "spork-rails"
 
   # Use thin web-server
+  gem 'eventmachine'
   gem 'thin'
 end
 
