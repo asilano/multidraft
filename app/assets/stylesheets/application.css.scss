@@ -10,15 +10,26 @@
  *
  *= require_self
 */
-@import 'compass/reset';
-@import 'mixins';
+@import "compass/reset";
+@import "compass/css3/box-sizing";
+@import "mixins";
+
+/** {
+  @include box-sizing(border-box);
+}*/
 
 body {
   font-size: 16px;
+  padding: 0.5em 2em 0;
+
 }
 
-#site-logo {
-  font-size: 6em;
+#site-logo a {
+  font-size: 4em;
+  color: black;
+  text-decoration: none;
+  border: 3px outset #816013;
+  padding: 0 10px;
 }
 
 nav {
