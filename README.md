@@ -1,4 +1,4 @@
-multidraft [![Code Climate](https://codeclimate.com/github/asilano/multidraft.png)](https://codeclimate.com/github/asilano/multidraft)
+multidraft [![Build Status](https://travis-ci.org/asilano/multidraft.png?branch=master)](https://travis-ci.org/asilano/multidraft)[![Coverage Status](https://coveralls.io/repos/asilano/multidraft/badge.png)](https://coveralls.io/r/asilano/multidraft)[![Code Climate](https://codeclimate.com/github/asilano/multidraft.png)](https://codeclimate.com/github/asilano/multidraft)
 ==========
 
 A multi-purpose draft server, interfacing with alextfish/multiverse
