@@ -43,6 +43,7 @@ group :test do
   gem "email_spec"
   gem "launchy"
   gem "capybara"
+  gem 'coveralls', require: false
 
   # Let Travis see Rake
   gem 'rake'
