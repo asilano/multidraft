@@ -10,4 +10,11 @@ class User < ActiveRecord::Base
 
   validates_presence_of :name
   validates_uniqueness_of :name, :email, :case_sensitive => false
+  before_save :copy_name_for_lookup
+
+  private
+
+  def copy_name_for_lookup
+    self.name_for_lookup = name.downcase
+  end
 end

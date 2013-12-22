@@ -65,6 +65,8 @@ module Multidraft
     # Don't initialise app when precompiling assets
     config.assets.initialize_on_precompile = false
 
+    config.colorize_logging = false
+
     # don't generate RSpec tests for views and helpers
     config.generators do |g|
       g.test_framework :rspec, fixture: true
