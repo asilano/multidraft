@@ -27,7 +27,7 @@ describe "UserConfirmations" do
     fill_in 'Password', with: user.password
     click_button 'Sign in'
 
-    expect(page).to have_content 'Invalid username or password'
+    expect(page).to have_content 'You have to confirm your account before continuing.'
 
     # Pick up and visit the confirmation link from the confirmation email
     confirm_link = text_body.match(/http:.*$/)[0]
