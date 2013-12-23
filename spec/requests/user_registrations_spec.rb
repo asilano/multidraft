@@ -19,10 +19,11 @@ describe "UserRegistrations" do
 
     expect(page).to have_content 'A message with a confirmation link has been sent to your email address. Please open the link to activate your account.'
     email = last_email
+    text_body = email.body.parts.find {|p| p.content_type.match /plain/}.body.raw_source
 
     expect(email.to).to include user.email
     expect(email.subject).to eq 'Confirmation instructions'
-    expect(email.body).to include 'You can confirm your account email through the link below:'
+    expect(text_body).to include 'You can confirm your account through the link below:'
   end
 
   describe "validation errors" do

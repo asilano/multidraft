@@ -13,9 +13,10 @@ describe "UserConfirmations" do
     click_button 'Sign up'
 
     email = last_email
+    text_body = email.body.parts.find {|p| p.content_type.match /plain/}.body.raw_source
     expect(email.to).to include user.email
     expect(email.subject).to eq 'Confirmation instructions'
-    expect(email.body).to include 'You can confirm your account email through the link below:'
+    expect(text_body).to include 'You can confirm your account through the link below:'
 
     # Check that the user is not confirmed yet; and can't log in
     db_user = User.where(name: user.name).first
@@ -28,6 +29,20 @@ describe "UserConfirmations" do
 
     expect(page).to have_content 'Invalid username or password'
 
-    # Pick up and visit the
+    # Pick up and visit the confirmation link from the confirmation email
+    confirm_link = text_body.match(/http:.*$/)[0]
+    visit confirm_link
+    expect(page).to have_content "Your account was successfully confirmed."
+    db_user = User.where(name: user.name).first
+    expect(db_user).to_not be_nil
+    expect(db_user.confirmed_at).to_not be_nil
+
+    # Check login now works
+    visit new_user_session_url
+    fill_in 'Username', with: user.name
+    fill_in 'Password', with: user.password
+    click_button 'Sign in'
+
+    expect(page).to have_content 'Signed in successfully.'
   end
 end
