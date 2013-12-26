@@ -33,7 +33,7 @@ body {
   font-size: 4em;
   color: black;
   text-decoration: none;
-  border: 3px outset #816013;
+  border: 3px outset $logo-colour;
   padding: 0 10px;
 }
 
@@ -47,9 +47,49 @@ nav {
 fieldset {
   max-width: 1000px;
   border: 1px solid DarkGray;
+  border-radius: 5px;
   padding: 0 10px;
   margin: 5px 0;
   div {
-    margin: 5px 0;
+    margin: 10px 0;
+    label {
+      float: left;
+      width: 10em;
+    }
   }
+
+  .field_with_errors {
+    label {
+      color: $error-colour;
+      &:before {
+        content: '! ';
+        font-weight: bold;
+      }
+    }
+    input, select { background-color: lighten($error-colour, 50%); }
+  }
+}
+
+input:focus:not([type=submit]):not([type=button]) {
+  background-color: lighten($logo-colour, 50%);
+}
+
+#error_explanation {
+  margin: 10px 0;
+  border: 2px solid red;
+  border-top-left-radius: 5px;
+  border-bottom-right-radius: 5px;
+  background-color: lighten($error-colour, 50%);
+
+  display: inline-block;
+  padding: 5px;
+
+  h2 {
+    font-size: 1.5em;
+    font-weight: bold;
+  }
+}
+
+ul {
+  list-style: disc inside;
 }
