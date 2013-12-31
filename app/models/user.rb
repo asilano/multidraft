@@ -5,16 +5,19 @@ class User < ActiveRecord::Base
          :recoverable, :rememberable, :trackable, :validatable
 
   # Setup accessible (or protected) attributes for your model
-  attr_accessible :email, :password, :password_confirmation, :remember_me, :name, :name_for_lookup
+  attr_accessible :email, :password, :password_confirmation, :remember_me, :name
   # attr_accessible :title, :body
 
   validates_presence_of :name
   validates_uniqueness_of :name, :email, :case_sensitive => false
-  before_save :copy_name_for_lookup
 
-  private
-
-  def copy_name_for_lookup
-    self.name_for_lookup = name.downcase
+  # Override Devise's lookup mechanism to be case-insensitive (for postgres)
+  def self.find_first_by_auth_conditions(warden_conditions)
+    conditions = warden_conditions.dup
+    if login = conditions.delete(:login)
+      where(conditions).where("lower(name) = ?", login.downcase).first
+    else
+      where(conditions).first
+    end
   end
 end

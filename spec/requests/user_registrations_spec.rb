@@ -89,5 +89,29 @@ describe "UserRegistrations" do
       click_button 'Sign up'
       expect(page).to have_content "Password is too short (minimum is 5 characters)"
     end
+
+    it "fails if username already exists modulo case" do
+      fill_in 'Username', with: user.name
+      fill_in 'Email', with: user.email
+      fill_in 'Password', with: user.password
+      fill_in 'Password confirmation', with: user.password
+      click_button 'Sign up'
+
+      visit new_user_registration_url
+      name = case user.name
+              when /[a-z]/
+                user.name.upcase
+              when /[A-Z]/
+                user.name.downcase
+              else
+                raise "Can't test case insensitivity with #{user.name}"
+              end
+      fill_in 'Username', with: name
+      fill_in 'Email', with: "another.#{user.email}"
+      fill_in 'Password', with: user.password
+      fill_in 'Password confirmation', with: user.password
+      click_button 'Sign up'
+      expect(page).to have_content "Username has already been taken"
+    end
   end
 end
