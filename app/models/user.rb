@@ -14,7 +14,7 @@ class User < ActiveRecord::Base
   # Override Devise's lookup mechanism to be case-insensitive (for postgres)
   def self.find_first_by_auth_conditions(warden_conditions)
     conditions = warden_conditions.dup
-    if login = conditions.delete(:login)
+    if login = conditions.delete(:name)
       where(conditions).where("lower(name) = ?", login.downcase).first
     else
       where(conditions).first
