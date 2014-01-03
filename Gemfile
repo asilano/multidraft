@@ -45,6 +45,7 @@ group :test do
   gem "launchy"
   gem "capybara"
   gem 'coveralls', require: false
+  gem 'timecop'
 
   # Let Travis see Rake
   gem 'rake'
