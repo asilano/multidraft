@@ -74,6 +74,13 @@ input:focus:not([type=submit]):not([type=button]) {
   background-color: lighten($logo-colour, 50%);
 }
 
+input[type=checkbox] {
+  margin: 0;
+  vertical-align: middle;
+  position: relative;
+  bottom: 1px;
+}
+
 #error_explanation {
   margin: 10px 0;
   border: 2px solid red;
@@ -92,4 +99,9 @@ input:focus:not([type=submit]):not([type=button]) {
 
 ul {
   list-style: disc inside;
+}
+
+.explain {
+  font-style: italic;
+  color: $light-text;
 }

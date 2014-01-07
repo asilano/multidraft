@@ -1,5 +1,6 @@
 $logo-colour: #816013;
 $error-colour: #b50000;
+$light-text: #888;
 
 @mixin small-screen {
   @media (max-width: 650px) { @content; }

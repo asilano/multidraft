@@ -3,15 +3,14 @@
     %legend Sign in
     %div
       = f.label :name
-      %br/
-      = f.text_field :name, :autofocus => true, :size => 50
+      = f.text_field :name, :autofocus => true
     %div
       = f.label :password
-      %br/
       = f.password_field :password
     - if devise_mapping.rememberable?
       %div
-        = f.check_box :remember_me
         = f.label :remember_me
+        = f.check_box :remember_me
+        %span.explain (We will use a cookie to remember your login for 2 weeks)
     %div= f.submit "Sign in"
 = render "devise/shared/links"

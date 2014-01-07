@@ -4,7 +4,6 @@ describe "UserRegistrations" do
   it "is linked from the homepage" do
     visit '/'
     expect(page).to have_link('Sign up')
-    expect(page).to have_link('Sign in')
   end
 
   it "processes sign-up (not confirmation)" do
