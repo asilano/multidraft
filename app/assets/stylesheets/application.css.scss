@@ -28,6 +28,10 @@ body {
 
 }
 
+header {
+  margin-bottom: 10px;
+}
+
 #site-logo a {
   display: inline-block;
   font-size: 4em;
@@ -41,6 +45,25 @@ nav {
   float: right;
   @include small-screen {
     float: none;
+  }
+}
+
+#flash {
+  p {
+    display: inline-block;
+    padding: 8px 14px;
+    margin-bottom: 10px;
+    border: 1px solid;
+    border-radius: 4px;
+
+    &.notice {
+      background-color: $notice-bg-colour;
+      border-color: $notice-colour;
+    }
+    &.alert {
+      background-color: $alert-bg-colour;
+      border-color: $alert-colour;
+    }
   }
 }
 
@@ -66,12 +89,12 @@ fieldset {
         font-weight: bold;
       }
     }
-    input, select { background-color: lighten($error-colour, 50%); }
+    input, select { background-color: $error-bg-colour; }
   }
 }
 
 input:focus:not([type=submit]):not([type=button]) {
-  background-color: lighten($logo-colour, 50%);
+  background-color: $input-bg-colour;
 }
 
 input[type=checkbox] {
@@ -83,10 +106,10 @@ input[type=checkbox] {
 
 #error_explanation {
   margin: 10px 0;
-  border: 2px solid red;
+  border: 2px solid $error-colour;
   border-top-left-radius: 5px;
   border-bottom-right-radius: 5px;
-  background-color: lighten($error-colour, 50%);
+  background-color: $error-bg-colour;
 
   display: inline-block;
   padding: 5px;

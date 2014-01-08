@@ -15,8 +15,9 @@
           = (link_to 'Sign up', new_user_registration_path) + " | " + (link_to 'Sign in', new_user_session_path)
       #site-logo= link_to 'Multidraft', root_path
 
-      #flash
-        %p.notice= notice
-        %p.alert= alert
+    #flash
+      - flash.each do |name, msg|
+        - if msg.is_a? String
+          %p{class: name}= msg
 
     #content= yield
