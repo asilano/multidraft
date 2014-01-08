@@ -25,7 +25,7 @@ describe "UserRegistrations" do
     expect(text_body).to include 'You can confirm your account through the link below:'
   end
 
-  describe "validation errors" do
+  describe "validation errors on create" do
     let(:user) { FactoryGirl.build(:user) }
     before(:each) do
       visit new_user_registration_url
@@ -111,6 +111,48 @@ describe "UserRegistrations" do
       fill_in 'Password confirmation', with: user.password
       click_button 'Sign up'
       expect(page).to have_content "Username has already been taken"
+    end
+  end
+
+  describe "edit registrations" do
+    let(:user) { FactoryGirl.create(:confirmed_user) }
+    before(:each) { login user }
+
+    it "should be linked from the homepage" do
+      visit '/'
+      expect(page).to have_link(user.name)
+      click_link user.name
+      expect(current_url).to eql edit_user_registration_url
+    end
+
+    it "should let you change your email address" do
+      visit edit_user_registration_url
+      fill_in 'Email', with: "alt.#{user.email}"
+      fill_in 'Current password', with: user.password
+      click_button 'Update'
+
+      expect(page).to have_content 'You updated your account successfully, but we need to verify your new email address'
+      email = last_email
+      text_body = email.body.parts.find {|p| p.content_type.match /plain/}.body.raw_source
+
+      expect(email.to).to include "alt.#{user.email}"
+      expect(email.subject).to eq 'Confirmation instructions'
+      expect(text_body).to include 'You can confirm your account through the link below:'
+    end
+
+    it "should let you change your password" do
+      visit edit_user_registration_url
+      fill_in 'Email', with: user.email
+      fill_in 'Password', with: "another#{user.password}"
+      fill_in 'Password confirmation', with: "another#{user.password}"
+      fill_in 'Current password', with: user.password
+      click_button 'Update'
+
+      expect(page).to have_content 'You updated your account successfully'
+      click_link 'Sign out'
+      login user, fail: true
+      user.password = "another#{user.password}"
+      login user
     end
   end
 end
