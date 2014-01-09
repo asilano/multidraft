@@ -76,5 +76,8 @@ module Multidraft
       g.javascripts = false
       g.helper = false
     end
+
+    # Include compass extensions
+    config.compass.require 'sassy-buttons'
   end
 end

@@ -12,6 +12,7 @@
 */
 @import "compass/reset";
 @import "compass/css3/box-sizing";
+@import "sassybuttons";
 @import "mixins";
 
 * {
@@ -25,7 +26,11 @@ html {
 body {
   font-size: 16px;
   padding: 0.5em 2em 0;
+  font-family: Calibri, Candara, Segoe, "Segoe UI", Optima, Arial, sans-serif;
+}
 
+h1, h2, h3, h4, h5, h6 {
+  font-family: Cambria, Georgia, serif;
 }
 
 header {
@@ -35,6 +40,7 @@ header {
 #site-logo a {
   display: inline-block;
   font-size: 4em;
+  font-family: Cambria, Georgia, serif;
   color: black;
   text-decoration: none;
   border: 3px outset $logo-colour;
@@ -65,6 +71,10 @@ nav {
       border-color: $alert-colour;
     }
   }
+}
+
+button, input[type=button], input[type=submit] {
+  @include sassy-button;
 }
 
 fieldset {
@@ -102,6 +112,11 @@ input[type=checkbox] {
   vertical-align: middle;
   position: relative;
   bottom: 1px;
+}
+
+
+button.danger, input[type=button].danger, input[type=submit].danger {
+  @include sassy-button-gradient('matte', $error-colour);
 }
 
 #error_explanation {
