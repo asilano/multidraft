@@ -154,5 +154,62 @@ describe "UserRegistrations" do
       user.password = "another#{user.password}"
       login user
     end
+
+    describe "validation errors on edit" do
+      before(:each) { visit edit_user_registration_url }
+
+      it "fails if email is missing or invalid" do
+        fill_in 'Email', with: ''
+        fill_in 'Current password', with: user.password
+        click_button 'Update'
+        expect(page).to have_content "Email can't be blank"
+
+        fill_in 'Email', with: 'lookMaNoAtSign'
+        fill_in 'Current password', with: user.password
+        click_button 'Update'
+        expect(page).to have_content "Email is invalid"
+
+        fill_in 'Email', with: 'lookMaNo@TLD'
+        fill_in 'Current password', with: user.password
+        click_button 'Update'
+        expect(page).to have_content "Email is invalid"
+
+        fill_in 'Email', with: 'lookMa spaces@example.com'
+        fill_in 'Current password', with: user.password
+        click_button 'Update'
+        expect(page).to have_content "Email is invalid"
+
+        # Corner case - allow '+' for gmail-style disposables
+        fill_in 'Email', with: 'lookMa+aPlus@example.com'
+        fill_in 'Current password', with: user.password
+        click_button 'Update'
+        expect(page).to have_content "You updated your account successfully, but we need to verify"
+      end
+
+      it "fails if new password is missing or invalid" do
+        fill_in 'Password', with: user.password + "new"
+        fill_in 'Current password', with: user.password
+        click_button 'Update'
+        expect(page).to have_content "Password doesn't match confirmation"
+
+        fill_in 'Password', with: user.password + "new"
+        fill_in 'Password confirmation', with: (user.password + 'new111')
+        fill_in 'Current password', with: user.password
+        click_button 'Update'
+        expect(page).to have_content "Password doesn't match confirmation"
+
+        fill_in 'Password', with: 'abc'
+        fill_in 'Password confirmation', with: 'abc'
+        fill_in 'Current password', with: user.password
+        click_button 'Update'
+        expect(page).to have_content "Password is too short (minimum is 5 characters)"
+      end
+
+      it "fails if current password is incorrect" do
+        fill_in 'Current password', with: user.password + "wrong"
+        click_button "Update"
+        expect(page).to have_content "Current password is invalid"
+      end
+    end
   end
 end
