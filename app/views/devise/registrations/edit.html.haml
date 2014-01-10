@@ -7,7 +7,7 @@
       = f.email_field :email, :autofocus => true
     - if devise_mapping.confirmable? && resource.pending_reconfirmation?
       %div
-        Currently waiting confirmation for: #{resource.unconfirmed_email}
+        Currently awaiting confirmation for: #{resource.unconfirmed_email}
     %div
       = f.label :password
       = f.password_field :password, :autocomplete => "off"

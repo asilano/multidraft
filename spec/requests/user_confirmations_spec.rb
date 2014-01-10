@@ -115,4 +115,36 @@ describe "UserConfirmations" do
     expect(page).to have_content "Email was already confirmed; please try signing in"
     expect(last_email).to be_nil
   end
+
+  it "processes confirmation of an email address change" do
+    email = last_email
+    text_body = email.body.parts.find {|p| p.content_type.match /plain/}.body.raw_source
+    confirm_link = text_body.match(/http:.*$/)[0]
+    visit confirm_link
+    expect(page).to have_content "Your account was successfully confirmed."
+
+    login user
+    visit edit_user_registration_url
+    fill_in 'Email', with: "alt.#{user.email}"
+    fill_in 'Current password', with: user.password
+    click_button 'Update'
+
+    expect(page).to have_content 'You updated your account successfully, but we need to verify your new email address'
+    email = last_email
+    text_body = email.body.parts.find {|p| p.content_type.match /plain/}.body.raw_source
+
+    expect(email.to).to include "alt.#{user.email}"
+    expect(email.subject).to eq 'Confirmation instructions'
+    expect(text_body).to include 'You can confirm your account through the link below:'
+
+    visit edit_user_registration_url
+    expect(page).to have_content "Currently awaiting confirmation for: alt.#{user.email}"
+
+    confirm_link = text_body.match(/http:.*$/)[0]
+    visit confirm_link
+    expect(page).to have_content "Your account was successfully confirmed."
+
+    visit edit_user_registration_url
+    expect(page).to_not have_content "Currently awaiting confirmation for:"
+  end
 end
