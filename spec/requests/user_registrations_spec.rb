@@ -212,4 +212,19 @@ describe "UserRegistrations" do
       end
     end
   end
+
+  describe "tests requiring JavaScript", js: true do
+    self.use_transactional_fixtures = false
+
+    it "should allow the user to destroy their account" do
+      leaving_user = FactoryGirl.create(:confirmed_user)
+      login leaving_user
+      visit edit_user_registration_path
+      click_button 'Delete my account'
+      page.driver.browser.switch_to.alert.accept
+
+      expect(page).to have_content 'Your account was successfully cancelled.'
+      expect(User.where(name: leaving_user.name).first).to be_nil
+    end
+  end
 end

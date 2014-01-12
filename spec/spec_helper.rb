@@ -48,7 +48,7 @@ Spork.prefork do
     # If you're not using ActiveRecord, or you'd prefer not to run each of your
     # examples within a transaction, remove the following line or assign false
     # instead of true.
-    config.use_transactional_fixtures = true
+    config.use_transactional_fixtures = false
 
     # If true, the base class of anonymous controllers will be inferred
     # automatically. This will be the default behavior in future versions of
@@ -65,12 +65,18 @@ Spork.prefork do
     config.include(MailerMacros)
 
     config.before(:suite) do
-      DatabaseCleaner.strategy = :truncation
+      DatabaseCleaner.clean_with :truncation
     end
+
     config.before(:each) do
+      if example.metadata[:js]
+        DatabaseCleaner.strategy = :truncation
+      else
+        DatabaseCleaner.strategy = :transaction
+      end
       DatabaseCleaner.start
-      reset_email
     end
+
     config.after(:each) do
       DatabaseCleaner.clean
     end
@@ -83,7 +89,7 @@ Spork.each_run do
 end
 
 def login(user, opts = {})
-  visit new_user_session_url
+  visit new_user_session_path
   fill_in "Username", with: user.name
   fill_in "Password", with: user.password
   click_button "Sign in"

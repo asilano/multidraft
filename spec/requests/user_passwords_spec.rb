@@ -4,14 +4,14 @@ describe "UserPasswords" do
   let(:user) { FactoryGirl.create(:confirmed_user) }
 
   it "is linked from Sign In page" do
-    visit new_user_session_url
+    visit new_user_session_path
     expect(page).to have_content 'Forgot your password?'
     click_link 'Forgot your password?'
     expect(current_url).to eql new_user_password_url
   end
 
   it "handles a request to reset password" do
-    visit new_user_password_url
+    visit new_user_password_path
     fill_in 'Email', with: user.email
     click_button 'Send me reset password instructions'
 

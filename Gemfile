@@ -45,6 +45,7 @@ group :test do
   gem "email_spec"
   gem "launchy"
   gem "capybara"
+  gem 'selenium-webdriver'
   gem 'coveralls', require: false
   gem 'timecop'
 

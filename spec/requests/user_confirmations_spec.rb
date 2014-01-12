@@ -4,7 +4,7 @@ require 'ruby-debug'
 describe "UserConfirmations" do
   let(:user) { FactoryGirl.build(:user) }
   before(:each) do
-    visit new_user_registration_url
+    visit new_user_registration_path
     fill_in 'Username', with: user.name
     fill_in 'Email', with: user.email
     fill_in 'Password', with: user.password
@@ -23,7 +23,7 @@ describe "UserConfirmations" do
     db_user = User.where(name: user.name).first
     expect(db_user).to_not be_nil
     expect(db_user.confirmed_at).to be_nil
-    visit new_user_session_url
+    visit new_user_session_path
     fill_in 'Username', with: user.name
     fill_in 'Password', with: user.password
     click_button 'Sign in'
@@ -39,7 +39,7 @@ describe "UserConfirmations" do
     expect(db_user.confirmed_at).to_not be_nil
 
     # Check login now works
-    visit new_user_session_url
+    visit new_user_session_path
     fill_in 'Username', with: user.name
     fill_in 'Password', with: user.password
     click_button 'Sign in'
@@ -85,7 +85,7 @@ describe "UserConfirmations" do
     confirm_link = text_body.match(/http:.*$/)[0]
 
     reset_email
-    visit new_user_confirmation_url
+    visit new_user_confirmation_path
     fill_in 'Email', with: user.email
     click_button 'Resend confirmation instructions'
 
@@ -108,7 +108,7 @@ describe "UserConfirmations" do
     expect(page).to have_content "Your account was successfully confirmed."
 
     reset_email
-    visit new_user_confirmation_url
+    visit new_user_confirmation_path
     fill_in 'Email', with: user.email
     click_button 'Resend confirmation instructions'
 
@@ -124,7 +124,7 @@ describe "UserConfirmations" do
     expect(page).to have_content "Your account was successfully confirmed."
 
     login user
-    visit edit_user_registration_url
+    visit edit_user_registration_path
     fill_in 'Email', with: "alt.#{user.email}"
     fill_in 'Current password', with: user.password
     click_button 'Update'
@@ -137,14 +137,14 @@ describe "UserConfirmations" do
     expect(email.subject).to eq 'Confirmation instructions'
     expect(text_body).to include 'You can confirm your account through the link below:'
 
-    visit edit_user_registration_url
+    visit edit_user_registration_path
     expect(page).to have_content "Currently awaiting confirmation for: alt.#{user.email}"
 
     confirm_link = text_body.match(/http:.*$/)[0]
     visit confirm_link
     expect(page).to have_content "Your account was successfully confirmed."
 
-    visit edit_user_registration_url
+    visit edit_user_registration_path
     expect(page).to_not have_content "Currently awaiting confirmation for:"
   end
 end
