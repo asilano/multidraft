@@ -25,7 +25,7 @@ describe "UserPasswords" do
     reset_link = text_body.match(/http:.*$/)[0]
     visit reset_link
     expect(page).to have_content 'Change your password'
-save_and_open_page
+
     user.password << '111'
     fill_in 'New password', with: user.password
     fill_in 'Confirm new password', with: user.password
