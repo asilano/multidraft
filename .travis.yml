@@ -4,7 +4,7 @@ rvm:
 before_install:
   - rm Gemfile.lock
 script:
-  - RAILS_ENV=test bundle exec rake db:migrate spec
+  - RAILS_ENV=test xvfb-run --server-args="-screen 0 1024x768x24" bundle exec rake db:migrate spec
 before_script:
   - cp config/database.travis.yml config/database.yml
   - psql -c 'create database multidraft_test' -U postgres
