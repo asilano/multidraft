@@ -28,7 +28,7 @@ describe "UserRegistrations" do
   describe "validation errors on create" do
     let(:user) { FactoryGirl.build(:user) }
     before(:each) do
-      visit new_user_registration_url
+      visit new_user_registration_path
     end
 
     it "fails if username is missing" do
@@ -96,7 +96,7 @@ describe "UserRegistrations" do
       fill_in 'Password confirmation', with: user.password
       click_button 'Sign up'
 
-      visit new_user_registration_url
+      visit new_user_registration_path
       name = case user.name
               when /[a-z]/
                 user.name.upcase
@@ -126,7 +126,7 @@ describe "UserRegistrations" do
     end
 
     it "should let you change your email address" do
-      visit edit_user_registration_url
+      visit edit_user_registration_path
       fill_in 'Email', with: "alt.#{user.email}"
       fill_in 'Current password', with: user.password
       click_button 'Update'
@@ -141,7 +141,7 @@ describe "UserRegistrations" do
     end
 
     it "should let you change your password" do
-      visit edit_user_registration_url
+      visit edit_user_registration_path
       fill_in 'Email', with: user.email
       fill_in 'Password', with: "another#{user.password}"
       fill_in 'Password confirmation', with: "another#{user.password}"
@@ -156,7 +156,7 @@ describe "UserRegistrations" do
     end
 
     describe "validation errors on edit" do
-      before(:each) { visit edit_user_registration_url }
+      before(:each) { visit edit_user_registration_path }
 
       it "fails if email is missing or invalid" do
         fill_in 'Email', with: ''

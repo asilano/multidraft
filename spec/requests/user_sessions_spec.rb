@@ -9,7 +9,7 @@ describe "UserRegistrations" do
   end
 
   it "allows sign-in and -out of a confirmed user" do
-    visit new_user_session_url
+    visit new_user_session_path
     fill_in "Username", with: user.name
     fill_in "Password", with: user.password
     click_button "Sign in"
@@ -26,7 +26,7 @@ describe "UserRegistrations" do
 
   describe "sign-in errors" do
     it "fails if the password mismatches" do
-      visit new_user_session_url
+      visit new_user_session_path
       fill_in "Username", with: user.name
       fill_in "Password", with: user.password + "wrong"
       click_button "Sign in"
@@ -35,7 +35,7 @@ describe "UserRegistrations" do
     end
 
     it "fails if the username doesn't exist" do
-      visit new_user_session_url
+      visit new_user_session_path
       fill_in "Username", with: user.name + "wrong"
       fill_in "Password", with: user.password
       click_button "Sign in"
@@ -45,7 +45,7 @@ describe "UserRegistrations" do
 
     it "fails if the user is unconfirmed" do
       user = FactoryGirl.create(:user)
-      visit new_user_session_url
+      visit new_user_session_path
       fill_in "Username", with: user.name
       fill_in "Password", with: user.password
       click_button "Sign in"
