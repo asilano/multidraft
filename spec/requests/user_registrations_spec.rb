@@ -125,6 +125,19 @@ describe "UserRegistrations" do
       expect(current_url).to eql edit_user_registration_url
     end
 
+    it "should let you change your username" do
+      visit edit_user_registration_path
+      fill_in 'Username', with: "#{user.name}AlterEgo"
+      fill_in 'Current password', with: user.password
+      click_button 'Update'
+
+      expect(page).to have_content 'You updated your account successfully'
+      click_link 'Sign out'
+      login user, fail: true
+      user.name = "#{user.name}AlterEgo"
+      login user
+    end
+
     it "should let you change your email address" do
       visit edit_user_registration_path
       fill_in 'Email', with: "alt.#{user.email}"

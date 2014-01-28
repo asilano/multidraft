@@ -1,5 +1,4 @@
 require 'spec_helper'
-require 'ruby-debug'
 
 describe "UserConfirmations" do
   let(:user) { FactoryGirl.build(:user) }

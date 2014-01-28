@@ -1,6 +1,6 @@
 require 'spec_helper'
 
-describe "UserRegistrations" do
+describe "UserSessions" do
   let(:user) { FactoryGirl.create(:confirmed_user) }
 
   it "is linked from the homepage" do
