@@ -16,6 +16,7 @@ group :assets do
   gem 'compass-rails'
   gem 'sassy-buttons'
   gem 'coffee-rails', '~> 3.2.1'
+  gem 'modernizr-rails'
 
   # See https://github.com/sstephenson/execjs#readme for more supported runtimes
   # gem 'therubyracer'
@@ -68,9 +69,9 @@ gem 'haml-rails'
 # accessible through ENV (like Heroku does)
 gem 'figaro'
 
-# User authentication by devise and OpenID
+# User authentication by devise and OpenID via OmniAuth
 gem 'devise'
-gem 'devise_openid_authenticatable'
+gem 'omniauth-openid'
 
 # To use ActiveModel has_secure_password
 # gem 'bcrypt-ruby', '~> 3.0.0'

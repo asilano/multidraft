@@ -13,3 +13,9 @@
 # ActiveSupport::Inflector.inflections do |inflect|
 #   inflect.acronym 'RESTful'
 # end
+
+ActiveSupport::Inflector.inflections do |inflect|
+  # The following two inflections force `"open_id".titleize` to produce "OpenID"
+  inflect.human 'open_id', 'openid'
+  inflect.acronym 'OpenID'
+end

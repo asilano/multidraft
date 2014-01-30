@@ -29,6 +29,11 @@ body {
   font-family: Calibri, Candara, Segoe, "Segoe UI", Optima, Arial, sans-serif;
 }
 
+// Switch between javascript and noscript
+.js .nojs-section, .no-js .js-section {
+  display: none;
+}
+
 h1, h2, h3, h4, h5, h6 {
   font-family: Cambria, Georgia, serif;
 }
@@ -73,8 +78,16 @@ nav {
   }
 }
 
-button, input[type=button], input[type=submit] {
+button, input[type=button], input[type=submit], a.button {
   @include sassy-button;
+  font-family: inherit;
+
+  &.danger {
+    @include sassy-button-gradient('matte', $error-colour);
+  }
+}
+a.button {
+  text-decoration: none;
 }
 
 fieldset {
@@ -92,6 +105,8 @@ fieldset {
   }
 
   .field_with_errors {
+    display: inline;
+
     label {
       color: $error-colour;
       &:before {
@@ -101,10 +116,21 @@ fieldset {
     }
     input, select { background-color: $error-bg-colour; }
   }
+
+  .error-explain {
+    color: $error-colour;
+    font-style: italic;
+  }
 }
 
-input:focus:not([type=submit]):not([type=button]) {
-  background-color: $input-bg-colour;
+input:not([type=submit]):not([type=button]){
+  &:focus {
+    background-color: $input-bg-colour;
+  }
+
+  &:disabled {
+    background-color: $disabled-bg-colour;
+  }
 }
 
 input[type=checkbox] {
@@ -112,11 +138,6 @@ input[type=checkbox] {
   vertical-align: middle;
   position: relative;
   bottom: 1px;
-}
-
-
-button.danger, input[type=button].danger, input[type=submit].danger {
-  @include sassy-button-gradient('matte', $error-colour);
 }
 
 #error_explanation {
@@ -135,6 +156,14 @@ button.danger, input[type=button].danger, input[type=submit].danger {
   }
 }
 
+.warning {
+  color: $error-colour;
+}
+
+.good-info {
+  color: $good-colour;
+}
+
 ul {
   list-style: disc inside;
 }
@@ -142,4 +171,56 @@ ul {
 .explain {
   font-style: italic;
   color: $light-text;
+}
+
+// OpenID Buttons
+.openid-selector {
+  display: inline-block;
+  @include box-sizing(content-box);
+  position: relative;
+  width: 80px;
+  height: 50px;
+  margin: 2px;
+  border: 1px solid DarkGray;
+  border-radius: 5px;
+  box-shadow: 2px 2px 4px $logo-colour;
+
+  text-indent: -9999px;
+  //background-image: url('/assets/openid_icons.png');
+
+  &:hover, &:active {
+    box-shadow: none;
+    border-width: 2px;
+    margin: 0 0 0 2px;
+    top: 2px;
+  }
+
+  &.google-icon {
+    background-image: url('/assets/openid_google_icon.png');
+  }
+  &.yahoo-icon {
+   background-image: url('/assets/openid_yahoo_icon.png');
+  }
+  &.se-icon {
+    background-image: url('/assets/openid_se_icon.png');
+  }
+  &.steam-icon {
+    background-image: url('/assets/openid_steam_icon.png');
+  }
+  &.lj-icon {
+    background-image: url('/assets/openid_lj_icon.png');
+  }
+  &.openid-icon {
+    background-image: url('/assets/openid_openid_icon.png');
+  }
+}
+
+#openid_url {
+  background-image: url('/assets/openid-icon-18x18.gif');
+  background-repeat: no-repeat;
+  padding-left: 20px;
+}
+
+#js_submit_openid {
+  margin-left: 5px;
 }

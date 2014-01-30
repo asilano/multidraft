@@ -228,6 +228,12 @@ Devise.setup do |config|
   # Add a new OmniAuth provider. Check the wiki for more information on setting
   # up on your models and hooks.
   # config.omniauth :github, 'APP_ID', 'APP_SECRET', :scope => 'user,public_repo'
+  config.omniauth :open_id, :required => [OmniAuth::Strategies::OpenID::AX[:email], 'email',
+                                          OmniAuth::Strategies::OpenID::AX[:name], 'fullname',
+                                          OmniAuth::Strategies::OpenID::AX[:first_name],
+                                          OmniAuth::Strategies::OpenID::AX[:last_name],
+                                          OmniAuth::Strategies::OpenID::AX[:nickname], 'nickname'],
+                            :optional => []
 
   # ==> Warden configuration
   # If you want to use other strategies, that are not supported by Devise, or

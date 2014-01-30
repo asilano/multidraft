@@ -8,6 +8,11 @@ FactoryGirl.define do
 
     factory :confirmed_user do
       confirmed_at Time.now
+
+      factory :open_id_user do
+        provider 'open_id'
+        uid 'http://pretend.openid.example.com?id=12345'
+      end
     end
   end
 end

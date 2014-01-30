@@ -1,9 +1,12 @@
 !!! html5
-%html
+%html.no-js
   %head
     %title Multidraft
     = stylesheet_link_tag    "application", :media => "all"
     = javascript_include_tag "application"
+    :javascript
+      document.documentElement.className = "js";
+      /*$(function(){$('.nojs-section').remove()});*/
     = csrf_meta_tags
 
   %body

@@ -125,7 +125,6 @@ describe "UserConfirmations" do
     login user
     visit edit_user_registration_path
     fill_in 'Email', with: "alt.#{user.email}"
-    fill_in 'Current password', with: user.password
     click_button 'Update'
 
     expect(page).to have_content 'You updated your account successfully, but we need to verify your new email address'

@@ -2,11 +2,13 @@ $logo-colour: #816013;
 $error-colour: #b50000;
 $notice-colour: #005dff;
 $alert-colour: #eac300;
+$good-colour: #007f0e;
 
 $error-bg-colour: lighten($error-colour, 50%);
 $notice-bg-colour: lighten($notice-colour, 30%);
 $alert-bg-colour: lighten($alert-colour, 40%);
 $input-bg-colour: lighten($logo-colour, 50%);
+$disabled-bg-colour: #eee;
 
 $light-text: #888;
 
