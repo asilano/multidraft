@@ -17,6 +17,8 @@
     %div
       = f.label :email
       = f.email_field :email, :size => 50
+      - if resource.provider
+        %span.explain (optional for OpenID users)
       - if resource.errors[:email].present?
         %span.error-explain= "#{resource_class.human_attribute_name('email')} #{resource.errors[:email].join('; ')}"
     %div

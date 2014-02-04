@@ -10,6 +10,8 @@
     %div
       = f.label :email
       = f.email_field :email, :autofocus => true
+      - if resource.provider
+        %span.explain (optional for OpenID users)
       - if resource.errors[:email].present?
         %span.error-explain= "#{resource_class.human_attribute_name('email')} #{resource.errors[:email].join('; ')}"
     - if devise_mapping.confirmable? && resource.pending_reconfirmation?

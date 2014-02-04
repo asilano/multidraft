@@ -8,15 +8,18 @@ class User < ActiveRecord::Base
   # Setup accessible (or protected) attributes for your model
   attr_accessible :email, :password, :password_confirmation, :remember_me, :name, :provider, :uid
   attr_accessor :remove_password
+  normalize_attributes :name, :email
 
   validates_presence_of :name
-  validates_presence_of :email
-  validates_uniqueness_of :name, :email, :case_sensitive => false
-  validates_format_of :email, :with => /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i
+  validates_presence_of :email, :if => :email_required?
+  validates_uniqueness_of :name, :email, :case_sensitive => false, :allow_blank => true
+  validates_format_of :email, :with => /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i, :allow_blank => true
 
   validates_presence_of :password, :if => :password_required?
   validates_confirmation_of :password, :if => :password_required?
   validates_length_of :password, :minimum => 5, :allow_blank => true
+
+  before_save :auto_confirm_openid, :on => 'create'
 
   # Supported OpenID providers
   OpenIDProviders = [
@@ -81,7 +84,8 @@ class User < ActiveRecord::Base
   # Implement method called by devise used to build a new resource from session data
   def self.new_with_session(params, session)
     super.tap do |user|
-      if data = session["devise.openid_data"]
+      # Don't use the session data if a form's been submitted!
+      if !params.has_key?('name') && data = session["devise.openid_data"]
         user.provider = data['provider'] if user.provider.blank?
         user.uid = data['uid'] if user.uid.blank?
 
@@ -123,6 +127,7 @@ class User < ActiveRecord::Base
     result
   end
 
+
 protected
 
   # Need a password when a password (or its confirmation) is given,
@@ -131,4 +136,18 @@ protected
     !password.blank? || !password_confirmation.blank? || (!persisted? && (provider.blank? || uid.blank?))
   end
 
+  # Need an email if the account isn't using OpenID
+  def email_required?
+    provider.blank? || uid.blank?
+  end
+
+  # Prevent an OpenID signup from requiring email confirmation
+  def auto_confirm_openid
+    skip_confirmation! if provider.present? && uid.present?
+  end
+
+  # Override Devise's method to refer to the correct email field
+  def reconfirmation_required?
+    self.class.reconfirmable && @reconfirmation_required && !self.unconfirmed_email.blank?
+  end
 end

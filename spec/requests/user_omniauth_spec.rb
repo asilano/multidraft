@@ -31,7 +31,7 @@ describe "Sign-up and Sign-in by OmniAuth" do
         expect(page).to have_field('user[password_confirmation]')
       end
 
-      it "should still require email and username" do
+      it "should still require username, but not email" do
         visit new_user_registration_path
         fill_in 'openid_url', with: 'http://pretend.openid.example.com'
         click_button 'submit_openid'
@@ -43,7 +43,7 @@ describe "Sign-up and Sign-in by OmniAuth" do
         click_button 'Sign up'
 
         expect(page).to have_content "Username can't be blank"
-        expect(page).to have_content "Email can't be blank"
+        expect(page).to_not have_content "Email can't be blank"
       end
 
       it "should persist the OpenID to the database" do
@@ -54,13 +54,8 @@ describe "Sign-up and Sign-in by OmniAuth" do
         fill_in 'Email', with: user.email
         click_button 'Sign up'
 
-        expect(page).to have_content 'A message with a confirmation link has been sent to your email address. Please open the link to activate your account.'
-        email = last_email
-        text_body = email.body.parts.find {|p| p.content_type.match /plain/}.body.raw_source
-
-        expect(email.to).to include user.email
-        expect(email.subject).to eq 'Confirmation instructions'
-        expect(text_body).to include 'You can confirm your account through the link below:'
+        expect(page).to have_content 'Welcome! You have signed up successfully.'
+        expect(last_email).to be_nil
 
         saved_user = User.where(:name => user.name).first
         expect(saved_user).to_not be_nil
@@ -210,7 +205,7 @@ describe "Sign-up and Sign-in by OmniAuth" do
         expect(page).not_to have_content "This account will be associated with an OpenID provider"
       end
 
-      it "should allow a user to sign up with password" do
+      it "should allow a user to sign up with password and email" do
         visit new_user_registration_path
         fill_in 'openid_url', with: 'http://pretend.openid.example.com'
         click_button 'submit_openid'
@@ -224,18 +219,18 @@ describe "Sign-up and Sign-in by OmniAuth" do
         fill_in 'Password', with: user.password
         fill_in 'Password confirmation', with: user.password
         click_button 'Sign up'
-        expect(page).to have_content 'A message with a confirmation link has been sent to your email address. Please open the link to activate your account.'
+        expect(page).to have_content 'Welcome! You have signed up successfully.'
       end
 
-      it "should allow a user to sign up without password" do
+      it "should allow a user to sign up without password or email" do
         visit new_user_registration_path
         fill_in 'openid_url', with: 'http://pretend.openid.example.com'
         click_button 'submit_openid'
         fill_in 'Username', with: user.name
-        fill_in 'Email', with: user.email
+        fill_in 'Email', with: ''
         click_button 'Sign up'
 
-        expect(page).to have_content 'A message with a confirmation link has been sent to your email address. Please open the link to activate your account.'
+        expect(page).to have_content 'Welcome! You have signed up successfully.'
       end
 
       it "should handle a failure response" do
@@ -494,6 +489,41 @@ describe "Sign-up and Sign-in by OmniAuth" do
         # Attempt to login with password - should fail
         click_link 'Sign out'
         login user, fail: true
+      end
+    end
+
+    describe "adding and removing email to OpenID account" do
+      let(:user) do
+        user = FactoryGirl.create :open_id_user
+        user.email = ""
+        user.save
+        user
+      end
+
+      before(:each) do
+        OmniAuth.config.mock_auth[:open_id] = OmniAuth::AuthHash.new({
+          :provider => user.provider,
+          :uid => user.uid,
+        })
+
+        visit new_user_session_path
+        fill_in 'openid_url', with: 'http://pretend.openid.example.com'
+        click_button 'submit_openid'
+        expect(page).to have_content "Signed in as #{user.name}"
+      end
+
+      it "should allow an existing OpenID user with no email to add one, then remove it" do
+        visit edit_user_registration_path
+
+        fill_in 'Email', with: user.email
+        click_button 'Update'
+        expect(page).to have_content 'You updated your account successfully'
+
+        # Now remove the password
+        visit edit_user_registration_path
+        fill_in 'Email', with: ''
+        click_button 'Update'
+        expect(page).to have_content 'You updated your account successfully'
       end
     end
   end
