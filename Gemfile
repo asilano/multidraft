@@ -66,6 +66,7 @@ gem 'haml'
 gem 'haml-rails'
 
 gem 'attribute_normalizer'
+gem 'andand'
 
 # github.com/laserlemon/figaro - provide config in .gitignored application.yml
 # accessible through ENV (like Heroku does)

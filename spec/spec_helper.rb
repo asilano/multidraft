@@ -76,6 +76,8 @@ Spork.prefork do
         DatabaseCleaner.strategy = :transaction
       end
       DatabaseCleaner.start
+
+      ActionMailer::Base.deliveries.clear
     end
 
     config.after(:each) do

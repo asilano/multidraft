@@ -1,6 +1,9 @@
 Multidraft::Application.routes.draw do
   devise_for :users, :controllers => { :omniauth_callbacks => "users/omniauth_callbacks",
                                        :registrations => 'users/registrations' }
+  devise_scope :user do
+    delete "remove_authentication/:id" => 'users/registrations#remove_authentication', :as => 'remove_authentication'
+  end
 
   root :to => 'placeholder#index'
 

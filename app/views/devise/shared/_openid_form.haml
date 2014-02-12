@@ -1,14 +1,12 @@
-%fieldset
-  %legend #{action.capitalize} using OpenID
-  .js-section
+.js-section
+  %div
+    %div If you already have an account with one of these providers, click the logo to #{action} with it.
     %div
-      %div If you already have an account with one of these providers, click the logo to #{action} with it.
-      %div
-        - resource_class::OpenIDProviders.each do |provider|
-          = link_to_function "#{action.capitalize} with #{provider[:name]}", '', :class => "openid-selector #{provider[:css_class]}", :data => provider[:data].merge({:auth_url => user_omniauth_authorize_url('open_id')})
-  .nojs-section
-    %div If you already have an account with an OpenID provider you can use it to #{action} here.
-    %div.warning Because you do not have Javascript enabled, you must manually enter your OpenID URL.
-    = form_tag user_omniauth_authorize_path(:provider => 'open_id') do
-      = text_field_tag :openid_url, '', :size => 50, :placeholder => 'OpenID URL', :class => 'openid-input'
-      = submit_tag "#{action.capitalize} using OpenID", :id => 'submit_openid'
+      - resource_class::OpenIDProviders.each do |provider|
+        = link_to_function "#{action.capitalize} with #{provider[:name]}", '', :class => "openid-selector #{provider[:css_class]}", :data => provider[:data].merge({:auth_url => user_omniauth_authorize_url('open_id'), :nickname => provider[:name]})
+.nojs-section
+  %div If you already have an account with an OpenID provider you can use it to #{action} here.
+  %div.warning Because you do not have Javascript enabled, you must manually enter your OpenID URL.
+  = form_tag user_omniauth_authorize_path(:provider => 'open_id') do
+    = text_field_tag :openid_url, '', :size => 50, :placeholder => 'OpenID URL', :class => 'openid-input'
+    = submit_tag "#{action.capitalize} using OpenID", :id => 'submit_openid'

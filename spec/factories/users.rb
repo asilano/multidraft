@@ -10,8 +10,9 @@ FactoryGirl.define do
       confirmed_at Time.now
 
       factory :open_id_user do
-        provider 'open_id'
-        uid 'http://pretend.openid.example.com?id=12345'
+        after :create do |user|
+          create :authentication, user: user
+        end
       end
     end
   end

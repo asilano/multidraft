@@ -5,8 +5,11 @@ class User < ActiveRecord::Base
          :recoverable, :rememberable, :trackable,
          :omniauthable, :omniauth_providers => [:open_id]
 
+  has_many :authentications, dependent: :destroy
+  accepts_nested_attributes_for :authentications
+
   # Setup accessible (or protected) attributes for your model
-  attr_accessible :email, :password, :password_confirmation, :remember_me, :name, :provider, :uid
+  attr_accessible :email, :password, :password_confirmation, :remember_me, :name, :authentications_attributes
   attr_accessor :remove_password
   normalize_attributes :name, :email
 
@@ -55,10 +58,32 @@ class User < ActiveRecord::Base
         open_id_url: '%{parameter}',
         parameter: 'OpenID URL',
         param_id: 'openid_url',
-        param_placeholder: 'OpenID URL'
+        param_placeholder: 'OpenID URL',
+        nickname_from_url: true
         }
     }
   ]
+
+  # Remove the indicated authentication method from this User, unless it's the
+  # last authentication method and the user has no email and/or password set.
+  def remove_authentication(params)
+    # Disallow removal of an authentication method if the user doesn't have
+    # an email address or password.
+    if email.blank? || encrypted_password.blank?
+      return :last_auth
+    end
+
+    # Check that the given authentication exists, and belongs to this user
+    auth = authentications.find_by_id(params[:id])
+    return :dont_own unless auth
+
+    # Otherwise, all fine. Perform the removal
+    if auth.destroy
+      return auth
+    else
+      return :failure
+    end
+  end
 
   # Override Devise's lookup mechanism to be case-insensitive (for postgres)
   def self.find_first_by_auth_conditions(warden_conditions)
@@ -70,24 +95,21 @@ class User < ActiveRecord::Base
     end
   end
 
-  # Handle looking up a sign-up or -in attempt by OpenID
-  def self.find_for_openid_auth(auth)
-    user = where(auth.slice(:provider, :uid)).first_or_initialize
-    if !user.persisted?
-      user.provider = auth.provider
-      user.uid = auth.uid
-      user.email = auth.info.try(:email)
-    end
-    user
+  # Handle looking up a sign-up or -in attempt by an Omniauth provider
+  def self.find_for_omniauth(auth, current_user)
+    authentication = Authentication.where(:provider => auth.provider, :uid => auth.uid).first_or_initialize
+    user = authentication.user || current_user || User.new
+
+    return user, authentication
   end
 
   # Implement method called by devise used to build a new resource from session data
   def self.new_with_session(params, session)
     super.tap do |user|
       # Don't use the session data if a form's been submitted!
-      if !params.has_key?('name') && data = session["devise.openid_data"]
-        user.provider = data['provider'] if user.provider.blank?
-        user.uid = data['uid'] if user.uid.blank?
+      if !params.has_key?('name') && data = session["devise.omniauth_data"]
+        # Create and attach an Authentication from the omniauth data
+        user.authentications << Authentication.build_from_data(data, session['devise.omniauth_params'])
 
         # Use the OpenId's extra information to pre-populate the user's details.
         if info = data['info']
@@ -133,17 +155,17 @@ protected
   # Need a password when a password (or its confirmation) is given,
   # or for a new account which isn't using OpenID
   def password_required?
-    !password.blank? || !password_confirmation.blank? || (!persisted? && (provider.blank? || uid.blank?))
+    !password.blank? || !password_confirmation.blank? || (!persisted? && authentications.empty?)
   end
 
   # Need an email if the account isn't using OpenID
   def email_required?
-    provider.blank? || uid.blank?
+    authentications.empty?
   end
 
   # Prevent an OpenID signup from requiring email confirmation
   def auto_confirm_openid
-    skip_confirmation! if provider.present? && uid.present?
+    skip_confirmation! unless email_required?
   end
 
   # Override Devise's method to refer to the correct email field

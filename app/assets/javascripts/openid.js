@@ -8,14 +8,20 @@ $(function() {
 
     if (typeof link_data['parameter'] === 'undefined')
     {
-      window.location.href =  link_data['authUrl'] + "?openid_url=" + link_data['openIdUrl'];
+      window.location.href =  link_data['authUrl'] + "?openid_url=" + link_data['openIdUrl'] +
+                                                      "&omniauth_nickname=" + link_data['nickname'];
     }
     else
     {
       var input_id = (typeof link_data['paramId'] === 'undefined') ? 'openid_param' : link_data['paramId'];
       var navigate_to_auth = function(e) {
         var substituted_url = link_data['openIdUrl'].replace('%{parameter}', $('#'+input_id).val());
-        window.location.href = link_data['authUrl'] + "?openid_url=" + substituted_url;
+        var nickname = link_data['nickname'];
+        if (link_data['nicknameFromUrl'])
+          nickname = substituted_url;
+
+        window.location.href = link_data['authUrl'] + "?openid_url=" + substituted_url +
+                                "&omniauth_nickname=" + nickname;
         e.preventDefault();
       };
 
@@ -25,7 +31,7 @@ $(function() {
                               .attr('size', 50)
                               .attr('placeholder', link_data['paramPlaceholder'])
                               .addClass('openid-input');
-      var submit_btn = $("<input id='js_submit_openid' type='submit' value='Sign up using OpenID'/>").click(navigate_to_auth);
+      var submit_btn = $("<input id='js_submit_openid' type='submit' value='Sign up using OpenID'/>");
       var input_form = $("<form id='openid_param_form'></form>").submit(navigate_to_auth)
       input_form.insertAfter(link_elem.parent())
                 .append(prompt)

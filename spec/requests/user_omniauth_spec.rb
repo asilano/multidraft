@@ -21,7 +21,7 @@ describe "Sign-up and Sign-in by OmniAuth" do
       it "should make use of the standard Sign Up form (no JS)" do
         visit new_user_registration_path
         expect(page).to have_content "Sign up using OpenID"
-        expect(page).to have_content "If you already have an account with an OpenID provider"
+        expect(page).to have_content "If you already have an account with one of these providers"
         expect(page).to have_content('manually enter your OpenID')
         expect(page).to have_field('openid_url')
 
@@ -57,10 +57,10 @@ describe "Sign-up and Sign-in by OmniAuth" do
         expect(page).to have_content 'Welcome! You have signed up successfully.'
         expect(last_email).to be_nil
 
-        saved_user = User.where(:name => user.name).first
+        saved_user = User.where(:name => user.name).includes(:authentications).first
         expect(saved_user).to_not be_nil
-        expect(saved_user.uid).to eql OmniAuth.config.mock_auth[:open_id][:uid]
-        expect(saved_user.provider).to eql 'open_id'
+        expect(saved_user.authentications[0].uid).to eql OmniAuth.config.mock_auth[:open_id][:uid]
+        expect(saved_user.authentications[0].provider).to eql 'open_id'
       end
 
       describe "with extra info from OpenID response" do
@@ -324,15 +324,15 @@ describe "Sign-up and Sign-in by OmniAuth" do
       let(:non_oid_user) { FactoryGirl.create :confirmed_user }
       before(:each) do
         OmniAuth.config.mock_auth[:open_id] = OmniAuth::AuthHash.new({
-          :provider => open_id_user.provider,
-          :uid => open_id_user.uid,
+          :provider => open_id_user.authentications[0].provider,
+          :uid => open_id_user.authentications[0].uid,
         })
       end
 
       it "should allow an existing OpenID user to sign in" do
         visit new_user_session_path
         expect(page).to have_content "Sign in using OpenID"
-        expect(page).to have_content "If you already have an account with an OpenID provider"
+        expect(page).to have_content "If you already have an account with one of these providers"
         expect(page).to have_content('manually enter your OpenID')
         expect(page).to have_field('openid_url')
 
@@ -349,7 +349,7 @@ describe "Sign-up and Sign-in by OmniAuth" do
       it "should redirect to sign-up form if an unknown UID is given" do
         visit new_user_session_path
         expect(page).to have_content "Sign in using OpenID"
-        expect(page).to have_content "If you already have an account with an OpenID provider"
+        expect(page).to have_content "If you already have an account with one of these providers"
         expect(page).to have_content('manually enter your OpenID')
         expect(page).to have_field('openid_url')
 
@@ -367,7 +367,7 @@ describe "Sign-up and Sign-in by OmniAuth" do
       it "should not allow an existing OpenID user to sign in if there is an OpenID error" do
         visit new_user_session_path
         expect(page).to have_content "Sign in using OpenID"
-        expect(page).to have_content "If you already have an account with an OpenID provider"
+        expect(page).to have_content "If you already have an account with one of these providers"
         expect(page).to have_content('manually enter your OpenID')
         expect(page).to have_field('openid_url')
 
@@ -439,10 +439,249 @@ describe "Sign-up and Sign-in by OmniAuth" do
     end
 
     describe "adding and removing OpenID on existing accounts" do
-      it "should allow an existing non-OpenID user to add an OpenID"
-      it "should allow an existing OpenID user to add another OpenID"
-      it "should allow an existing multi-OpenID user to remove an OpenID"
-      it "should allow an existing OpenID user to remove the last OpenID"
+      let(:open_id_user) { FactoryGirl.create :open_id_user }
+      let(:non_oid_user) { FactoryGirl.create :confirmed_user }
+
+      it "should allow an existing non-OpenID user to add an OpenID" do
+        login non_oid_user
+        visit edit_user_registration_path
+
+        expect(page).not_to have_content('optional for OpenID users')
+        expect(page).not_to have_content "This account is linked with the following authentication methods"
+        expect(page).to have_content('Add an OpenID account')
+        expect(page).to have_content "If you already have an account with one of these providers"
+        expect(page).to have_content('manually enter your OpenID')
+        expect(page).to have_field('openid_url')
+
+        OmniAuth.config.mock_auth[:open_id] = OmniAuth::AuthHash.new({
+          :provider => open_id_user.authentications[0].provider,
+          :uid => open_id_user.authentications[0].uid + "other",
+        })
+
+        fill_in 'openid_url', with: 'http://pretend.openid.example.com'
+        click_button 'submit_openid'
+
+        expect(page).to have_content "Successfully authenticated from OpenID account"
+        expect(page).to have_content "This account is linked with the following authentication methods"
+        expect(page).to have_content "http://pretend.openid.example.com"
+        expect(page).to have_link 'Remove', count: 1
+      end
+
+      it "should allow an existing OpenID user to add another OpenID" do
+        login open_id_user
+        visit edit_user_registration_path
+
+        expect(page).to have_content('optional for OpenID users')
+        expect(page).to have_content "This account is linked with the following authentication methods"
+        expect(page).to have_content "http://pretend.openid.example.com"
+        expect(page).to have_link 'Remove', count: 1
+        expect(page).to have_content('Add an OpenID account')
+        expect(page).to have_content "If you already have an account with one of these providers"
+        expect(page).to have_content('manually enter your OpenID')
+        expect(page).to have_field('openid_url')
+
+        OmniAuth.config.mock_auth[:open_id] = OmniAuth::AuthHash.new({
+          :provider => open_id_user.authentications[0].provider,
+          :uid => open_id_user.authentications[0].uid + "other",
+        })
+
+        fill_in 'openid_url', with: 'http://fake.openid.example.com'
+        click_button 'submit_openid'
+
+        expect(page).to have_content "Successfully authenticated from OpenID account"
+        expect(page).to have_content "This account is linked with the following authentication methods"
+        expect(page).to have_content "http://pretend.openid.example.com"
+        expect(page).to have_content "http://fake.openid.example.com"
+        expect(page).to have_link 'Remove', count: 2
+      end
+
+      it "should allow an existing multi-OpenID user to remove an OpenID" do
+        auth_two = FactoryGirl.create(:second_openid, user: open_id_user)
+        login open_id_user
+        visit edit_user_registration_path
+
+        expect(page).to have_content "This account is linked with the following authentication methods"
+        expect(page).to have_content "http://pretend.openid.example.com"
+        expect(page).to have_content "Fake OpenID"
+        expect(page).to have_link 'Remove', count: 2
+
+        page.find('.auth-nickname', text: 'Fake OpenID').find(:xpath, '..').click_link('Remove')
+
+        expect(page).to have_content "Successfully removed authentication from Fake OpenID"
+        expect(page).to have_content "http://pretend.openid.example.com"
+        expect(page).to have_link 'Remove', count: 1
+      end
+
+      it "should allow an existing OpenID user to remove the last OpenID if they have an email and password" do
+        login open_id_user
+        open_id_user.encrypted_password = ''
+        open_id_user.save!
+
+        # Need to re-login, because changing the password as someone else logs out
+        OmniAuth.config.mock_auth[:open_id] = OmniAuth::AuthHash.new({
+          :provider => open_id_user.authentications[0].provider,
+          :uid => open_id_user.authentications[0].uid,
+        })
+        visit new_user_session_path
+        fill_in 'openid_url', with: 'http://pretend.openid.example.com'
+        click_button 'submit_openid'
+
+        visit edit_user_registration_path
+        expect(page).to have_content "This account is linked with the following authentication methods"
+        expect(page).to have_content "http://pretend.openid.example.com"
+        expect(page).to have_link 'Remove', count: 1
+
+        click_link 'Remove'
+        expect(page).to have_content 'You cannot remove your last authentication method without having an email address and password set.'
+
+        # Set password, and blank email
+        open_id_user.password = 'secret'
+        open_id_user.password_confirmation = 'secret'
+        open_id_user.email = ''
+        open_id_user.save!
+
+        # Re-login again
+        visit new_user_session_path
+        fill_in 'openid_url', with: 'http://pretend.openid.example.com'
+        click_button 'submit_openid'
+
+        visit edit_user_registration_path
+        click_link 'Remove'
+        expect(page).to have_content 'You cannot remove your last authentication method without having an email address and password set.'
+
+        # Set email. Removal should work
+        open_id_user.email = "#{open_id_user.name}@example.com"
+        open_id_user.save!
+        open_id_user.confirm!
+
+        click_link 'Remove'
+        expect(page).to have_content "Successfully removed authentication from http://pretend.openid.example.com"
+        expect(page).not_to have_content('optional for OpenID users')
+        expect(page).not_to have_content "This account is linked with the following authentication methods"
+      end
+
+      it "should be a no-op if a logged-in user adds an existing OpenID they own" do
+        login open_id_user
+        visit edit_user_registration_path
+
+        OmniAuth.config.mock_auth[:open_id] = OmniAuth::AuthHash.new({
+          :provider => open_id_user.authentications[0].provider,
+          :uid => open_id_user.authentications[0].uid,
+        })
+
+        fill_in 'openid_url', with: 'http://pretend.openid.example.com'
+        click_button 'submit_openid'
+
+        expect(page).to have_content "This account is already linked with that OpenID account"
+        expect(page).to have_content "This account is linked with the following authentication methods"
+        expect(page).to have_content "http://pretend.openid.example.com"
+        expect(page).to have_link 'Remove', count: 1
+      end
+
+      it "should warn and fail if a logged-in user adds an existing OpenID they don't own" do
+        login non_oid_user
+        visit edit_user_registration_path
+
+        OmniAuth.config.mock_auth[:open_id] = OmniAuth::AuthHash.new({
+          :provider => open_id_user.authentications[0].provider,
+          :uid => open_id_user.authentications[0].uid,
+        })
+
+        fill_in 'openid_url', with: 'http://pretend.openid.example.com'
+        click_button 'submit_openid'
+
+        expect(page).to have_content "Another account is already linked with that OpenID account"
+        expect(page).not_to have_content('optional for OpenID users')
+        expect(page).not_to have_content "This account is linked with the following authentication methods"
+      end
+
+      describe "by javascript", :js => true do
+        before(:each) do
+          OmniAuth.config.mock_auth[:open_id] = OmniAuth::AuthHash.new({
+            :provider => open_id_user.authentications[0].provider,
+            :uid => open_id_user.authentications[0].uid + "other",
+          })
+        end
+
+        it "should allow adding a manual URL" do
+          login non_oid_user
+          visit edit_user_registration_path
+
+          expect(page).not_to have_content('optional for OpenID users')
+          expect(page).to have_content('Add an OpenID account')
+          expect(page).not_to have_content('manually enter your OpenID')
+          expect(page).not_to have_field('openid_url')
+          expect(page).to have_link("Authenticate with OpenID")
+
+          click_link 'Authenticate with OpenID'
+          expect(page).to have_field('openid_url')
+          fill_in 'openid_url', with: 'http://pretend.openid.example.com'
+          click_button 'js_submit_openid'
+
+          expect(page).to have_content "Successfully authenticated from OpenID account"
+          expect(page).to have_content "This account is linked with the following authentication methods"
+          expect(page).to have_content "http://pretend.openid.example.com"
+          expect(page).to have_link 'Remove', count: 1
+        end
+
+        %w(Google Yahoo StackExchange Steam).each do |provider|
+          it "should allow adding #{provider} with no parameter" do
+            login open_id_user
+            visit edit_user_registration_path
+
+            expect(page).to have_content('optional for OpenID users')
+            expect(page).to have_content "This account is linked with the following authentication methods"
+            expect(page).to have_content "http://pretend.openid.example.com"
+            expect(page).to have_link 'Remove', count: 1
+            expect(page).to have_link("Authenticate with #{provider}")
+            click_link "Authenticate with #{provider}"
+
+            expect(page).to have_content "Successfully authenticated from OpenID account"
+            expect(page).to have_content "This account is linked with the following authentication methods"
+            expect(page).to have_content "http://pretend.openid.example.com"
+            expect(page).to have_css('.auth-nickname', :text => provider)
+            expect(page).to have_link 'Remove', count: 2
+          end
+        end
+        %w(LiveJournal).each do |provider|
+          it "should allow adding #{provider} with a parameter" do
+            login non_oid_user
+            visit edit_user_registration_path
+
+            expect(page).not_to have_content('optional for OpenID users')
+            expect(page).to have_content('Add an OpenID account')
+            expect(page).not_to have_content('manually enter your OpenID')
+            expect(page).not_to have_field('openid_url')
+            expect(page).to have_link("Authenticate with #{provider}")
+
+            click_link "Authenticate with #{provider}"
+            expect(page).to have_field('openid_param')
+            fill_in 'openid_param', with: 'my_username'
+            click_button 'js_submit_openid'
+
+            expect(page).to have_content "Successfully authenticated from OpenID account"
+            expect(page).to have_content "This account is linked with the following authentication methods"
+            expect(page).to have_css('.auth-nickname', :text => provider)
+            expect(page).to have_link 'Remove', count: 1
+          end
+        end
+
+        it "should handle removing an OpenID" do
+          auth_two = FactoryGirl.create(:second_openid, user: open_id_user)
+          login open_id_user
+          visit edit_user_registration_path
+
+          expect(page).to have_content "This account is linked with the following authentication methods"
+          expect(page).to have_content "http://pretend.openid.example.com"
+          expect(page).to have_content "Fake OpenID"
+          expect(page).to have_link 'Remove', count: 2
+
+          page.find('.auth-nickname', text: 'Fake OpenID').find(:xpath, '..').click_link('Remove')
+
+          expect(page).to have_content "http://pretend.openid.example.com"
+          expect(page).to have_link 'Remove', count: 1
+        end
+      end
     end
 
     describe "adding and removing password to OpenID account" do
@@ -455,8 +694,8 @@ describe "Sign-up and Sign-in by OmniAuth" do
 
       before(:each) do
         OmniAuth.config.mock_auth[:open_id] = OmniAuth::AuthHash.new({
-          :provider => user.provider,
-          :uid => user.uid,
+          :provider => user.authentications[0].provider,
+          :uid => user.authentications[0].uid,
         })
 
         visit new_user_session_path
@@ -502,8 +741,8 @@ describe "Sign-up and Sign-in by OmniAuth" do
 
       before(:each) do
         OmniAuth.config.mock_auth[:open_id] = OmniAuth::AuthHash.new({
-          :provider => user.provider,
-          :uid => user.uid,
+          :provider => user.authentications[0].provider,
+          :uid => user.authentications[0].uid,
         })
 
         visit new_user_session_path

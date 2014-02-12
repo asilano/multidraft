@@ -10,14 +10,14 @@
     %div
       = f.label :email
       = f.email_field :email, :autofocus => true
-      - if resource.provider
+      - if resource.authentications.present?
         %span.explain (optional for OpenID users)
       - if resource.errors[:email].present?
         %span.error-explain= "#{resource_class.human_attribute_name('email')} #{resource.errors[:email].join('; ')}"
     - if devise_mapping.confirmable? && resource.pending_reconfirmation?
       %div
         Currently awaiting confirmation for: #{resource.unconfirmed_email}
-    - if resource.provider.present? && resource.encrypted_password.present?
+    - if resource.authentications.present? && resource.encrypted_password.present?
       %div
         = check_box_tag "user[remove_password]"
         = label_tag "user[remove_password]", 'Remove password'
@@ -34,6 +34,15 @@
       - if resource.errors[:password_confirmation].present?
         %span.error-explain= "#{resource_class.human_attribute_name('password_confirmation')} #{resource.errors[:password_confirmation].join('; ')}"
     %div= f.submit "Update"
+
+%fieldset
+  %legend Add an OpenID account
+  = render "devise/shared/openid_form", :action => 'authenticate'
+  - if !resource.authentications.empty?
+    %div This account is linked with the following authentication methods
+    %table.auth-list#omniauth_fields
+      = render partial: 'authentication', collection: resource.authentications
+
 %fieldset
   %legend Delete my account
   %p

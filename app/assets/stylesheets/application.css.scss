@@ -14,6 +14,8 @@
 @import "compass/css3/box-sizing";
 @import "sassybuttons";
 @import "mixins";
+@import "fonts";
+@import "icons";
 
 * {
   @include box-sizing(border-box);
@@ -74,6 +76,10 @@ nav {
     &.alert {
       background-color: $alert-bg-colour;
       border-color: $alert-colour;
+    }
+    &.error {
+      background-color: $error-bg-colour;
+      border-color: $error-colour;
     }
   }
 }
@@ -223,4 +229,24 @@ ul {
 
 #js_submit_openid {
   margin-left: 5px;
+}
+
+table.auth-list {
+  margin-left: 10px;
+
+  tr {
+    .auth-nickname, .auth-remove {
+      vertical-align: middle;
+      padding: 5px 10px;
+    }
+
+    .auth-remove {
+      color: $light-text;
+      text-decoration: none;
+
+      &:hover {
+        color: $error-colour;
+      }
+    }
+  }
 }
