@@ -498,6 +498,8 @@ describe "Sign-up and Sign-in by OmniAuth" do
       it "should allow an existing multi-OpenID user to remove an OpenID" do
         auth_two = FactoryGirl.create(:second_openid, user: open_id_user)
         login open_id_user
+        open_id_user.email = ''
+        open_id_user.save!
         visit edit_user_registration_path
 
         expect(page).to have_content "This account is linked with the following authentication methods"
@@ -558,6 +560,34 @@ describe "Sign-up and Sign-in by OmniAuth" do
         expect(page).to have_content "Successfully removed authentication from http://pretend.openid.example.com"
         expect(page).not_to have_content('optional for OpenID users')
         expect(page).not_to have_content "This account is linked with the following authentication methods"
+      end
+
+      it "should prevent removal of an authentication the user doesn't own" do
+        auth_two = FactoryGirl.create(:second_openid, user: open_id_user)
+        login open_id_user
+        visit edit_user_registration_path
+
+        # Forcibly change which user is logged in
+        login_as non_oid_user, scope: :user
+        expect(page).to have_link 'Remove', count: 2
+
+        page.find('.auth-nickname', text: 'Fake OpenID').find(:xpath, '..').click_link('Remove')
+
+        expect(page).to have_content "Removal of authentication method failed: you don't own that authentication."
+        expect(page).not_to have_content "This account is linked with the following authentication methods"
+
+        # Switch back to the OpenID user and revisit the edit page
+        login_as open_id_user, scope: :user
+        visit edit_user_registration_path
+        expect(page).to have_link 'Remove', count: 2
+
+        # Manually remove one of the authentications, then try to remove it by link
+        Authentication.where(nickname: 'Fake OpenID').first.destroy
+        page.find('.auth-nickname', text: 'Fake OpenID').find(:xpath, '..').click_link('Remove')
+
+        expect(page).to have_content "Removal of authentication method failed: you don't own that authentication."
+        expect(page).to have_content "This account is linked with the following authentication methods"
+        expect(page).to have_link 'Remove', count: 1
       end
 
       it "should be a no-op if a logged-in user adds an existing OpenID they own" do
@@ -678,6 +708,25 @@ describe "Sign-up and Sign-in by OmniAuth" do
 
           page.find('.auth-nickname', text: 'Fake OpenID').find(:xpath, '..').click_link('Remove')
 
+          expect(page).to have_content "Successfully removed authentication from Fake OpenID"
+          expect(page).to have_content "http://pretend.openid.example.com"
+          expect(page).to have_link 'Remove', count: 1
+        end
+
+        it "should handle failure to remove the last OpenID" do
+          login open_id_user
+          open_id_user.email = ''
+          open_id_user.save!
+          visit edit_user_registration_path
+
+          expect(page).to have_content "This account is linked with the following authentication methods"
+          expect(page).to have_content "http://pretend.openid.example.com"
+          expect(page).to have_link 'Remove', count: 1
+
+          click_link 'Remove'
+
+          expect(page).to have_content "You cannot remove your last authentication method without having an email address and password set."
+          expect(page).to have_content "This account is linked with the following authentication methods"
           expect(page).to have_content "http://pretend.openid.example.com"
           expect(page).to have_link 'Remove', count: 1
         end

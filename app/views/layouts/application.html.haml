@@ -19,8 +19,6 @@
       #site-logo= link_to 'Multidraft', root_path
 
     #flash
-      - flash.each do |name, msg|
-        - if msg.is_a? String
-          %p{class: name}= msg
+      = render partial: 'shared/flash', object: flash
 
     #content= yield

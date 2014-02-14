@@ -67,15 +67,15 @@ class User < ActiveRecord::Base
   # Remove the indicated authentication method from this User, unless it's the
   # last authentication method and the user has no email and/or password set.
   def remove_authentication(params)
-    # Disallow removal of an authentication method if the user doesn't have
-    # an email address or password.
-    if email.blank? || encrypted_password.blank?
-      return :last_auth
-    end
-
     # Check that the given authentication exists, and belongs to this user
     auth = authentications.find_by_id(params[:id])
     return :dont_own unless auth
+
+    # Disallow removal of an authentication method if the user doesn't have
+    # an email address or password.
+    if authentications.count == 1 && (email.blank? || encrypted_password.blank?)
+      return :last_auth
+    end
 
     # Otherwise, all fine. Perform the removal
     if auth.destroy

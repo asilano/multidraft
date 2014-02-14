@@ -1,0 +1,15 @@
+$('#flash').html('<%== j render(partial: "shared/flash", object: flash) %>');
+
+<%- if @removed_id %>
+  $('#auth_row_<%= @removed_id %> td')
+      .wrapInner('<aside class="js-slide" />')
+      .find('td:last .js-slide').addClass('last');
+
+  $('#auth_row_<%= @removed_id %> .js-slide')
+      .slideUp(function() {
+        if ($(this).hasClass('last'))
+        {
+          $(this).parents('tr').remove();
+        }
+      });
+<%- end %>

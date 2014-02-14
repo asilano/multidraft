@@ -8,14 +8,14 @@ class Users::RegistrationsController < Devise::RegistrationsController
       set_flash_message :alert, :auth_removal_last_auth
     when Authentication
       set_flash_message :notice, :auth_removal_succeeded, nickname: result.nickname
+      @removed_id = params[:id]
     else
       set_flash_message :alert, :auth_removal_failed
     end
 
-    if request.xhr?
-      render :partial => 'authentication', :collection => current_user.authentications(true)
-    else
-      redirect_to edit_user_registration_path
+    respond_to do |format|
+      format.html { redirect_to edit_user_registration_path }
+      format.js
     end
   end
 
