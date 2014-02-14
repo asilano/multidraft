@@ -112,16 +112,7 @@ class User < ActiveRecord::Base
         user.authentications << Authentication.build_from_data(data, session['devise.omniauth_params'])
 
         # Use the OpenId's extra information to pre-populate the user's details.
-        if info = data['info']
-          user.email = info['email'] if user.email.blank?
-          user.name = info['nickname'] if user.name.blank?
-
-          # Attempt to create a username from the supplied real name,
-          # making sure each portion is capitalised and all spaces are removed
-          name = info['fullname'] || info['name']
-          name ||= (info['first_name'] || '') + ' ' + (info['last_name'] || '')
-          user.name = name.titleize.gsub(/\s/, '') if user.name.blank?
-        end
+        user.setup_details_from_info(data['info']) if data['info']
 
         # Validate the user built from OpenID data, to provide helpful feedback
         user.valid?
@@ -149,9 +140,18 @@ class User < ActiveRecord::Base
     result
   end
 
+  def setup_details_from_info(info)
+    self.email = info['email'] if email.blank?
+    self.name = info['nickname'] if name.blank?
+
+    # Attempt to create a username from the supplied real name,
+    # making sure each portion is capitalised and all spaces are removed
+    username = info['fullname'] || info['name']
+    username ||= (info['first_name'] || '') + ' ' + (info['last_name'] || '')
+    self.name = username.titleize.gsub(/\s/, '') if name.blank?
+  end
 
 protected
-
   # Need a password when a password (or its confirmation) is given,
   # or for a new account which isn't using OpenID
   def password_required?
