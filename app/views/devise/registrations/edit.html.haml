@@ -11,7 +11,7 @@
       = f.label :email
       = f.email_field :email, :autofocus => true
       - if resource.authentications.present?
-        %span.explain (optional for OpenID users)
+        %span.explain (optional for users with third-party authentication)
       - if resource.errors[:email].present?
         %span.error-explain= "#{resource_class.human_attribute_name('email')} #{resource.errors[:email].join('; ')}"
     - if devise_mapping.confirmable? && resource.pending_reconfirmation?
@@ -21,7 +21,7 @@
       %div
         = check_box_tag "user[remove_password]"
         = label_tag "user[remove_password]", 'Remove password'
-        %span.explain (For OpenID users; prevent login by username and password)
+        %span.explain (For users with third-party authentication; prevent login by username and password)
     %div
       = f.label :password
       = f.password_field :password, :autocomplete => "off"
@@ -36,8 +36,8 @@
     %div= f.submit "Update"
 
 %fieldset
-  %legend Add an OpenID account
-  = render "devise/shared/openid_form", :action => 'authenticate'
+  %legend Add authentication from a third-party account
+  = render "devise/shared/auth_form", :action => 'authenticate'
   - if !resource.authentications.empty?
     %div This account is linked with the following authentication methods
     %table.auth-list#omniauth_fields

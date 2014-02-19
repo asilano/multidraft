@@ -1,6 +1,6 @@
 %fieldset
-  %legend Sign in using OpenID
-  = render "devise/shared/openid_form", :action => 'sign in'
+  %legend Sign in using a third party
+  = render "devise/shared/auth_form", :action => 'sign in'
 = form_for(resource, :as => resource_name, :url => session_path(resource_name)) do |f|
   %fieldset
     %legend Sign in

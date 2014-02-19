@@ -24,46 +24,6 @@ class User < ActiveRecord::Base
 
   before_save :auto_confirm_openid, :on => 'create'
 
-  # Supported OpenID providers
-  OpenIDProviders = [
-    {name: 'Google', css_class: 'google-icon',
-      data: {
-        open_id_url: 'https://www.google.com/accounts/o8/id'
-      }
-    },
-    {name: 'Yahoo', css_class: 'yahoo-icon',
-      data: {
-        open_id_url: 'http://me.yahoo.com'
-      }
-    },
-    {name: 'StackExchange', css_class: 'se-icon',
-      data: {
-        open_id_url: 'http://openid.stackexchange.com'
-      }
-    },
-    {name: 'Steam', css_class: 'steam-icon',
-      data: {
-        open_id_url: 'http://steamcommunity.com/openid'
-      }
-    },
-    {name: 'LiveJournal', css_class: 'lj-icon',
-      data: {
-        open_id_url: 'http://%{parameter}.livejournal.com',
-        parameter: 'LiveJournal username',
-        param_placeholder: 'LiveJournal username'
-        }
-    },
-    {name: 'OpenID', css_class: 'openid-icon',
-      data: {
-        open_id_url: '%{parameter}',
-        parameter: 'OpenID URL',
-        param_id: 'openid_url',
-        param_placeholder: 'OpenID URL',
-        nickname_from_url: true
-        }
-    }
-  ]
-
   # Remove the indicated authentication method from this User, unless it's the
   # last authentication method and the user has no email and/or password set.
   def remove_authentication(params)

@@ -20,7 +20,7 @@ describe "Sign-up and Sign-in by OmniAuth" do
 
       it "should make use of the standard Sign Up form (no JS)" do
         visit new_user_registration_path
-        expect(page).to have_content "Sign up using OpenID"
+        expect(page).to have_content "Sign up using a third party"
         expect(page).to have_content "If you already have an account with one of these providers"
         expect(page).to have_content('manually enter your OpenID')
         expect(page).to have_field('openid_url')
@@ -36,7 +36,7 @@ describe "Sign-up and Sign-in by OmniAuth" do
         fill_in 'openid_url', with: 'http://pretend.openid.example.com'
         click_button 'submit_openid'
 
-        expect(page).not_to have_content "Sign up using OpenID"
+        expect(page).not_to have_content "Sign up using a third party"
         expect(page).to have_content "Your OpenID authentication succeeded, but we still need some extra details to complete sign up"
         fill_in 'Username', with: ''
         fill_in 'Email', with: ''
@@ -193,16 +193,16 @@ describe "Sign-up and Sign-in by OmniAuth" do
 
         expect(find_field('Email').value).to eql user.email
         expect(find_field('Username').value).to eql user.name
-        expect(page).not_to have_content "Sign up using OpenID"
+        expect(page).not_to have_content "Sign up using a third party"
         expect(page).to have_content "Your OpenID authentication succeeded, but we still need some extra details to complete sign up"
-        expect(page).to have_content "This account will be associated with an OpenID provider"
+        expect(page).to have_content "This account will be associated with a third-party provider"
 
         click_link 'Cancel sign up'
         expect(find_field('Email').value).to be_blank
         expect(find_field('Username').value).to be_blank
-        expect(page).to have_content "Sign up using OpenID"
+        expect(page).to have_content "Sign up using a third party"
         expect(page).not_to have_content "Your OpenID authentication succeeded, but we still need some extra details to complete sign up"
-        expect(page).not_to have_content "This account will be associated with an OpenID provider"
+        expect(page).not_to have_content "This account will be associated with a third-party provider"
       end
 
       it "should allow a user to sign up with password and email" do
@@ -241,7 +241,7 @@ describe "Sign-up and Sign-in by OmniAuth" do
         click_button 'submit_openid'
 
         expect(page).to have_content 'Could not authenticate you from OpenID for the following reason: "Unexpected moose"'
-        expect(page).to have_content "Sign up using OpenID"
+        expect(page).to have_content "Sign up using a third party"
         expect(page).to have_field('openid_url')
 
         expect(page).to have_field('user[name]')
@@ -254,7 +254,7 @@ describe "Sign-up and Sign-in by OmniAuth" do
         it "should support manual entry of OpenID" do
           visit new_user_registration_path
 
-          expect(page).to have_content('Sign up using OpenID')
+          expect(page).to have_content('Sign up using a third party')
           expect(page).not_to have_content('manually enter your OpenID')
           expect(page).not_to have_field('openid_url')
           expect(page).to have_link("Sign up with OpenID")
@@ -264,7 +264,7 @@ describe "Sign-up and Sign-in by OmniAuth" do
           fill_in 'openid_url', with: 'http://pretend.openid.example.com'
           click_button 'js_submit_openid'
 
-          expect(page).not_to have_content "Sign up using OpenID"
+          expect(page).not_to have_content "Sign up using a third party"
           expect(page).to have_content "Your OpenID authentication succeeded"
         end
 
@@ -272,13 +272,13 @@ describe "Sign-up and Sign-in by OmniAuth" do
           it "should support #{provider} with no parameter" do
             visit new_user_registration_path
 
-            expect(page).to have_content('Sign up using OpenID')
+            expect(page).to have_content('Sign up using a third party')
             expect(page).not_to have_content('manually enter your OpenID')
             expect(page).not_to have_field('openid_url')
             expect(page).to have_link("Sign up with #{provider}")
             click_link "Sign up with #{provider}"
 
-            expect(page).not_to have_content "Sign up using OpenID"
+            expect(page).not_to have_content "Sign up using a third party"
             expect(page).to have_content "Your OpenID authentication succeeded"
           end
         end
@@ -287,7 +287,7 @@ describe "Sign-up and Sign-in by OmniAuth" do
           it "should support #{provider} with a parameter" do
             visit new_user_registration_path
 
-            expect(page).to have_content('Sign up using OpenID')
+            expect(page).to have_content('Sign up using a third party')
             expect(page).not_to have_content('manually enter your OpenID')
             expect(page).not_to have_field('openid_url')
             expect(page).to have_link("Sign up with #{provider}")
@@ -297,7 +297,7 @@ describe "Sign-up and Sign-in by OmniAuth" do
             fill_in 'openid_param', with: 'my_username'
             click_button 'js_submit_openid'
 
-            expect(page).not_to have_content "Sign up using OpenID"
+            expect(page).not_to have_content "Sign up using a third party"
             expect(page).to have_content "Your OpenID authentication succeeded"
           end
         end
@@ -331,7 +331,7 @@ describe "Sign-up and Sign-in by OmniAuth" do
 
       it "should allow an existing OpenID user to sign in" do
         visit new_user_session_path
-        expect(page).to have_content "Sign in using OpenID"
+        expect(page).to have_content "Sign in using a third party"
         expect(page).to have_content "If you already have an account with one of these providers"
         expect(page).to have_content('manually enter your OpenID')
         expect(page).to have_field('openid_url')
@@ -348,7 +348,7 @@ describe "Sign-up and Sign-in by OmniAuth" do
 
       it "should redirect to sign-up form if an unknown UID is given" do
         visit new_user_session_path
-        expect(page).to have_content "Sign in using OpenID"
+        expect(page).to have_content "Sign in using a third party"
         expect(page).to have_content "If you already have an account with one of these providers"
         expect(page).to have_content('manually enter your OpenID')
         expect(page).to have_field('openid_url')
@@ -366,7 +366,7 @@ describe "Sign-up and Sign-in by OmniAuth" do
 
       it "should not allow an existing OpenID user to sign in if there is an OpenID error" do
         visit new_user_session_path
-        expect(page).to have_content "Sign in using OpenID"
+        expect(page).to have_content "Sign in using a third party"
         expect(page).to have_content "If you already have an account with one of these providers"
         expect(page).to have_content('manually enter your OpenID')
         expect(page).to have_field('openid_url')
@@ -385,7 +385,7 @@ describe "Sign-up and Sign-in by OmniAuth" do
         it "should sign in with manual entry of OpenID" do
           visit new_user_session_path
 
-          expect(page).to have_content('Sign in using OpenID')
+          expect(page).to have_content('Sign in using a third party')
           expect(page).not_to have_content('manually enter your OpenID')
           expect(page).not_to have_field('openid_url')
           expect(page).to have_link("Sign in with OpenID")
@@ -404,7 +404,7 @@ describe "Sign-up and Sign-in by OmniAuth" do
           it "should sign in with #{provider} with no parameter" do
             visit new_user_session_path
 
-            expect(page).to have_content('Sign in using OpenID')
+            expect(page).to have_content('Sign in using a third party')
             expect(page).not_to have_content('manually enter your OpenID')
             expect(page).not_to have_field('openid_url')
             expect(page).to have_link("Sign in with #{provider}")
@@ -420,7 +420,7 @@ describe "Sign-up and Sign-in by OmniAuth" do
           it "should sign in with #{provider} with a parameter" do
             visit new_user_session_path
 
-            expect(page).to have_content('Sign in using OpenID')
+            expect(page).to have_content('Sign in using a third party')
             expect(page).not_to have_content('manually enter your OpenID')
             expect(page).not_to have_field('openid_url')
             expect(page).to have_link("Sign in with #{provider}")
@@ -446,9 +446,9 @@ describe "Sign-up and Sign-in by OmniAuth" do
         login non_oid_user
         visit edit_user_registration_path
 
-        expect(page).not_to have_content('optional for OpenID users')
+        expect(page).not_to have_content('optional for users with third-party authentication')
         expect(page).not_to have_content "This account is linked with the following authentication methods"
-        expect(page).to have_content('Add an OpenID account')
+        expect(page).to have_content('Add authentication from a third-party account')
         expect(page).to have_content "If you already have an account with one of these providers"
         expect(page).to have_content('manually enter your OpenID')
         expect(page).to have_field('openid_url')
@@ -471,11 +471,11 @@ describe "Sign-up and Sign-in by OmniAuth" do
         login open_id_user
         visit edit_user_registration_path
 
-        expect(page).to have_content('optional for OpenID users')
+        expect(page).to have_content('optional for users with third-party authentication')
         expect(page).to have_content "This account is linked with the following authentication methods"
         expect(page).to have_content "http://pretend.openid.example.com"
         expect(page).to have_link 'Remove', count: 1
-        expect(page).to have_content('Add an OpenID account')
+        expect(page).to have_content('Add authentication from a third-party account')
         expect(page).to have_content "If you already have an account with one of these providers"
         expect(page).to have_content('manually enter your OpenID')
         expect(page).to have_field('openid_url')
@@ -558,7 +558,7 @@ describe "Sign-up and Sign-in by OmniAuth" do
 
         click_link 'Remove'
         expect(page).to have_content "Successfully removed authentication from http://pretend.openid.example.com"
-        expect(page).not_to have_content('optional for OpenID users')
+        expect(page).not_to have_content('optional for users with third-party authentication')
         expect(page).not_to have_content "This account is linked with the following authentication methods"
       end
 
@@ -621,7 +621,7 @@ describe "Sign-up and Sign-in by OmniAuth" do
         click_button 'submit_openid'
 
         expect(page).to have_content "Another account is already linked with that OpenID account"
-        expect(page).not_to have_content('optional for OpenID users')
+        expect(page).not_to have_content('optional for users with third-party authentication')
         expect(page).not_to have_content "This account is linked with the following authentication methods"
       end
 
@@ -637,8 +637,8 @@ describe "Sign-up and Sign-in by OmniAuth" do
           login non_oid_user
           visit edit_user_registration_path
 
-          expect(page).not_to have_content('optional for OpenID users')
-          expect(page).to have_content('Add an OpenID account')
+          expect(page).not_to have_content('optional for users with third-party authentication')
+          expect(page).to have_content('Add authentication from a third-party account')
           expect(page).not_to have_content('manually enter your OpenID')
           expect(page).not_to have_field('openid_url')
           expect(page).to have_link("Authenticate with OpenID")
@@ -659,7 +659,7 @@ describe "Sign-up and Sign-in by OmniAuth" do
             login open_id_user
             visit edit_user_registration_path
 
-            expect(page).to have_content('optional for OpenID users')
+            expect(page).to have_content('optional for users with third-party authentication')
             expect(page).to have_content "This account is linked with the following authentication methods"
             expect(page).to have_content "http://pretend.openid.example.com"
             expect(page).to have_link 'Remove', count: 1
@@ -678,8 +678,8 @@ describe "Sign-up and Sign-in by OmniAuth" do
             login non_oid_user
             visit edit_user_registration_path
 
-            expect(page).not_to have_content('optional for OpenID users')
-            expect(page).to have_content('Add an OpenID account')
+            expect(page).not_to have_content('optional for users with third-party authentication')
+            expect(page).to have_content('Add authentication from a third-party account')
             expect(page).not_to have_content('manually enter your OpenID')
             expect(page).not_to have_field('openid_url')
             expect(page).to have_link("Authenticate with #{provider}")

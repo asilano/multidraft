@@ -1,15 +1,20 @@
 $(function() {
-  $('.openid-selector').on('click', function(e) {
+  $('.omniauth-selector').on('click', function(e) {
     // Remove the existing form, if any
     $('#openid_param_form').remove();
 
     var link_elem = $(this);
     var link_data = link_elem.data();
 
-    if (typeof link_data['parameter'] === 'undefined')
+    if (typeof link_data['parameter'] === 'undefined' && typeof link_data['openIdUrl'] !== 'undefined')
     {
+      // Open ID link
       window.location.href =  link_data['authUrl'] + "?openid_url=" + link_data['openIdUrl'] +
                                                       "&omniauth_nickname=" + link_data['nickname'];
+    }
+    else if (typeof link_data['parameter'] === 'undefined')
+    {
+      // Non-open-ID link with no parameter
     }
     else
     {
