@@ -56,6 +56,8 @@ private
           nickname_from_url: true
           }
       }
-    ]
+    ],
+    :facebook => [
+      {name: 'Facebook', css_class: 'facebook-icon'}]
   }
 end

@@ -1,6 +1,7 @@
 class Users::OmniauthCallbacksController < Devise::OmniauthCallbacksController
   skip_before_filter :authenticate_user!
-  protect_from_forgery :except => [:open_id]
+  PROVIDERS = [:open_id, :facebook]
+  protect_from_forgery :except => PROVIDERS
 
   def all
     @user, @auth = User.find_for_omniauth(request.env['omniauth.auth'], current_user)
@@ -19,7 +20,7 @@ class Users::OmniauthCallbacksController < Devise::OmniauthCallbacksController
     end
   end
 
-  alias_method :open_id, :all
+  PROVIDERS.each { |method| alias_method method, :all }
 
 protected
 
@@ -35,9 +36,9 @@ private
     auth = Authentication.build_from_data(request.env['omniauth.auth'], request.env['omniauth.params'])
     auth.user = current_user
     if auth.save
-      set_flash_message :notice, :success, :kind => 'OpenID'
+      set_flash_message :notice, :success, :kind => kind
     else
-      set_flash_message :alert, :failure, :kind => 'OpenID', :reason => failure_message
+      set_flash_message :alert, :failure, :kind => kind, :reason => failure_message
     end
 
     redirect_to edit_user_registration_url
@@ -49,11 +50,11 @@ private
     if auth.user == current_user
       # The current user just authenticated from a remote service which is
       # already associated with their account. Tell them.
-      set_flash_message :alert, :preexisting, :kind => 'OpenID'
+      set_flash_message :alert, :preexisting, :kind => kind
     else
       # The current user just authenticated from a remote service which is
       # already associated with *another* account. Show them the error.
-      set_flash_message :error, :wrong_owner, :kind => 'OpenID'
+      set_flash_message :error, :wrong_owner, :kind => kind
     end
 
     redirect_to edit_user_registration_url
@@ -65,14 +66,19 @@ private
     if user.persisted?
       # The authentication matched a registered user. Sign them in.
       sign_in_and_redirect user, :event => :authentication
-      set_flash_message :notice, :success, :kind => 'OpenID'
+      set_flash_message :notice, :success, :kind => kind
     else
       # The authentication didn't match a registered user. Start sign-up processing
       session['devise.omniauth_data'] = request.env['omniauth.auth'].except('extra')
       session['devise.omniauth_params'] = request.env['omniauth.params']
-      set_flash_message :notice, :incomplete, :kind => 'OpenID'
+      set_flash_message :notice, :incomplete, :kind => kind
       flash[:suppress_error_box] = true
       redirect_to new_user_registration_url
     end
+  end
+
+private
+  def kind
+    params[:action].titleize
   end
 end

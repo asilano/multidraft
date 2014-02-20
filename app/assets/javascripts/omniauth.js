@@ -15,6 +15,7 @@ $(function() {
     else if (typeof link_data['parameter'] === 'undefined')
     {
       // Non-open-ID link with no parameter
+      window.location.href =  link_data['authUrl'] + "?omniauth_nickname=" + link_data['nickname'];
     }
     else
     {

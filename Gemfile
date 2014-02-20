@@ -75,6 +75,7 @@ gem 'figaro'
 # User authentication by devise and OpenID via OmniAuth
 gem 'devise'
 gem 'omniauth-openid'
+gem 'omniauth-facebook'
 
 # To use ActiveModel has_secure_password
 # gem 'bcrypt-ruby', '~> 3.0.0'

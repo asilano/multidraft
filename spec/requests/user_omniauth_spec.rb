@@ -815,4 +815,40 @@ describe "Sign-up and Sign-in by OmniAuth" do
       end
     end
   end
+
+  describe "Facebook", :js => true do
+    describe "sign-up" do
+      let(:user) { FactoryGirl.build(:user) }
+      before(:each) do
+        OmniAuth.config.mock_auth[:facebook] = OmniAuth::AuthHash.new({
+          :provider => 'facebook',
+          :uid => '12345',
+          :nickname => 'Facebook',
+          :info => {:email => user.email, :nickname => user.name}
+        })
+      end
+
+      it "should support Facebook with no parameter" do
+        visit new_user_registration_path
+
+        expect(page).to have_content('Sign up using a third party')
+        expect(page).to have_link("Sign up with Facebook")
+        click_link "Sign up with Facebook"
+
+        expect(page).not_to have_content "Sign up using a third party"
+        expect(page).to have_content "Your Facebook authentication succeeded"
+        expect(find_field('Email').value).to eql user.email
+        expect(find_field('Username').value).to eql user.name
+        click_button 'Sign up'
+
+        expect(page).to have_content 'Welcome! You have signed up successfully.'
+        expect(last_email).to be_nil
+
+        saved_user = User.where(:name => user.name).includes(:authentications).first
+        expect(saved_user).to_not be_nil
+        expect(saved_user.authentications[0].uid).to eql OmniAuth.config.mock_auth[:facebook][:uid]
+        expect(saved_user.authentications[0].provider).to eql 'facebook'
+      end
+    end
+  end
 end
