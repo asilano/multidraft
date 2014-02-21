@@ -816,6 +816,8 @@ describe "Sign-up and Sign-in by OmniAuth" do
     end
   end
 
+  # Because we mock the response, there's not a lot of point doing the
+  # full suite of tests for Facebook
   describe "Facebook", :js => true do
     describe "sign-up" do
       let(:user) { FactoryGirl.build(:user) }

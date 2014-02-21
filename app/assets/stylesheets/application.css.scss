@@ -42,6 +42,7 @@ h1, h2, h3, h4, h5, h6 {
 
 header {
   margin-bottom: 10px;
+  position: relative;
 }
 
 #site-logo a {
@@ -52,12 +53,44 @@ header {
   text-decoration: none;
   border: 3px outset $logo-colour;
   padding: 0 10px;
+
+  @include small-screen {
+    width: 100%;
+    text-align: center;
+  }
 }
 
 nav {
-  float: right;
+  position: absolute;
+  top: 0;
+  right: 0;
+
   @include small-screen {
-    float: none;
+    position: relative;
+    width: 100%;
+    min-height: 40px;
+    line-height: 40px;
+
+    text-align: center;
+
+    a {
+      position: absolute;
+      height: 100%;
+      width: 50%;
+      top: 0;
+
+      background-color: $logo-colour;
+      color: white;
+      text-decoration: none;
+      border: 1px solid white;
+
+      /*&:hover,*/ &:active {
+        background-color: darken($logo-colour, 10%);
+      }
+
+      &:first-child { left: 0; }
+      &:last-child { right: 0; }
+    }
   }
 }
 

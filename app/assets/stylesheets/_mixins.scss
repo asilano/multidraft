@@ -15,3 +15,7 @@ $light-text: #888;
 @mixin small-screen {
   @media (max-width: 650px) { @content; }
 }
+
+@mixin large-screen {
+  @media (min-width: 651px) { @content; }
+}

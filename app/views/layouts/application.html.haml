@@ -6,17 +6,17 @@
     = javascript_include_tag "application"
     :javascript
       document.documentElement.className = "js";
-      /*$(function(){$('.nojs-section').remove()});*/
+      $(function(){$('.nojs-section').remove()});
     = csrf_meta_tags
 
   %body
     %header
+      #site-logo= link_to 'Multidraft', root_path
       %nav
         - if user_signed_in?
           = raw("Signed in as " + link_to(current_user.name, edit_user_registration_path) + " | " + link_to('Sign out', destroy_user_session_path, method: :delete))
         - else
           = (link_to 'Sign up', new_user_registration_path) + " | " + (link_to 'Sign in', new_user_session_path)
-      #site-logo= link_to 'Multidraft', root_path
 
     #flash
       = render partial: 'shared/flash', object: flash
