@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20140205173152) do
+ActiveRecord::Schema.define(:version => 20140228105137) do
 
   create_table "authentications", :force => true do |t|
     t.integer  "user_id"
@@ -23,6 +23,26 @@ ActiveRecord::Schema.define(:version => 20140205173152) do
   end
 
   add_index "authentications", ["user_id"], :name => "index_authentications_on_user_id"
+
+  create_table "card_sets", :force => true do |t|
+    t.string   "name",                                                   :null => false
+    t.time     "last_modified",       :default => '2000-01-01 00:00:00', :null => false
+    t.boolean  "remote_dictionary"
+    t.string   "dictionary_location",                                    :null => false
+    t.datetime "created_at",                                             :null => false
+    t.datetime "updated_at",                                             :null => false
+  end
+
+  add_index "card_sets", ["name", "last_modified"], :name => "index_card_sets_on_name_and_last_modified", :unique => true
+
+  create_table "card_templates", :force => true do |t|
+    t.integer  "card_set_id"
+    t.string   "name",        :null => false
+    t.string   "rarity",      :null => false
+    t.text     "fields"
+    t.datetime "created_at",  :null => false
+    t.datetime "updated_at",  :null => false
+  end
 
   create_table "users", :force => true do |t|
     t.string   "email",                  :default => ""

@@ -66,6 +66,8 @@ Spork.prefork do
     config.include(MailerMacros)
     config.include Warden::Test::Helpers
 
+    config.expect_with(:rspec) { |c| c.syntax = :expect }
+
     config.before(:suite) do
       DatabaseCleaner.clean_with :truncation
     end

@@ -49,6 +49,7 @@ group :test do
   gem 'selenium-webdriver'
   gem 'coveralls', require: false
   gem 'timecop'
+  gem 'shoulda-matchers'
 
   # Let Travis see Rake
   gem 'rake'
