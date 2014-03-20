@@ -21,7 +21,7 @@ describe CardSet do
 
   describe "prepare known set for draft" do
     let(:card_set) { FactoryGirl.create(:card_set) }
-    let(:raider_params) {{name: 'Academy Raider',
+    let(:academy_raider_params) {{name: 'Academy Raider',
                           rarity: 'Common',
                           fields: {
                             "layout" => 'normal',
@@ -42,14 +42,14 @@ describe CardSet do
                             "flavor"=> "\"No simple coin toss can solve this riddle. You must think and choose wisely.\"—Shai Fusan, archmage",
                             "imageName" => 'glimpse the future'
                       }}}
-    let!(:raider) { CardTemplate.new(raider_params)}
+    let!(:academy_raider) { CardTemplate.new(academy_raider_params)}
     let!(:glimpse) { CardTemplate.new(glimpse_params)}
 
     it "with local set" do
       expect(File).to receive(:read).with(Rails.root + card_set.dictionary_location).
                         and_return File.read(File.join(File.dirname(__FILE__), '../data/awesome.json'))
 
-      expect(CardTemplate).to receive(:new).with(raider_params, {}).and_return raider
+      expect(CardTemplate).to receive(:new).with(academy_raider_params, {}).and_return academy_raider
       expect(CardTemplate).to receive(:new).with(glimpse_params, {}).and_return glimpse
 
       card_set.prepare_for_draft
@@ -65,16 +65,16 @@ describe CardSet do
       expect(card_set).to receive(:open).with(card_set.dictionary_location).
                           and_return File.read(File.join(File.dirname(__FILE__), '../data/awesome.json'))
 
-      expect(CardTemplate).to receive(:new).with(raider_params, {}).and_return raider
+      expect(CardTemplate).to receive(:new).with(academy_raider_params, {}).and_return academy_raider
       expect(CardTemplate).to receive(:new).with(glimpse_params, {}).and_return glimpse
 
       card_set.prepare_for_draft
     end
 
     it "when already set up" do
-      raider.card_set = card_set
+      academy_raider.card_set = card_set
       glimpse.card_set = card_set
-      raider.save!
+      academy_raider.save!
       glimpse.save!
 
       expect(File).not_to receive(:open)
@@ -160,9 +160,9 @@ describe CardSet do
       expect(File).to receive(:read).with(Rails.root + card_set.dictionary_location).
                         and_return File.read(File.join(File.dirname(__FILE__), '../data/splits_set.json'))
 
-      expect(CardTemplate).to receive(:new).with(turn_burn_params, {}).and_return turn_burn
-      expect(CardTemplate).to receive(:new).with(raider_params, {}).and_return raider
+      expect(CardTemplate).to receive(:new).with(academy_raider_params, {}).and_return academy_raider
       expect(CardTemplate).to receive(:new).with(alive_well_params, {}).and_return alive_well
+      expect(CardTemplate).to receive(:new).with(turn_burn_params, {}).and_return turn_burn
 
       card_set.prepare_for_draft
     end
@@ -181,7 +181,7 @@ describe CardSet do
       expect(File).to receive(:read).with(Rails.root + card_set.dictionary_location).
                         and_return File.read(File.join(File.dirname(__FILE__), '../data/multi_art.json'))
 
-      expect(CardTemplate).to receive(:new).with(raider_params, {}).and_return raider
+      expect(CardTemplate).to receive(:new).with(academy_raider_params, {}).and_return academy_raider
       expect(CardTemplate).to receive(:new).with(plains_params, {}).and_return plains
 
       card_set.prepare_for_draft
@@ -201,7 +201,7 @@ describe CardSet do
                                     "Whenever an opponent casts a spell for the first time in a turn, counter that spell."],
                         "imageName" => ["erayo, soratami ascendant", "erayo's essence"]
                         }}
-      kenzo_params = {name: 'Bushi Tenderfoot',
+      bushi_params = {name: 'Bushi Tenderfoot',
                       rarity: 'Uncommon',
                       fields: {
                         "layout" => 'flip',
@@ -215,14 +215,14 @@ describe CardSet do
                         "imageName" => ["bushi tenderfoot", "kenzo the hardhearted"]
                         }}
       erayo = CardTemplate.new(erayo_params)
-      kenzo = CardTemplate.new(kenzo_params)
+      bushi = CardTemplate.new(bushi_params)
 
       expect(File).to receive(:read).with(Rails.root + card_set.dictionary_location).
                         and_return File.read(File.join(File.dirname(__FILE__), '../data/flips_set.json'))
 
-      expect(CardTemplate).to receive(:new).with(kenzo_params, {}).and_return kenzo
+      expect(CardTemplate).to receive(:new).with(academy_raider_params, {}).and_return academy_raider
+      expect(CardTemplate).to receive(:new).with(bushi_params, {}).and_return bushi
       expect(CardTemplate).to receive(:new).with(erayo_params, {}).and_return erayo
-      expect(CardTemplate).to receive(:new).with(raider_params, {}).and_return raider
 
       card_set.prepare_for_draft
     end
@@ -248,11 +248,57 @@ describe CardSet do
       expect(File).to receive(:read).with(Rails.root + card_set.dictionary_location).
                         and_return File.read(File.join(File.dirname(__FILE__), '../data/dfc_set.json'))
 
+      expect(CardTemplate).to receive(:new).with(academy_raider_params, {}).and_return academy_raider
       expect(CardTemplate).to receive(:new).with(hanweir_params, {}).and_return hanweir
-      expect(CardTemplate).to receive(:new).with(raider_params, {}).and_return raider
 
       card_set.prepare_for_draft
     end
+
+    it "with non-unique card names" do
+      expect(File).to receive(:read).with(Rails.root + card_set.dictionary_location).
+                        and_return File.read(File.join(File.dirname(__FILE__), '../data/awesome_duplicates.json'))
+
+      zephyr_params = {name: 'Zephyr Charge',
+                        rarity: 'Common',
+                        fields: {
+                          "layout" => "normal",
+                          "type" => ["Enchantment"] * 2,
+                          "manaCost" => ["{1}{U}"] * 2,
+                          "text" => ["{1}{U}: Target creature gains flying until end of turn."] * 2,
+                          "flavor" => ["\"All armies prefer high ground to low and sunny places to dark.\"—Sun Tzu, Art of War, trans. Giles"] * 2,
+                          "imageName" => ["zephyr charge"] * 2
+                          }}
+      turn_burn_params = {name: 'Turn',
+                           rarity: 'Uncommon',
+                           fields: {
+                            "layout" => 'split',
+                            "names" => ['Turn', 'Burn'],
+                            "type" => ['Instant', 'Instant'],
+                            "manaCost" => ['{2}{U}','{1}{R}'],
+                            "text" => ["Target creature loses all abilities and becomes a 0/1 red Weird until end of turn.\n\nFuse (You may cast one or both halves of this card from your hand.)",
+                                        "Burn deals 2 damage to target creature or player.\n\nFuse (You may cast one or both halves of this card from your hand.)"],
+                            "imageName" => ['turnburn', 'turnburn']}
+                          }
+
+      zephyr = CardTemplate.new(zephyr_params)
+      turn_burn = CardTemplate.new(turn_burn_params)
+      academy_raider_dupe = CardTemplate.new(name: 'Academy Raider', rarity: 'Rare', fields: {"text" => "Destroy target university"})
+      turn_dupe = CardTemplate.new(name: 'Turn', rarity: 'Common', fields: {"manaCost" => "{1}{U}"})
+
+      expect(CardTemplate).to receive(:new).with(academy_raider_params, {}).and_return academy_raider
+      expect(CardTemplate).to receive(:new).and_return academy_raider_dupe     # Second card named Academy Raider
+      expect(CardTemplate).to receive(:new).with(glimpse_params, {}).and_return glimpse
+      expect(CardTemplate).to receive(:new).with(turn_burn_params, {}).and_return turn_burn
+      expect(CardTemplate).to receive(:new).and_return turn_dupe     # Second card named Turn
+      expect(CardTemplate).to receive(:new).with(zephyr_params, {}).and_return zephyr
+      expect(CardTemplate).not_to receive(:new)
+      # No second card named Zephyr Charge because it's identical to the first.
+
+      ret_code, dupes = card_set.prepare_for_draft
+      expect(ret_code).to eq :duplicate_cards
+      expect(dupes).to eq ["Academy Raider", "Turn"]
+    end
+
   end
 
   describe "prepare brand new set for draft" do

@@ -31,49 +31,116 @@ class CardSet < ActiveRecord::Base
       return :failure
     end
 
-    # Read the cards out of the set info.
-    #
-    # Split, DFC etc. have a "names" field which is an array of all the names on
-    # the card. We need to treat e.g. "Fire//Ice" as a single card with both sets
-    # of characteristics, so group by "names" and combine any entries that match
-    cards = get_valid_cards(set_info).group_by { |c| c['names'].andand.sort || c['name'] }.map do |names, group|
-      if group.size == 1
-        # If the card isn't a multi-card, just use it as-is
-        group[0]
-      else
-        # First, make sure the card parts are ordered to match the order of their respective
-        # names (so Turn is first in Turn//Burn)
-        if group[0]['names']
-          group.sort! { |a,b| a['names'].index(a['name']) <=> a['names'].index(b['name']) }
+    # Read the cards out of the set info and create a CardTemplate for each
+    ret_code = :success
+    bad_cards = nil
+    CardSet.cards_from_set_info(set_info).each do |c|
+      record = card_templates.create(:name => c.delete('name'),
+                            :rarity => c.delete('rarity'),
+                            :fields => c)
+
+      if record.invalid?
+        # Failed to save record. Find out why. Prefer to report Duplicate Cards
+        if record.errors.added? :name, :taken
+          bad_cards = [] if bad_cards.nil? || ret_code == :bad_cards
+          bad_cards << record.name
+          ret_code = :duplicate_cards
+        elsif ret_code != :duplicate_cards
+          ret_code = :bad_cards
+          bad_cards ||= []
+          bad_cards << record.name
         end
-
-        # Pivot the parts - which is an array of hashes - into a single card containing
-        # a hash of arrays - each field is an array with the parts' values.
-        field_keys = group.inject(Set.new) { |memo, part| memo.union part.keys }
-        card = Hash[field_keys.map { |k| [k, group.map { |part| part[k] }] } ]
-
-        # Replace those fields which should only have 1 value.
-        card['name'] = group[0]['name']
-        card['rarity'] = group[0]['rarity']
-        card['layout'] = group[0]['layout'] if group[0]['layout']
-        card['names'] = group[0]['names'] if group[0]['names']
-        card
       end
     end
 
-    # Filter keeping only those fields which might interest us, and create a
-    # card template for each card.
-    cards.map! do |c|
-      c.keep_if { |key, value| fields_whitelist.include? key }
-    end
-    cards.each do |c|
-      card_templates.create(:name => c.delete('name'),
-                            :rarity => c.delete('rarity'),
-                            :fields => c)
-    end
+    return ret_code, bad_cards
   end
 
 private
+
+  def self.cards_from_set_info(set_info)
+    card_details = get_valid_cards(set_info)
+
+    # Combine any cards with multiple arts.
+    cards = combine_multi_art_cards(card_details)
+
+    # Split, DFC etc. have a "names" field which is an array of all the names on
+    # the card. We need to treat e.g. "Fire//Ice" as a single card with both sets
+    # of characteristics, so group by "names" and combine any entries that match
+    with_names, without_names = cards.partition { |c| c.has_key? 'names' }
+    grouped_cards = with_names.group_by { |c| c['names'] }
+    with_names = grouped_cards.map { |names, group| combine_multi_cards(names, group) }
+
+    # Join the cards back into a single array, sorted by "name"
+    (with_names + without_names).sort_by { |c| c['name'] }
+  end
+
+  # Make sure the cards are minimally valid - they need a unique name and a
+  # defined rarity.
+  def self.get_valid_cards(set_info)
+    unknown_name_index = 1
+    set_info['cards'].each do |c|
+      (c['name'] = "Unnamed Card #{unknown_name_index}" and unknown_name_index += 1) unless c['name']
+      c['rarity'] ||= 'Common'
+
+      # Keep only those fields that interest us.
+      c.keep_if { |key,_| fields_whitelist.include? key }
+    end
+  end
+
+  # Cards with the same "name" should be exactly the same card, modulo art and/or flavor
+  # Combine any such cards together; but leave separate any cards with differences in
+  # other fields.
+  def self.combine_multi_art_cards(all_cards)
+    all_cards.group_by { |c| c['name'] }.inject([]) do |memo, group|
+      # Note - group is a two-element array [name, [cards]]
+      parts = group[1]
+      exemplar = parts[0].reject { |key,_| %w<flavor imageName>.include? key }
+      fields_match = parts.size > 1 && parts.all? do |e|
+        testy = e.reject { |key,_| %w<flavor imageName>.include? key }
+        exemplar == testy
+      end
+
+      if fields_match
+        memo << make_one_card_from_array(parts)
+      else
+        memo += parts
+      end
+
+      memo
+    end
+  end
+
+  def self.combine_multi_cards(names, parts)
+    # If the card isn't a multi-card, just use it as-is
+    return parts[0] if parts.size == 1
+
+    # First, make sure the card parts are ordered to match the order of their respective
+    # names (so Turn is first in Turn//Burn)
+    if parts[0]['names']
+      ordering_index = ->(card_part) { parts[0]['names'].index card_part['name'] }
+      parts.sort! { |a,b| ordering_index[a] <=> ordering_index[b] }
+    end
+
+    # Combine the multiple part-cards into a single multipart card
+    make_one_card_from_array(parts)
+  end
+
+  # Pivot the parts of a card - which is an array of hashes - into a single card containing
+  # a hash of arrays - each field is an array with the parts' values.
+  def self.make_one_card_from_array(parts)
+    field_keys = parts.inject(Set.new) { |memo, part| memo.union part.keys }
+    card = Hash[field_keys.map { |k| [k, parts.map { |part| part[k] }] } ]
+
+    # Replace those fields which should only have 1 value.
+    dominant_part = parts[0]
+    %w<name rarity layout names>.each { |field| card[field] = dominant_part[field] if dominant_part[field] }
+    card
+  end
+
+  def self.fields_whitelist
+    %w<layout name names manaCost type rarity text flavor power toughness loyalty imageName hand life>
+  end
 
   def get_json_dictionary
     if remote_dictionary
@@ -81,19 +148,5 @@ private
     else
       File.read(Rails.root + dictionary_location)
     end
-  end
-
-  # Make sure the cards are minimally valid - they need a unique name and a
-  # defined rarity.
-  def get_valid_cards(set_info)
-    unknown_name_index = 1
-    set_info['cards'].each do |c|
-      (c['name'] = "Unnamed Card #{unknown_name_index}" and unknown_name_index += 1) unless c['name']
-      c['rarity'] ||= 'Common'
-    end
-  end
-
-  def fields_whitelist
-    %w<layout name names manaCost type rarity text flavor power toughness loyalty imageName hand life>
   end
 end
