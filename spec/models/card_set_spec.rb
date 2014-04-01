@@ -52,7 +52,8 @@ describe CardSet do
       expect(CardTemplate).to receive(:new).with(academy_raider_params, {}).and_return academy_raider
       expect(CardTemplate).to receive(:new).with(glimpse_params, {}).and_return glimpse
 
-      card_set.prepare_for_draft
+      expect(card_set.prepare_for_draft).to be_true
+      expect(card_set.errors).to be_empty
     end
 
     # From a unit-testing point of view, this is identical to creating with a local set,
@@ -68,7 +69,8 @@ describe CardSet do
       expect(CardTemplate).to receive(:new).with(academy_raider_params, {}).and_return academy_raider
       expect(CardTemplate).to receive(:new).with(glimpse_params, {}).and_return glimpse
 
-      card_set.prepare_for_draft
+      expect(card_set.prepare_for_draft).to be_true
+      expect(card_set.errors).to be_empty
     end
 
     it "when already set up" do
@@ -81,14 +83,17 @@ describe CardSet do
       expect(card_set).not_to receive(:open)
       expect(CardTemplate).not_to receive(:new)
 
-      card_set.prepare_for_draft
+      expect(card_set.prepare_for_draft).to be_true
+      expect(card_set.errors).to be_empty
     end
 
     it "with bugged JSON" do
       expect(File).to receive(:read).with(Rails.root + card_set.dictionary_location).
                         and_return File.read(File.join(File.dirname(__FILE__), '../data/awesome_bugged.json'))
 
-      card_set.prepare_for_draft
+      expect(card_set.prepare_for_draft).to be_true
+      expect(card_set.errors).to be_added(:card_templates, :missing_name)
+      expect(card_set.errors).to be_added(:card_templates, :missing_rarity)
 
       # Check that each bugged card has been guessed at, and has the known fields set.
       bugged_card = CardTemplate.where(name: 'Unnamed Card 1').first
@@ -108,7 +113,8 @@ describe CardSet do
       expect(File).to receive(:read).with(Rails.root + card_set.dictionary_location).
                         and_return File.read(File.join(File.dirname(__FILE__), '../data/awesome_broken.json'))
 
-      expect(card_set.prepare_for_draft).to eq :parse_error
+      expect(card_set.prepare_for_draft).to be_false
+      expect(card_set.errors).to be_added(:dictionary_location, :unparseable)
     end
 
     it "with unavailable local file" do
@@ -116,7 +122,8 @@ describe CardSet do
         raise Errno::ENOENT.new("No such file")
       end
 
-      expect(card_set.prepare_for_draft).to eq :file_not_found
+      expect(card_set.prepare_for_draft).to be_false
+      expect(card_set.errors).to be_added(:dictionary_location, :unavailable)
     end
 
     it "with unavailable remote JSON" do
@@ -128,7 +135,8 @@ describe CardSet do
         raise Errno::ENOENT.new("No such file")
       end
 
-      expect(card_set.prepare_for_draft).to eq :file_not_found
+      expect(card_set.prepare_for_draft).to be_false
+      expect(card_set.errors).to be_added(:dictionary_location, :unavailable)
     end
 
     it "should correctly handle split cards" do
@@ -164,7 +172,8 @@ describe CardSet do
       expect(CardTemplate).to receive(:new).with(alive_well_params, {}).and_return alive_well
       expect(CardTemplate).to receive(:new).with(turn_burn_params, {}).and_return turn_burn
 
-      card_set.prepare_for_draft
+      expect(card_set.prepare_for_draft).to be_true
+      expect(card_set.errors).to be_empty
     end
 
     it "should correctly handle multiple-art cards" do
@@ -184,7 +193,8 @@ describe CardSet do
       expect(CardTemplate).to receive(:new).with(academy_raider_params, {}).and_return academy_raider
       expect(CardTemplate).to receive(:new).with(plains_params, {}).and_return plains
 
-      card_set.prepare_for_draft
+      expect(card_set.prepare_for_draft).to be_true
+      expect(card_set.errors).to be_empty
     end
 
     it "should correctly handle flip cards" do
@@ -224,7 +234,8 @@ describe CardSet do
       expect(CardTemplate).to receive(:new).with(bushi_params, {}).and_return bushi
       expect(CardTemplate).to receive(:new).with(erayo_params, {}).and_return erayo
 
-      card_set.prepare_for_draft
+      expect(card_set.prepare_for_draft).to be_true
+      expect(card_set.errors).to be_empty
     end
 
     it "should correctly handle double-faced cards" do
@@ -251,7 +262,8 @@ describe CardSet do
       expect(CardTemplate).to receive(:new).with(academy_raider_params, {}).and_return academy_raider
       expect(CardTemplate).to receive(:new).with(hanweir_params, {}).and_return hanweir
 
-      card_set.prepare_for_draft
+      expect(card_set.prepare_for_draft).to be_true
+      expect(card_set.errors).to be_empty
     end
 
     it "with non-unique card names" do
@@ -282,21 +294,48 @@ describe CardSet do
 
       zephyr = CardTemplate.new(zephyr_params)
       turn_burn = CardTemplate.new(turn_burn_params)
-      academy_raider_dupe = CardTemplate.new(name: 'Academy Raider', rarity: 'Rare', fields: {"text" => "Destroy target university"})
-      turn_dupe = CardTemplate.new(name: 'Turn', rarity: 'Common', fields: {"manaCost" => "{1}{U}"})
+
+      raider_dupe_params = {name: 'Academy Raider',
+                            rarity: 'Common',
+                            fields: {'layout' => 'normal',
+                                      'type' => 'Sorcery',
+                                      'manacost' => '{R}{R}',
+                                      'text' => 'Destroy target university.',
+                                      'imageName' => 'academy raider'}}
+      academy_raider_dupe = CardTemplate.new(raider_dupe_params)
+
+      turn_dupe_params = {name: 'Turn',
+                          rarity: 'Uncommon',
+                          fields: {'layout' => 'normal',
+                                    'type' => 'Sorcery',
+                                    'manaCost' => '{1}{U}',
+                                    'text' => 'Tap target creature.',
+                                    'imageName' => 'turn'}}
+      turn_dupe = CardTemplate.new(turn_dupe_params)
 
       expect(CardTemplate).to receive(:new).with(academy_raider_params, {}).and_return academy_raider
-      expect(CardTemplate).to receive(:new).and_return academy_raider_dupe     # Second card named Academy Raider
+      expect(CardTemplate).to receive(:new).with(raider_dupe_params).and_return academy_raider_dupe
+
+      # Update AR params to have the suggested-valid name
+      raider_dupe_params[:name] = 'Academy Raider (2)'
+      academy_raider_dupe.name = 'Academy Raider (2)'
+      expect(CardTemplate).to receive(:new).with(raider_dupe_params).and_return academy_raider_dupe
+
       expect(CardTemplate).to receive(:new).with(glimpse_params, {}).and_return glimpse
       expect(CardTemplate).to receive(:new).with(turn_burn_params, {}).and_return turn_burn
-      expect(CardTemplate).to receive(:new).and_return turn_dupe     # Second card named Turn
+      expect(CardTemplate).to receive(:new).with(turn_dupe_params).and_return turn_dupe
+
+      # Update Turn params to have suggested-valid name
+      turn_dupe_params[:name] = 'Turn (2)'
+      turn_dupe.name = 'Turn (2)'
+      expect(CardTemplate).to receive(:new).with(turn_dupe_params).and_return turn_dupe
+
       expect(CardTemplate).to receive(:new).with(zephyr_params, {}).and_return zephyr
       expect(CardTemplate).not_to receive(:new)
       # No second card named Zephyr Charge because it's identical to the first.
 
-      ret_code, dupes = card_set.prepare_for_draft
-      expect(ret_code).to eq :duplicate_cards
-      expect(dupes).to eq ["Academy Raider", "Turn"]
+      expect(card_set.prepare_for_draft).to be_true
+      expect(card_set.errors).to be_added(:card_templates, :duplicate_names)
     end
 
   end

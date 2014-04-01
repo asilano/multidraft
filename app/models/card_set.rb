@@ -22,19 +22,22 @@ class CardSet < ActiveRecord::Base
       set_info = JSON.parse(get_json_dictionary)
     rescue Errno::ENOENT
       # Couldn't open the file
-      return :file_not_found
+      errors.add(:dictionary_location, :unavailable)
+      return false
     rescue JSON::ParserError
       # Parsing the JSON failed. Stop now.
-      return :parse_error
+      errors.add(:dictionary_location, :unparseable)
+      return false
     rescue
       # Some other error
-      return :failure
+      errors.add(:dictionary_location, :invalid)
+      return false
     end
 
     # Read the cards out of the set info and create a CardTemplate for each
     ret_code = :success
     bad_cards = nil
-    CardSet.cards_from_set_info(set_info).each do |c|
+    cards_from_set_info(set_info).each do |c|
       record = card_templates.create(:name => c.delete('name'),
                             :rarity => c.delete('rarity'),
                             :fields => c)
@@ -58,7 +61,7 @@ class CardSet < ActiveRecord::Base
 
 private
 
-  def self.cards_from_set_info(set_info)
+  def cards_from_set_info(set_info)
     card_details = get_valid_cards(set_info)
 
     # Combine any cards with multiple arts.
@@ -77,28 +80,34 @@ private
 
   # Make sure the cards are minimally valid - they need a unique name and a
   # defined rarity.
-  def self.get_valid_cards(set_info)
+  def get_valid_cards(set_info)
     unknown_name_index = 1
     set_info['cards'].each do |c|
-      (c['name'] = "Unnamed Card #{unknown_name_index}" and unknown_name_index += 1) unless c['name']
-      c['rarity'] ||= 'Common'
+      if c['name'].blank?
+        (c['name'] = "Unnamed Card #{unknown_name_index}" and unknown_name_index += 1)
+        errors.add(:card_templates, :missing_name) unless errors.added?(:card_templates, :missing_name)
+      end
+
+      if c['rarity'].blank?
+        c['rarity'] ||= 'Common'
+        errors.add(:card_templates, :missing_rarity) unless errors.added?(:card_templates, :missing_rarity)
+      end
 
       # Keep only those fields that interest us.
-      c.keep_if { |key,_| fields_whitelist.include? key }
+      c.keep_if { |key,_| CardSet.fields_whitelist.include? key }
     end
   end
 
   # Cards with the same "name" should be exactly the same card, modulo art and/or flavor
   # Combine any such cards together; but leave separate any cards with differences in
   # other fields.
-  def self.combine_multi_art_cards(all_cards)
+  def combine_multi_art_cards(all_cards)
     all_cards.group_by { |c| c['name'] }.inject([]) do |memo, group|
       # Note - group is a two-element array [name, [cards]]
       parts = group[1]
       exemplar = parts[0].reject { |key,_| %w<flavor imageName>.include? key }
       fields_match = parts.size > 1 && parts.all? do |e|
-        testy = e.reject { |key,_| %w<flavor imageName>.include? key }
-        exemplar == testy
+        exemplar == e.reject { |key,_| %w<flavor imageName>.include? key }
       end
 
       if fields_match
@@ -111,7 +120,7 @@ private
     end
   end
 
-  def self.combine_multi_cards(names, parts)
+  def combine_multi_cards(names, parts)
     # If the card isn't a multi-card, just use it as-is
     return parts[0] if parts.size == 1
 
@@ -128,7 +137,7 @@ private
 
   # Pivot the parts of a card - which is an array of hashes - into a single card containing
   # a hash of arrays - each field is an array with the parts' values.
-  def self.make_one_card_from_array(parts)
+  def make_one_card_from_array(parts)
     field_keys = parts.inject(Set.new) { |memo, part| memo.union part.keys }
     card = Hash[field_keys.map { |k| [k, parts.map { |part| part[k] }] } ]
 
