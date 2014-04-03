@@ -8,19 +8,21 @@ module UniqueSuggestion
       strategy = options[:strategy] || :first_available
 
       raise ArgumentError.new("options[:strategy] is invalid") unless [:first_available, :next_highest].include? strategy
+      raise ArgumentError.new("options[:pattern] is invalid") unless (/\{base\}/ =~ pattern && /\{num\}/ =~ pattern)
 
       # Process the supplied pattern into one usable by SQL LIKE
       # and one which will function as a Regexp
       like_pattern = pattern.gsub(/\{base\}/, base_value)
                             .gsub(/\{num\}/, '%')
       regex_pattern = Regexp.new(Regexp.escape(pattern.gsub('{base}', base_value))
-                                      .gsub('\{num\}', '(\d+)'))
+                                      .gsub('\{num\}', '(\d+)'),
+                                  Regexp::IGNORECASE)
 
       # Ask the database which values have already been taken
       base_exists = exists?(field => base_value)
-      numbers_taken = where("#{field} LIKE ?", like_pattern)
+      numbers_taken = where { __send__(field) =~ like_pattern }
                         .pluck(field)
-                        .map { |val| regex_pattern.match(val)[1].to_i }
+                        .map { |val| regex_pattern.match(val).andand[1].to_i }.compact
 
       case strategy
       when :first_available
