@@ -65,15 +65,15 @@
   { "layout":"normal",
     "name":"Academy Raider",
     "type": "Sorcery",
-    "types":["Creature"],
-    "subtypes":["human","warrior"],
+    "types":["Sorcery"],
     "colors":["red"],
     "cmc":3,
     "manaCost":"{R}{R}",
     "text":"Destroy target university.",
     "rarity":"Common",
     "imageName":"academy raider",
-    "artist":"Karl Kopinski"},
+    "artist":"Karl Kopinski"
+  },
   { "layout": "split",
     "type": "Instant",
     "types": ["Instant"],
@@ -112,5 +112,17 @@
     "text": "Tap target creature.",
     "number": "134b",
     "imageName": "turn"
+  },
+  { "layout":"normal",
+    "name":"Academy Raider",
+    "type": "Instant",
+    "types":["Instant"],
+    "colors":["Blue"],
+    "cmc":3,
+    "manaCost":"{1}{U}",
+    "text":"Draw the top card of target player's library.",
+    "rarity":"Common",
+    "imageName":"academy raider",
+    "artist":"Karl Kopinski"
   }
 ]}

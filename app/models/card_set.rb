@@ -35,28 +35,32 @@ class CardSet < ActiveRecord::Base
     end
 
     # Read the cards out of the set info and create a CardTemplate for each
-    ret_code = :success
-    bad_cards = nil
+    duplicate_base_cards = []
     cards_from_set_info(set_info).each do |c|
-      record = card_templates.create(:name => c.delete('name'),
-                            :rarity => c.delete('rarity'),
+      name = c.delete('name')
+      rarity = c.delete('rarity')
+      record = card_templates.create(:name => name,
+                            :rarity => rarity,
                             :fields => c)
 
       if record.invalid?
-        # Failed to save record. Find out why. Prefer to report Duplicate Cards
+        # Failed to save record. If it's because the name is a duplicate,
+        # produce a unique name and try again. Otherwise, fail.
         if record.errors.added? :name, :taken
-          bad_cards = [] if bad_cards.nil? || ret_code == :bad_cards
-          bad_cards << record.name
-          ret_code = :duplicate_cards
-        elsif ret_code != :duplicate_cards
-          ret_code = :bad_cards
-          bad_cards ||= []
-          bad_cards << record.name
+          c['name'] = CardTemplate.suggest(:name, name, :pattern => '{base} ({num})')
+          c['rarity'] = rarity
+
+          # Store off the base conflicting card, so we can rename it to "(1)" later
+          duplicate_base_cards << CardTemplate.where(name: name).first
+          redo
+        else
+          return false
         end
       end
     end
 
-    return ret_code, bad_cards
+    duplicate_base_cards.each { |c| c.update_attribute(:name, c.name + ' (1)') }
+    true
   end
 
 private

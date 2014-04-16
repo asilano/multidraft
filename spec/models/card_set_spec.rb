@@ -270,72 +270,13 @@ describe CardSet do
       expect(File).to receive(:read).with(Rails.root + card_set.dictionary_location).
                         and_return File.read(File.join(File.dirname(__FILE__), '../data/awesome_duplicates.json'))
 
-      zephyr_params = {name: 'Zephyr Charge',
-                        rarity: 'Common',
-                        fields: {
-                          "layout" => "normal",
-                          "type" => ["Enchantment"] * 2,
-                          "manaCost" => ["{1}{U}"] * 2,
-                          "text" => ["{1}{U}: Target creature gains flying until end of turn."] * 2,
-                          "flavor" => ["\"All armies prefer high ground to low and sunny places to dark.\"—Sun Tzu, Art of War, trans. Giles"] * 2,
-                          "imageName" => ["zephyr charge"] * 2
-                          }}
-      turn_burn_params = {name: 'Turn',
-                           rarity: 'Uncommon',
-                           fields: {
-                            "layout" => 'split',
-                            "names" => ['Turn', 'Burn'],
-                            "type" => ['Instant', 'Instant'],
-                            "manaCost" => ['{2}{U}','{1}{R}'],
-                            "text" => ["Target creature loses all abilities and becomes a 0/1 red Weird until end of turn.\n\nFuse (You may cast one or both halves of this card from your hand.)",
-                                        "Burn deals 2 damage to target creature or player.\n\nFuse (You may cast one or both halves of this card from your hand.)"],
-                            "imageName" => ['turnburn', 'turnburn']}
-                          }
-
-      zephyr = CardTemplate.new(zephyr_params)
-      turn_burn = CardTemplate.new(turn_burn_params)
-
-      raider_dupe_params = {name: 'Academy Raider',
-                            rarity: 'Common',
-                            fields: {'layout' => 'normal',
-                                      'type' => 'Sorcery',
-                                      'manacost' => '{R}{R}',
-                                      'text' => 'Destroy target university.',
-                                      'imageName' => 'academy raider'}}
-      academy_raider_dupe = CardTemplate.new(raider_dupe_params)
-
-      turn_dupe_params = {name: 'Turn',
-                          rarity: 'Uncommon',
-                          fields: {'layout' => 'normal',
-                                    'type' => 'Sorcery',
-                                    'manaCost' => '{1}{U}',
-                                    'text' => 'Tap target creature.',
-                                    'imageName' => 'turn'}}
-      turn_dupe = CardTemplate.new(turn_dupe_params)
-
-      expect(CardTemplate).to receive(:new).with(academy_raider_params, {}).and_return academy_raider
-      expect(CardTemplate).to receive(:new).with(raider_dupe_params).and_return academy_raider_dupe
-
-      # Update AR params to have the suggested-valid name
-      raider_dupe_params[:name] = 'Academy Raider (2)'
-      academy_raider_dupe.name = 'Academy Raider (2)'
-      expect(CardTemplate).to receive(:new).with(raider_dupe_params).and_return academy_raider_dupe
-
-      expect(CardTemplate).to receive(:new).with(glimpse_params, {}).and_return glimpse
-      expect(CardTemplate).to receive(:new).with(turn_burn_params, {}).and_return turn_burn
-      expect(CardTemplate).to receive(:new).with(turn_dupe_params).and_return turn_dupe
-
-      # Update Turn params to have suggested-valid name
-      turn_dupe_params[:name] = 'Turn (2)'
-      turn_dupe.name = 'Turn (2)'
-      expect(CardTemplate).to receive(:new).with(turn_dupe_params).and_return turn_dupe
-
-      expect(CardTemplate).to receive(:new).with(zephyr_params, {}).and_return zephyr
-      expect(CardTemplate).not_to receive(:new)
-      # No second card named Zephyr Charge because it's identical to the first.
+      # Expect: 3 Academy Raiders and 2 retries, 2 Turns and a retry, Glimpse, Zephyr
+      expect(CardTemplate).to receive(:new).exactly(10).times.and_call_original
 
       expect(card_set.prepare_for_draft).to be_true
-      expect(card_set.errors).to be_added(:card_templates, :duplicate_names)
+
+      sorted_card_names = CardTemplate.pluck(:name).sort
+      expect(sorted_card_names).to eq ['Academy Raider (1)', 'Academy Raider (2)', 'Academy Raider (3)', 'Glimpse the Future', 'Turn (1)', 'Turn (2)', 'Zephyr Charge']
     end
 
   end

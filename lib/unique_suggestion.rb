@@ -24,18 +24,21 @@ module UniqueSuggestion
                         .pluck(field)
                         .map { |val| regex_pattern.match(val).andand[1].to_i }.compact
 
+
       case strategy
       when :first_available
         # Return the first possible name that hasn't been used
         return base_value unless base_exists
 
-        num = (1..Float::INFINITY).detect { |n| !numbers_taken.include? n }
+        # Assume 1 is taken (so the minimal pair is Base and Base (2))
+        num = (2..Float::INFINITY).detect { |n| !numbers_taken.include? n }
         return pattern.gsub(/\{base\}/, base_value).gsub(/\{num\}/, "#{num}")
       when :next_highest
         # Return the first possible name that's beyond all those currently in use
         return base_value if (!base_exists && numbers_taken.empty?)
 
-        return pattern.gsub(/\{base\}/, base_value).gsub(/\{num\}/, "#{numbers_taken.max + 1}")
+        # Assume 1 is taken (so the minimal pair is Base and Base (2))
+        return pattern.gsub(/\{base\}/, base_value).gsub(/\{num\}/, "#{(numbers_taken.max || 1) + 1}")
       end
     end
   end
