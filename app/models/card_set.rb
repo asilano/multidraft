@@ -14,46 +14,54 @@ class CardSet < ActiveRecord::Base
 
   # Read the set dictionary pointed to, and create card templates from it
   def prepare_for_draft
-    # Only need to do anything if the card templates aren't already set up
-    return true unless card_templates.empty?
+    # Only need to parse the set if the card templates aren't already set up
+    if card_templates.empty?
 
-    # Read the JSON. It starts with general info about the set, and contains
-    # a entry "cards" which is an array of hashes descrbing each card
-    set_info = nil
+      # Read the JSON. It starts with general info about the set, and contains
+      # a entry "cards" which is an array of hashes descrbing each card
+      set_info = parse_set_dictionary
+      return false if set_info.nil?
+
+      # Read the cards out of the set info and create a CardTemplate for each
+      cards_from_set_info(set_info).each do |c|
+        record = card_templates.create(:name => c.delete('name'),
+                                        :rarity => c.delete('rarity'),
+                                        :fields => c)
+
+        return false if record.invalid?
+      end
+    end
+
+    # Check for warnable problems with the cards
+    check_cards_for_warnings
+
+    return true
+  end
+
+private
+
+  # Retrieve and parse the set's JSON. Handle any errors thrown from file opening or parsing
+  def parse_set_dictionary
     begin
-      set_info = JSON.parse(get_json_dictionary)
-    rescue Errno::ENOENT
-      # Couldn't open the file
-      errors.add(:dictionary_location, :unavailable)
-      return false
-    rescue JSON::ParserError
-      # Parsing the JSON failed. Stop now.
-      errors.add(:dictionary_location, :unparseable)
-      return false
-    rescue
-      # Some other error
-      errors.add(:dictionary_location, :invalid)
-      return false
+      JSON.parse(get_json_dictionary)
+    rescue Exception => e
+      error_type = {Errno::ENOENT => :unavailable, JSON::ParserError => :unparseable}[e.class]
+      error_type ||= :invalid
+
+      errors.add(:dictionary_location, error_type)
+      return nil
     end
+  end
 
-    # Read the cards out of the set info and create a CardTemplate for each
-    cards_from_set_info(set_info).each do |c|
-      record = card_templates.create(:name => c.delete('name'),
-                            :rarity => c.delete('rarity'),
-                            :fields => c)
-
-      return false if record.invalid?
-    end
-
+  # See if the card templates for this set need to be warned about.
+  def check_cards_for_warnings
+    # Check for two or more cards with the same name
     duplicate_names = card_templates.select(:name).group(:name).count.select { |name, count| count > 1 }.map(&:first)
     if duplicate_names.present?
       @warnings ||= []
       @warnings << I18n.t('activerecord.card_set.warnings.duplicate_cards', card_set_name: self.name, card_names: duplicate_names.map { |n| "'#{n}'" }.join(', '))
     end
-    true
   end
-
-private
 
   def cards_from_set_info(set_info)
     card_details = get_valid_cards(set_info)
