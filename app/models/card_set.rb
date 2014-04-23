@@ -10,6 +10,8 @@ class CardSet < ActiveRecord::Base
   validates_uniqueness_of :dictionary_location
   validates_uniqueness_of :last_modified, :scope => :name
 
+  attr_reader :warnings
+
   # Read the set dictionary pointed to, and create card templates from it
   def prepare_for_draft
     # Only need to do anything if the card templates aren't already set up
@@ -35,31 +37,19 @@ class CardSet < ActiveRecord::Base
     end
 
     # Read the cards out of the set info and create a CardTemplate for each
-    duplicate_base_cards = []
     cards_from_set_info(set_info).each do |c|
-      name = c.delete('name')
-      rarity = c.delete('rarity')
-      record = card_templates.create(:name => name,
-                            :rarity => rarity,
+      record = card_templates.create(:name => c.delete('name'),
+                            :rarity => c.delete('rarity'),
                             :fields => c)
 
-      if record.invalid?
-        # Failed to save record. If it's because the name is a duplicate,
-        # produce a unique name and try again. Otherwise, fail.
-        if record.errors.added? :name, :taken
-          c['name'] = CardTemplate.suggest(:name, name, :pattern => '{base} ({num})')
-          c['rarity'] = rarity
-
-          # Store off the base conflicting card, so we can rename it to "(1)" later
-          duplicate_base_cards << CardTemplate.where(name: name).first
-          redo
-        else
-          return false
-        end
-      end
+      return false if record.invalid?
     end
 
-    duplicate_base_cards.each { |c| c.update_attribute(:name, c.name + ' (1)') }
+    duplicate_names = card_templates.select(:name).group(:name).count.select { |name, count| count > 1 }.map(&:first)
+    if duplicate_names.present?
+      @warnings ||= []
+      @warnings << I18n.t('activerecord.card_set.warnings.duplicate_cards', card_set_name: self.name, card_names: duplicate_names.map { |n| "'#{n}'" }.join(', '))
+    end
     true
   end
 

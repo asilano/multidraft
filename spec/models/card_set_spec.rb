@@ -270,13 +270,14 @@ describe CardSet do
       expect(File).to receive(:read).with(Rails.root + card_set.dictionary_location).
                         and_return File.read(File.join(File.dirname(__FILE__), '../data/awesome_duplicates.json'))
 
-      # Expect: 3 Academy Raiders and 2 retries, 2 Turns and a retry, Glimpse, Zephyr
-      expect(CardTemplate).to receive(:new).exactly(10).times.and_call_original
+      # Expect: 3 Academy Raiders, 2 Turns, Glimpse, Zephyr
+      expect(CardTemplate).to receive(:new).exactly(7).times.and_call_original
 
       expect(card_set.prepare_for_draft).to be_true
 
       sorted_card_names = CardTemplate.pluck(:name).sort
-      expect(sorted_card_names).to eq ['Academy Raider (1)', 'Academy Raider (2)', 'Academy Raider (3)', 'Glimpse the Future', 'Turn (1)', 'Turn (2)', 'Zephyr Charge']
+      expect(sorted_card_names).to eq ['Academy Raider', 'Academy Raider', 'Academy Raider', 'Glimpse the Future', 'Turn', 'Turn', 'Zephyr Charge']
+      expect(card_set.warnings).to include "The following names appear on two or more cards in '#{card_set.name}': 'Academy Raider', 'Turn'"
     end
 
   end

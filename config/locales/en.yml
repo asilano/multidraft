@@ -5,5 +5,9 @@ en:
   activerecord:
     attributes:
       user:
-        name:
-          'Username'
+        name: |
+          Username
+    card_set:
+      warnings:
+        duplicate_cards: |
+          The following names appear on two or more cards in '%{card_set_name}': %{card_names}

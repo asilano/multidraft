@@ -4,6 +4,6 @@ class CardTemplate < ActiveRecord::Base
   serialize :fields
 
   validates_presence_of :name
-  validates_uniqueness_of :name, :scope => :card_set_id
+  validates_presence_of :rarity
 
 end
