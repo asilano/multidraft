@@ -12,10 +12,9 @@ module UniqueSuggestion
 
       # Process the supplied pattern into one usable by SQL LIKE
       # and one which will function as a Regexp
-      like_pattern = pattern.gsub(/\{base\}/, base_value)
-                            .gsub(/\{num\}/, '%')
-      regex_pattern = Regexp.new(Regexp.escape(pattern.gsub('{base}', base_value))
-                                      .gsub('\{num\}', '(\d+)'),
+      pattern.gsub!(/\{base\}/, base_value)
+      like_pattern = pattern.gsub(/\{num\}/, '%')
+      regex_pattern = Regexp.new(Regexp.escape(pattern).gsub('\{num\}', '(\d+)'),
                                   Regexp::IGNORECASE)
 
       # Ask the database which values have already been taken
@@ -24,7 +23,6 @@ module UniqueSuggestion
                         .pluck(field)
                         .map { |val| regex_pattern.match(val).andand[1].to_i }.compact
 
-
       case strategy
       when :first_available
         # Return the first possible name that hasn't been used
@@ -32,13 +30,13 @@ module UniqueSuggestion
 
         # Assume 1 is taken (so the minimal pair is Base and Base (2))
         num = (2..Float::INFINITY).detect { |n| !numbers_taken.include? n }
-        return pattern.gsub(/\{base\}/, base_value).gsub(/\{num\}/, "#{num}")
+        return pattern.gsub(/\{num\}/, "#{num}")
       when :next_highest
         # Return the first possible name that's beyond all those currently in use
         return base_value if (!base_exists && numbers_taken.empty?)
 
         # Assume 1 is taken (so the minimal pair is Base and Base (2))
-        return pattern.gsub(/\{base\}/, base_value).gsub(/\{num\}/, "#{(numbers_taken.max || 1) + 1}")
+        return pattern.gsub(/\{num\}/, "#{(numbers_taken.max || 1) + 1}")
       end
     end
   end
