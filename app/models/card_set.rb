@@ -63,9 +63,7 @@ private
   def check_cards_for_warnings
     # Check for two or more cards with the same name
     duplicate_names = card_templates.select(:name).group(:name).count.select { |name, count| count > 1 }.map(&:first)
-    if duplicate_names.present?
-      @warnings << I18n.t('activerecord.card_set.warnings.duplicate_cards', card_set_name: self.name, card_names: duplicate_names.map { |n| "'#{n}'" }.join(', '))
-    end
+    add_warning_on_cards('duplicate_cards', duplicate_names)
   end
 
   def cards_from_set_info(set_info)
@@ -108,9 +106,7 @@ private
     if unknown_name_index > 1
       @warnings << I18n.t('activerecord.card_set.warnings.cards_without_names', card_set_name: self.name, count: unknown_name_index - 1)
     end
-    if missing_rarity_cards.present?
-      @warnings << I18n.t('activerecord.card_set.warnings.cards_without_rarity', card_set_name: self.name, card_names: missing_rarity_cards.map { |n| "'#{n}'" }.join(', '))
-    end
+    add_warning_on_cards('cards_without_rarity', missing_rarity_cards)
   end
 
   # Cards with the same "name" should be exactly the same card, modulo art and/or flavor
@@ -171,6 +167,12 @@ private
       open(dictionary_location)
     else
       File.read(Rails.root + dictionary_location)
+    end
+  end
+
+  def add_warning_on_cards(warning_type, card_names)
+    if card_names.present?
+      @warnings << I18n.t("activerecord.card_set.warnings.#{warning_type}", card_set_name: self.name, card_names: card_names.map { |n| "'#{n}'" }.join(', '))
     end
   end
 end
