@@ -54,6 +54,7 @@ describe CardSet do
 
       expect(card_set.prepare_for_draft).to be_true
       expect(card_set.errors).to be_empty
+      expect(card_set.card_templates(true).map(&:name).sort).to eq ['Academy Raider', 'Glimpse the Future']
     end
 
     # From a unit-testing point of view, this is identical to creating with a local set,
@@ -92,8 +93,8 @@ describe CardSet do
                         and_return File.read(File.join(File.dirname(__FILE__), '../data/awesome_bugged.json'))
 
       expect(card_set.prepare_for_draft).to be_true
-      expect(card_set.errors).to be_added(:card_templates, :missing_name)
-      expect(card_set.errors).to be_added(:card_templates, :missing_rarity)
+      expect(card_set.warnings).to include("2 cards in '#{card_set.name}' were received without names. They have been named 'Unnamed Card 1' etc.")
+      expect(card_set.warnings).to include("The following cards in '#{card_set.name}' were received without rarities. They have been defaulted to Common: 'Gnawing Zombie', 'Unnamed Card 2'")
 
       # Check that each bugged card has been guessed at, and has the known fields set.
       bugged_card = CardTemplate.where(name: 'Unnamed Card 1').first
@@ -278,14 +279,99 @@ describe CardSet do
       sorted_card_names = CardTemplate.pluck(:name).sort
       expect(sorted_card_names).to eq ['Academy Raider', 'Academy Raider', 'Academy Raider', 'Glimpse the Future', 'Turn', 'Turn', 'Zephyr Charge']
       expect(card_set.warnings).to include "The following names appear on two or more cards in '#{card_set.name}': 'Academy Raider', 'Turn'"
+      expect(card_set.errors).to be_empty
     end
 
   end
 
   describe "prepare brand new set for draft" do
-    it "succeeds"
-    it "with bugged JSON"
-    it "with unparseable JSON"
-    it "with unavailable JSON"
+    let(:card_set) { FactoryGirl.build(:card_set) }
+    let(:academy_raider_params) {{name: 'Academy Raider',
+                          rarity: 'Common',
+                          fields: {
+                            "layout" => 'normal',
+                            "type" => 'Creature — Human Warrior',
+                            "manaCost" => '{2}{R}',
+                            "text" => "Intimidate (This creature can't be blocked except by artifact creatures and/or creatures that share a color with it.)\n\nWhenever Academy Raider deals combat damage to a player, you may discard a card. If you do, draw a card.",
+                            "power" => '1',
+                            "toughness" => '1',
+                            "imageName" => 'academy raider'
+                      }}}
+    let(:glimpse_params) {{name: 'Glimpse the Future',
+                           rarity: 'Uncommon',
+                           fields: {
+                            "layout" => 'normal',
+                            "type" => 'Sorcery',
+                            "manaCost" => '{2}{U}',
+                            "text" => "Look at the top three cards of your library. Put one of them into your hand and the rest into your graveyard.",
+                            "flavor"=> "\"No simple coin toss can solve this riddle. You must think and choose wisely.\"—Shai Fusan, archmage",
+                            "imageName" => 'glimpse the future'
+                      }}}
+    let!(:academy_raider) { CardTemplate.new(academy_raider_params)}
+    let!(:glimpse) { CardTemplate.new(glimpse_params)}
+
+    it "succeeds" do
+      expect(File).to receive(:read).with(Rails.root + card_set.dictionary_location).
+                        and_return File.read(File.join(File.dirname(__FILE__), '../data/awesome.json'))
+
+      expect(CardTemplate).to receive(:new).with(academy_raider_params, {}).and_return academy_raider
+      expect(CardTemplate).to receive(:new).with(glimpse_params, {}).and_return glimpse
+
+      expect(card_set).to receive(:save!).and_call_original
+
+      expect(card_set.prepare_for_draft).to be_true
+      expect(card_set.errors).to be_empty
+      expect(card_set.warnings).to be_empty
+      expect(card_set).to be_persisted
+    end
+
+    it "with bugged JSON" do
+      expect(File).to receive(:read).with(Rails.root + card_set.dictionary_location).
+                        and_return File.read(File.join(File.dirname(__FILE__), '../data/awesome_bugged.json'))
+
+      expect(card_set).to receive(:save!).and_call_original
+      expect(card_set.prepare_for_draft).to be_true
+
+      bugged_card = CardTemplate.where(name: 'Unnamed Card 1').first
+      expect(bugged_card).to_not be_nil
+      expect(bugged_card.fields['type']).to eq "Creature — Goblin"
+
+      bugged_card = CardTemplate.where(name: 'Gnawing Zombie').first
+      expect(bugged_card.rarity).to eq 'Common'
+
+      bugged_card = CardTemplate.where(name: 'Unnamed Card 2').first
+      expect(bugged_card).to_not be_nil
+      expect(bugged_card.fields['type']).to eq "Instant"
+      expect(bugged_card.rarity).to eq 'Common'
+
+      expect(card_set.errors).to be_empty
+      expect(card_set.warnings).to include("2 cards in '#{card_set.name}' were received without names. They have been named 'Unnamed Card 1' etc.")
+      expect(card_set.warnings).to include("The following cards in '#{card_set.name}' were received without rarities. They have been defaulted to Common: 'Gnawing Zombie', 'Unnamed Card 2'")
+
+      expect(card_set).to be_persisted
+    end
+
+    it "with unparseable JSON" do
+      expect(File).to receive(:read).with(Rails.root + card_set.dictionary_location).
+                        and_return File.read(File.join(File.dirname(__FILE__), '../data/awesome_broken.json'))
+
+      expect(card_set).not_to receive(:save!)
+      expect(card_set.prepare_for_draft).to be_false
+      expect(card_set.errors).to be_added(:dictionary_location, :unparseable)
+
+      expect(card_set).not_to be_persisted
+    end
+
+    it "with unavailable JSON" do
+      expect(File).to receive(:read).with(Rails.root + card_set.dictionary_location) do
+        raise Errno::ENOENT.new("No such file")
+      end
+
+      expect(card_set).not_to receive(:save!)
+      expect(card_set.prepare_for_draft).to be_false
+      expect(card_set.errors).to be_added(:dictionary_location, :unavailable)
+
+      expect(card_set).not_to be_persisted
+    end
   end
 end

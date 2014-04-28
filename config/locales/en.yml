@@ -5,9 +5,16 @@ en:
   activerecord:
     attributes:
       user:
-        name: |
+        name:
           Username
     card_set:
       warnings:
-        duplicate_cards: |
-          The following names appear on two or more cards in '%{card_set_name}': %{card_names}
+        duplicate_cards:
+          "The following names appear on two or more cards in '%{card_set_name}': %{card_names}"
+        cards_without_names:
+          one:
+            "A card in '%{card_set_name}' was received without a name. It has been named 'Unnamed Card 1'"
+          other:
+            "%{count} cards in '%{card_set_name}' were received without names. They have been named 'Unnamed Card 1' etc."
+        cards_without_rarity:
+          "The following cards in '%{card_set_name}' were received without rarities. They have been defaulted to Common: %{card_names}"
