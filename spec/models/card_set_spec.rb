@@ -65,7 +65,7 @@ describe CardSet do
       card_set.save!
 
       expect(card_set).to receive(:open).with(card_set.dictionary_location).
-                          and_return File.read(File.join(File.dirname(__FILE__), '../data/awesome.json'))
+                          and_return File.join(File.dirname(__FILE__), '../data/awesome.json')
 
       expect(CardTemplate).to receive(:new).with(academy_raider_params, {}).and_return academy_raider
       expect(CardTemplate).to receive(:new).with(glimpse_params, {}).and_return glimpse

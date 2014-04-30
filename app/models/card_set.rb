@@ -51,6 +51,7 @@ private
     begin
       JSON.parse(get_json_dictionary)
     rescue Exception => e
+      Rails.logger.info("Exception: #{e}")
       error_type = {Errno::ENOENT => :unavailable, JSON::ParserError => :unparseable}[e.class]
       error_type ||= :invalid
 
@@ -159,12 +160,12 @@ private
   end
 
   def self.fields_whitelist
-    %w<layout name names manaCost type rarity text flavor power toughness loyalty imageName hand life>
+    %w<layout name names manaCost type rarity text flavor power toughness loyalty imageName hand life cardCode editURL>
   end
 
   def get_json_dictionary
     if remote_dictionary
-      open(dictionary_location)
+      File.read open(dictionary_location)
     else
       File.read(Rails.root + dictionary_location)
     end
