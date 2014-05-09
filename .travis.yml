@@ -1,6 +1,8 @@
 language: ruby
 rvm:
   - 1.9.3
+env:
+  - DEVISE_SECRET=c0ffee
 before_install:
   - rm Gemfile.lock
 script:
