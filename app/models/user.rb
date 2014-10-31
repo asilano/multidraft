@@ -57,7 +57,7 @@ class User < ActiveRecord::Base
 
   # Handle looking up a sign-up or -in attempt by an Omniauth provider
   def self.find_for_omniauth(auth, current_user)
-    authentication = Authentication.where(:provider => auth.provider, :uid => auth.uid).first_or_initialize
+    authentication = Authentication.where(:provider => auth.provider.to_s, :uid => auth.uid).first_or_initialize
     user = authentication.user || current_user || User.new
 
     return user, authentication
