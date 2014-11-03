@@ -40,8 +40,11 @@ group :development do
   gem "erb2haml"
 end
 
-group :test do
+group :debug do
   gem 'debugger'
+end
+
+group :test do
   gem "database_cleaner"
   gem "email_spec"
   gem "launchy"

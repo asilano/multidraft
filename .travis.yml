@@ -3,8 +3,9 @@ rvm:
   - 1.9.3
 env:
   - DEVISE_SECRET=c0ffee
+bundler_args: --without development debug
 before_install:
-  - rm Gemfile.lock
+  - sed -i /mingw32/d Gemfile.lock
 script:
   - RAILS_ENV=test xvfb-run --server-args="-screen 0 1024x768x24" bundle exec rake db:migrate spec
 before_script:
