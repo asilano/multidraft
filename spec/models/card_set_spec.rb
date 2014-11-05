@@ -2,6 +2,33 @@
 require 'spec_helper'
 
 describe CardSet do
+  let(:academy_raider_params) {{name: 'Academy Raider',
+                        rarity: 'Common',
+                        fields: {
+                          "layout" => 'normal',
+                          "type" => 'Creature — Human Warrior',
+                          "manaCost" => '{2}{R}',
+                          "text" => "Intimidate (This creature can't be blocked except by artifact creatures and/or creatures that share a color with it.)\n\nWhenever Academy Raider deals combat damage to a player, you may discard a card. If you do, draw a card.",
+                          "power" => '1',
+                          "toughness" => '1',
+                          "imageName" => 'academy raider',
+                          "cardCode" => 'CR01',
+                          "editURL" => 'http://multiverse.example.com/cards/12345'
+                    }}}
+  let(:glimpse_params) {{name: 'Glimpse the Future',
+                         rarity: 'Uncommon',
+                         fields: {
+                          "layout" => 'normal',
+                          "type" => 'Sorcery',
+                          "manaCost" => '{2}{U}',
+                          "text" => "Look at the top three cards of your library. Put one of them into your hand and the rest into your graveyard.",
+                          "flavor"=> "\"No simple coin toss can solve this riddle. You must think and choose wisely.\"—Shai Fusan, archmage",
+                          "imageName" => 'glimpse the future',
+                          "cardCode" => 'UU10',
+                          "editURL" => 'http://multiverse.example.com/cards/54300'
+                    }}}
+  let!(:academy_raider) { CardTemplate.new(academy_raider_params)}
+  let!(:glimpse) { CardTemplate.new(glimpse_params)}
 
   describe "validations" do
     before(:each) { FactoryGirl.create(:card_set) }
@@ -21,29 +48,6 @@ describe CardSet do
 
   describe "prepare known set for draft" do
     let(:card_set) { FactoryGirl.create(:card_set) }
-    let(:academy_raider_params) {{name: 'Academy Raider',
-                          rarity: 'Common',
-                          fields: {
-                            "layout" => 'normal',
-                            "type" => 'Creature — Human Warrior',
-                            "manaCost" => '{2}{R}',
-                            "text" => "Intimidate (This creature can't be blocked except by artifact creatures and/or creatures that share a color with it.)\n\nWhenever Academy Raider deals combat damage to a player, you may discard a card. If you do, draw a card.",
-                            "power" => '1',
-                            "toughness" => '1',
-                            "imageName" => 'academy raider'
-                      }}}
-    let(:glimpse_params) {{name: 'Glimpse the Future',
-                           rarity: 'Uncommon',
-                           fields: {
-                            "layout" => 'normal',
-                            "type" => 'Sorcery',
-                            "manaCost" => '{2}{U}',
-                            "text" => "Look at the top three cards of your library. Put one of them into your hand and the rest into your graveyard.",
-                            "flavor"=> "\"No simple coin toss can solve this riddle. You must think and choose wisely.\"—Shai Fusan, archmage",
-                            "imageName" => 'glimpse the future'
-                      }}}
-    let!(:academy_raider) { CardTemplate.new(academy_raider_params)}
-    let!(:glimpse) { CardTemplate.new(glimpse_params)}
 
     it "with local set" do
       expect(File).to receive(:read).with(Rails.root + card_set.dictionary_location).
@@ -286,29 +290,6 @@ describe CardSet do
 
   describe "prepare brand new set for draft" do
     let(:card_set) { FactoryGirl.build(:card_set) }
-    let(:academy_raider_params) {{name: 'Academy Raider',
-                          rarity: 'Common',
-                          fields: {
-                            "layout" => 'normal',
-                            "type" => 'Creature — Human Warrior',
-                            "manaCost" => '{2}{R}',
-                            "text" => "Intimidate (This creature can't be blocked except by artifact creatures and/or creatures that share a color with it.)\n\nWhenever Academy Raider deals combat damage to a player, you may discard a card. If you do, draw a card.",
-                            "power" => '1',
-                            "toughness" => '1',
-                            "imageName" => 'academy raider'
-                      }}}
-    let(:glimpse_params) {{name: 'Glimpse the Future',
-                           rarity: 'Uncommon',
-                           fields: {
-                            "layout" => 'normal',
-                            "type" => 'Sorcery',
-                            "manaCost" => '{2}{U}',
-                            "text" => "Look at the top three cards of your library. Put one of them into your hand and the rest into your graveyard.",
-                            "flavor"=> "\"No simple coin toss can solve this riddle. You must think and choose wisely.\"—Shai Fusan, archmage",
-                            "imageName" => 'glimpse the future'
-                      }}}
-    let!(:academy_raider) { CardTemplate.new(academy_raider_params)}
-    let!(:glimpse) { CardTemplate.new(glimpse_params)}
 
     it "succeeds" do
       expect(File).to receive(:read).with(Rails.root + card_set.dictionary_location).

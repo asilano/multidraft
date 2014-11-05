@@ -16,7 +16,9 @@
     "toughness":"1",
     "rarity":"Common",
     "imageName":"academy raider",
-    "artist":"Karl Kopinski"},
+    "artist":"Karl Kopinski",
+    "cardCode":"CR01",
+    "editURL":"http://multiverse.example.com/cards/12345"},
   {
     "layout": "normal",
     "type": "Sorcery",
@@ -31,6 +33,8 @@
     "text": "Look at the top three cards of your library. Put one of them into your hand and the rest into your graveyard.",
     "flavor": "\"No simple coin toss can solve this riddle. You must think and choose wisely.\"—Shai Fusan, archmage",
     "number": "58",
-    "imageName": "glimpse the future"
+    "imageName": "glimpse the future",
+    "cardCode":"UU10",
+    "editURL":"http://multiverse.example.com/cards/54300"
   }
 ]}

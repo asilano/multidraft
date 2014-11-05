@@ -69,7 +69,9 @@
     "toughness":"1",
     "rarity":"Common",
     "imageName":"academy raider",
-    "artist":"Karl Kopinski"
+    "artist":"Karl Kopinski",
+    "cardCode":"CR01",
+    "editURL":"http://multiverse.example.com/cards/12345"
   },
   { "layout": "flip",
     "supertypes": ["Legendary"],
