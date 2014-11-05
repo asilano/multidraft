@@ -41,7 +41,8 @@ group :development do
 end
 
 group :test do
-  gem 'debugger'
+  # Turn off debugger for compatability
+  # gem 'debugger'
   gem "database_cleaner"
   gem "email_spec"
   gem "launchy"

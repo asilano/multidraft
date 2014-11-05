@@ -25,7 +25,7 @@ Spork.prefork do
   require 'capybara/rspec'
   require 'rspec/autorun'
   require 'timecop'
-  require 'ruby-debug'
+  #require 'ruby-debug'
 
   Timecop.safe_mode = true
   Capybara.asset_host = "http://localhost:3000"
