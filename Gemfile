@@ -78,6 +78,7 @@ gem 'figaro'
 gem 'devise'
 gem 'omniauth-openid'
 gem 'omniauth-facebook'
+gem 'omniauth-google-oauth2'
 
 # Squeel - simpler SQL queries through AREL
 gem 'squeel'

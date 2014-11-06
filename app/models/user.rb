@@ -3,7 +3,7 @@ class User < ActiveRecord::Base
   # :confirmable, :lockable, :timeoutable and :omniauthable
   devise :database_authenticatable, :registerable, :confirmable,
          :recoverable, :rememberable, :trackable,
-         :omniauthable, :omniauth_providers => [:open_id, :facebook]
+         :omniauthable, :omniauth_providers => Authentication.auth_methods
 
   has_many :authentications, dependent: :destroy
   accepts_nested_attributes_for :authentications

@@ -2,6 +2,10 @@ class Authentication < ActiveRecord::Base
   belongs_to :user
   attr_accessible :nickname, :provider, :uid
 
+  def self.auth_methods
+    [:open_id, :facebook, :google_oauth2]
+  end
+
   def self.build_from_data(data, omniauth_params)
     nickname = omniauth_params.andand['omniauth_nickname']
     nickname ||= omniauth_params.andand['openid_url']
@@ -19,12 +23,11 @@ class Authentication < ActiveRecord::Base
 private
   # Supported providers
   Providers = {
+    :facebook => [
+      {name: 'Facebook', css_class: 'facebook-icon'}],
+    :google_oauth2 => [
+      {name: 'Google', css_class: 'google-icon'}],
     :open_id => [
-      {name: 'Google', css_class: 'google-icon',
-        data: {
-          open_id_url: 'https://www.google.com/accounts/o8/id'
-        }
-      },
       {name: 'Yahoo', css_class: 'yahoo-icon',
         data: {
           open_id_url: 'http://me.yahoo.com'
@@ -57,7 +60,5 @@ private
           }
       }
     ],
-    :facebook => [
-      {name: 'Facebook', css_class: 'facebook-icon'}]
   }
 end

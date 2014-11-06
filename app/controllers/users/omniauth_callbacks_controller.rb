@@ -1,6 +1,6 @@
 class Users::OmniauthCallbacksController < Devise::OmniauthCallbacksController
   skip_before_filter :authenticate_user!
-  PROVIDERS = [:open_id, :facebook]
+  PROVIDERS = Authentication.auth_methods
   protect_from_forgery :except => PROVIDERS
 
   def all
@@ -21,6 +21,11 @@ class Users::OmniauthCallbacksController < Devise::OmniauthCallbacksController
   end
 
   PROVIDERS.each { |method| alias_method method, :all }
+
+  def failure
+    set_flash_message :alert, :failure, kind: kind(failed_strategy.name), reason: failure_message
+    redirect_to after_omniauth_failure_path_for(resource_name)
+  end
 
 protected
 
@@ -78,7 +83,7 @@ private
   end
 
 private
-  def kind
-    params[:action].titleize
+  def kind(strategy = nil)
+    t(strategy || params[:action])
   end
 end

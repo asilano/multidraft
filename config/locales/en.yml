@@ -18,3 +18,4 @@ en:
             "%{count} cards in '%{card_set_name}' were received without names. They have been named 'Unnamed Card 1' etc."
         cards_without_rarity:
           "The following cards in '%{card_set_name}' were received without rarities. They have been defaulted to Common: %{card_names}"
+  google_oauth2: Google
