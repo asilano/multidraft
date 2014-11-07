@@ -19,3 +19,5 @@ en:
         cards_without_rarity:
           "The following cards in '%{card_set_name}' were received without rarities. They have been defaulted to Common: %{card_names}"
   google_oauth2: Google
+  open_id: OpenID
+  facebook: Facebook

@@ -279,7 +279,7 @@ describe "Sign-up and Sign-in by OmniAuth" do
             click_link "Sign up with #{provider}"
 
             expect(page).not_to have_content "Sign up using a third party"
-            expect(page).to have_content "Your OpenID authentication succeeded"
+            expect(page).to have_content "Your #{provider == "Google" ? "Google" : "OpenID"} authentication succeeded"
           end
         end
 
@@ -400,7 +400,7 @@ describe "Sign-up and Sign-in by OmniAuth" do
           expect(page).to have_content "Sign out"
         end
 
-        %w(Google Yahoo StackExchange Steam).each do |provider|
+        %w(Yahoo StackExchange Steam).each do |provider|
           it "should sign in with #{provider} with no parameter" do
             visit new_user_session_path
 
@@ -414,6 +414,27 @@ describe "Sign-up and Sign-in by OmniAuth" do
             expect(page).to have_content "Signed in as #{open_id_user.name}"
             expect(page).to have_content "Sign out"
           end
+        end
+
+        it "should sign in with Google" do
+          open_id_user.authentications[0].provider ='google'
+          open_id_user.authentications[0].save!
+          OmniAuth.config.mock_auth[:google_oauth2] = OmniAuth::AuthHash.new({
+            :provider => 'google',
+            :uid => open_id_user.authentications[0].uid,
+          })
+
+          visit new_user_session_path
+
+          expect(page).to have_content('Sign in using a third party')
+          expect(page).not_to have_content('manually enter your OpenID')
+          expect(page).not_to have_field('openid_url')
+          expect(page).to have_link("Sign in with Google")
+          click_link "Sign in with Google"
+
+          expect(page).to have_content "Successfully authenticated from Google account"
+          expect(page).to have_content "Signed in as #{open_id_user.name}"
+          expect(page).to have_content "Sign out"
         end
 
         %w(LiveJournal).each do |provider|
@@ -666,7 +687,7 @@ describe "Sign-up and Sign-in by OmniAuth" do
             expect(page).to have_link("Authenticate with #{provider}")
             click_link "Authenticate with #{provider}"
 
-            expect(page).to have_content "Successfully authenticated from OpenID account"
+            expect(page).to have_content "Successfully authenticated from #{provider == "Google" ? "Google" : "OpenID"} account"
             expect(page).to have_content "This account is linked with the following authentication methods"
             expect(page).to have_content "http://pretend.openid.example.com"
             expect(page).to have_css('.auth-nickname', :text => provider)
