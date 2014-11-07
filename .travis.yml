@@ -11,3 +11,5 @@ script:
 before_script:
   - cp config/database.travis.yml config/database.yml
   - psql -c 'create database multidraft_test' -U postgres
+notifications:
+  on_success: always
