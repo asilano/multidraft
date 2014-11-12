@@ -3,7 +3,8 @@
 require 'open-uri'
 
 class CardSet < ActiveRecord::Base
-  attr_accessible :dictionary_location, :last_modified, :name, :remote_dictionary
+  attr_accessible :dictionary_location, :last_modified, :name, :remote_dictionary, :booster_distr
+  serialize :booster_distr, Array
   has_many :card_templates, dependent: :destroy
 
   validates_presence_of :name, :last_modified, :dictionary_location
@@ -24,10 +25,27 @@ class CardSet < ActiveRecord::Base
       set_info = parse_set_dictionary
       return false if set_info.nil?
 
+      # Store off the booster distribution, adjusting it for common M:tG ideosyncracies
+      unless set_info.has_key? 'booster'
+        errors.add(:dictionary_location, :no_booster)
+        return false
+      end
+      self.booster_distr = set_info['booster'].recursive_map(&:titleize).recursive_map do |slot|
+        case slot
+        when /^(Basic )?Land$/
+          'Basic'
+        when 'Mythic Rare'
+          'Mythic'
+        else
+          slot
+        end
+      end
+      self.booster_distr.delete('Marketing')
+
       # Read the cards out of the set info and create a CardTemplate for each
       cards_from_set_info(set_info).each do |c|
         record = card_templates.build(:name => c.delete('name'),
-                                        :rarity => c.delete('rarity'),
+                                        :slot => (c.delete('slot') || c['rarity']).titleize,
                                         :fields => c)
 
         return false if record.invalid?
@@ -42,6 +60,12 @@ class CardSet < ActiveRecord::Base
     check_cards_for_warnings
 
     return true
+  end
+
+  # Paying attention to the stored :booster_distr, generate a random booster from among
+  # the set's templates.
+  def generate_booster
+    BoosterGenerator.generate(card_templates, booster_distr)
   end
 
 private
@@ -81,7 +105,12 @@ private
     with_names = grouped_cards.map { |names, group| combine_multi_cards(names, group) }
 
     # Join the cards back into a single array, sorted by "name"
-    (with_names + without_names).sort_by { |c| c['name'] }
+    (with_names + without_names).each do |c|
+      # Force the rarity field to be as we expect wrt certain Magic values
+      c['rarity'] = 'Mythic' if c['rarity'].downcase == 'mythic rare'
+      c['rarity'] = 'Basic' if c['rarity'].downcase == 'basic land'
+      c['rarity'] = c['rarity'].titleize
+    end.sort_by { |c| c['name'] }
   end
 
   # Make sure the cards are minimally valid - they need a unique name and a
@@ -96,7 +125,7 @@ private
       end
 
       if c['rarity'].blank?
-        c['rarity'] ||= 'Common'
+        c['rarity'] ||= 'common'
         missing_rarity_cards << c['name']
       end
 
@@ -155,12 +184,13 @@ private
 
     # Replace those fields which should only have 1 value.
     dominant_part = parts[0]
-    %w<name rarity layout names>.each { |field| card[field] = dominant_part[field] if dominant_part[field] }
+    %w<name slot rarity layout names>.each { |field| card[field] = dominant_part[field] if dominant_part[field] }
+
     card
   end
 
   def self.fields_whitelist
-    %w<layout name names manaCost type rarity text flavor power toughness loyalty imageName hand life cardCode editURL>
+    %w<layout slot name names manaCost type rarity text flavor power toughness loyalty imageName hand life cardCode editURL>
   end
 
   def get_json_dictionary

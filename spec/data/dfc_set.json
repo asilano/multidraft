@@ -1,9 +1,10 @@
 {"name":"Awesome Set!",
  "code":"AWS",
  "border":"black",
- "booster":["land", "marketing", ["rare", "mythic rare"],"uncommon","uncommon","uncommon","common","common","common","common","common","common","common","common","common","common"],
+ "booster":["land", "marketing", "double faced", ["rare", "mythic rare"],"uncommon","uncommon","uncommon","common","common","common","common","common","common","common","common","common"],
  "cards":[
   { "layout": "double-faced",
+    "slot": "Double Faced",
     "type": "Creature — Werewolf",
     "types": ["Creature"],
     "colors": ["Red"],
@@ -38,6 +39,7 @@
     "editURL":"http://multiverse.example.com/cards/12345"},
   {
     "layout": "double-faced",
+    "slot": "Double Faced",
     "type": "Creature — Human Warrior Werewolf",
     "types": ["Creature"],
     "colors": ["Red"],

@@ -1,0 +1,5942 @@
+{
+  "name"       : "Sienira's Facets",
+  "code"       : "MV1",
+  "border"     : "black",
+                     
+  "sourceURL"  : "http://www.magicmultiverse.net/cardsets/1",
+  "owner"      : "Alex",
+  
+  "type"       : "expansion",
+  "onlineOnly" : true,
+  "booster"    : [["rare", "mythic rare"], "uncommon", "uncommon", "uncommon", "common", "common", "common", "common", "common", "common", "common", "common", "common", "common", "basic", "token"],
+  "cards"      : [
+  { 
+    "name"       : "Lofty Guardian",
+  
+    "manaCost"   : "4",
+    "colors"     : [],
+    "type"       : "Artifact Creature — Golem",
+    "supertypes" : [""],
+    "types"      : ["Artifact", "Creature"],
+    "subtypes"   : ["Golem"],
+    "rarity"     : "uncommon",
+    "power"      : "2",
+    "toughness"  : "3",
+    
+    "text"       : "{1}{U}: Lofty Guardian gains flying until end of turn.\nReminisce {1}{W} ({1}{W}, Exile this card from your hand: Return target artifact or creature card from your graveyard to your hand.)",
+    "flavor"     : "",
+    
+    "artist"     : "",
+    "artURL"     : "",
+    "imageURL"   : "",
+    "sourceURL"  : "http://www.magicmultiverse.net/cards/255",
+    "cardCode"   : "AU03",
+    "layout"     : "normal"
+  }
+    , 
+  { 
+    "name"       : "Museary Gateway",
+  
+    "manaCost"   : "3",
+    "colors"     : [],
+    "type"       : "Tribal Artifact — Artificer",
+    "supertypes" : [""],
+    "types"      : ["Tribal", "Artifact"],
+    "subtypes"   : ["Artificer"],
+    "rarity"     : "common",
+    "power"      : "",
+    "toughness"  : "",
+    
+    "text"       : "{T}: Target creature gets +1/+1 until end of turn.\n{W}, {T}: Target Artificer creature gets +2/+2 until end of turn.",
+    "flavor"     : "Never fight a smith in his own workshop.",
+    
+    "artist"     : "",
+    "artURL"     : "",
+    "imageURL"   : "",
+    "sourceURL"  : "http://www.magicmultiverse.net/cards/251",
+    "cardCode"   : "AC06",
+    "layout"     : "normal"
+  }
+    , 
+  { 
+    "name"       : "Cloak in Terror",
+  
+    "manaCost"   : "1B",
+    "colors"     : ["Black"],
+    "type"       : "Tribal Sorcery — Cleric",
+    "supertypes" : [],
+    "types"      : ["Tribal", "Sorcery"],
+    "subtypes"   : ["Cleric"],
+    "rarity"     : "common",
+    "power"      : "",
+    "toughness"  : "",
+    
+    "text"       : "Target creature gets +3/+1 and gains intimidate until end of turn. If that creature is a Cleric, it gets an additional +3/+3 until end of turn.",
+    "flavor"     : "\"May the Dark One go with you and clear your path.\"",
+    
+    "artist"     : "",
+    "artURL"     : "",
+    "imageURL"   : "",
+    "sourceURL"  : "http://www.magicmultiverse.net/cards/128",
+    "cardCode"   : "BC12",
+    "layout"     : "normal"
+  }
+    , 
+  { 
+    "name"       : "Fleeting Whispersilk",
+  
+    "manaCost"   : "1U",
+    "colors"     : ["Blue"],
+    "type"       : "Tribal Instant — Rogue",
+    "supertypes" : [],
+    "types"      : ["Tribal", "Instant"],
+    "subtypes"   : ["Rogue"],
+    "rarity"     : "common",
+    "power"      : "",
+    "toughness"  : "",
+    
+    "text"       : "Creatures you control gain shroud until end of turn.\nRogue creatures you control are unblockable until end of turn.",
+    "flavor"     : "The Elusi are expensive, but there are many benefits to having one on your side.",
+    
+    "artist"     : "",
+    "artURL"     : "",
+    "imageURL"   : "",
+    "sourceURL"  : "http://www.magicmultiverse.net/cards/88",
+    "cardCode"   : "UC12",
+    "layout"     : "normal"
+  }
+    , 
+  { 
+    "name"       : "Imperturbable Guardian",
+  
+    "manaCost"   : "4WW",
+    "colors"     : ["White"],
+    "type"       : "Creature — Giant Soldier",
+    "supertypes" : [""],
+    "types"      : ["Creature"],
+    "subtypes"   : ["Giant", "Soldier"],
+    "rarity"     : "rare",
+    "power"      : "6",
+    "toughness"  : "6",
+    
+    "text"       : "Imperturbable Guardian can't become tapped. (You can't tap it to pay a cost. If an effect would tap it, it doesn't.)\nVigilance",
+    "flavor"     : "Eternally alert, eternally wary.",
+    
+    "artist"     : "",
+    "artURL"     : "",
+    "imageURL"   : "http://vitenka.com/AlexMtg/Set-files/Imperturbable%20Guardian.jpg",
+    "sourceURL"  : "http://www.magicmultiverse.net/cards/69",
+    "cardCode"   : "WR04",
+    "layout"     : "normal"
+  }
+    , 
+  { 
+    "name"       : "Rejuvenation Spring",
+  
+    "manaCost"   : "",
+    "colors"     : [],
+    "type"       : "Land Enchantment",
+    "supertypes" : [""],
+    "types"      : ["Land", "Enchantment"],
+    "subtypes"   : [""],
+    "rarity"     : "uncommon",
+    "power"      : "",
+    "toughness"  : "",
+    
+    "text"       : "Rejuvenation Spring is green. (It isn't a spell.)\n{T}: Add 1 to your mana pool.\n{3}{G}: You gain life equal to the number of enchantments you control.",
+    "flavor"     : "",
+    
+    "artist"     : "",
+    "artURL"     : "",
+    "imageURL"   : "",
+    "sourceURL"  : "http://www.magicmultiverse.net/cards/271",
+    "cardCode"   : "LU03",
+    "layout"     : "normal"
+  }
+    , 
+  { 
+    "name"       : "Hooves of the World",
+  
+    "manaCost"   : "5GGG",
+    "colors"     : ["Green"],
+    "type"       : "Creature — Elemental",
+    "supertypes" : [""],
+    "types"      : ["Creature"],
+    "subtypes"   : ["Elemental"],
+    "rarity"     : "mythic",
+    "power"      : "*",
+    "toughness"  : "*",
+    
+    "text"       : "Hooves of the World's power and toughness are each equal to the number of lands on the battlefield.\nWhen Hooves of the World enters the battlefield, you may sacrifice five lands. If you do, put a rage counter on Hooves of the World and it has trample.",
+    "flavor"     : "",
+    
+    "artist"     : "",
+    "artURL"     : "http://www.vitenka.com/AlexMtg/Cropped/Hooves%20of%20the%20World.jpg",
+    "imageURL"   : "http://www.vitenka.com/AlexMtg/Set-files/Hooves%20of%20the%20World.jpg",
+    "sourceURL"  : "http://www.magicmultiverse.net/cards/227",
+    "cardCode"   : "GR03",
+    "layout"     : "normal"
+  }
+    , 
+  { 
+    "name"       : "Arrogant Charger",
+  
+    "manaCost"   : "1G",
+    "colors"     : ["Green"],
+    "type"       : "Creature — Centaur Warrior",
+    "supertypes" : [""],
+    "types"      : ["Creature"],
+    "subtypes"   : ["Centaur", "Warrior"],
+    "rarity"     : "common",
+    "power"      : "3",
+    "toughness"  : "3",
+    
+    "text"       : "When Arrogant Charger enters the battlefield, return a creature you control to your hand.\nReminisce {1}{G} ({1}{G}, Exile this card from your hand: Return target creature card from your graveyard to your hand.)",
+    "flavor"     : "",
+    
+    "artist"     : "",
+    "artURL"     : "",
+    "imageURL"   : "",
+    "sourceURL"  : "http://www.magicmultiverse.net/cards/201",
+    "cardCode"   : "GC06",
+    "layout"     : "normal"
+  }
+    , 
+  { 
+    "name"       : "Vicious Territory",
+  
+    "manaCost"   : "2R",
+    "colors"     : ["Red"],
+    "type"       : "Enchantment — Aura",
+    "supertypes" : [""],
+    "types"      : ["Enchantment"],
+    "subtypes"   : ["Aura"],
+    "rarity"     : "common",
+    "power"      : "",
+    "toughness"  : "",
+    
+    "text"       : "Enchant land\nEnchanted land is a 3/3 red Elemental creature with \"{R}: This creature gets +1/+0 until end of turn\".",
+    "flavor"     : "",
+    
+    "artist"     : "",
+    "artURL"     : "",
+    "imageURL"   : "",
+    "sourceURL"  : "http://www.magicmultiverse.net/cards/171",
+    "cardCode"   : "RC15",
+    "layout"     : "normal"
+  }
+    , 
+  { 
+    "name"       : "Unstoppable Lithosaur",
+  
+    "manaCost"   : "3R",
+    "colors"     : ["Red"],
+    "type"       : "Creature — Lizard",
+    "supertypes" : [""],
+    "types"      : ["Creature"],
+    "subtypes"   : ["Lizard"],
+    "rarity"     : "uncommon",
+    "power"      : "3",
+    "toughness"  : "1",
+    
+    "text"       : "Trample\nOverpower {1}{R} ({1}{R}: Target creature blocking Unstoppable Lithosaur gets -1/-1 until end of turn.)",
+    "flavor"     : "The only time its hooves stop moving is when it's dead.",
+    
+    "artist"     : "",
+    "artURL"     : "",
+    "imageURL"   : "",
+    "sourceURL"  : "http://www.magicmultiverse.net/cards/174",
+    "cardCode"   : "RU02",
+    "layout"     : "normal"
+  }
+    , 
+  { 
+    "name"       : "Soil's Revenge",
+  
+    "manaCost"   : "R",
+    "colors"     : ["Red"],
+    "type"       : "Sorcery",
+    "supertypes" : [""],
+    "types"      : ["Sorcery"],
+    "subtypes"   : [""],
+    "rarity"     : "common",
+    "power"      : "",
+    "toughness"  : "",
+    
+    "text"       : "Target land becomes a 5/2 red Elemental creature with trample until end of turn.\nReminisce {1}{R} ({1}{R}, Exile this card from your hand: Return target sorcery card from your graveyard to your hand.)",
+    "flavor"     : "",
+    
+    "artist"     : "",
+    "artURL"     : "",
+    "imageURL"   : "",
+    "sourceURL"  : "http://www.magicmultiverse.net/cards/168",
+    "cardCode"   : "RC12",
+    "layout"     : "normal"
+  }
+    , 
+  { 
+    "name"       : "Talespin Worldwalker",
+  
+    "manaCost"   : "3R",
+    "colors"     : ["Red"],
+    "type"       : "Creature — Human Shaman",
+    "supertypes" : [""],
+    "types"      : ["Creature"],
+    "subtypes"   : ["Human", "Shaman"],
+    "rarity"     : "uncommon",
+    "power"      : "1",
+    "toughness"  : "1",
+    
+    "text"       : "{T}, Return a land card from your graveyard  to your hand: Add {1}{R} to your mana pool.",
+    "flavor"     : "She weaves tales of vistas lost, making them live again in her listeners' minds.",
+    
+    "artist"     : "",
+    "artURL"     : "",
+    "imageURL"   : "",
+    "sourceURL"  : "http://www.magicmultiverse.net/cards/179",
+    "cardCode"   : "RU07",
+    "layout"     : "normal"
+  }
+    , 
+  { 
+    "name"       : "Ritual of Thunder",
+  
+    "manaCost"   : "1RR",
+    "colors"     : ["Red"],
+    "type"       : "Sorcery",
+    "supertypes" : [""],
+    "types"      : ["Sorcery"],
+    "subtypes"   : [""],
+    "rarity"     : "rare",
+    "power"      : "",
+    "toughness"  : "",
+    
+    "text"       : "Ritual of Thunder deals 3 damage to target creature or player.\n{1}{R}: The next time you would draw a card this turn, return Ritual of Thunder from your graveyard to your hand instead.",
+    "flavor"     : "",
+    
+    "artist"     : "",
+    "artURL"     : "",
+    "imageURL"   : "",
+    "sourceURL"  : "http://www.magicmultiverse.net/cards/192",
+    "cardCode"   : "RR08",
+    "layout"     : "normal"
+  }
+    , 
+  { 
+    "name"       : "Khert Concealer",
+  
+    "manaCost"   : "2R",
+    "colors"     : ["Red"],
+    "type"       : "Creature — Human Shaman",
+    "supertypes" : [""],
+    "types"      : ["Creature"],
+    "subtypes"   : ["Human", "Shaman"],
+    "rarity"     : "common",
+    "power"      : "2",
+    "toughness"  : "2",
+    
+    "text"       : "{1}{R}: Khert Concealer becomes a Mountain land until end of turn. (It gains \"{T}: Add {R} to your mana pool\" until end of turn and is no longer a creature this turn.)",
+    "flavor"     : "Some Khert shamans can take the form of their rocky home at certain times - like when a raid goes wrong.",
+    
+    "artist"     : "",
+    "artURL"     : "",
+    "imageURL"   : "",
+    "sourceURL"  : "http://www.magicmultiverse.net/cards/172",
+    "cardCode"   : "RC16",
+    "layout"     : "normal"
+  }
+    , 
+  { 
+    "name"       : "Destructive Burrows",
+  
+    "manaCost"   : "2RR",
+    "colors"     : ["Red"],
+    "type"       : "Enchantment",
+    "supertypes" : [""],
+    "types"      : ["Enchantment"],
+    "subtypes"   : [""],
+    "rarity"     : "rare",
+    "power"      : "",
+    "toughness"  : "",
+    
+    "text"       : "{1}, Sacrifice a land: Put a 2/2 red Orc creature token onto the battlefield.\nAt the beginning of your upkeep, you may exile a land card from your graveyard. If you do, Orcs you control can't be blocked except by two or more creatures this turn.",
+    "flavor"     : "",
+    
+    "artist"     : "",
+    "artURL"     : "",
+    "imageURL"   : "",
+    "sourceURL"  : "http://www.magicmultiverse.net/cards/195",
+    "cardCode"   : "RR11",
+    "layout"     : "normal"
+  }
+    , 
+  { 
+    "name"       : "Lavaball Lobbing",
+  
+    "manaCost"   : "2R",
+    "colors"     : ["Red"],
+    "type"       : "Sorcery",
+    "supertypes" : [""],
+    "types"      : ["Sorcery"],
+    "subtypes"   : [""],
+    "rarity"     : "uncommon",
+    "power"      : "",
+    "toughness"  : "",
+    
+    "text"       : "Until end of turn, creatures you control gain \"{T}: This creature deals 1 damage to target creature or player.\"",
+    "flavor"     : "The elementals that splash around in the firelake don't realise lava is harmful to other beings. ...Or perhaps they do.",
+    
+    "artist"     : "",
+    "artURL"     : "",
+    "imageURL"   : "",
+    "sourceURL"  : "http://www.magicmultiverse.net/cards/182",
+    "cardCode"   : "RU10",
+    "layout"     : "normal"
+  }
+    , 
+  { 
+    "name"       : "Friend of the Firebeast",
+  
+    "manaCost"   : "2RR",
+    "colors"     : ["Red"],
+    "type"       : "Creature — Orc Shaman",
+    "supertypes" : [""],
+    "types"      : ["Creature"],
+    "subtypes"   : ["Orc", "Shaman"],
+    "rarity"     : "rare",
+    "power"      : "1",
+    "toughness"  : "1",
+    
+    "text"       : "{T}: Friend of the Firebeast deals 2 damage to target creature or player.\n{3}{R}{R}: Untap Friend of the Firebeast. It deals 2 damage to you.",
+    "flavor"     : "",
+    
+    "artist"     : "",
+    "artURL"     : "",
+    "imageURL"   : "",
+    "sourceURL"  : "http://www.magicmultiverse.net/cards/188",
+    "cardCode"   : "RR04",
+    "layout"     : "normal"
+  }
+    , 
+  { 
+    "name"       : "Flint Levitator",
+  
+    "manaCost"   : "2R",
+    "colors"     : ["Red"],
+    "type"       : "Creature — Human Shaman",
+    "supertypes" : [""],
+    "types"      : ["Creature"],
+    "subtypes"   : ["Human", "Shaman"],
+    "rarity"     : "uncommon",
+    "power"      : "1",
+    "toughness"  : "2",
+    
+    "text"       : "{2}{R}: Flint Levitator deals 1 damage to target creature or player.",
+    "flavor"     : "Don't cross him unless you have a very sturdy helmet.",
+    
+    "artist"     : "",
+    "artURL"     : "",
+    "imageURL"   : "",
+    "sourceURL"  : "http://www.magicmultiverse.net/cards/175",
+    "cardCode"   : "RU03",
+    "layout"     : "normal"
+  }
+    , 
+  { 
+    "name"       : "Devastator Ogre",
+  
+    "manaCost"   : "3RR",
+    "colors"     : ["Red"],
+    "type"       : "Creature — Ogre Shaman",
+    "supertypes" : [""],
+    "types"      : ["Creature"],
+    "subtypes"   : ["Ogre", "Shaman"],
+    "rarity"     : "rare",
+    "power"      : "5",
+    "toughness"  : "4",
+    
+    "text"       : "{T}, Sacrifice five lands: Devastator Ogre deals 3 damage to target player and each creature he or she controls.",
+    "flavor"     : "He leaves a wake of fallen trees and ruined villages.",
+    
+    "artist"     : "",
+    "artURL"     : "",
+    "imageURL"   : "",
+    "sourceURL"  : "http://www.magicmultiverse.net/cards/185",
+    "cardCode"   : "RR01",
+    "layout"     : "normal"
+  }
+    , 
+  { 
+    "name"       : "Weave the Strands",
+  
+    "manaCost"   : "2B",
+    "colors"     : ["Black"],
+    "type"       : "Sorcery",
+    "supertypes" : [""],
+    "types"      : ["Sorcery"],
+    "subtypes"   : [""],
+    "rarity"     : "uncommon",
+    "power"      : "",
+    "toughness"  : "",
+    
+    "text"       : "Exile target instant card from a graveyard. Put an X/X black Elemental creature token onto the battlefield, where X is that card's converted mana cost.\nReminisce {2}{B} ({2}{B}, Exile this card from your hand: Return target sorcery card from your graveyard to your hand.)",
+    "flavor"     : "",
+    
+    "artist"     : "",
+    "artURL"     : "",
+    "imageURL"   : "",
+    "sourceURL"  : "http://www.magicmultiverse.net/cards/138",
+    "cardCode"   : "BU06",
+    "layout"     : "normal"
+  }
+    , 
+  { 
+    "name"       : "Plaguepreacher",
+  
+    "manaCost"   : "4B",
+    "colors"     : ["Black"],
+    "type"       : "Creature — Human Cleric",
+    "supertypes" : [""],
+    "types"      : ["Creature"],
+    "subtypes"   : ["Human", "Cleric"],
+    "rarity"     : "common",
+    "power"      : "2",
+    "toughness"  : "3",
+    
+    "text"       : "Flying\n{T}: Target creature gets -1/-1 until end of turn.",
+    "flavor"     : "Giant bat wings overhead cause citizens to scatter, as damning imprecations fall on those below like noxious droppings.",
+    
+    "artist"     : "",
+    "artURL"     : "",
+    "imageURL"   : "",
+    "sourceURL"  : "http://www.magicmultiverse.net/cards/120",
+    "cardCode"   : "BC04",
+    "layout"     : "normal"
+  }
+    , 
+  { 
+    "name"       : "Persistent Spores",
+  
+    "manaCost"   : "3G",
+    "colors"     : ["Green"],
+    "type"       : "Enchantment",
+    "supertypes" : [""],
+    "types"      : ["Enchantment"],
+    "subtypes"   : [""],
+    "rarity"     : "uncommon",
+    "power"      : "",
+    "toughness"  : "",
+    
+    "text"       : "When Persistent Spores enters the battlefield, put a 1/1 green Saproling creature token onto the battlefield.\nWhenever a Saproling you control deals combat damage to a player, put a 1/1 green Saproling creature token onto the battlefield.\n{1}{G}: Return Persistent Spores to its owner's hand.",
+    "flavor"     : "",
+    
+    "artist"     : "",
+    "artURL"     : "",
+    "imageURL"   : "",
+    "sourceURL"  : "http://www.magicmultiverse.net/cards/219",
+    "cardCode"   : "GU08",
+    "layout"     : "normal"
+  }
+    , 
+  { 
+    "name"       : "Wilderness Attunement",
+  
+    "manaCost"   : "2G",
+    "colors"     : ["Green"],
+    "type"       : "Enchantment",
+    "supertypes" : [""],
+    "types"      : ["Enchantment"],
+    "subtypes"   : [""],
+    "rarity"     : "uncommon",
+    "power"      : "",
+    "toughness"  : "",
+    
+    "text"       : "{2}{G}: You may put a land card from your hand onto the battlefield.\n{1}{G}: You may return target land you control to its owner's hand.",
+    "flavor"     : "The shamans sense every change to Khert's borders before the rumbles reach them.",
+    
+    "artist"     : "",
+    "artURL"     : "",
+    "imageURL"   : "",
+    "sourceURL"  : "http://www.magicmultiverse.net/cards/220",
+    "cardCode"   : "GU09",
+    "layout"     : "normal"
+  }
+    , 
+  { 
+    "name"       : "Helm of Awareness",
+  
+    "manaCost"   : "2",
+    "colors"     : [],
+    "type"       : "Artifact — Equipment",
+    "supertypes" : [""],
+    "types"      : ["Artifact"],
+    "subtypes"   : ["Equipment"],
+    "rarity"     : "common",
+    "power"      : "",
+    "toughness"  : "",
+    
+    "text"       : "Equip {1}\nEquipped creature gets +1/+1 and has vigilance.",
+    "flavor"     : "A dwarven captain's helmet lets him keep abreast of tactical developments on all sides at once.",
+    
+    "artist"     : "",
+    "artURL"     : "",
+    "imageURL"   : "",
+    "sourceURL"  : "http://www.magicmultiverse.net/cards/249",
+    "cardCode"   : "AC04",
+    "layout"     : "normal"
+  }
+    , 
+  { 
+    "name"       : "Scholar's Robes",
+  
+    "manaCost"   : "1",
+    "colors"     : [],
+    "type"       : "Artifact — Equipment",
+    "supertypes" : [""],
+    "types"      : ["Artifact"],
+    "subtypes"   : ["Equipment"],
+    "rarity"     : "common",
+    "power"      : "",
+    "toughness"  : "",
+    
+    "text"       : "Equip {3}\nEquipped creature has defender, +0/+3, and \"{1}, {T}: Draw a card, then discard a card.\"",
+    "flavor"     : "They increase intelligence, not wisdom.",
+    
+    "artist"     : "",
+    "artURL"     : "",
+    "imageURL"   : "",
+    "sourceURL"  : "http://www.magicmultiverse.net/cards/250",
+    "cardCode"   : "AC05",
+    "layout"     : "normal"
+  }
+    , 
+  { 
+    "name"       : "Avalanche Heights",
+  
+    "manaCost"   : "",
+    "colors"     : [],
+    "type"       : "Land Creature — Elemental",
+    "supertypes" : [""],
+    "types"      : ["Land", "Creature"],
+    "subtypes"   : ["Elemental"],
+    "rarity"     : "rare",
+    "power"      : "1",
+    "toughness"  : "1",
+    
+    "text"       : "(Avalanche Heights isn't a spell, and it's affected by summoning sickness.)\nAvalanche Heights enters the battlefield tapped.\n{T}: Add {1} to your mana pool.\nSacrifice a land: Put a +1/+1 counter on Avalanche Heights.",
+    "flavor"     : "",
+    
+    "artist"     : "",
+    "artURL"     : "",
+    "imageURL"   : "",
+    "sourceURL"  : "http://www.magicmultiverse.net/cards/281",
+    "cardCode"   : "LR04",
+    "layout"     : "normal"
+  }
+    , 
+  { 
+    "name"       : "Dreamy Coppice",
+  
+    "manaCost"   : "",
+    "colors"     : [],
+    "type"       : "Land",
+    "supertypes" : [""],
+    "types"      : ["Land"],
+    "subtypes"   : [""],
+    "rarity"     : "uncommon",
+    "power"      : "",
+    "toughness"  : "",
+    
+    "text"       : "Dreamy Coppice enters the battlefield tapped.\n{T}: Add {G} to your mana pool.\nReminisce {1}{G} ({1}{G}, Exile this card from your hand: Return target land card from your graveyard to your hand.)",
+    "flavor"     : "",
+    
+    "artist"     : "",
+    "artURL"     : "",
+    "imageURL"   : "",
+    "sourceURL"  : "http://www.magicmultiverse.net/cards/268",
+    "cardCode"   : "LUnn",
+    "layout"     : "normal"
+  }
+    , 
+  { 
+    "name"       : "Hellfire Cathedral",
+  
+    "manaCost"   : "",
+    "colors"     : [],
+    "type"       : "Land",
+    "supertypes" : [""],
+    "types"      : ["Land"],
+    "subtypes"   : [""],
+    "rarity"     : "uncommon",
+    "power"      : "",
+    "toughness"  : "",
+    
+    "text"       : "{T}: Add 1 to your mana pool.\n{T}: Add {B} to your mana pool. Hellfire Cathedral deals 1 damage to you.\n{T}: Add {R} to your mana pool. Hellfire Cathedral doesn't untap in your next untap step.",
+    "flavor"     : "",
+    
+    "artist"     : "",
+    "artURL"     : "",
+    "imageURL"   : "",
+    "sourceURL"  : "http://www.magicmultiverse.net/cards/275",
+    "cardCode"   : "LU08",
+    "layout"     : "normal"
+  }
+    , 
+  { 
+    "name"       : "Lakeside Mirrorglade",
+  
+    "manaCost"   : "",
+    "colors"     : [],
+    "type"       : "Land",
+    "supertypes" : [""],
+    "types"      : ["Land"],
+    "subtypes"   : [""],
+    "rarity"     : "uncommon",
+    "power"      : "",
+    "toughness"  : "",
+    
+    "text"       : "{T}: Add {1} to your mana pool.\n{T}: Add {G} to your mana pool. Lakeside Mirrorglade deals 1 damage to you.\n{T}: Add {W} to your mana pool. Lakeside Mirrorglade doesn't untap in your next untap step.",
+    "flavor"     : "",
+    
+    "artist"     : "",
+    "artURL"     : "",
+    "imageURL"   : "",
+    "sourceURL"  : "http://www.magicmultiverse.net/cards/277",
+    "cardCode"   : "LU10",
+    "layout"     : "normal"
+  }
+    , 
+  { 
+    "name"       : "Starscraper Museary",
+  
+    "manaCost"   : "",
+    "colors"     : [],
+    "type"       : "Land",
+    "supertypes" : [""],
+    "types"      : ["Land"],
+    "subtypes"   : [""],
+    "rarity"     : "uncommon",
+    "power"      : "",
+    "toughness"  : "",
+    
+    "text"       : "{T}: Add {1} to your mana pool.\n{T}: Add {W} to your mana pool. Starscraper Museary deals 1 damage to you.\n{T}: Add {U} to your mana pool. Starscraper Museary doesn't untap in your next untap step.",
+    "flavor"     : "",
+    
+    "artist"     : "",
+    "artURL"     : "",
+    "imageURL"   : "",
+    "sourceURL"  : "http://www.magicmultiverse.net/cards/273",
+    "cardCode"   : "LU06",
+    "layout"     : "normal"
+  }
+    , 
+  { 
+    "name"       : "Spitting Volcano",
+  
+    "manaCost"   : "",
+    "colors"     : [],
+    "type"       : "Land",
+    "supertypes" : [""],
+    "types"      : ["Land"],
+    "subtypes"   : [""],
+    "rarity"     : "uncommon",
+    "power"      : "",
+    "toughness"  : "",
+    
+    "text"       : "When Spitting Volcano enters the battlefield, it deals 1 damage to target creature.\n{T}: Add 1 to your mana pool.\n{3}{R}: Return Spitting Volcano to its owner's hand.",
+    "flavor"     : "",
+    
+    "artist"     : "",
+    "artURL"     : "",
+    "imageURL"   : "",
+    "sourceURL"  : "http://www.magicmultiverse.net/cards/269",
+    "cardCode"   : "LU01",
+    "layout"     : "normal"
+  }
+    , 
+  { 
+    "name"       : "Ruthless Strategist",
+  
+    "manaCost"   : "BB",
+    "colors"     : ["Black"],
+    "type"       : "Creature — Human Rogue",
+    "supertypes" : [""],
+    "types"      : ["Creature"],
+    "subtypes"   : ["Human", "Rogue"],
+    "rarity"     : "uncommon",
+    "power"      : "2",
+    "toughness"  : "2",
+    
+    "text"       : "{1}{B}, sacrifice a creature: Target player loses 2 life.",
+    "flavor"     : "\"Guard the entrance while the saboteurs work, even if it costs your life. Which it probably will.\"",
+    
+    "artist"     : "",
+    "artURL"     : "",
+    "imageURL"   : "",
+    "sourceURL"  : "http://www.magicmultiverse.net/cards/136",
+    "cardCode"   : "BU04",
+    "layout"     : "normal"
+  }
+    , 
+  { 
+    "name"       : "Sky Temple",
+  
+    "manaCost"   : "",
+    "colors"     : [],
+    "type"       : "Artifact Land Creature — Construct",
+    "supertypes" : [""],
+    "types"      : ["Artifact", "Land", "Creature"],
+    "subtypes"   : ["Construct"],
+    "rarity"     : "uncommon",
+    "power"      : "1",
+    "toughness"  : "1",
+    
+    "text"       : "(Sky Temple isn't a spell, and it's affected by summoning sickness.)\nFlying\n{T}: Add {1} to your mana pool.",
+    "flavor"     : "Despite modern advances, there are some ancient constructions far beyond any current artificer's skill.",
+    
+    "artist"     : "",
+    "artURL"     : "",
+    "imageURL"   : "",
+    "sourceURL"  : "http://www.magicmultiverse.net/cards/270",
+    "cardCode"   : "LU02",
+    "layout"     : "normal"
+  }
+    , 
+  { 
+    "name"       : "Library of Atrapice",
+  
+    "manaCost"   : "",
+    "colors"     : [],
+    "type"       : "Artifact Land",
+    "supertypes" : [""],
+    "types"      : ["Artifact", "Land"],
+    "subtypes"   : [""],
+    "rarity"     : "rare",
+    "power"      : "",
+    "toughness"  : "",
+    
+    "text"       : "(Library of Atrapice isn't a spell.)\n{T}: Add {1} to your mana pool.\n{4}, {T}: Draw a card. Activate this ability only any time you could cast a sorcery.",
+    "flavor"     : "The site of artisans' learning and training is itself an intricately crafted masterpiece.",
+    
+    "artist"     : "",
+    "artURL"     : "",
+    "imageURL"   : "",
+    "sourceURL"  : "http://www.magicmultiverse.net/cards/282",
+    "cardCode"   : "LR05",
+    "layout"     : "normal"
+  }
+    , 
+  { 
+    "name"       : "Surprise Stomp",
+  
+    "manaCost"   : "4U",
+    "colors"     : ["Blue"],
+    "type"       : "Instant",
+    "supertypes" : [""],
+    "types"      : ["Instant"],
+    "subtypes"   : [""],
+    "rarity"     : "uncommon",
+    "power"      : "",
+    "toughness"  : "",
+    
+    "text"       : "Put a 3/3 Golem artifact creature token onto the battlefield.\nReminisce {1}{U}{U} ({1}{U}{U}, Exile this card from your hand: Return target instant card from your graveyard to your hand.)",
+    "flavor"     : "",
+    
+    "artist"     : "",
+    "artURL"     : "",
+    "imageURL"   : "",
+    "sourceURL"  : "http://www.magicmultiverse.net/cards/99",
+    "cardCode"   : "UU07",
+    "layout"     : "normal"
+  }
+    , 
+  { 
+    "name"       : "Stiller of Tongues",
+  
+    "manaCost"   : "2U",
+    "colors"     : ["Blue"],
+    "type"       : "Creature — Human Rogue",
+    "supertypes" : [""],
+    "types"      : ["Creature"],
+    "subtypes"   : ["Human", "Rogue"],
+    "rarity"     : "uncommon",
+    "power"      : "1",
+    "toughness"  : "2",
+    
+    "text"       : "{T}: Tap target permanent.",
+    "flavor"     : "\"A sensible citizen like yourself can see it's only wise to stay silent in troubled times like these. I'm sure your family would agree.\"",
+    
+    "artist"     : "",
+    "artURL"     : "",
+    "imageURL"   : "",
+    "sourceURL"  : "http://www.magicmultiverse.net/cards/97",
+    "cardCode"   : "UU05",
+    "layout"     : "normal"
+  }
+    , 
+  { 
+    "name"       : "Silvertongued Skypirate",
+  
+    "manaCost"   : "4UU",
+    "colors"     : ["Blue"],
+    "type"       : "Creature — Human Artificer Rogue",
+    "supertypes" : [""],
+    "types"      : ["Creature"],
+    "subtypes"   : ["Human", "Artificer", "Rogue"],
+    "rarity"     : "rare",
+    "power"      : "4",
+    "toughness"  : "4",
+    
+    "text"       : "Flying\n{U}: Target creature becomes an artifact creature in addition to its other types until end of turn.\n{1}{U}: Target artifact creature gains flying until end of turn.\n{3}{U}: Gain control of target artifact creature with flying.",
+    "flavor"     : "",
+    
+    "artist"     : "",
+    "artURL"     : "",
+    "imageURL"   : "",
+    "sourceURL"  : "http://www.magicmultiverse.net/cards/111",
+    "cardCode"   : "UR06",
+    "layout"     : "normal"
+  }
+    , 
+  { 
+    "name"       : "Outcast Magesmith",
+  
+    "manaCost"   : "2UU",
+    "colors"     : ["Blue"],
+    "type"       : "Creature — Human Artificer",
+    "supertypes" : [""],
+    "types"      : ["Creature"],
+    "subtypes"   : ["Human", "Artificer"],
+    "rarity"     : "rare",
+    "power"      : "1",
+    "toughness"  : "3",
+    
+    "text"       : "{U}{U}, {T}: Return target artifact to its owner's hand.",
+    "flavor"     : "Those who show more inclination to unmake than to make are not welcome in Atrapice.",
+    
+    "artist"     : "",
+    "artURL"     : "",
+    "imageURL"   : "",
+    "sourceURL"  : "http://www.magicmultiverse.net/cards/108",
+    "cardCode"   : "UR03",
+    "layout"     : "normal"
+  }
+    , 
+  { 
+    "name"       : "Mindblanker",
+  
+    "manaCost"   : "2U",
+    "colors"     : ["Blue"],
+    "type"       : "Creature — Vampire Wizard",
+    "supertypes" : [""],
+    "types"      : ["Creature"],
+    "subtypes"   : ["Vampire", "Wizard"],
+    "rarity"     : "uncommon",
+    "power"      : "2",
+    "toughness"  : "2",
+    
+    "text"       : "{1}{U}, {T}: Target creature loses all abilities until end of turn.",
+    "flavor"     : "\"Many of my kind do drain a victim's life, it's true. But I find it more entertaining to drain their identity, their skills, their very self.\"",
+    
+    "artist"     : "",
+    "artURL"     : "",
+    "imageURL"   : "",
+    "sourceURL"  : "http://www.magicmultiverse.net/cards/93",
+    "cardCode"   : "UU01",
+    "layout"     : "normal"
+  }
+    , 
+  { 
+    "name"       : "Master Puppetsmith",
+  
+    "manaCost"   : "2U",
+    "colors"     : ["Blue"],
+    "type"       : "Creature — Human Artificer",
+    "supertypes" : [""],
+    "types"      : ["Creature"],
+    "subtypes"   : ["Human", "Artificer"],
+    "rarity"     : "uncommon",
+    "power"      : "1",
+    "toughness"  : "1",
+    
+    "text"       : "{3}, {T}: Put a 1/1 Construct artifact creature token onto the battlefield.\nWhenever an artifact is put into a graveyard from the battlefield, you may draw a card.",
+    "flavor"     : "",
+    
+    "artist"     : "",
+    "artURL"     : "",
+    "imageURL"   : "",
+    "sourceURL"  : "http://www.magicmultiverse.net/cards/94",
+    "cardCode"   : "UU02",
+    "layout"     : "normal"
+  }
+    , 
+  { 
+    "name"       : "Looser of Tongues",
+  
+    "manaCost"   : "2U",
+    "colors"     : ["Blue"],
+    "type"       : "Creature — Human Rogue",
+    "supertypes" : [""],
+    "types"      : ["Creature"],
+    "subtypes"   : ["Human", "Rogue"],
+    "rarity"     : "uncommon",
+    "power"      : "1",
+    "toughness"  : "2",
+    
+    "text"       : "{T}: Untap target permanent.",
+    "flavor"     : "\"All we want is information. I'm a reasonable man. My associate here, on the other hand...\"",
+    
+    "artist"     : "",
+    "artURL"     : "",
+    "imageURL"   : "",
+    "sourceURL"  : "http://www.magicmultiverse.net/cards/96",
+    "cardCode"   : "UU04",
+    "layout"     : "normal"
+  }
+    , 
+  { 
+    "name"       : "Intensive Analysis",
+  
+    "manaCost"   : "4U",
+    "colors"     : ["Blue"],
+    "type"       : "Instant",
+    "supertypes" : [""],
+    "types"      : ["Instant"],
+    "subtypes"   : [""],
+    "rarity"     : "common",
+    "power"      : "",
+    "toughness"  : "",
+    
+    "text"       : "Draw cards equal to the converted mana cost of target artifact.\nReminisce {1}{U}{U} ({1}{U}{U}, Exile this card from your hand: Return target instant card from your graveyard to your hand.)",
+    "flavor"     : "",
+    
+    "artist"     : "",
+    "artURL"     : "",
+    "imageURL"   : "",
+    "sourceURL"  : "http://www.magicmultiverse.net/cards/87",
+    "cardCode"   : "UC11",
+    "layout"     : "normal"
+  }
+    , 
+  { 
+    "name"       : "Soliforge Guardsmith",
+  
+    "manaCost"   : "2WW",
+    "colors"     : ["White"],
+    "type"       : "Creature — Dwarf Artificer",
+    "supertypes" : [""],
+    "types"      : ["Creature"],
+    "subtypes"   : ["Dwarf", "Artificer"],
+    "rarity"     : "uncommon",
+    "power"      : "2",
+    "toughness"  : "2",
+    
+    "text"       : "{1}{W}{W}, {T}, Sacrifice an artifact: Destroy target attacking creature.",
+    "flavor"     : "\"Loot a dwarven forge? I'd sooner try to steal a tooth from a dragon.\"\n - Vinco, city thief",
+    
+    "artist"     : "",
+    "artURL"     : "",
+    "imageURL"   : "",
+    "sourceURL"  : "http://www.magicmultiverse.net/cards/59",
+    "cardCode"   : "WU06",
+    "layout"     : "normal"
+  }
+    , 
+  { 
+    "name"       : "Atrapice Drake",
+  
+    "manaCost"   : "UU",
+    "colors"     : ["Blue"],
+    "type"       : "Creature — Drake",
+    "supertypes" : [""],
+    "types"      : ["Creature"],
+    "subtypes"   : ["Drake"],
+    "rarity"     : "common",
+    "power"      : "2",
+    "toughness"  : "2",
+    
+    "text"       : "Flying\nAs an additional cost to cast Atrapice Drake, reveal an artifact card from your hand or pay {1}.\nAs an additional cost to cast Atrapice Drake, reveal an instant card from your hand or pay {1}.",
+    "flavor"     : "",
+    
+    "artist"     : "",
+    "artURL"     : "",
+    "imageURL"   : "",
+    "sourceURL"  : "http://www.magicmultiverse.net/cards/77",
+    "cardCode"   : "UC01",
+    "layout"     : "normal"
+  }
+    , 
+  { 
+    "name"       : "Wings of Lightning",
+  
+    "manaCost"   : "WW",
+    "colors"     : ["White"],
+    "type"       : "Enchantment — Aura",
+    "supertypes" : [""],
+    "types"      : ["Enchantment"],
+    "subtypes"   : ["Aura"],
+    "rarity"     : "rare",
+    "power"      : "",
+    "toughness"  : "",
+    
+    "text"       : "Enchant creature\nEnchanted creature has first strike, flying, vigilance and lifelink.\n{W}{W}: Return Wings of Lightning to its owner's hand.",
+    "flavor"     : "",
+    
+    "artist"     : "",
+    "artURL"     : "",
+    "imageURL"   : "",
+    "sourceURL"  : "http://www.magicmultiverse.net/cards/74",
+    "cardCode"   : "WR09",
+    "layout"     : "normal"
+  }
+    , 
+  { 
+    "name"       : "Stern Suppressor",
+  
+    "manaCost"   : "2W",
+    "colors"     : ["White"],
+    "type"       : "Creature — Dwarf Cleric",
+    "supertypes" : [""],
+    "types"      : ["Creature"],
+    "subtypes"   : ["Dwarf", "Cleric"],
+    "rarity"     : "uncommon",
+    "power"      : "1",
+    "toughness"  : "3",
+    
+    "text"       : "{1}, {T}: Target opponent reveals his or her hand.\n{2}, {T}: Target opponent can't cast sorcery spells this turn.",
+    "flavor"     : "\"Your unholy rituals will not serve you here.\"",
+    
+    "artist"     : "",
+    "artURL"     : "",
+    "imageURL"   : "",
+    "sourceURL"  : "http://www.magicmultiverse.net/cards/60",
+    "cardCode"   : "WU07",
+    "layout"     : "normal"
+  }
+    , 
+  { 
+    "name"       : "Soliforge Avenger",
+  
+    "manaCost"   : "WW",
+    "colors"     : ["White"],
+    "type"       : "Creature — Dwarf Artificer",
+    "supertypes" : [""],
+    "types"      : ["Creature"],
+    "subtypes"   : ["Dwarf", "Artificer"],
+    "rarity"     : "rare",
+    "power"      : "1",
+    "toughness"  : "1",
+    
+    "text"       : "{T}: Exile Soliforge Avenger and target creature.\nWhenever an artifact enters the battlefield under your control, you may untap Soliforge Avenger.",
+    "flavor"     : "",
+    
+    "artist"     : "",
+    "artURL"     : "",
+    "imageURL"   : "",
+    "sourceURL"  : "http://www.magicmultiverse.net/cards/67",
+    "cardCode"   : "WR02",
+    "layout"     : "normal"
+  }
+    , 
+  { 
+    "name"       : "Soliforge Marshal",
+  
+    "manaCost"   : "3WW",
+    "colors"     : ["White"],
+    "type"       : "Creature — Dwarf Artificer",
+    "supertypes" : [""],
+    "types"      : ["Creature"],
+    "subtypes"   : ["Dwarf", "Artificer"],
+    "rarity"     : "rare",
+    "power"      : "2",
+    "toughness"  : "3",
+    
+    "text"       : "{W}{W}, {T}, Sacrifice an artifact and an enchantment: Creatures you control get +2/+2 and gain first strike until end of turn.",
+    "flavor"     : "He earned his reputation at the Battle of Darkwood on the shockwave of an exploding skyship.",
+    
+    "artist"     : "",
+    "artURL"     : "",
+    "imageURL"   : "",
+    "sourceURL"  : "http://www.magicmultiverse.net/cards/66",
+    "cardCode"   : "WR01",
+    "layout"     : "normal"
+  }
+    , 
+  { 
+    "name"       : "Smith of Ages",
+  
+    "manaCost"   : "1WW",
+    "colors"     : ["White"],
+    "type"       : "Creature — Dwarf Artificer",
+    "supertypes" : [""],
+    "types"      : ["Creature"],
+    "subtypes"   : ["Dwarf", "Artificer"],
+    "rarity"     : "uncommon",
+    "power"      : "3",
+    "toughness"  : "2",
+    
+    "text"       : "{2}{W}, Sacrifice Smith of Ages: Return target artifact card from your graveyard to the battlefield.",
+    "flavor"     : "He's seen so many relics because he's practically one himself.",
+    
+    "artist"     : "",
+    "artURL"     : "",
+    "imageURL"   : "",
+    "sourceURL"  : "http://www.magicmultiverse.net/cards/57",
+    "cardCode"   : "WU04",
+    "layout"     : "normal"
+  }
+    , 
+  { 
+    "name"       : "Reality Sculptor",
+  
+    "manaCost"   : "2WW",
+    "colors"     : ["White"],
+    "type"       : "Creature — Human Wizard",
+    "supertypes" : [""],
+    "types"      : ["Creature"],
+    "subtypes"   : ["Human", "Wizard"],
+    "rarity"     : "rare",
+    "power"      : "2",
+    "toughness"  : "2",
+    
+    "text"       : "{W}{W}, {T}: Until end of turn, target permanent loses all types and becomes your choice of an artifact, an enchantment, a 2/2 creature, or a land.",
+    "flavor"     : "",
+    
+    "artist"     : "",
+    "artURL"     : "",
+    "imageURL"   : "",
+    "sourceURL"  : "http://www.magicmultiverse.net/cards/70",
+    "cardCode"   : "WR05",
+    "layout"     : "normal"
+  }
+    , 
+  { 
+    "name"       : "Naughtbringer",
+  
+    "manaCost"   : "2WW",
+    "colors"     : ["White"],
+    "type"       : "Creature — Avatar",
+    "supertypes" : [""],
+    "types"      : ["Creature"],
+    "subtypes"   : ["Avatar"],
+    "rarity"     : "mythic",
+    "power"      : "3",
+    "toughness"  : "3",
+    
+    "text"       : "Flying, shroud\nUnblocked creatures have \"{6}, sacrifice this creature: Destroy target permanent.\"",
+    "flavor"     : "It attacks not you, but what you depend on most.",
+    
+    "artist"     : "",
+    "artURL"     : "",
+    "imageURL"   : "",
+    "sourceURL"  : "http://www.magicmultiverse.net/cards/71",
+    "cardCode"   : "WR06",
+    "layout"     : "normal"
+  }
+    , 
+  { 
+    "name"       : "Master Falconwright",
+  
+    "manaCost"   : "2W",
+    "colors"     : ["White"],
+    "type"       : "Creature — Human Artificer",
+    "supertypes" : [""],
+    "types"      : ["Creature"],
+    "subtypes"   : ["Human", "Artificer"],
+    "rarity"     : "uncommon",
+    "power"      : "1",
+    "toughness"  : "1",
+    
+    "text"       : "{4}, {T}: Put a 1/1 Bird artifact creature token with flying onto the battlefield.",
+    "flavor"     : "He bids magnetite fly so it can get closer to the stars from whence it came.",
+    
+    "artist"     : "",
+    "artURL"     : "",
+    "imageURL"   : "",
+    "sourceURL"  : "http://www.magicmultiverse.net/cards/55",
+    "cardCode"   : "WU02",
+    "layout"     : "normal"
+  }
+    , 
+  { 
+    "name"       : "Ironcaste Concealer",
+  
+    "manaCost"   : "2W",
+    "colors"     : ["White"],
+    "type"       : "Creature — Human Artificer",
+    "supertypes" : [""],
+    "types"      : ["Creature"],
+    "subtypes"   : ["Human", "Artificer"],
+    "rarity"     : "common",
+    "power"      : "2",
+    "toughness"  : "1",
+    
+    "text"       : "Flying\n{1}{W}: Ironcaste Concealer becomes an artifact until end of turn. (It's no longer a creature this turn.)",
+    "flavor"     : "Some of the museary magesmiths can hide inside their kitesails at certain times - like when tax collectors call.",
+    
+    "artist"     : "",
+    "artURL"     : "",
+    "imageURL"   : "",
+    "sourceURL"  : "http://www.magicmultiverse.net/cards/53",
+    "cardCode"   : "WC16",
+    "layout"     : "normal"
+  }
+    , 
+  { 
+    "name"       : "Flitwing Forger",
+  
+    "manaCost"   : "1W",
+    "colors"     : ["White"],
+    "type"       : "Creature — Faerie Artificer",
+    "supertypes" : [""],
+    "types"      : ["Creature"],
+    "subtypes"   : ["Faerie", "Artificer"],
+    "rarity"     : "uncommon",
+    "power"      : "1",
+    "toughness"  : "1",
+    
+    "text"       : "Flying\n{T}: You may put an artifact card with converted mana cost 2 or less from your hand onto the battlefield.",
+    "flavor"     : "The fae approach artifice like anything else: hastily.",
+    
+    "artist"     : "",
+    "artURL"     : "",
+    "imageURL"   : "",
+    "sourceURL"  : "http://www.magicmultiverse.net/cards/56",
+    "cardCode"   : "WU03",
+    "layout"     : "normal"
+  }
+    , 
+  { 
+    "name"       : "Enforced Deference",
+  
+    "manaCost"   : "2W",
+    "colors"     : ["White"],
+    "type"       : "Enchantment — Aura",
+    "supertypes" : [""],
+    "types"      : ["Enchantment"],
+    "subtypes"   : ["Aura"],
+    "rarity"     : "common",
+    "power"      : "",
+    "toughness"  : "",
+    
+    "text"       : "Enchant creature\nEnchanted creature doesn't untap in its controller's untap step.\nReminisce {1}{W} ({1}{W}, Exile this card from your hand: Return target enchantment card from your graveyard to your hand.)",
+    "flavor"     : "\"My shrubbery bows when I walk past, and so shall you.\" - Atine",
+    
+    "artist"     : "",
+    "artURL"     : "",
+    "imageURL"   : "",
+    "sourceURL"  : "http://www.magicmultiverse.net/cards/49",
+    "cardCode"   : "WC12",
+    "layout"     : "normal"
+  }
+    , 
+  { 
+    "name"       : "Restless Outcropping",
+  
+    "manaCost"   : "",
+    "colors"     : [],
+    "type"       : "Land",
+    "supertypes" : [""],
+    "types"      : ["Land"],
+    "subtypes"   : [""],
+    "rarity"     : "common",
+    "power"      : "",
+    "toughness"  : "",
+    
+    "text"       : "Restless Outcropping enters the battlefield tapped.\n{T}: Add {R} to your mana pool.\nWhenever you cast a red spell, Restless Outcropping becomes a 3/2 red Elemental creature until end of turn. It's still a land.",
+    "flavor"     : "",
+    
+    "artist"     : "",
+    "artURL"     : "",
+    "imageURL"   : "",
+    "sourceURL"  : "http://www.magicmultiverse.net/cards/267",
+    "cardCode"   : "LC02",
+    "layout"     : "normal"
+  }
+    , 
+  { 
+    "name"       : "Statue of Eternity",
+  
+    "manaCost"   : "",
+    "colors"     : [],
+    "type"       : "Artifact Creature Enchantment Land — Construct",
+    "supertypes" : [""],
+    "types"      : ["Artifact", "Creature", "Enchantment", "Land"],
+    "subtypes"   : ["Construct"],
+    "rarity"     : "mythic",
+    "power"      : "4",
+    "toughness"  : "4",
+    
+    "text"       : "(Statue of Eternity isn't a spell, and it's affected by summoning sickness.)\n{T}: Add one mana of any colour to your mana pool.\nWhen Statue of Eternity becomes tapped, lose 3 life.\nAt the end of each turn, if you lost 3 or more life this turn, draw a card.",
+    "flavor"     : "",
+    
+    "artist"     : "",
+    "artURL"     : "",
+    "imageURL"   : "",
+    "sourceURL"  : "http://www.magicmultiverse.net/cards/1732",
+    "cardCode"   : "",
+    "layout"     : "normal"
+  }
+    , 
+  { 
+    "name"       : "Unexpected Eruption",
+  
+    "manaCost"   : "1R",
+    "colors"     : ["Red"],
+    "type"       : "Sorcery",
+    "supertypes" : [""],
+    "types"      : ["Sorcery"],
+    "subtypes"   : [""],
+    "rarity"     : "common",
+    "power"      : "",
+    "toughness"  : "",
+    
+    "text"       : "As an additional cost to cast Unexpected Eruption, sacrifice a land.\nAdd {R}{R}{R}{R} to your mana pool.",
+    "flavor"     : "Life in the unstable Khert steppes is exciting. At any time a swamp or island might disappear with no warning.",
+    
+    "artist"     : "",
+    "artURL"     : "",
+    "imageURL"   : "",
+    "sourceURL"  : "http://www.magicmultiverse.net/cards/165",
+    "cardCode"   : "RC09",
+    "layout"     : "normal"
+  }
+    , 
+  { 
+    "name"       : "Ubiquitous Strike",
+  
+    "manaCost"   : "1W",
+    "colors"     : ["White"],
+    "type"       : "Instant",
+    "supertypes" : [""],
+    "types"      : ["Instant"],
+    "subtypes"   : [""],
+    "rarity"     : "uncommon",
+    "power"      : "",
+    "toughness"  : "",
+    
+    "text"       : "Untap target creature. Until end of turn, that creature gains first strike and becomes an artifact, enchantment, and land in addition to its other types.\nDraw a card.",
+    "flavor"     : "Peering through the sudden glare, each onlooker saw what they desired most.",
+    
+    "artist"     : "",
+    "artURL"     : "",
+    "imageURL"   : "",
+    "sourceURL"  : "http://www.magicmultiverse.net/cards/64",
+    "cardCode"   : "WU11",
+    "layout"     : "normal"
+  }
+    , 
+  { 
+    "name"       : "Ecriot Infiltrator",
+  
+    "manaCost"   : "2U",
+    "colors"     : ["Blue"],
+    "type"       : "Creature — Human Rogue",
+    "supertypes" : [""],
+    "types"      : ["Creature"],
+    "subtypes"   : ["Human", "Rogue"],
+    "rarity"     : "common",
+    "power"      : "2",
+    "toughness"  : "1",
+    
+    "text"       : "Ecriot Infiltrator is unblockable as long as you have an instant card in your graveyard.",
+    "flavor"     : "FLAVOUR TEXT PENDING",
+    
+    "artist"     : "",
+    "artURL"     : "",
+    "imageURL"   : "",
+    "sourceURL"  : "http://www.magicmultiverse.net/cards/92",
+    "cardCode"   : "UC16",
+    "layout"     : "normal"
+  }
+    , 
+  { 
+    "name"       : "Wilderness Heretic",
+  
+    "manaCost"   : "R",
+    "colors"     : ["Red"],
+    "type"       : "Creature — Human Cleric",
+    "supertypes" : [""],
+    "types"      : ["Creature"],
+    "subtypes"   : ["Human", "Cleric"],
+    "rarity"     : "common",
+    "power"      : "1",
+    "toughness"  : "1",
+    
+    "text"       : "Wilderness Heretic gets +2/+2 as long as you control five or more lands.\nDiscard a sorcery card: Reveal the top card of your library. If it's a land card, put it into your hand. Otherwise, put it into your graveyard.",
+    "flavor"     : "\"Don't sit here listening to me preach! There's a world out there to explore!\"",
+    
+    "artist"     : "",
+    "artURL"     : "",
+    "imageURL"   : "",
+    "sourceURL"  : "http://www.magicmultiverse.net/cards/158",
+    "cardCode"   : "RC02",
+    "layout"     : "normal"
+  }
+    , 
+  { 
+    "name"       : "Farsight Grove",
+  
+    "manaCost"   : "",
+    "colors"     : [],
+    "type"       : "Land",
+    "supertypes" : [""],
+    "types"      : ["Land"],
+    "subtypes"   : [""],
+    "rarity"     : "common",
+    "power"      : "",
+    "toughness"  : "",
+    
+    "text"       : "Farsight Grove enters the battlefield tapped.\r\n{T}: Add {G} to your mana pool.\r\nBasic landcycling {1}{G} ({1}{G}, Discard this card: Search your library for a basic land card, reveal it, and put it into your hand. Then shuffle your library.)",
+    "flavor"     : "",
+    
+    "artist"     : "",
+    "artURL"     : "",
+    "imageURL"   : "",
+    "sourceURL"  : "http://www.magicmultiverse.net/cards/1134",
+    "cardCode"   : "LCnn",
+    "layout"     : "normal"
+  }
+    , 
+  { 
+    "name"       : "Surprise Flutter",
+  
+    "manaCost"   : "3U",
+    "colors"     : ["Blue"],
+    "type"       : "Instant",
+    "supertypes" : [""],
+    "types"      : ["Instant"],
+    "subtypes"   : [""],
+    "rarity"     : "common",
+    "power"      : "",
+    "toughness"  : "",
+    
+    "text"       : "Put two 1/1 blue Faerie Rogue creature tokens with flying onto the battlefield.",
+    "flavor"     : "The Condri lure marks into winged ambushes to ensure they get paid.",
+    
+    "artist"     : "",
+    "artURL"     : "",
+    "imageURL"   : "",
+    "sourceURL"  : "http://www.magicmultiverse.net/cards/83",
+    "cardCode"   : "UC07",
+    "layout"     : "normal"
+  }
+    , 
+  { 
+    "name"       : "Don Spidra the Merciless",
+  
+    "manaCost"   : "1BB",
+    "colors"     : ["Black"],
+    "type"       : "Legendary Creature — Human Assassin",
+    "supertypes" : ["Legendary"],
+    "types"      : ["Creature"],
+    "subtypes"   : ["Human", "Assassin"],
+    "rarity"     : "rare",
+    "power"      : "1",
+    "toughness"  : "1",
+    
+    "text"       : "{T}, Exile an instant card from your graveyard: Destroy target nonblack creature.",
+    "flavor"     : "\"My plans are far too important to be disrupted by one such as this. Kill him.\"",
+    
+    "artist"     : "",
+    "artURL"     : "",
+    "imageURL"   : "",
+    "sourceURL"  : "http://www.magicmultiverse.net/cards/148",
+    "cardCode"   : "BR03",
+    "layout"     : "normal"
+  }
+    , 
+  { 
+    "name"       : "Subterranean Waterway",
+  
+    "manaCost"   : "",
+    "colors"     : [],
+    "type"       : "Land",
+    "supertypes" : [""],
+    "types"      : ["Land"],
+    "subtypes"   : [""],
+    "rarity"     : "uncommon",
+    "power"      : "",
+    "toughness"  : "",
+    
+    "text"       : "{T}: Add 1 to your mana pool.\n{T}: Add {U} to your mana pool. Subterranean Waterway deals 1 damage to you.\n{T}: Add {B} to your mana pool. Subterranean Waterway doesn't untap in your next untap step.",
+    "flavor"     : "",
+    
+    "artist"     : "",
+    "artURL"     : "",
+    "imageURL"   : "",
+    "sourceURL"  : "http://www.magicmultiverse.net/cards/274",
+    "cardCode"   : "LU07",
+    "layout"     : "normal"
+  }
+    , 
+  { 
+    "name"       : "Wild Cliffside",
+  
+    "manaCost"   : "",
+    "colors"     : [],
+    "type"       : "Land",
+    "supertypes" : [""],
+    "types"      : ["Land"],
+    "subtypes"   : [""],
+    "rarity"     : "uncommon",
+    "power"      : "",
+    "toughness"  : "",
+    
+    "text"       : "{T}: Add {1} to your mana pool.\n{T}: Add {R} to your mana pool. Wild Cliffside deals 1 damage to you.\n{T}: Add {G} to your mana pool. Wild Cliffside doesn't untap in your next untap step.",
+    "flavor"     : "",
+    
+    "artist"     : "",
+    "artURL"     : "",
+    "imageURL"   : "",
+    "sourceURL"  : "http://www.magicmultiverse.net/cards/276",
+    "cardCode"   : "LU09",
+    "layout"     : "normal"
+  }
+    , 
+  { 
+    "name"       : "Summit of the Wyrm",
+  
+    "manaCost"   : "",
+    "colors"     : [],
+    "type"       : "Land",
+    "supertypes" : [""],
+    "types"      : ["Land"],
+    "subtypes"   : [""],
+    "rarity"     : "mythic",
+    "power"      : "",
+    "toughness"  : "",
+    
+    "text"       : "{T}: Add {R} to your mana pool. Summit of the Wyrm deals 1 damage to you.\nAt the beginning of your upkeep, if you control no Orcs, put a 2/2 red Orc creature token with haste onto the battlefield.\n{4}{R}{R}{R}, {T}: Target Orc gets +5/+5 and gains flying until end of turn.",
+    "flavor"     : "",
+    
+    "artist"     : "",
+    "artURL"     : "",
+    "imageURL"   : "",
+    "sourceURL"  : "http://www.magicmultiverse.net/cards/279",
+    "cardCode"   : "LR02",
+    "layout"     : "normal"
+  }
+    , 
+  { 
+    "name"       : "Bilespewer Demon",
+  
+    "manaCost"   : "5B",
+    "colors"     : ["Black"],
+    "type"       : "Creature — Demon",
+    "supertypes" : [""],
+    "types"      : ["Creature"],
+    "subtypes"   : ["Demon"],
+    "rarity"     : "rare",
+    "power"      : "4",
+    "toughness"  : "4",
+    
+    "text"       : "Flying\nAt the beginning of your upkeep, target player discards a card. Bilespewer Demon gets +2/+2 for each type the discarded card has. (Artifact, creature, enchantment, instant, land, planeswalker, sorcery, and tribal are card types.)",
+    "flavor"     : "",
+    
+    "artist"     : "",
+    "artURL"     : "",
+    "imageURL"   : "",
+    "sourceURL"  : "http://www.magicmultiverse.net/cards/149",
+    "cardCode"   : "BR04",
+    "layout"     : "normal"
+  }
+    , 
+  { 
+    "name"       : "Greedy Goldflitters",
+  
+    "manaCost"   : "U",
+    "colors"     : ["Blue"],
+    "type"       : "Creature — Faerie Rogue",
+    "supertypes" : [""],
+    "types"      : ["Creature"],
+    "subtypes"   : ["Faerie", "Rogue"],
+    "rarity"     : "rare",
+    "power"      : "3",
+    "toughness"  : "1",
+    
+    "text"       : "Flying\nAt the beginning of your upkeep, sacrifice Greedy Goldflitters unless you exile an instant or artifact card from your graveyard.",
+    "flavor"     : "\"Hire them. It'll be cheaper than the damage they'd cause otherwise.\"",
+    
+    "artist"     : "",
+    "artURL"     : "",
+    "imageURL"   : "",
+    "sourceURL"  : "http://www.magicmultiverse.net/cards/106",
+    "cardCode"   : "UR01",
+    "layout"     : "normal"
+  }
+    , 
+  { 
+    "name"       : "Seal of Chastisement",
+  
+    "manaCost"   : "2W",
+    "colors"     : ["White"],
+    "type"       : "Enchantment",
+    "supertypes" : [""],
+    "types"      : ["Enchantment"],
+    "subtypes"   : [""],
+    "rarity"     : "common",
+    "power"      : "",
+    "toughness"  : "",
+    
+    "text"       : "Lifelink\nSacrifice Seal of Chastisement: Seal of Chastisement deals 4 damage to target attacking creature.",
+    "flavor"     : "Trespassers will be treated with extreme prejudice \n- Inscription on the Ralatine gate",
+    
+    "artist"     : "",
+    "artURL"     : "",
+    "imageURL"   : "",
+    "sourceURL"  : "http://www.magicmultiverse.net/cards/52",
+    "cardCode"   : "WC15",
+    "layout"     : "normal"
+  }
+    , 
+  { 
+    "name"       : "Venerated Plateau",
+  
+    "manaCost"   : "",
+    "colors"     : [],
+    "type"       : "Tribal Land — Shaman",
+    "supertypes" : [""],
+    "types"      : ["Tribal", "Land"],
+    "subtypes"   : ["Shaman"],
+    "rarity"     : "common",
+    "power"      : "",
+    "toughness"  : "",
+    
+    "text"       : "Venerated Plateau enters the battlefield tapped.\nWhen Venerated Plateau enters the battlefield, return a land you control to its owner's hand.\n{T}: Add {1}{R} to your mana pool.\nTap an untapped Shaman creature you control: Untap Venerated Plateau.                     ",
+    "flavor"     : "",
+    
+    "artist"     : "",
+    "artURL"     : "",
+    "imageURL"   : "",
+    "sourceURL"  : "http://www.magicmultiverse.net/cards/266",
+    "cardCode"   : "LC01",
+    "layout"     : "normal"
+  }
+    , 
+  { 
+    "name"       : "Rethinker",
+  
+    "manaCost"   : "2U",
+    "colors"     : ["Blue"],
+    "type"       : "Creature — Human Wizard",
+    "supertypes" : [""],
+    "types"      : ["Creature"],
+    "subtypes"   : ["Human", "Wizard"],
+    "rarity"     : "uncommon",
+    "power"      : "1",
+    "toughness"  : "3",
+    
+    "text"       : "{U}{U}, {T}: Return target instant spell to its owner's hand.",
+    "flavor"     : "The Dons employ nullmages for when things don't go according to plan.",
+    
+    "artist"     : "",
+    "artURL"     : "",
+    "imageURL"   : "",
+    "sourceURL"  : "http://www.magicmultiverse.net/cards/104",
+    "cardCode"   : "UU12",
+    "layout"     : "normal"
+  }
+    , 
+  { 
+    "name"       : "Father Goron, Deep Incanter",
+  
+    "manaCost"   : "3RR",
+    "colors"     : ["Red"],
+    "type"       : "Legendary Creature — Human Cleric",
+    "supertypes" : ["Legendary"],
+    "types"      : ["Creature"],
+    "subtypes"   : ["Human", "Cleric"],
+    "rarity"     : "rare",
+    "power"      : "3",
+    "toughness"  : "2",
+    
+    "text"       : "Whenever you cast a sorcery spell, you may copy it and choose new targets for the copy.",
+    "flavor"     : "If you don't pay attention in mass, he'll keep you behind to repeat it.",
+    
+    "artist"     : "",
+    "artURL"     : "",
+    "imageURL"   : "",
+    "sourceURL"  : "http://www.magicmultiverse.net/cards/187",
+    "cardCode"   : "RR03",
+    "layout"     : "normal"
+  }
+    , 
+  { 
+    "name"       : "Eharot the Epithet",
+  
+    "manaCost"   : "4BR",
+    "colors"     : ["Black", "Red"],
+    "type"       : "Legendary Creature — Demon",
+    "supertypes" : ["Legendary"],
+    "types"      : ["Creature"],
+    "subtypes"   : ["Demon"],
+    "rarity"     : "mythic",
+    "power"      : "6",
+    "toughness"  : "6",
+    
+    "text"       : "Whenever Eharot the Epithet attacks, each player loses 1 life, discards a card, sacrifices a creature, then sacrifices a land.",
+    "flavor"     : "",
+    
+    "artist"     : "",
+    "artURL"     : "",
+    "imageURL"   : "",
+    "sourceURL"  : "http://www.magicmultiverse.net/cards/243",
+    "cardCode"   : "ZR03",
+    "layout"     : "normal"
+  }
+    , 
+  { 
+    "name"       : "Skywarper Mass",
+  
+    "manaCost"   : "3GG",
+    "colors"     : ["Green"],
+    "type"       : "Enchantment Creature — Elemental Plant",
+    "supertypes" : [""],
+    "types"      : ["Enchantment", "Creature"],
+    "subtypes"   : ["Elemental", "Plant"],
+    "rarity"     : "rare",
+    "power"      : "3",
+    "toughness"  : "4",
+    
+    "text"       : "All creatures lose flying.\nAll creatures have trample.\nReminisce {1}{G} ({1}{G}, Exile this card from your hand: Return target creature or enchantment card from your graveyard to your hand.)",
+    "flavor"     : "",
+    
+    "artist"     : "",
+    "artURL"     : "",
+    "imageURL"   : "",
+    "sourceURL"  : "http://www.magicmultiverse.net/cards/230",
+    "cardCode"   : "GR06",
+    "layout"     : "normal"
+  }
+    , 
+  { 
+    "name"       : "Mirrorglade Gazebo",
+  
+    "manaCost"   : "5WW",
+    "colors"     : ["White"],
+    "type"       : "Enchantment Creature — Spirit",
+    "supertypes" : [""],
+    "types"      : ["Enchantment", "Creature"],
+    "subtypes"   : ["Spirit"],
+    "rarity"     : "uncommon",
+    "power"      : "4",
+    "toughness"  : "4",
+    
+    "text"       : "Creatures you control have lifelink.",
+    "flavor"     : "Some enchanters layered so many augments on their villas that the buildings acquired not just character, but personalities.",
+    
+    "artist"     : "",
+    "artURL"     : "",
+    "imageURL"   : "",
+    "sourceURL"  : "http://www.magicmultiverse.net/cards/58",
+    "cardCode"   : "WU05",
+    "layout"     : "normal"
+  }
+    , 
+  { 
+    "name"       : "Atine, Duchess of Fiescura",
+  
+    "manaCost"   : "1GG",
+    "colors"     : ["Green"],
+    "type"       : "Legendary Creature — Human Druid",
+    "supertypes" : ["Legendary"],
+    "types"      : ["Creature"],
+    "subtypes"   : ["Human", "Druid"],
+    "rarity"     : "rare",
+    "power"      : "2",
+    "toughness"  : "2",
+    
+    "text"       : "Atine, Duchess of Fiescura gets +1/+1 for each Aura attached to her.\nAs long as Atine is enchanted, she has vigilance.\nAs long as Atine is enchanted by two or more Auras, she's indestructible and can't be blocked except by two or more creatures.",
+    "flavor"     : "",
+    
+    "artist"     : "Marvel",
+    "artURL"     : "http://3.bp.blogspot.com/_Poiaeqfh2_0/TJ_2IbVIHTI/AAAAAAAAA_0/oUb7DWZZuaw/s1600/enchantress.jpg",
+    "imageURL"   : "http://www.vitenka.com/AlexMtg/Set-files/Atine%20Duchess%20of%20Fiescura.jpg",
+    "sourceURL"  : "http://www.magicmultiverse.net/cards/226",
+    "cardCode"   : "GR02",
+    "layout"     : "normal"
+  }
+    , 
+  { 
+    "name"       : "Voice of Ages Past",
+  
+    "manaCost"   : "6",
+    "colors"     : [],
+    "type"       : "Artifact Creature Enchantment — Angel",
+    "supertypes" : [""],
+    "types"      : ["Artifact", "Creature", "Enchantment"],
+    "subtypes"   : ["Angel"],
+    "rarity"     : "rare",
+    "power"      : "4",
+    "toughness"  : "4",
+    
+    "text"       : "Flying\nIf you would draw a card, instead return a card from your graveyard to your hand. If you can't, you lose the game.\nIf a card would be put into your graveyard from anywhere, exile it instead.",
+    "flavor"     : "",
+    
+    "artist"     : "",
+    "artURL"     : "",
+    "imageURL"   : "",
+    "sourceURL"  : "http://www.magicmultiverse.net/cards/283",
+    "cardCode"   : "AR01",
+    "layout"     : "normal"
+  }
+    , 
+  { 
+    "name"       : "Tower of Eternity",
+  
+    "manaCost"   : "",
+    "colors"     : [],
+    "type"       : "Artifact Creature Enchantment Land — Elemental",
+    "supertypes" : [""],
+    "types"      : ["Artifact", "Creature", "Enchantment", "Land"],
+    "subtypes"   : ["Elemental"],
+    "rarity"     : "mythic",
+    "power"      : "5",
+    "toughness"  : "5",
+    
+    "text"       : "Tower of Eternity is all colours. (It isn't a spell, and it's affected by summoning sickness.)\nWhen Tower of Eternity enters the battlefield, pay {W}{U}{B}{R}{G} or sacrifice Tower of Eternity.\n{T}: Add two mana in any combination of colours to your mana pool.\n{W}{U}{B}{R}{G}, {T}: Cast a nonland card from your hand without paying its mana cost.",
+    "flavor"     : "",
+    
+    "artist"     : "",
+    "artURL"     : "",
+    "imageURL"   : "",
+    "sourceURL"  : "http://www.magicmultiverse.net/cards/278",
+    "cardCode"   : "LR01",
+    "layout"     : "normal"
+  }
+    , 
+  { 
+    "name"       : "Firesnake Eruption",
+  
+    "manaCost"   : "XR",
+    "colors"     : ["Red"],
+    "type"       : "Sorcery",
+    "supertypes" : [""],
+    "types"      : ["Sorcery"],
+    "subtypes"   : [""],
+    "rarity"     : "uncommon",
+    "power"      : "",
+    "toughness"  : "",
+    
+    "text"       : "Put a 0/-3 red Elemental Serpent\ncreature token with haste\nonto the battlefield with X+1\n+1/+1 counters on it.",
+    "flavor"     : "The molten fury of the firelake Rayja strikes without warning.",
+    
+    "artist"     : "",
+    "artURL"     : "",
+    "imageURL"   : "",
+    "sourceURL"  : "http://www.magicmultiverse.net/cards/177",
+    "cardCode"   : "RU05",
+    "layout"     : "normal"
+  }
+    , 
+  { 
+    "name"       : "Silkvine",
+  
+    "manaCost"   : "2GG",
+    "colors"     : ["Green"],
+    "type"       : "Enchantment Creature — Elemental Spider",
+    "supertypes" : [""],
+    "types"      : ["Enchantment", "Creature"],
+    "subtypes"   : ["Elemental", "Spider"],
+    "rarity"     : "uncommon",
+    "power"      : "1",
+    "toughness"  : "4",
+    
+    "text"       : "Creatures you control have reach.\nReminisce {1}{G} ({1}{G}, Exile this card from your hand: Return target creature or enchantment card from your graveyard to your hand.)",
+    "flavor"     : "",
+    
+    "artist"     : "",
+    "artURL"     : "",
+    "imageURL"   : "",
+    "sourceURL"  : "http://www.magicmultiverse.net/cards/214",
+    "cardCode"   : "GU03",
+    "layout"     : "normal"
+  }
+    , 
+  { 
+    "name"       : "Amphitheatre of Titans",
+  
+    "manaCost"   : "6",
+    "colors"     : [],
+    "type"       : "Artifact",
+    "supertypes" : [""],
+    "types"      : ["Artifact"],
+    "subtypes"   : [""],
+    "rarity"     : "mythic",
+    "power"      : "",
+    "toughness"  : "",
+    
+    "text"       : "{3}: Each player puts a 3/3 Golem artifact creature token onto the battlefield. Any player may activate this ability.\nGolem creatures block each turn if able.\n{W}{W}: Creatures you control gain first strike until end of turn.",
+    "flavor"     : "",
+    
+    "artist"     : "",
+    "artURL"     : "",
+    "imageURL"   : "",
+    "sourceURL"  : "http://www.magicmultiverse.net/cards/261",
+    "cardCode"   : "AR02",
+    "layout"     : "normal"
+  }
+    , 
+  { 
+    "name"       : "Infiltrator's Cape",
+  
+    "manaCost"   : "4",
+    "colors"     : [],
+    "type"       : "Artifact — Equipment",
+    "supertypes" : [""],
+    "types"      : ["Artifact"],
+    "subtypes"   : ["Equipment"],
+    "rarity"     : "uncommon",
+    "power"      : "",
+    "toughness"  : "",
+    
+    "text"       : "Flash\nWhen Infiltrator's Cape enters the battlefield, you may attach it to target creature.\nEquipped creature gets +1/+2 and has flying.\nEquip {3}",
+    "flavor"     : "",
+    
+    "artist"     : "",
+    "artURL"     : "",
+    "imageURL"   : "",
+    "sourceURL"  : "http://www.magicmultiverse.net/cards/258",
+    "cardCode"   : "AU06",
+    "layout"     : "normal"
+  }
+    , 
+  { 
+    "name"       : "Mirror of Foresight",
+  
+    "manaCost"   : "X",
+    "colors"     : [],
+    "type"       : "Artifact",
+    "supertypes" : [""],
+    "types"      : ["Artifact"],
+    "subtypes"   : [""],
+    "rarity"     : "rare",
+    "power"      : "",
+    "toughness"  : "",
+    
+    "text"       : "Mirror of Foresight enters the battlefield with X charge counters on it.\n{1}, {T}: Look at the top X cards of your library, where X is the number of charge counters on Mirror of Foresight. Put them back in any order.",
+    "flavor"     : "",
+    
+    "artist"     : "",
+    "artURL"     : "",
+    "imageURL"   : "",
+    "sourceURL"  : "http://www.magicmultiverse.net/cards/264",
+    "cardCode"   : "AR05",
+    "layout"     : "normal"
+  }
+    , 
+  { 
+    "name"       : "Unwelcoming Mirrorglade",
+  
+    "manaCost"   : "",
+    "colors"     : [],
+    "type"       : "Land",
+    "supertypes" : [""],
+    "types"      : ["Land"],
+    "subtypes"   : [""],
+    "rarity"     : "uncommon",
+    "power"      : "",
+    "toughness"  : "",
+    
+    "text"       : "{T}: Add 1 to your mana pool.\n{2}{G}: Unwelcoming Mirrorglade becomes your choice of a 3/3 green Treefolk creature land or a green enchantment land until end of turn. (It's no longer any other types this turn.)\nAs long as Unwelcoming Mirrorglade is an enchantment, other enchantments you control have shroud.",
+    "flavor"     : "",
+    
+    "artist"     : "",
+    "artURL"     : "",
+    "imageURL"   : "",
+    "sourceURL"  : "http://www.magicmultiverse.net/cards/272",
+    "cardCode"   : "LU04",
+    "layout"     : "normal"
+  }
+    , 
+  { 
+    "name"       : "Scimitar of Wastefulness",
+  
+    "manaCost"   : "2",
+    "colors"     : [],
+    "type"       : "Artifact — Equipment",
+    "supertypes" : [""],
+    "types"      : ["Artifact"],
+    "subtypes"   : ["Equipment"],
+    "rarity"     : "uncommon",
+    "power"      : "",
+    "toughness"  : "",
+    
+    "text"       : "Equip {2}\nEquipped creature gets +3/+3 and has \"When this creature attacks, sacrifice a land\".",
+    "flavor"     : "Barbarians rarely care about collateral damage.",
+    
+    "artist"     : "",
+    "artURL"     : "",
+    "imageURL"   : "",
+    "sourceURL"  : "http://www.magicmultiverse.net/cards/257",
+    "cardCode"   : "AU05",
+    "layout"     : "normal"
+  }
+    , 
+  { 
+    "name"       : "Grimoire of Forethought",
+  
+    "manaCost"   : "4",
+    "colors"     : [],
+    "type"       : "Artifact",
+    "supertypes" : [""],
+    "types"      : ["Artifact"],
+    "subtypes"   : [""],
+    "rarity"     : "rare",
+    "power"      : "",
+    "toughness"  : "",
+    
+    "text"       : "When Grimoire of Forethought enters the battlefield, exile any number of cards from your hand face down. You may look at those cards at any time.\r\nWhenever an opponent casts a spell, you may cast an instant card exiled with Grimoire of Forethought with the same converted mana cost as that spell without paying its mana cost.",
+    "flavor"     : "",
+    
+    "artist"     : "",
+    "artURL"     : "",
+    "imageURL"   : "",
+    "sourceURL"  : "http://www.magicmultiverse.net/cards/263",
+    "cardCode"   : "AR04",
+    "layout"     : "normal"
+  }
+    , 
+  { 
+    "name"       : "Bludgeoning Warhammer",
+  
+    "manaCost"   : "3",
+    "colors"     : [],
+    "type"       : "Artifact — Equipment",
+    "supertypes" : [""],
+    "types"      : ["Artifact"],
+    "subtypes"   : ["Equipment"],
+    "rarity"     : "uncommon",
+    "power"      : "",
+    "toughness"  : "",
+    
+    "text"       : "Equip {2}\nEquipped creature has overpower {3}. (It has \"{3}: Target creature blocking this creature gets -1/-1 until end of turn.\")",
+    "flavor"     : "",
+    
+    "artist"     : "",
+    "artURL"     : "",
+    "imageURL"   : "",
+    "sourceURL"  : "http://www.magicmultiverse.net/cards/259",
+    "cardCode"   : "AU07",
+    "layout"     : "normal"
+  }
+    , 
+  { 
+    "name"       : "Ironcaste Waypoint",
+  
+    "manaCost"   : "2",
+    "colors"     : [],
+    "type"       : "Artifact Enchantment",
+    "supertypes" : [""],
+    "types"      : ["Artifact", "Enchantment"],
+    "subtypes"   : [""],
+    "rarity"     : "uncommon",
+    "power"      : "",
+    "toughness"  : "",
+    
+    "text"       : "Creatures you control have +0/+1.\n{2}{W}: Creatures you control get +1/+0 until end of turn.",
+    "flavor"     : "The sight strengthens weary troops' morale.",
+    
+    "artist"     : "",
+    "artURL"     : "",
+    "imageURL"   : "",
+    "sourceURL"  : "http://www.magicmultiverse.net/cards/253",
+    "cardCode"   : "AU01",
+    "layout"     : "normal"
+  }
+    , 
+  { 
+    "name"       : "Soulblade of Honour",
+  
+    "manaCost"   : "1",
+    "colors"     : [],
+    "type"       : "Artifact — Equipment",
+    "supertypes" : [""],
+    "types"      : ["Artifact"],
+    "subtypes"   : ["Equipment"],
+    "rarity"     : "uncommon",
+    "power"      : "",
+    "toughness"  : "",
+    
+    "text"       : "Equip {2}\n{1}{W}: Until end of turn, Soulblade of Honour becomes a white Aura enchantment in addition to its other types and gains enchant creature.\nEquipped creature has first strike.\nEnchanted creature has lifelink and +1/+0.",
+    "flavor"     : "",
+    
+    "artist"     : "",
+    "artURL"     : "",
+    "imageURL"   : "",
+    "sourceURL"  : "http://www.magicmultiverse.net/cards/256",
+    "cardCode"   : "AU04",
+    "layout"     : "normal"
+  }
+    , 
+  { 
+    "name"       : "Nostalgia Portrait",
+  
+    "manaCost"   : "1",
+    "colors"     : [],
+    "type"       : "Artifact Enchantment",
+    "supertypes" : [""],
+    "types"      : ["Artifact", "Enchantment"],
+    "subtypes"   : [""],
+    "rarity"     : "rare",
+    "power"      : "",
+    "toughness"  : "",
+    
+    "text"       : "Cards in your hand have reminisce {4}. (They have \"{4}, Exile this card from your hand: Return target card which shares a card type with this card from your graveyard to your hand.\")",
+    "flavor"     : "",
+    
+    "artist"     : "",
+    "artURL"     : "",
+    "imageURL"   : "",
+    "sourceURL"  : "http://www.magicmultiverse.net/cards/262",
+    "cardCode"   : "AR03",
+    "layout"     : "normal"
+  }
+    , 
+  { 
+    "name"       : "Uniscape Bracers",
+  
+    "manaCost"   : "1",
+    "colors"     : [],
+    "type"       : "Artifact — Equipment",
+    "supertypes" : [""],
+    "types"      : ["Artifact"],
+    "subtypes"   : ["Equipment"],
+    "rarity"     : "rare",
+    "power"      : "",
+    "toughness"  : "",
+    
+    "text"       : "Equip {1}\nEquipped creature is an artifact, enchantment, and land of all land types in addition to its other types. Equipped creature has haste.",
+    "flavor"     : "Your shadow will be everywhere.",
+    
+    "artist"     : "",
+    "artURL"     : "",
+    "imageURL"   : "",
+    "sourceURL"  : "http://www.magicmultiverse.net/cards/265",
+    "cardCode"   : "AR06",
+    "layout"     : "normal"
+  }
+    , 
+  { 
+    "name"       : "Dampening Doors",
+  
+    "manaCost"   : "2",
+    "colors"     : [],
+    "type"       : "Artifact",
+    "supertypes" : [""],
+    "types"      : ["Artifact"],
+    "subtypes"   : [""],
+    "rarity"     : "uncommon",
+    "power"      : "",
+    "toughness"  : "",
+    
+    "text"       : "As Dampening Doors enters the battlefield, choose an opponent.\nWhenever a creature the chosen player controls attacks, that creature gets -1/-0.\n{1}{W}: Return Dampening Doors to its owner's hand.",
+    "flavor"     : "",
+    
+    "artist"     : "",
+    "artURL"     : "",
+    "imageURL"   : "",
+    "sourceURL"  : "http://www.magicmultiverse.net/cards/254",
+    "cardCode"   : "AU02",
+    "layout"     : "normal"
+  }
+    , 
+  { 
+    "name"       : "Hand of Ubiquity",
+  
+    "manaCost"   : "1G",
+    "colors"     : ["Green"],
+    "type"       : "Creature — Dryad",
+    "supertypes" : [""],
+    "types"      : ["Creature"],
+    "subtypes"   : ["Dryad"],
+    "rarity"     : "rare",
+    "power"      : "1",
+    "toughness"  : "2",
+    
+    "text"       : "{T}: Add {G} to your mana pool for each card type Hand of Ubiquity has.\n{G}{G}: Choose artifact, enchantment or land. If Hand of Ubiquity isn't already the chosen type, put a +1/+1 counter on her and she becomes that type in addition to her other types.",
+    "flavor"     : "",
+    
+    "artist"     : "",
+    "artURL"     : "",
+    "imageURL"   : "",
+    "sourceURL"  : "http://www.magicmultiverse.net/cards/228",
+    "cardCode"   : "GR04",
+    "layout"     : "normal"
+  }
+    , 
+  { 
+    "name"       : "In Tune with the World",
+  
+    "manaCost"   : "1G",
+    "colors"     : ["Green"],
+    "type"       : "Enchantment",
+    "supertypes" : [""],
+    "types"      : ["Enchantment"],
+    "subtypes"   : [""],
+    "rarity"     : "rare",
+    "power"      : "",
+    "toughness"  : "",
+    
+    "text"       : "When In Tune with the World enters the battlefield, draw a card.\nEnchantment spells you cast cost one less colored mana to cast. (This effect reduces only the amount of colored mana you pay. For example, you may cast an enchantment costing {1}{G}{W} for {1}{G} or {1}{W}.)",
+    "flavor"     : "",
+    
+    "artist"     : "",
+    "artURL"     : "",
+    "imageURL"   : "",
+    "sourceURL"  : "http://www.magicmultiverse.net/cards/232",
+    "cardCode"   : "GR08",
+    "layout"     : "normal"
+  }
+    , 
+  { 
+    "name"       : "Cathedral Gargoyle",
+  
+    "manaCost"   : "2",
+    "colors"     : [],
+    "type"       : "Artifact Creature — Gargoyle",
+    "supertypes" : [""],
+    "types"      : ["Artifact", "Creature"],
+    "subtypes"   : ["Gargoyle"],
+    "rarity"     : "common",
+    "power"      : "1",
+    "toughness"  : "1",
+    
+    "text"       : "Flying\n{T}: Cathedral Gargoyle gets -1/+3 and loses flying.",
+    "flavor"     : "Laity are startled when they start moving. Raiders are startled when they stop.",
+    
+    "artist"     : "",
+    "artURL"     : "",
+    "imageURL"   : "",
+    "sourceURL"  : "http://www.magicmultiverse.net/cards/247",
+    "cardCode"   : "AC02",
+    "layout"     : "normal"
+  }
+    , 
+  { 
+    "name"       : "Jewelled Prism",
+  
+    "manaCost"   : "3",
+    "colors"     : [],
+    "type"       : "Artifact",
+    "supertypes" : [""],
+    "types"      : ["Artifact"],
+    "subtypes"   : [""],
+    "rarity"     : "common",
+    "power"      : "",
+    "toughness"  : "",
+    
+    "text"       : "Flash\n{T}: Add one mana of any colour to your mana pool.",
+    "flavor"     : "The smiths would make more of them if they could stop the Zerians using them in their twisted rituals.",
+    
+    "artist"     : "",
+    "artURL"     : "",
+    "imageURL"   : "",
+    "sourceURL"  : "http://www.magicmultiverse.net/cards/252",
+    "cardCode"   : "AC07",
+    "layout"     : "normal"
+  }
+    , 
+  { 
+    "name"       : "Don Condri the Shifting Current",
+  
+    "manaCost"   : "2UB",
+    "colors"     : ["Blue", "Black"],
+    "type"       : "Legendary Creature — Human Rogue",
+    "supertypes" : ["Legendary"],
+    "types"      : ["Creature"],
+    "subtypes"   : ["Human", "Rogue"],
+    "rarity"     : "rare",
+    "power"      : "2",
+    "toughness"  : "2",
+    
+    "text"       : "Flying, flash\nWhen Don Condri the Shifting Current enters the battlefield, you may search your library for up to two instant cards, reveal them, put them into your hand, then shuffle your library.",
+    "flavor"     : "",
+    
+    "artist"     : "",
+    "artURL"     : "",
+    "imageURL"   : "",
+    "sourceURL"  : "http://www.magicmultiverse.net/cards/242",
+    "cardCode"   : "ZR02",
+    "layout"     : "normal"
+  }
+    , 
+  { 
+    "name"       : "Ironfist Doorkeeper",
+  
+    "manaCost"   : "3",
+    "colors"     : [],
+    "type"       : "Artifact Creature — Golem",
+    "supertypes" : [""],
+    "types"      : ["Artifact", "Creature"],
+    "subtypes"   : ["Golem"],
+    "rarity"     : "common",
+    "power"      : "2",
+    "toughness"  : "2",
+    
+    "text"       : "Overpower {3} ({3}: Target creature blocking Ironfist Doorkeeper gets -1/-1 until end of turn.)",
+    "flavor"     : "Wrestling your way into a museary is rarely attempted, and never succeeds.",
+    
+    "artist"     : "",
+    "artURL"     : "",
+    "imageURL"   : "",
+    "sourceURL"  : "http://www.magicmultiverse.net/cards/248",
+    "cardCode"   : "AC03",
+    "layout"     : "normal"
+  }
+    , 
+  { 
+    "name"       : "Ralatine Sentinel",
+  
+    "manaCost"   : "3",
+    "colors"     : [],
+    "type"       : "Artifact Creature — Bird",
+    "supertypes" : [],
+    "types"      : ["Artifact", "Creature"],
+    "subtypes"   : ["Bird"],
+    "rarity"     : "common",
+    "power"      : "1",
+    "toughness"  : "2",
+    
+    "text"       : "Flying\nRalatine Sentinel has shroud as long as it's enchanted.",
+    "flavor"     : "Atine's daughter sculpts filigree falcons. Atine enjoys bringing them to life to patrol the skies around her mansion.",
+    
+    "artist"     : "",
+    "artURL"     : "",
+    "imageURL"   : "",
+    "sourceURL"  : "http://www.magicmultiverse.net/cards/246",
+    "cardCode"   : "AC01",
+    "layout"     : "normal"
+  }
+    , 
+  { 
+    "name"       : "Erack the Outcast",
+  
+    "manaCost"   : "1GW",
+    "colors"     : ["White", "Green"],
+    "type"       : "Legendary Creature — Human Druid",
+    "supertypes" : ["Legendary"],
+    "types"      : ["Creature"],
+    "subtypes"   : ["Human", "Druid"],
+    "rarity"     : "rare",
+    "power"      : "2",
+    "toughness"  : "2",
+    
+    "text"       : "Artifact creatures you control have +1/+1.\nEnchantment creatures you control have +1/+1.\nLand creatures you control have +1/+1.",
+    "flavor"     : "",
+    
+    "artist"     : "",
+    "artURL"     : "",
+    "imageURL"   : "",
+    "sourceURL"  : "http://www.magicmultiverse.net/cards/245",
+    "cardCode"   : "ZR05",
+    "layout"     : "normal"
+  }
+    , 
+  { 
+    "name"       : "Mephisto the Adaptable",
+  
+    "manaCost"   : "1RG",
+    "colors"     : ["Red", "Green"],
+    "type"       : "Legendary Creature — Cat Shaman",
+    "supertypes" : ["Legendary"],
+    "types"      : ["Creature"],
+    "subtypes"   : ["Cat", "Shaman"],
+    "rarity"     : "rare",
+    "power"      : "3",
+    "toughness"  : "3",
+    
+    "text"       : "As long as Mephisto the Adaptable has reach, he has flying. As long as he has first strike, he has double strike. As long as he has lifelink, he has deathtouch.",
+    "flavor"     : "\"I am practiced in making the most of what I'm given.\"",
+    
+    "artist"     : "",
+    "artURL"     : "",
+    "imageURL"   : "",
+    "sourceURL"  : "http://www.magicmultiverse.net/cards/244",
+    "cardCode"   : "ZR04",
+    "layout"     : "normal"
+  }
+    , 
+  { 
+    "name"       : "Tanith, Steelwing Artisan",
+  
+    "manaCost"   : "1WU",
+    "colors"     : ["White", "Blue"],
+    "type"       : "Legendary Creature — Human Artificer",
+    "supertypes" : ["Legendary"],
+    "types"      : ["Creature"],
+    "subtypes"   : ["Human", "Artificer"],
+    "rarity"     : "rare",
+    "power"      : "2",
+    "toughness"  : "3",
+    
+    "text"       : "Flying\nWU: Target creature gets +2/+2 and gains flying until end of turn.",
+    "flavor"     : "\"I have to admire the enterprising souls who try to ride two at once.\"",
+    
+    "artist"     : "",
+    "artURL"     : "",
+    "imageURL"   : "",
+    "sourceURL"  : "http://www.magicmultiverse.net/cards/241",
+    "cardCode"   : "ZR01",
+    "layout"     : "normal"
+  }
+    , 
+  { 
+    "name"       : "Illuminating Insight",
+  
+    "manaCost"   : "GW",
+    "colors"     : ["White", "Green"],
+    "type"       : "Sorcery",
+    "supertypes" : [],
+    "types"      : ["Sorcery"],
+    "subtypes"   : [],
+    "rarity"     : "uncommon",
+    "power"      : "",
+    "toughness"  : "",
+    
+    "text"       : "Search your library for an enchantment card, reveal it, and put it into your hand. Then shuffle your library.",
+    "flavor"     : "\"You seek to augment reality. Perhaps you don't like to admit the way things are?\"",
+    
+    "artist"     : "",
+    "artURL"     : "",
+    "imageURL"   : "",
+    "sourceURL"  : "http://www.magicmultiverse.net/cards/240",
+    "cardCode"   : "ZU05",
+    "layout"     : "normal"
+  }
+    , 
+  { 
+    "name"       : "Distant Insight",
+  
+    "manaCost"   : "RG",
+    "colors"     : ["Red", "Green"],
+    "type"       : "Sorcery",
+    "supertypes" : [],
+    "types"      : ["Sorcery"],
+    "subtypes"   : [],
+    "rarity"     : "uncommon",
+    "power"      : "",
+    "toughness"  : "",
+    
+    "text"       : "Search your library for a land card, reveal it, and put it into your hand. Then shuffle your library.",
+    "flavor"     : "\"You seek a new realm. Perhaps you're hesitant to settle down?\"",
+    
+    "artist"     : "",
+    "artURL"     : "",
+    "imageURL"   : "",
+    "sourceURL"  : "http://www.magicmultiverse.net/cards/239",
+    "cardCode"   : "ZU04",
+    "layout"     : "normal"
+  }
+    , 
+  { 
+    "name"       : "Authoritative Insight",
+  
+    "manaCost"   : "BR",
+    "colors"     : ["Black", "Red"],
+    "type"       : "Sorcery",
+    "supertypes" : [],
+    "types"      : ["Sorcery"],
+    "subtypes"   : [],
+    "rarity"     : "uncommon",
+    "power"      : "",
+    "toughness"  : "",
+    
+    "text"       : "Search your library for a sorcery card, reveal it, and put it into your hand. Then shuffle your library.",
+    "flavor"     : "\"You seek a forthright declaration. Perhaps you feel threatened by dialogue?\"",
+    
+    "artist"     : "",
+    "artURL"     : "",
+    "imageURL"   : "",
+    "sourceURL"  : "http://www.magicmultiverse.net/cards/238",
+    "cardCode"   : "ZU03",
+    "layout"     : "normal"
+  }
+    , 
+  { 
+    "name"       : "Intuitive Insight",
+  
+    "manaCost"   : "UB",
+    "colors"     : ["Blue", "Black"],
+    "type"       : "Sorcery",
+    "supertypes" : [],
+    "types"      : ["Sorcery"],
+    "subtypes"   : [],
+    "rarity"     : "uncommon",
+    "power"      : "",
+    "toughness"  : "",
+    
+    "text"       : "Search your library for an instant card, reveal it, and put it into your hand. Then shuffle your library.",
+    "flavor"     : "\"You seek a hasty response. Perhaps you're worried about being too late?\"",
+    
+    "artist"     : "",
+    "artURL"     : "",
+    "imageURL"   : "",
+    "sourceURL"  : "http://www.magicmultiverse.net/cards/237",
+    "cardCode"   : "ZU02",
+    "layout"     : "normal"
+  }
+    , 
+  { 
+    "name"       : "Technical Insight",
+  
+    "manaCost"   : "WU",
+    "colors"     : ["White", "Blue"],
+    "type"       : "Sorcery",
+    "supertypes" : [],
+    "types"      : ["Sorcery"],
+    "subtypes"   : [],
+    "rarity"     : "uncommon",
+    "power"      : "",
+    "toughness"  : "",
+    
+    "text"       : "Search your library for an artifact card, reveal it, and put it into your hand. Then shuffle your library.",
+    "flavor"     : "\"You seek a tool. Perhaps you feel unconfident in your own abilities?\"",
+    
+    "artist"     : "",
+    "artURL"     : "",
+    "imageURL"   : "",
+    "sourceURL"  : "http://www.magicmultiverse.net/cards/236",
+    "cardCode"   : "ZU01",
+    "layout"     : "normal"
+  }
+    , 
+  { 
+    "name"       : "Saga of Atine",
+  
+    "manaCost"   : "3GGG",
+    "colors"     : ["Green"],
+    "type"       : "Enchantment",
+    "supertypes" : [],
+    "types"      : ["Enchantment"],
+    "subtypes"   : [],
+    "rarity"     : "mythic",
+    "power"      : "",
+    "toughness"  : "",
+    
+    "text"       : "Whenever a permanent enters the battlefield under your control, creatures you control get +1/+1 until end of turn.",
+    "flavor"     : "\"Mine is a symphony where each enchanted leaf plays its part.\"",
+    
+    "artist"     : "",
+    "artURL"     : "",
+    "imageURL"   : "",
+    "sourceURL"  : "http://www.magicmultiverse.net/cards/235",
+    "cardCode"   : "GR11",
+    "layout"     : "normal"
+  }
+    , 
+  { 
+    "name"       : "Heart for the Lost",
+  
+    "manaCost"   : "3G",
+    "colors"     : ["Green"],
+    "type"       : "Enchantment — Aura",
+    "supertypes" : [],
+    "types"      : ["Enchantment"],
+    "subtypes"   : ["Aura"],
+    "rarity"     : "rare",
+    "power"      : "",
+    "toughness"  : "",
+    
+    "text"       : "Enchant creature\nWhenever enchanted creature deals combat damage to a player, you may return an exiled card you own to your hand.",
+    "flavor"     : "",
+    
+    "artist"     : "",
+    "artURL"     : "",
+    "imageURL"   : "",
+    "sourceURL"  : "http://www.magicmultiverse.net/cards/234",
+    "cardCode"   : "GR10",
+    "layout"     : "normal"
+  }
+    , 
+  { 
+    "name"       : "Rise to the Challenge",
+  
+    "manaCost"   : "3G",
+    "colors"     : ["Green"],
+    "type"       : "Instant",
+    "supertypes" : [],
+    "types"      : ["Instant"],
+    "subtypes"   : [],
+    "rarity"     : "rare",
+    "power"      : "",
+    "toughness"  : "",
+    
+    "text"       : "Until end of turn, target creature gains trample and gets +X/+Y, where X is the total toughness of creatures blocking or blocked by it and Y is the total power of those creatures.",
+    "flavor"     : "",
+    
+    "artist"     : "",
+    "artURL"     : "",
+    "imageURL"   : "",
+    "sourceURL"  : "http://www.magicmultiverse.net/cards/231",
+    "cardCode"   : "GR07",
+    "layout"     : "normal"
+  }
+    , 
+  { 
+    "name"       : "Uprising of the Earth",
+  
+    "manaCost"   : "2GG",
+    "colors"     : ["Green"],
+    "type"       : "Enchantment — Aura",
+    "supertypes" : [""],
+    "types"      : ["Enchantment"],
+    "subtypes"   : ["Aura"],
+    "rarity"     : "rare",
+    "power"      : "",
+    "toughness"  : "",
+    
+    "text"       : "Enchant land\nLands you control that are enchanted are 4/4 creatures with trample. They're still lands.\nWhenever an enchanted land you control is put into a graveyard from the battlefield, return that land card to your hand.",
+    "flavor"     : "",
+    
+    "artist"     : "",
+    "artURL"     : "",
+    "imageURL"   : "",
+    "sourceURL"  : "http://www.magicmultiverse.net/cards/233",
+    "cardCode"   : "GR09",
+    "layout"     : "normal"
+  }
+    , 
+  { 
+    "name"       : "Compulsive Enchanter",
+  
+    "manaCost"   : "1G",
+    "colors"     : ["Green"],
+    "type"       : "Creature — Elf Druid",
+    "supertypes" : [],
+    "types"      : ["Creature"],
+    "subtypes"   : ["Elf", "Druid"],
+    "rarity"     : "rare",
+    "power"      : "2",
+    "toughness"  : "2",
+    
+    "text"       : "Whenever an Aura becomes attached to a creature, you may draw a card.",
+    "flavor"     : "If you go to him for a rainproofing, you'll come away with shimmering skin and extra arms.",
+    
+    "artist"     : "",
+    "artURL"     : "",
+    "imageURL"   : "",
+    "sourceURL"  : "http://www.magicmultiverse.net/cards/229",
+    "cardCode"   : "GR05",
+    "layout"     : "normal"
+  }
+    , 
+  { 
+    "name"       : "Gladetender's Touch",
+  
+    "manaCost"   : "G",
+    "colors"     : ["Green"],
+    "type"       : "Enchantment — Aura",
+    "supertypes" : [""],
+    "types"      : ["Enchantment"],
+    "subtypes"   : ["Aura"],
+    "rarity"     : "common",
+    "power"      : "",
+    "toughness"  : "",
+    
+    "text"       : "Enchant creature\nEnchanted creature has \"{T}: Add one mana of any colour to your mana pool.\"\n{G}: Return Gladetender's Touch to its owner's hand.",
+    "flavor"     : "",
+    
+    "artist"     : "",
+    "artURL"     : "",
+    "imageURL"   : "",
+    "sourceURL"  : "http://www.magicmultiverse.net/cards/208",
+    "cardCode"   : "GC13",
+    "layout"     : "normal"
+  }
+    , 
+  { 
+    "name"       : "Irresistible Allure",
+  
+    "manaCost"   : "2GG",
+    "colors"     : ["Green"],
+    "type"       : "Enchantment — Aura",
+    "supertypes" : [""],
+    "types"      : ["Enchantment"],
+    "subtypes"   : ["Aura"],
+    "rarity"     : "uncommon",
+    "power"      : "",
+    "toughness"  : "",
+    
+    "text"       : "Enchant creature\nAll creatures able to block enchanted creature do so.\n{2}{G}{G}: Return Irresistible Allure to its owner's hand.",
+    "flavor"     : "",
+    
+    "artist"     : "",
+    "artURL"     : "",
+    "imageURL"   : "",
+    "sourceURL"  : "http://www.magicmultiverse.net/cards/223",
+    "cardCode"   : "GU12",
+    "layout"     : "normal"
+  }
+    , 
+  { 
+    "name"       : "Khert Armodon",
+  
+    "manaCost"   : "4GG",
+    "colors"     : ["Green"],
+    "type"       : "Creature — Beast",
+    "supertypes" : [""],
+    "types"      : ["Creature"],
+    "subtypes"   : ["Beast"],
+    "rarity"     : "common",
+    "power"      : "4",
+    "toughness"  : "4",
+    
+    "text"       : "Shroud\nReminisce {1}{G} ({1}{G}, Exile this card from your hand: Return target creature card from your graveyard to your hand.)",
+    "flavor"     : "For centuries gladewardens have used the reflective skin of armodons to focus light and mana for aesthetic effect.",
+    
+    "artist"     : "",
+    "artURL"     : "",
+    "imageURL"   : "",
+    "sourceURL"  : "http://www.magicmultiverse.net/cards/203",
+    "cardCode"   : "GC08",
+    "layout"     : "normal"
+  }
+    , 
+  { 
+    "name"       : "Mirrorglade Concealer",
+  
+    "manaCost"   : "1G",
+    "colors"     : ["Green"],
+    "type"       : "Creature — Human Druid",
+    "supertypes" : [""],
+    "types"      : ["Creature"],
+    "subtypes"   : ["Human", "Druid"],
+    "rarity"     : "common",
+    "power"      : "2",
+    "toughness"  : "1",
+    
+    "text"       : "{1}{G}: Mirrorglade Concealer becomes an enchantment until end of turn. (It's no longer a creature this turn.)",
+    "flavor"     : "Some of Atine's gladetenders have granted themselves the skill of fading from view at certain times - like when she's looking for someone to blame.",
+    
+    "artist"     : "",
+    "artURL"     : "",
+    "imageURL"   : "",
+    "sourceURL"  : "http://www.magicmultiverse.net/cards/211",
+    "cardCode"   : "GC16",
+    "layout"     : "normal"
+  }
+    , 
+  { 
+    "name"       : "Pools of Fortitude",
+  
+    "manaCost"   : "1G",
+    "colors"     : ["Green"],
+    "type"       : "Enchantment — Aura",
+    "supertypes" : [""],
+    "types"      : ["Enchantment"],
+    "subtypes"   : ["Aura"],
+    "rarity"     : "common",
+    "power"      : "",
+    "toughness"  : "",
+    
+    "text"       : "Enchant land\nEnchanted land has \"{3}, {T}: Put a +1/+1 counter on target creature.\"",
+    "flavor"     : "When a noble arrives at a mirrorglade, the outdoor baths are one of the first places she visits.",
+    
+    "artist"     : "",
+    "artURL"     : "",
+    "imageURL"   : "",
+    "sourceURL"  : "http://www.magicmultiverse.net/cards/204",
+    "cardCode"   : "GC09",
+    "layout"     : "normal"
+  }
+    , 
+  { 
+    "name"       : "Enraged Mastodon",
+  
+    "manaCost"   : "4G",
+    "colors"     : ["Green"],
+    "type"       : "Creature — Beast",
+    "supertypes" : [""],
+    "types"      : ["Creature"],
+    "subtypes"   : ["Beast"],
+    "rarity"     : "common",
+    "power"      : "4",
+    "toughness"  : "3",
+    
+    "text"       : "Overpower {1}{G} ({1}{G}: Target creature blocking Enraged Mastodon gets -1/-1 until end of turn.)",
+    "flavor"     : "It bears grudges, chasing down intruders long after they've hastily abandoned any intention to trespass.",
+    
+    "artist"     : "",
+    "artURL"     : "",
+    "imageURL"   : "",
+    "sourceURL"  : "http://www.magicmultiverse.net/cards/202",
+    "cardCode"   : "GC07",
+    "layout"     : "normal"
+  }
+    , 
+  { 
+    "name"       : "Veniwood Ancient",
+  
+    "manaCost"   : "1GG",
+    "colors"     : ["Green"],
+    "type"       : "Creature — Human Druid",
+    "supertypes" : [""],
+    "types"      : ["Creature"],
+    "subtypes"   : ["Human", "Druid"],
+    "rarity"     : "rare",
+    "power"      : "1",
+    "toughness"  : "1",
+    
+    "text"       : "{1}, Sacrifice an enchantment or land: Draw a card.",
+    "flavor"     : "\"Learn from all things. Even destruction around you can bolster your wisdom.\"",
+    
+    "artist"     : "",
+    "artURL"     : "",
+    "imageURL"   : "",
+    "sourceURL"  : "http://www.magicmultiverse.net/cards/225",
+    "cardCode"   : "GR01",
+    "layout"     : "normal"
+  }
+    , 
+  { 
+    "name"       : "Scented Briarball",
+  
+    "manaCost"   : "3G",
+    "colors"     : ["Green"],
+    "type"       : "Creature — Plant Elemental",
+    "supertypes" : [""],
+    "types"      : ["Creature"],
+    "subtypes"   : ["Plant", "Elemental"],
+    "rarity"     : "uncommon",
+    "power"      : "1",
+    "toughness"  : "1",
+    
+    "text"       : "All creatures able to block Scented Briarball do so.\nOverpower {2}{G} ({2}{G}: Target creature blocking Scented Briarball gets -1/-1 until end of turn.)",
+    "flavor"     : "Fighting a thornbush is a bad idea. It's got more thorns than you have limbs.",
+    
+    "artist"     : "",
+    "artURL"     : "",
+    "imageURL"   : "",
+    "sourceURL"  : "http://www.magicmultiverse.net/cards/216",
+    "cardCode"   : "GU05",
+    "layout"     : "normal"
+  }
+    , 
+  { 
+    "name"       : "Venomvine Cloak",
+  
+    "manaCost"   : "2G",
+    "colors"     : ["Green"],
+    "type"       : "Enchantment — Aura",
+    "supertypes" : [""],
+    "types"      : ["Enchantment"],
+    "subtypes"   : ["Aura"],
+    "rarity"     : "uncommon",
+    "power"      : "",
+    "toughness"  : "",
+    
+    "text"       : "Flash\nEnchant creature\nEnchanted creature has deathtouch.\n{3}{G}: Regenerate enchanted creature.",
+    "flavor"     : "Atine's cloak is notable not for the thorns or the blade-repelling force, but for the aura of majesty its shifting colours impart.",
+    
+    "artist"     : "",
+    "artURL"     : "",
+    "imageURL"   : "",
+    "sourceURL"  : "http://www.magicmultiverse.net/cards/222",
+    "cardCode"   : "GU11",
+    "layout"     : "normal"
+  }
+    , 
+  { 
+    "name"       : "Verdant Abundance",
+  
+    "manaCost"   : "1G",
+    "colors"     : ["Green"],
+    "type"       : "Tribal Enchantment — Druid Aura",
+    "supertypes" : [""],
+    "types"      : ["Tribal", "Enchantment"],
+    "subtypes"   : ["Druid", "Aura"],
+    "rarity"     : "common",
+    "power"      : "",
+    "toughness"  : "",
+    
+    "text"       : "Enchant land\nWhenever enchanted land is tapped for mana, its controller adds one mana of any colour to his or her mana pool.\nEnchanted land has \"{T}, tap an untapped Druid creature you control: Add three mana of any one colour to your mana pool.\" (This is tapping the land for mana.)",
+    "flavor"     : "",
+    
+    "artist"     : "",
+    "artURL"     : "",
+    "imageURL"   : "",
+    "sourceURL"  : "http://www.magicmultiverse.net/cards/206",
+    "cardCode"   : "GC11",
+    "layout"     : "normal"
+  }
+    , 
+  { 
+    "name"       : "Reflections of Sunrise",
+  
+    "manaCost"   : "1G",
+    "colors"     : ["Green"],
+    "type"       : "Enchantment",
+    "supertypes" : [""],
+    "types"      : ["Enchantment"],
+    "subtypes"   : [""],
+    "rarity"     : "uncommon",
+    "power"      : "",
+    "toughness"  : "",
+    
+    "text"       : "When Reflections of Sunrise enters the battlefield, draw a card.\nPermanents you control are all colours.\n{1}{G}: Return Reflections of Sunrise to its owner's hand.",
+    "flavor"     : "",
+    
+    "artist"     : "",
+    "artURL"     : "",
+    "imageURL"   : "",
+    "sourceURL"  : "http://www.magicmultiverse.net/cards/221",
+    "cardCode"   : "GU10",
+    "layout"     : "normal"
+  }
+    , 
+  { 
+    "name"       : "Atine's Disdain",
+  
+    "manaCost"   : "G",
+    "colors"     : ["Green"],
+    "type"       : "Instant",
+    "supertypes" : [],
+    "types"      : ["Instant"],
+    "subtypes"   : [],
+    "rarity"     : "uncommon",
+    "power"      : "",
+    "toughness"  : "",
+    
+    "text"       : "Destroy up to X target enchantments, where X is the number of enchantments you control.",
+    "flavor"     : "\"When every flower of your garden has a different augment, and every room of your home a different aura, perhaps then you can start to compete with me.\"",
+    
+    "artist"     : "",
+    "artURL"     : "",
+    "imageURL"   : "",
+    "sourceURL"  : "http://www.magicmultiverse.net/cards/224",
+    "cardCode"   : "GU13",
+    "layout"     : "normal"
+  }
+    , 
+  { 
+    "name"       : "Stubborn Mastodon",
+  
+    "manaCost"   : "3GG",
+    "colors"     : ["Green"],
+    "type"       : "Creature — Elephant Beast",
+    "supertypes" : [],
+    "types"      : ["Creature"],
+    "subtypes"   : ["Elephant", "Beast"],
+    "rarity"     : "uncommon",
+    "power"      : "0",
+    "toughness"  : "0",
+    
+    "text"       : "Stubborn Mastodon enters the battlefield with 3 +1/+1 counters on it.\nIf Stubborn Mastodon would be destroyed or sacrificed, instead remove a +1/+1 counter from it and remove all damage from it.",
+    "flavor"     : "",
+    
+    "artist"     : "",
+    "artURL"     : "",
+    "imageURL"   : "",
+    "sourceURL"  : "http://www.magicmultiverse.net/cards/218",
+    "cardCode"   : "GU07",
+    "layout"     : "normal"
+  }
+    , 
+  { 
+    "name"       : "Reflex Courser",
+  
+    "manaCost"   : "1GG",
+    "colors"     : ["Green"],
+    "type"       : "Creature — Centaur Shaman",
+    "supertypes" : [],
+    "types"      : ["Creature"],
+    "subtypes"   : ["Centaur", "Shaman"],
+    "rarity"     : "uncommon",
+    "power"      : "2",
+    "toughness"  : "2",
+    
+    "text"       : "Whenever an opponent casts an instant spell, you may draw a card and have Reflex Courser get +2/+2 until end of turn.",
+    "flavor"     : "\"You may discover your urban tricks don't work so well out here in the glades, sewer rat.\"",
+    
+    "artist"     : "",
+    "artURL"     : "",
+    "imageURL"   : "",
+    "sourceURL"  : "http://www.magicmultiverse.net/cards/217",
+    "cardCode"   : "GU06",
+    "layout"     : "normal"
+  }
+    , 
+  { 
+    "name"       : "Hulking Baloth",
+  
+    "manaCost"   : "3GG",
+    "colors"     : ["Green"],
+    "type"       : "Creature — Beast",
+    "supertypes" : [],
+    "types"      : ["Creature"],
+    "subtypes"   : ["Beast"],
+    "rarity"     : "uncommon",
+    "power"      : "0",
+    "toughness"  : "0",
+    
+    "text"       : "Hulking Baloth's power and toughness are each equal to the number of lands you control.",
+    "flavor"     : "All forests have big creatures in. But most of those creatures at least fit into the forest.",
+    
+    "artist"     : "",
+    "artURL"     : "",
+    "imageURL"   : "",
+    "sourceURL"  : "http://www.magicmultiverse.net/cards/215",
+    "cardCode"   : "GU04",
+    "layout"     : "normal"
+  }
+    , 
+  { 
+    "name"       : "Ralatine Mirrorcaster",
+  
+    "manaCost"   : "2GG",
+    "colors"     : ["Green"],
+    "type"       : "Creature — Centaur Druid",
+    "supertypes" : [],
+    "types"      : ["Creature"],
+    "subtypes"   : ["Centaur", "Druid"],
+    "rarity"     : "uncommon",
+    "power"      : "3",
+    "toughness"  : "3",
+    
+    "text"       : "Enchanted permanents you control can't be the target of spells or abilities your opponents control.",
+    "flavor"     : "He'll protect you if you bear the mark of his allies.",
+    
+    "artist"     : "",
+    "artURL"     : "",
+    "imageURL"   : "",
+    "sourceURL"  : "http://www.magicmultiverse.net/cards/213",
+    "cardCode"   : "GU02",
+    "layout"     : "normal"
+  }
+    , 
+  { 
+    "name"       : "Mirrorglade Artist",
+  
+    "manaCost"   : "G",
+    "colors"     : ["Green"],
+    "type"       : "Creature — Elf Druid",
+    "supertypes" : [],
+    "types"      : ["Creature"],
+    "subtypes"   : ["Elf", "Druid"],
+    "rarity"     : "uncommon",
+    "power"      : "1",
+    "toughness"  : "1",
+    
+    "text"       : "Mirrorglade Artist gets +3/+3 for each enchanted land you control.",
+    "flavor"     : "He travels the length and breadth of Sienira, looking for inspiration in the gladewardens' augments.",
+    
+    "artist"     : "",
+    "artURL"     : "",
+    "imageURL"   : "",
+    "sourceURL"  : "http://www.magicmultiverse.net/cards/212",
+    "cardCode"   : "GU01",
+    "layout"     : "normal"
+  }
+    , 
+  { 
+    "name"       : "Nature's Aid",
+  
+    "manaCost"   : "2G",
+    "colors"     : ["Green"],
+    "type"       : "Instant",
+    "supertypes" : [],
+    "types"      : ["Instant"],
+    "subtypes"   : [],
+    "rarity"     : "common",
+    "power"      : "",
+    "toughness"  : "",
+    
+    "text"       : "Target creature gets +3/+3 until end of turn. Regenerate that creature.",
+    "flavor"     : "\"I understand the forest wants to defend itself. But why does it have to be with giant indestructible frogs?!\"",
+    
+    "artist"     : "",
+    "artURL"     : "",
+    "imageURL"   : "",
+    "sourceURL"  : "http://www.magicmultiverse.net/cards/210",
+    "cardCode"   : "GC15",
+    "layout"     : "normal"
+  }
+    , 
+  { 
+    "name"       : "Creeping Mold",
+  
+    "manaCost"   : "2GG",
+    "colors"     : ["Green"],
+    "type"       : "Sorcery",
+    "supertypes" : [],
+    "types"      : ["Sorcery"],
+    "subtypes"   : [],
+    "rarity"     : "common",
+    "power"      : "",
+    "toughness"  : "",
+    
+    "text"       : "Destroy target artifact, enchantment or land.",
+    "flavor"     : "The wilderness assaults invaders more forcefully than the most strongly armed civilisation.",
+    
+    "artist"     : "",
+    "artURL"     : "",
+    "imageURL"   : "",
+    "sourceURL"  : "http://www.magicmultiverse.net/cards/209",
+    "cardCode"   : "GC14",
+    "layout"     : "normal"
+  }
+    , 
+  { 
+    "name"       : "Savage Strength",
+  
+    "manaCost"   : "2G",
+    "colors"     : ["Green"],
+    "type"       : "Enchantment — Aura",
+    "supertypes" : [],
+    "types"      : ["Enchantment"],
+    "subtypes"   : ["Aura"],
+    "rarity"     : "common",
+    "power"      : "",
+    "toughness"  : "",
+    
+    "text"       : "Flash\nEnchant creature\nEnchanted creature gets +2/+2.",
+    "flavor"     : "Not all gladewardens are as obsessed with aesthetics as Atine. Some are happy with augments of a more brutal and direct kind.",
+    
+    "artist"     : "",
+    "artURL"     : "",
+    "imageURL"   : "",
+    "sourceURL"  : "http://www.magicmultiverse.net/cards/207",
+    "cardCode"   : "GC12",
+    "layout"     : "normal"
+  }
+    , 
+  { 
+    "name"       : "Venomvine Lattice",
+  
+    "manaCost"   : "2G",
+    "colors"     : ["Green"],
+    "type"       : "Enchantment",
+    "supertypes" : [],
+    "types"      : ["Enchantment"],
+    "subtypes"   : [],
+    "rarity"     : "common",
+    "power"      : "",
+    "toughness"  : "",
+    
+    "text"       : "Deathtouch\nSacrifice Venomvine Lattice: Venomvine Lattice deals 1 damage to target creature with flying.",
+    "flavor"     : "Atine doesn't have a problem with birds fouling the Ralatine's roofs.",
+    
+    "artist"     : "",
+    "artURL"     : "",
+    "imageURL"   : "",
+    "sourceURL"  : "http://www.magicmultiverse.net/cards/205",
+    "cardCode"   : "GC10",
+    "layout"     : "normal"
+  }
+    , 
+  { 
+    "name"       : "Tanglevine Pruner",
+  
+    "manaCost"   : "2GG",
+    "colors"     : ["Green"],
+    "type"       : "Creature — Elf Wizard",
+    "supertypes" : [],
+    "types"      : ["Creature"],
+    "subtypes"   : ["Elf", "Wizard"],
+    "rarity"     : "common",
+    "power"      : "2",
+    "toughness"  : "2",
+    
+    "text"       : "Whenever an Aura becomes attached to Tanglevine Pruner, put a 3/3 green Plant Beast creature token onto the battlefield.",
+    "flavor"     : "The trimmings from enchanted hedges have a tendency to follow you home.",
+    
+    "artist"     : "",
+    "artURL"     : "",
+    "imageURL"   : "",
+    "sourceURL"  : "http://www.magicmultiverse.net/cards/199",
+    "cardCode"   : "GC04",
+    "layout"     : "normal"
+  }
+    , 
+  { 
+    "name"       : "Gladetender Panther",
+  
+    "manaCost"   : "2G",
+    "colors"     : ["Green"],
+    "type"       : "Creature — Cat Wizard",
+    "supertypes" : [],
+    "types"      : ["Creature"],
+    "subtypes"   : ["Cat", "Wizard"],
+    "rarity"     : "common",
+    "power"      : "3",
+    "toughness"  : "2",
+    
+    "text"       : "Whenever an enchantment enters the battlefield under your control, Gladetender Panther gets +2/+2 until end of turn.",
+    "flavor"     : "No rodents will damage Atine's ornamental gardens.",
+    
+    "artist"     : "",
+    "artURL"     : "",
+    "imageURL"   : "",
+    "sourceURL"  : "http://www.magicmultiverse.net/cards/198",
+    "cardCode"   : "GC03",
+    "layout"     : "normal"
+  }
+    , 
+  { 
+    "name"       : "Veniwood Borderguard",
+  
+    "manaCost"   : "1G",
+    "colors"     : ["Green"],
+    "type"       : "Creature — Human Warrior",
+    "supertypes" : [],
+    "types"      : ["Creature"],
+    "subtypes"   : ["Human", "Warrior"],
+    "rarity"     : "common",
+    "power"      : "2",
+    "toughness"  : "2",
+    
+    "text"       : "Veniwood Borderguard gets +1/+1 as long as you control five or more lands.\nVeniwood Borderguard gets +1/+1 as long as you control an enchantment.",
+    "flavor"     : "",
+    
+    "artist"     : "",
+    "artURL"     : "",
+    "imageURL"   : "",
+    "sourceURL"  : "http://www.magicmultiverse.net/cards/196",
+    "cardCode"   : "GC01",
+    "layout"     : "normal"
+  }
+    , 
+  { 
+    "name"       : "Grudges of the Earth",
+  
+    "manaCost"   : "RR",
+    "colors"     : ["Red"],
+    "type"       : "Enchantment — Aura",
+    "supertypes" : [],
+    "types"      : ["Enchantment"],
+    "subtypes"   : ["Aura"],
+    "rarity"     : "rare",
+    "power"      : "",
+    "toughness"  : "",
+    
+    "text"       : "Enchant land\nLands you control that are enchanted are indestructible and have \"Sacrifice this land: This land deals 2 damage to target creature or player.\"\nLand creatures you control that are enchanted have +2/+0 and haste.",
+    "flavor"     : "",
+    
+    "artist"     : "",
+    "artURL"     : "",
+    "imageURL"   : "",
+    "sourceURL"  : "http://www.magicmultiverse.net/cards/194",
+    "cardCode"   : "RR10",
+    "layout"     : "normal"
+  }
+    , 
+  { 
+    "name"       : "Shift the Blame",
+  
+    "manaCost"   : "R",
+    "colors"     : ["Red"],
+    "type"       : "Instant",
+    "supertypes" : [],
+    "types"      : ["Instant"],
+    "subtypes"   : [],
+    "rarity"     : "rare",
+    "power"      : "",
+    "toughness"  : "",
+    
+    "text"       : "Target opponent gains control of target spell.",
+    "flavor"     : "\"No, father, it wasn't me! It was those novices who are always causing trouble around here...\"",
+    
+    "artist"     : "",
+    "artURL"     : "",
+    "imageURL"   : "",
+    "sourceURL"  : "http://www.magicmultiverse.net/cards/193",
+    "cardCode"   : "RR09",
+    "layout"     : "normal"
+  }
+    , 
+  { 
+    "name"       : "Grand Convocation",
+  
+    "manaCost"   : "4RR",
+    "colors"     : ["Red"],
+    "type"       : "Sorcery",
+    "supertypes" : [],
+    "types"      : ["Sorcery"],
+    "subtypes"   : [],
+    "rarity"     : "mythic",
+    "power"      : "",
+    "toughness"  : "",
+    
+    "text"       : "Each other player may cast any number of nonland cards from his or her hand without paying their mana cost. Then you may cast any number of nonland cards from your hand without paying their mana cost.",
+    "flavor"     : "",
+    
+    "artist"     : "",
+    "artURL"     : "",
+    "imageURL"   : "",
+    "sourceURL"  : "http://www.magicmultiverse.net/cards/191",
+    "cardCode"   : "RR07",
+    "layout"     : "normal"
+  }
+    , 
+  { 
+    "name"       : "Demented Lavaflinger",
+  
+    "manaCost"   : "R",
+    "colors"     : ["Red"],
+    "type"       : "Creature — Human Shaman",
+    "supertypes" : [],
+    "types"      : ["Creature"],
+    "subtypes"   : ["Human", "Shaman"],
+    "rarity"     : "rare",
+    "power"      : "2",
+    "toughness"  : "1",
+    
+    "text"       : "Whenever Demented Lavaflinger deals damage to a player, that player loses half his or her life, rounded up.\nAt the beginning of your upkeep, Demented Lavaflinger deals 3 damage to itself.",
+    "flavor"     : "",
+    
+    "artist"     : "",
+    "artURL"     : "",
+    "imageURL"   : "",
+    "sourceURL"  : "http://www.magicmultiverse.net/cards/190",
+    "cardCode"   : "RR06",
+    "layout"     : "normal"
+  }
+    , 
+  { 
+    "name"       : "Impatient Deacon",
+  
+    "manaCost"   : "RR",
+    "colors"     : ["Red"],
+    "type"       : "Creature — Human Cleric",
+    "supertypes" : [],
+    "types"      : ["Creature"],
+    "subtypes"   : ["Human", "Cleric"],
+    "rarity"     : "rare",
+    "power"      : "2",
+    "toughness"  : "1",
+    
+    "text"       : "You may cast sorcery cards any time you could cast an instant.",
+    "flavor"     : "Not all Zerian clergy love the pomp and circumstance of the cathedral. Rural vicars play fast and loose with the official requirements.",
+    
+    "artist"     : "",
+    "artURL"     : "",
+    "imageURL"   : "",
+    "sourceURL"  : "http://www.magicmultiverse.net/cards/189",
+    "cardCode"   : "RR05",
+    "layout"     : "normal"
+  }
+    , 
+  { 
+    "name"       : "Unstable Lavafalls",
+  
+    "manaCost"   : "",
+    "colors"     : [],
+    "type"       : "Land — Mountain",
+    "supertypes" : [""],
+    "types"      : ["Land"],
+    "subtypes"   : ["Mountain"],
+    "rarity"     : "rare",
+    "power"      : "",
+    "toughness"  : "",
+    
+    "text"       : "({T}: Add {R} to your mana pool.)\nAt the beginning of your upkeep, Unstable Lavafalls deals 2 damage to target creature or player, then you sacrifice a Mountain.",
+    "flavor"     : "",
+    
+    "artist"     : "",
+    "artURL"     : "",
+    "imageURL"   : "",
+    "sourceURL"  : "http://www.magicmultiverse.net/cards/280",
+    "cardCode"   : "LR03",
+    "layout"     : "normal"
+  }
+    , 
+  { 
+    "name"       : "Garden Scute",
+  
+    "manaCost"   : "G",
+    "colors"     : ["Green"],
+    "type"       : "Creature — Insect",
+    "supertypes" : [""],
+    "types"      : ["Creature"],
+    "subtypes"   : ["Insect"],
+    "rarity"     : "common",
+    "power"      : "1",
+    "toughness"  : "1",
+    
+    "text"       : "Whenever a land enters the battlefield under your control, Garden Scute gets +1/+1 until end of turn.\nReminisce {1}{G} ({1}{G}, Exile this card from your hand: Return target creature card from your graveyard to your hand.)",
+    "flavor"     : "",
+    
+    "artist"     : "",
+    "artURL"     : "",
+    "imageURL"   : "",
+    "sourceURL"  : "http://www.magicmultiverse.net/cards/197",
+    "cardCode"   : "GC02",
+    "layout"     : "normal"
+  }
+    , 
+  { 
+    "name"       : "Conquering Dragon",
+  
+    "manaCost"   : "5R",
+    "colors"     : ["Red"],
+    "type"       : "Creature — Dragon",
+    "supertypes" : [],
+    "types"      : ["Creature"],
+    "subtypes"   : ["Dragon"],
+    "rarity"     : "rare",
+    "power"      : "4",
+    "toughness"  : "4",
+    
+    "text"       : "Flying\nWhenever a land enters the battlefield under your control, Conquering Dragon gets +2/+2 until end of turn. If that land is the second land to enter the battlefield under your control this turn, Conquering Dragon gains trample and first strike until end of turn.",
+    "flavor"     : "",
+    
+    "artist"     : "",
+    "artURL"     : "",
+    "imageURL"   : "",
+    "sourceURL"  : "http://www.magicmultiverse.net/cards/186",
+    "cardCode"   : "RR02",
+    "layout"     : "normal"
+  }
+    , 
+  { 
+    "name"       : "Tarmoblast",
+  
+    "manaCost"   : "1R",
+    "colors"     : ["Red"],
+    "type"       : "Instant",
+    "supertypes" : [],
+    "types"      : ["Instant"],
+    "subtypes"   : [],
+    "rarity"     : "uncommon",
+    "power"      : "",
+    "toughness"  : "",
+    
+    "text"       : "Tarmoblast deals damage to target creature equal to the number of card types among cards in all graveyards. (The card types are artifact, creature, enchantment, instant, land, planeswalker, sorcery and tribal.)",
+    "flavor"     : "",
+    
+    "artist"     : "",
+    "artURL"     : "",
+    "imageURL"   : "",
+    "sourceURL"  : "http://www.magicmultiverse.net/cards/184",
+    "cardCode"   : "RU12",
+    "layout"     : "normal"
+  }
+    , 
+  { 
+    "name"       : "Cloud of Smithereens",
+  
+    "manaCost"   : "RRR",
+    "colors"     : ["Red"],
+    "type"       : "Instant",
+    "supertypes" : [],
+    "types"      : ["Instant"],
+    "subtypes"   : [],
+    "rarity"     : "uncommon",
+    "power"      : "",
+    "toughness"  : "",
+    
+    "text"       : "Destroy up to three target artifacts.",
+    "flavor"     : "The wilderness's reaction to the delicate magework was about as good as could be expected.",
+    
+    "artist"     : "",
+    "artURL"     : "",
+    "imageURL"   : "",
+    "sourceURL"  : "http://www.magicmultiverse.net/cards/183",
+    "cardCode"   : "RU11",
+    "layout"     : "normal"
+  }
+    , 
+  { 
+    "name"       : "Submerge in Fire",
+  
+    "manaCost"   : "2RR",
+    "colors"     : ["Red"],
+    "type"       : "Sorcery",
+    "supertypes" : [],
+    "types"      : ["Sorcery"],
+    "subtypes"   : [],
+    "rarity"     : "uncommon",
+    "power"      : "",
+    "toughness"  : "",
+    
+    "text"       : "Each player sacrifices a land. Submerge in Fire deals 5 damage to each player.",
+    "flavor"     : "The landscape copes surprisingly well with being repeatedly incinerated.",
+    
+    "artist"     : "",
+    "artURL"     : "",
+    "imageURL"   : "",
+    "sourceURL"  : "http://www.magicmultiverse.net/cards/181",
+    "cardCode"   : "RU09",
+    "layout"     : "normal"
+  }
+    , 
+  { 
+    "name"       : "Brink of Destruction",
+  
+    "manaCost"   : "2R",
+    "colors"     : ["Red"],
+    "type"       : "Enchantment — Aura",
+    "supertypes" : [],
+    "types"      : ["Enchantment"],
+    "subtypes"   : ["Aura"],
+    "rarity"     : "uncommon",
+    "power"      : "",
+    "toughness"  : "",
+    
+    "text"       : "Enchant land\nWhen enchanted land becomes tapped, you may destroy it.\nWhen enchanted land is put into a graveyard from the battlefield, you may pay 1R. If you do, return Brink of Destruction from your graveyard to the battlefield.",
+    "flavor"     : "",
+    
+    "artist"     : "",
+    "artURL"     : "",
+    "imageURL"   : "",
+    "sourceURL"  : "http://www.magicmultiverse.net/cards/180",
+    "cardCode"   : "RU08",
+    "layout"     : "normal"
+  }
+    , 
+  { 
+    "name"       : "Axepreacher Ogre",
+  
+    "manaCost"   : "4R",
+    "colors"     : ["Red"],
+    "type"       : "Creature — Ogre Cleric",
+    "supertypes" : [],
+    "types"      : ["Creature"],
+    "subtypes"   : ["Ogre", "Cleric"],
+    "rarity"     : "uncommon",
+    "power"      : "3",
+    "toughness"  : "2",
+    
+    "text"       : "Whenever you cast a sorcery spell, Axepreacher Ogre gains double strike until end of turn.",
+    "flavor"     : "His aggressive wilderness preaching seems to work at first, but taming the wild needs a more consistently firm hand.",
+    
+    "artist"     : "",
+    "artURL"     : "",
+    "imageURL"   : "",
+    "sourceURL"  : "http://www.magicmultiverse.net/cards/178",
+    "cardCode"   : "RU06",
+    "layout"     : "normal"
+  }
+    , 
+  { 
+    "name"       : "Venerable Elf",
+  
+    "manaCost"   : "1G",
+    "colors"     : ["Green"],
+    "type"       : "Creature — Elf Druid Shaman",
+    "supertypes" : [""],
+    "types"      : ["Creature"],
+    "subtypes"   : ["Elf", "Druid", "Shaman"],
+    "rarity"     : "common",
+    "power"      : "0",
+    "toughness"  : "1",
+    
+    "text"       : "{T}: Untap target land.",
+    "flavor"     : "Aspiring enchanters sometimes discover ancient families of elves in supposedly deserted glades. Those who survive don't repeat the mistake.",
+    
+    "artist"     : "",
+    "artURL"     : "",
+    "imageURL"   : "",
+    "sourceURL"  : "http://www.magicmultiverse.net/cards/200",
+    "cardCode"   : "GC05",
+    "layout"     : "normal"
+  }
+    , 
+  { 
+    "name"       : "Serpentcaller",
+  
+    "manaCost"   : "5RR",
+    "colors"     : ["Red"],
+    "type"       : "Creature — Orc Shaman",
+    "supertypes" : [],
+    "types"      : ["Creature"],
+    "subtypes"   : ["Orc", "Shaman"],
+    "rarity"     : "uncommon",
+    "power"      : "3",
+    "toughness"  : "3",
+    
+    "text"       : "When Serpentcaller enters the battlefield, it deals damage to target creature or player equal to the number of lands you control.",
+    "flavor"     : "The legend says Rayja erupts in firesnake form. It's hard to be sure, because eyewitnesses only tend to say \"Aaagh!\"",
+    
+    "artist"     : "",
+    "artURL"     : "",
+    "imageURL"   : "",
+    "sourceURL"  : "http://www.magicmultiverse.net/cards/176",
+    "cardCode"   : "RU04",
+    "layout"     : "normal"
+  }
+    , 
+  { 
+    "name"       : "Soulbargain",
+  
+    "manaCost"   : "1BBB",
+    "colors"     : ["Black"],
+    "type"       : "Creature — Elemental Horror",
+    "supertypes" : [""],
+    "types"      : ["Creature"],
+    "subtypes"   : ["Elemental", "Horror"],
+    "rarity"     : "rare",
+    "power"      : "1",
+    "toughness"  : "1",
+    
+    "text"       : "{0}: Exile the top card of your library. Soulbargain gets +X/+X until end of turn, where X is that card's converted mana cost. Sacrifice X permanents.",
+    "flavor"     : "It will consume all you have, and then all you are.",
+    
+    "artist"     : "",
+    "artURL"     : "",
+    "imageURL"   : "",
+    "sourceURL"  : "http://www.magicmultiverse.net/cards/151",
+    "cardCode"   : "BR06",
+    "layout"     : "normal"
+  }
+    , 
+  { 
+    "name"       : "Arrogant Hellion",
+  
+    "manaCost"   : "4RR",
+    "colors"     : ["Red"],
+    "type"       : "Creature — Beast",
+    "supertypes" : [],
+    "types"      : ["Creature"],
+    "subtypes"   : ["Beast"],
+    "rarity"     : "uncommon",
+    "power"      : "4",
+    "toughness"  : "4",
+    
+    "text"       : "Haste\nArrogant Hellion gets +2/+2 as long as you control more lands than each opponent.",
+    "flavor"     : "They can't think, but they still manage to be proud.",
+    
+    "artist"     : "",
+    "artURL"     : "",
+    "imageURL"   : "",
+    "sourceURL"  : "http://www.magicmultiverse.net/cards/173",
+    "cardCode"   : "RU01",
+    "layout"     : "normal"
+  }
+    , 
+  { 
+    "name"       : "Mana Scars",
+  
+    "manaCost"   : "2R",
+    "colors"     : ["Red"],
+    "type"       : "Sorcery",
+    "supertypes" : [],
+    "types"      : ["Sorcery"],
+    "subtypes"   : [],
+    "rarity"     : "common",
+    "power"      : "",
+    "toughness"  : "",
+    
+    "text"       : "Mana Scars deals 3 damage to target player.\nWhenever a land enters the battlefield under you control, if Mana Scars is in your graveyard, you may have Mana Scars deal 1 damage to target player.",
+    "flavor"     : "",
+    
+    "artist"     : "",
+    "artURL"     : "",
+    "imageURL"   : "",
+    "sourceURL"  : "http://www.magicmultiverse.net/cards/170",
+    "cardCode"   : "RC14",
+    "layout"     : "normal"
+  }
+    , 
+  { 
+    "name"       : "Reject the Apostate",
+  
+    "manaCost"   : "R",
+    "colors"     : ["Red"],
+    "type"       : "Instant",
+    "supertypes" : [],
+    "types"      : ["Instant"],
+    "subtypes"   : [],
+    "rarity"     : "common",
+    "power"      : "",
+    "toughness"  : "",
+    
+    "text"       : "Reject the Apostate deals 2 damage to target creature. If you have a sorcery card in your graveyard, Reject the Apostate deals 4 damage to that creature instead.",
+    "flavor"     : "",
+    
+    "artist"     : "",
+    "artURL"     : "",
+    "imageURL"   : "",
+    "sourceURL"  : "http://www.magicmultiverse.net/cards/169",
+    "cardCode"   : "RC13",
+    "layout"     : "normal"
+  }
+    , 
+  { 
+    "name"       : "Ritual of Accusation",
+  
+    "manaCost"   : "4R",
+    "colors"     : ["Red"],
+    "type"       : "Sorcery",
+    "supertypes" : [],
+    "types"      : ["Sorcery"],
+    "subtypes"   : [],
+    "rarity"     : "common",
+    "power"      : "",
+    "toughness"  : "",
+    
+    "text"       : "Put two 3/1 red Elemental creature tokens with haste onto the battlefield.",
+    "flavor"     : "\"We call upon the forces from under our world, to come and convict our enemies of their heathen wrongdoing.\"",
+    
+    "artist"     : "",
+    "artURL"     : "",
+    "imageURL"   : "",
+    "sourceURL"  : "http://www.magicmultiverse.net/cards/167",
+    "cardCode"   : "RC11",
+    "layout"     : "normal"
+  }
+    , 
+  { 
+    "name"       : "Vent Frustration",
+  
+    "manaCost"   : "R",
+    "colors"     : ["Red"],
+    "type"       : "Sorcery",
+    "supertypes" : [],
+    "types"      : ["Sorcery"],
+    "subtypes"   : [],
+    "rarity"     : "common",
+    "power"      : "",
+    "toughness"  : "",
+    
+    "text"       : "As an additional cost to cast Vent Frustration, return a land you control to its owner's hand.\nVent Frustration deals 5 damage to target creature.",
+    "flavor"     : "If you keep blocking it up, eventually it'll explode in your face.",
+    
+    "artist"     : "",
+    "artURL"     : "",
+    "imageURL"   : "",
+    "sourceURL"  : "http://www.magicmultiverse.net/cards/166",
+    "cardCode"   : "RC10",
+    "layout"     : "normal"
+  }
+    , 
+  { 
+    "name"       : "Tectonic Adjustment",
+  
+    "manaCost"   : "2RR",
+    "colors"     : ["Red"],
+    "type"       : "Sorcery",
+    "supertypes" : [],
+    "types"      : ["Sorcery"],
+    "subtypes"   : [],
+    "rarity"     : "common",
+    "power"      : "",
+    "toughness"  : "",
+    
+    "text"       : "Destroy up to one target land. Return up to one land card from your graveyard to your hand.",
+    "flavor"     : "Life in the unstable Khert steppes is exciting. At any time there might be a new plain or forest out of nowhere.",
+    
+    "artist"     : "",
+    "artURL"     : "",
+    "imageURL"   : "",
+    "sourceURL"  : "http://www.magicmultiverse.net/cards/164",
+    "cardCode"   : "RC08",
+    "layout"     : "normal"
+  }
+    , 
+  { 
+    "name"       : "Hivesmasher Lithosaur",
+  
+    "manaCost"   : "RR",
+    "colors"     : ["Red"],
+    "type"       : "Creature — Lizard",
+    "supertypes" : [],
+    "types"      : ["Creature"],
+    "subtypes"   : ["Lizard"],
+    "rarity"     : "common",
+    "power"      : "3",
+    "toughness"  : "3",
+    
+    "text"       : "Trample\nWhenever Hivesmasher Lithosaur attacks, target opponent puts two 1/1 green Insect creature tokens onto the battlefield tapped.",
+    "flavor"     : "",
+    
+    "artist"     : "",
+    "artURL"     : "",
+    "imageURL"   : "",
+    "sourceURL"  : "http://www.magicmultiverse.net/cards/163",
+    "cardCode"   : "RC07",
+    "layout"     : "normal"
+  }
+    , 
+  { 
+    "name"       : "Zerian Apostate",
+  
+    "manaCost"   : "1RR",
+    "colors"     : ["Red"],
+    "type"       : "Creature — Human Cleric",
+    "supertypes" : [],
+    "types"      : ["Creature"],
+    "subtypes"   : ["Human", "Cleric"],
+    "rarity"     : "common",
+    "power"      : "3",
+    "toughness"  : "2",
+    
+    "text"       : "Zerian Apostate can't be blocked as long as defending player has a sorcery card in his or her graveyard.",
+    "flavor"     : "\"They'll be out at matins, so now's the time to loot the vestry.\"",
+    
+    "artist"     : "",
+    "artURL"     : "",
+    "imageURL"   : "",
+    "sourceURL"  : "http://www.magicmultiverse.net/cards/162",
+    "cardCode"   : "RC06",
+    "layout"     : "normal"
+  }
+    , 
+  { 
+    "name"       : "Disaffected Altarhand",
+  
+    "manaCost"   : "2R",
+    "colors"     : ["Red"],
+    "type"       : "Creature — Ogre Cleric",
+    "supertypes" : [],
+    "types"      : ["Creature"],
+    "subtypes"   : ["Ogre", "Cleric"],
+    "rarity"     : "common",
+    "power"      : "5",
+    "toughness"  : "2",
+    
+    "text"       : "Disaffected Altarhand can't attack unless you've cast a sorcery this turn.",
+    "flavor"     : "The church rituals energise him, bringing him out of his stupor. He spends the rest of the week glaring blearily at anything that comes near.",
+    
+    "artist"     : "",
+    "artURL"     : "",
+    "imageURL"   : "",
+    "sourceURL"  : "http://www.magicmultiverse.net/cards/161",
+    "cardCode"   : "RC05",
+    "layout"     : "normal"
+  }
+    , 
+  { 
+    "name"       : "Borderland Lithosaur",
+  
+    "manaCost"   : "2R",
+    "colors"     : ["Red"],
+    "type"       : "Creature — Lizard",
+    "supertypes" : [],
+    "types"      : ["Creature"],
+    "subtypes"   : ["Lizard"],
+    "rarity"     : "common",
+    "power"      : "2",
+    "toughness"  : "1",
+    
+    "text"       : "When Borderland Lithosaur enters the battlefield, return up to one target land card from your graveyard to your hand.\nSacrifice Borderland Lithosaur: You may put a land card from your hand onto the battlefield.",
+    "flavor"     : "",
+    
+    "artist"     : "",
+    "artURL"     : "",
+    "imageURL"   : "",
+    "sourceURL"  : "http://www.magicmultiverse.net/cards/160",
+    "cardCode"   : "RC04",
+    "layout"     : "normal"
+  }
+    , 
+  { 
+    "name"       : "Territorial Wildman",
+  
+    "manaCost"   : "1R",
+    "colors"     : ["Red"],
+    "type"       : "Creature — Human Shaman",
+    "supertypes" : [],
+    "types"      : ["Creature"],
+    "subtypes"   : ["Human", "Shaman"],
+    "rarity"     : "common",
+    "power"      : "2",
+    "toughness"  : "1",
+    
+    "text"       : "Whenever a land enters the battlefield under your control, Territorial Wildman gets +2/+2 until end of turn.",
+    "flavor"     : "\"Why stay away? Long, ragged hair, a dangerous bond with the crags he lives in, and he stinks. Next question?\"",
+    
+    "artist"     : "",
+    "artURL"     : "",
+    "imageURL"   : "",
+    "sourceURL"  : "http://www.magicmultiverse.net/cards/159",
+    "cardCode"   : "RC03",
+    "layout"     : "normal"
+  }
+    , 
+  { 
+    "name"       : "Cataspire Borderguard",
+  
+    "manaCost"   : "1R",
+    "colors"     : ["Red"],
+    "type"       : "Creature — Human Warrior",
+    "supertypes" : [],
+    "types"      : ["Creature"],
+    "subtypes"   : ["Human", "Warrior"],
+    "rarity"     : "common",
+    "power"      : "1",
+    "toughness"  : "1",
+    
+    "text"       : "First strike\nCataspire Borderguard gets +1/+1 as long as you control five or more lands.\nCataspire Borderguard gets +1/+1 as long as you have a sorcery card in your graveyard.",
+    "flavor"     : "",
+    
+    "artist"     : "",
+    "artURL"     : "",
+    "imageURL"   : "",
+    "sourceURL"  : "http://www.magicmultiverse.net/cards/157",
+    "cardCode"   : "RC01",
+    "layout"     : "normal"
+  }
+    , 
+  { 
+    "name"       : "Force the Hand",
+  
+    "manaCost"   : "BB",
+    "colors"     : ["Black"],
+    "type"       : "Instant",
+    "supertypes" : [],
+    "types"      : ["Instant"],
+    "subtypes"   : [],
+    "rarity"     : "rare",
+    "power"      : "",
+    "toughness"  : "",
+    
+    "text"       : "Target permanent's controller activates an activated ability of that permanent of your choice. You make all choices. (That player pays all costs, activating mana abilities as necessary. You can't make a choice that player can't pay for.)\nWhile Force the Hand is on the stack and not resolving, spells and abilities can't be played.",
+    "flavor"     : "",
+    
+    "artist"     : "",
+    "artURL"     : "",
+    "imageURL"   : "",
+    "sourceURL"  : "http://www.magicmultiverse.net/cards/156",
+    "cardCode"   : "BR11",
+    "layout"     : "normal"
+  }
+    , 
+  { 
+    "name"       : "Extreme Rites",
+  
+    "manaCost"   : "B",
+    "colors"     : ["Black"],
+    "type"       : "Instant",
+    "supertypes" : [],
+    "types"      : ["Instant"],
+    "subtypes"   : [],
+    "rarity"     : "rare",
+    "power"      : "",
+    "toughness"  : "",
+    
+    "text"       : "The next sorcery spell you cast this turn may be cast any time you could cast an instant.\nDraw a card.",
+    "flavor"     : "There isn't always time to assemble the proper ritevictims and incense, but cardinals have been known to improvise.",
+    
+    "artist"     : "",
+    "artURL"     : "",
+    "imageURL"   : "",
+    "sourceURL"  : "http://www.magicmultiverse.net/cards/155",
+    "cardCode"   : "BR10",
+    "layout"     : "normal"
+  }
+    , 
+  { 
+    "name"       : "Catastrophic Collapse",
+  
+    "manaCost"   : "3BB",
+    "colors"     : ["Black"],
+    "type"       : "Sorcery",
+    "supertypes" : [],
+    "types"      : ["Sorcery"],
+    "subtypes"   : [],
+    "rarity"     : "rare",
+    "power"      : "",
+    "toughness"  : "",
+    
+    "text"       : "All creatures get -X/-X until end of turn, where X is the number of instant cards in all graveyards.",
+    "flavor"     : "Don Spidra would rather die than let his secrets be stolen.",
+    
+    "artist"     : "",
+    "artURL"     : "",
+    "imageURL"   : "",
+    "sourceURL"  : "http://www.magicmultiverse.net/cards/154",
+    "cardCode"   : "BR09",
+    "layout"     : "normal"
+  }
+    , 
+  { 
+    "name"       : "Ritual of Dominance",
+  
+    "manaCost"   : "1BB",
+    "colors"     : ["Black"],
+    "type"       : "Sorcery",
+    "supertypes" : [],
+    "types"      : ["Sorcery"],
+    "subtypes"   : [],
+    "rarity"     : "rare",
+    "power"      : "",
+    "toughness"  : "",
+    
+    "text"       : "Pay any amount of life. For each 2 life you paid this way, either draw a card or return a creature card from your graveyard to your hand.",
+    "flavor"     : "",
+    
+    "artist"     : "",
+    "artURL"     : "",
+    "imageURL"   : "",
+    "sourceURL"  : "http://www.magicmultiverse.net/cards/153",
+    "cardCode"   : "BR08",
+    "layout"     : "normal"
+  }
+    , 
+  { 
+    "name"       : "Pulse of Undeath",
+  
+    "manaCost"   : "4BB",
+    "colors"     : ["Black"],
+    "type"       : "Sorcery",
+    "supertypes" : [],
+    "types"      : ["Sorcery"],
+    "subtypes"   : [],
+    "rarity"     : "rare",
+    "power"      : "",
+    "toughness"  : "",
+    
+    "text"       : "Return target creature card from your graveyard to the battlefield. Then if you control fewer creatures than target opponent, return Pulse of Undeath to its owner's hand.",
+    "flavor"     : "",
+    
+    "artist"     : "",
+    "artURL"     : "",
+    "imageURL"   : "",
+    "sourceURL"  : "http://www.magicmultiverse.net/cards/152",
+    "cardCode"   : "BR07",
+    "layout"     : "normal"
+  }
+    , 
+  { 
+    "name"       : "Mindmulcher Cardinal",
+  
+    "manaCost"   : "4B",
+    "colors"     : ["Black"],
+    "type"       : "Creature — Ogre Cleric",
+    "supertypes" : [],
+    "types"      : ["Creature"],
+    "subtypes"   : ["Ogre", "Cleric"],
+    "rarity"     : "rare",
+    "power"      : "4",
+    "toughness"  : "4",
+    
+    "text"       : "When Mindmulcher Cardinal is put into a graveyard from the battlefield, each player puts the top half of his or her library into his or her graveyard, rounded down. Exile Mindmulcher Cardinal.",
+    "flavor"     : "His congregation walk out gibbering and drooling. On a good day.",
+    
+    "artist"     : "",
+    "artURL"     : "",
+    "imageURL"   : "",
+    "sourceURL"  : "http://www.magicmultiverse.net/cards/150",
+    "cardCode"   : "BR05",
+    "layout"     : "normal"
+  }
+    , 
+  { 
+    "name"       : "Oppressing the Weak",
+  
+    "manaCost"   : "2B",
+    "colors"     : ["Black"],
+    "type"       : "Enchantment",
+    "supertypes" : [""],
+    "types"      : ["Enchantment"],
+    "subtypes"   : [""],
+    "rarity"     : "uncommon",
+    "power"      : "",
+    "toughness"  : "",
+    
+    "text"       : "Whenever a creature with power 1 or less attacks or blocks, destroy it and its controller loses 1 life.",
+    "flavor"     : "In gang territory, the aged don't go outdoors even in broad daylight.",
+    
+    "artist"     : "",
+    "artURL"     : "",
+    "imageURL"   : "",
+    "sourceURL"  : "http://www.magicmultiverse.net/cards/143",
+    "cardCode"   : "BU11",
+    "layout"     : "normal"
+  }
+    , 
+  { 
+    "name"       : "Zerian Dissuader",
+  
+    "manaCost"   : "2B",
+    "colors"     : ["Black"],
+    "type"       : "Creature — Vampire Cleric",
+    "supertypes" : [""],
+    "types"      : ["Creature"],
+    "subtypes"   : ["Vampire", "Cleric"],
+    "rarity"     : "common",
+    "power"      : "2",
+    "toughness"  : "2",
+    
+    "text"       : "Zerian Dissuader has intimidate as long as a sorcery card is in your graveyard. ",
+    "flavor"     : "FLAVOUR TEXT PENDING",
+    
+    "artist"     : "",
+    "artURL"     : "",
+    "imageURL"   : "",
+    "sourceURL"  : "http://www.magicmultiverse.net/cards/132",
+    "cardCode"   : "BC16",
+    "layout"     : "normal"
+  }
+    , 
+  { 
+    "name"       : "Gather Ritevictims",
+  
+    "manaCost"   : "BB",
+    "colors"     : ["Black"],
+    "type"       : "Sorcery",
+    "supertypes" : [""],
+    "types"      : ["Sorcery"],
+    "subtypes"   : [""],
+    "rarity"     : "common",
+    "power"      : "",
+    "toughness"  : "",
+    
+    "text"       : "Target creature gets -1/-1 until end of turn.\r\nTarget creature gets -1/-1 until end of turn.",
+    "flavor"     : "The insubstantial darkness dragged the girl, screaming, away from her impassive parents.",
+    
+    "artist"     : "",
+    "artURL"     : "",
+    "imageURL"   : "",
+    "sourceURL"  : "http://www.magicmultiverse.net/cards/127",
+    "cardCode"   : "BC11",
+    "layout"     : "normal"
+  }
+    , 
+  { 
+    "name"       : "Clash with the Zerians",
+  
+    "manaCost"   : "1B",
+    "colors"     : ["Black"],
+    "type"       : "Sorcery",
+    "supertypes" : [""],
+    "types"      : ["Sorcery"],
+    "subtypes"   : [""],
+    "rarity"     : "uncommon",
+    "power"      : "",
+    "toughness"  : "",
+    
+    "text"       : "Each player discards a card. If a land card was discarded this way, return Clash with the Zerians to its owner's hand. (This isn't in your hand when you have to discard.)",
+    "flavor"     : "",
+    
+    "artist"     : "",
+    "artURL"     : "",
+    "imageURL"   : "",
+    "sourceURL"  : "http://www.magicmultiverse.net/cards/140",
+    "cardCode"   : "BU08",
+    "layout"     : "normal"
+  }
+    , 
+  { 
+    "name"       : "Corruption Spitter",
+  
+    "manaCost"   : "2BB",
+    "colors"     : ["Black"],
+    "type"       : "Creature — Worm",
+    "supertypes" : [""],
+    "types"      : ["Creature"],
+    "subtypes"   : ["Worm"],
+    "rarity"     : "uncommon",
+    "power"      : "2",
+    "toughness"  : "2",
+    
+    "text"       : "Overpower {1} ({1}: Target creature blocking Corruption Spitter gets -1/-1 until end of turn.)",
+    "flavor"     : "There are swamps that nobody approaches, but sometimes the swamp approaches you.",
+    
+    "artist"     : "",
+    "artURL"     : "",
+    "imageURL"   : "",
+    "sourceURL"  : "http://www.magicmultiverse.net/cards/137",
+    "cardCode"   : "BU05",
+    "layout"     : "normal"
+  }
+    , 
+  { 
+    "name"       : "Bloodstained Cardinal",
+  
+    "manaCost"   : "3BB",
+    "colors"     : ["Black"],
+    "type"       : "Creature — Human Cleric",
+    "supertypes" : [],
+    "types"      : ["Creature"],
+    "subtypes"   : ["Human", "Cleric"],
+    "rarity"     : "rare",
+    "power"      : "3",
+    "toughness"  : "3",
+    
+    "text"       : "At the beginning of your upkeep, each player loses life equal to the number of sorcery cards in your graveyard.",
+    "flavor"     : "Some Zerians make no secret of how they rose to power.",
+    
+    "artist"     : "",
+    "artURL"     : "",
+    "imageURL"   : "",
+    "sourceURL"  : "http://www.magicmultiverse.net/cards/147",
+    "cardCode"   : "BR02",
+    "layout"     : "normal"
+  }
+    , 
+  { 
+    "name"       : "Eleventh Rite of Eharot",
+  
+    "manaCost"   : "4BB",
+    "colors"     : ["Black"],
+    "type"       : "Sorcery",
+    "supertypes" : [],
+    "types"      : ["Sorcery"],
+    "subtypes"   : [],
+    "rarity"     : "mythic",
+    "power"      : "",
+    "toughness"  : "",
+    
+    "text"       : "If you have exactly 10 sorcery cards and exactly 10 other cards in your graveyard, you win the game.",
+    "flavor"     : "\"The blood urns are boiling. The victims are in place. Ultimate power awaits you, Cardinal.\"",
+    
+    "artist"     : "",
+    "artURL"     : "",
+    "imageURL"   : "",
+    "sourceURL"  : "http://www.magicmultiverse.net/cards/146",
+    "cardCode"   : "BR01",
+    "layout"     : "normal"
+  }
+    , 
+  { 
+    "name"       : "Violent Discontent",
+  
+    "manaCost"   : "1BB",
+    "colors"     : ["Black"],
+    "type"       : "Instant",
+    "supertypes" : [],
+    "types"      : ["Instant"],
+    "subtypes"   : [],
+    "rarity"     : "uncommon",
+    "power"      : "",
+    "toughness"  : "",
+    
+    "text"       : "Each creature deals 1 damage to its controller. Then Violent Discontent deals 1 damage to each creature.",
+    "flavor"     : "Since they can't match the Ecriot for numbers, the Condri use disinformation to equal the odds.",
+    
+    "artist"     : "",
+    "artURL"     : "",
+    "imageURL"   : "",
+    "sourceURL"  : "http://www.magicmultiverse.net/cards/145",
+    "cardCode"   : "BU13",
+    "layout"     : "normal"
+  }
+    , 
+  { 
+    "name"       : "Ominous Toll",
+  
+    "manaCost"   : "1B",
+    "colors"     : ["Black"],
+    "type"       : "Instant",
+    "supertypes" : [],
+    "types"      : ["Instant"],
+    "subtypes"   : [],
+    "rarity"     : "uncommon",
+    "power"      : "",
+    "toughness"  : "",
+    
+    "text"       : "Target creature's controller sacrifices it unless that player pays 4 life and discards a card.",
+    "flavor"     : "The cathedral bells inspire dread as far as they can be heard.",
+    
+    "artist"     : "",
+    "artURL"     : "",
+    "imageURL"   : "",
+    "sourceURL"  : "http://www.magicmultiverse.net/cards/144",
+    "cardCode"   : "BU12",
+    "layout"     : "normal"
+  }
+    , 
+  { 
+    "name"       : "Pulse of Dementia",
+  
+    "manaCost"   : "3B",
+    "colors"     : ["Black"],
+    "type"       : "Sorcery",
+    "supertypes" : [],
+    "types"      : ["Sorcery"],
+    "subtypes"   : [],
+    "rarity"     : "uncommon",
+    "power"      : "",
+    "toughness"  : "",
+    
+    "text"       : "Target opponent exiles the top two cards of his or her library, then puts the top two cards of his or her library into his or her graveyard. Then if you have more cards in your graveyard than that player, return Pulse of Dementia to its owner's hand.",
+    "flavor"     : "",
+    
+    "artist"     : "",
+    "artURL"     : "",
+    "imageURL"   : "",
+    "sourceURL"  : "http://www.magicmultiverse.net/cards/142",
+    "cardCode"   : "BU10",
+    "layout"     : "normal"
+  }
+    , 
+  { 
+    "name"       : "Cruel Reality",
+  
+    "manaCost"   : "BB",
+    "colors"     : ["Black"],
+    "type"       : "Sorcery",
+    "supertypes" : [],
+    "types"      : ["Sorcery"],
+    "subtypes"   : [],
+    "rarity"     : "uncommon",
+    "power"      : "",
+    "toughness"  : "",
+    
+    "text"       : "Target player reveals his or her hand. That player loses 2 life for each enchantment he or she controls, then loses 2 life for each enchantment card in his or her hand.",
+    "flavor"     : "",
+    
+    "artist"     : "",
+    "artURL"     : "",
+    "imageURL"   : "",
+    "sourceURL"  : "http://www.magicmultiverse.net/cards/141",
+    "cardCode"   : "BU09",
+    "layout"     : "normal"
+  }
+    , 
+  { 
+    "name"       : "Necromantic Ritual",
+  
+    "manaCost"   : "3BB",
+    "colors"     : ["Black"],
+    "type"       : "Sorcery",
+    "supertypes" : [],
+    "types"      : ["Sorcery"],
+    "subtypes"   : [],
+    "rarity"     : "uncommon",
+    "power"      : "",
+    "toughness"  : "",
+    
+    "text"       : "Return target creature card from an opponent's graveyard to the battlefield under your control. Gain life equal to its converted mana cost.",
+    "flavor"     : "",
+    
+    "artist"     : "",
+    "artURL"     : "",
+    "imageURL"   : "",
+    "sourceURL"  : "http://www.magicmultiverse.net/cards/139",
+    "cardCode"   : "BU07",
+    "layout"     : "normal"
+  }
+    , 
+  { 
+    "name"       : "Parched Archbishop",
+  
+    "manaCost"   : "3B",
+    "colors"     : ["Black"],
+    "type"       : "Creature — Vampire Cleric",
+    "supertypes" : [],
+    "types"      : ["Creature"],
+    "subtypes"   : ["Vampire", "Cleric"],
+    "rarity"     : "uncommon",
+    "power"      : "3",
+    "toughness"  : "2",
+    
+    "text"       : "Whenever you cast a sorcery spell, you may return Parched Archbishop from your graveyard to your hand.",
+    "flavor"     : "The cathedral laity are always careful to keep the crypts immaculate, lest they provoke the inhabitants.",
+    
+    "artist"     : "",
+    "artURL"     : "",
+    "imageURL"   : "",
+    "sourceURL"  : "http://www.magicmultiverse.net/cards/135",
+    "cardCode"   : "BU03",
+    "layout"     : "normal"
+  }
+    , 
+  { 
+    "name"       : "Incense Stoker",
+  
+    "manaCost"   : "1BB",
+    "colors"     : ["Black"],
+    "type"       : "Creature — Ogre Cleric",
+    "supertypes" : [],
+    "types"      : ["Creature"],
+    "subtypes"   : ["Ogre", "Cleric"],
+    "rarity"     : "uncommon",
+    "power"      : "2",
+    "toughness"  : "2",
+    
+    "text"       : "Whenever you cast a sorcery spell, target opponent discards a card.",
+    "flavor"     : "\"Yes, I go to the Fog Street Chapel. Although I can never quite remember what happens in there.\" - Armando, market trader",
+    
+    "artist"     : "",
+    "artURL"     : "",
+    "imageURL"   : "",
+    "sourceURL"  : "http://www.magicmultiverse.net/cards/134",
+    "cardCode"   : "BU02",
+    "layout"     : "normal"
+  }
+    , 
+  { 
+    "name"       : "Chaze-Fed Ritualist",
+  
+    "manaCost"   : "B",
+    "colors"     : ["Black"],
+    "type"       : "Creature — Human Cleric",
+    "supertypes" : [],
+    "types"      : ["Creature"],
+    "subtypes"   : ["Human", "Cleric"],
+    "rarity"     : "uncommon",
+    "power"      : "1",
+    "toughness"  : "1",
+    
+    "text"       : "Whenever a player casts a sorcery or instant spell, you may put a +1/+1 counter on Chaze-Fed Ritualist.",
+    "flavor"     : "His flock don't like to speculate what he's addicted to.",
+    
+    "artist"     : "",
+    "artURL"     : "",
+    "imageURL"   : "",
+    "sourceURL"  : "http://www.magicmultiverse.net/cards/133",
+    "cardCode"   : "BU01",
+    "layout"     : "normal"
+  }
+    , 
+  { 
+    "name"       : "Revise History",
+  
+    "manaCost"   : "2B",
+    "colors"     : ["Black"],
+    "type"       : "Instant",
+    "supertypes" : [],
+    "types"      : ["Instant"],
+    "subtypes"   : [],
+    "rarity"     : "common",
+    "power"      : "",
+    "toughness"  : "",
+    
+    "text"       : "Exile up to four target cards from a single graveyard. If you exiled two or fewer cards this way, return Revise History to its owner's hand.",
+    "flavor"     : "\"Citizens' views are shaped by the past, so the past must be... tidied.\"",
+    
+    "artist"     : "",
+    "artURL"     : "",
+    "imageURL"   : "",
+    "sourceURL"  : "http://www.magicmultiverse.net/cards/131",
+    "cardCode"   : "BC15",
+    "layout"     : "normal"
+  }
+    , 
+  { 
+    "name"       : "Surprise Stab",
+  
+    "manaCost"   : "4B",
+    "colors"     : ["Black"],
+    "type"       : "Instant",
+    "supertypes" : [],
+    "types"      : ["Instant"],
+    "subtypes"   : [],
+    "rarity"     : "common",
+    "power"      : "",
+    "toughness"  : "",
+    
+    "text"       : "Put two 2/1 black Human Rogue creature tokens onto the battlefield.",
+    "flavor"     : "The Spidra often have unexpected backup lurking around a corner.",
+    
+    "artist"     : "",
+    "artURL"     : "",
+    "imageURL"   : "",
+    "sourceURL"  : "http://www.magicmultiverse.net/cards/130",
+    "cardCode"   : "BC14",
+    "layout"     : "normal"
+  }
+    , 
+  { 
+    "name"       : "Plunge into Muck",
+  
+    "manaCost"   : "XB",
+    "colors"     : ["Black"],
+    "type"       : "Instant",
+    "supertypes" : [],
+    "types"      : ["Instant"],
+    "subtypes"   : [],
+    "rarity"     : "common",
+    "power"      : "",
+    "toughness"  : "",
+    
+    "text"       : "Choose one - X target creatures gain swampwalk until end of turn; or X target lands become Swamps until end of turn.",
+    "flavor"     : "Many gang members are happy to get dirty if it's necessary for the mission... or even if it isn't.",
+    
+    "artist"     : "",
+    "artURL"     : "",
+    "imageURL"   : "",
+    "sourceURL"  : "http://www.magicmultiverse.net/cards/129",
+    "cardCode"   : "BC13",
+    "layout"     : "normal"
+  }
+    , 
+  { 
+    "name"       : "Ray of Darkness",
+  
+    "manaCost"   : "1B",
+    "colors"     : ["Black"],
+    "type"       : "Sorcery",
+    "supertypes" : [],
+    "types"      : ["Sorcery"],
+    "subtypes"   : [],
+    "rarity"     : "common",
+    "power"      : "",
+    "toughness"  : "",
+    
+    "text"       : "Destroy target nonblack creature. It can't be regenerated.",
+    "flavor"     : "Eharot doesn't generally pay attention to his worshippers' prayers, but just occasionally it amuses him to murder someone they ask him to.",
+    
+    "artist"     : "",
+    "artURL"     : "",
+    "imageURL"   : "",
+    "sourceURL"  : "http://www.magicmultiverse.net/cards/126",
+    "cardCode"   : "BC10",
+    "layout"     : "normal"
+  }
+    , 
+  { 
+    "name"       : "Brutal Interrogation",
+  
+    "manaCost"   : "B",
+    "colors"     : ["Black"],
+    "type"       : "Sorcery",
+    "supertypes" : [],
+    "types"      : ["Sorcery"],
+    "subtypes"   : [],
+    "rarity"     : "common",
+    "power"      : "",
+    "toughness"  : "",
+    
+    "text"       : "Choose a card type other than land. Target opponent reveals his or her hand. You may choose a card of that type. If you do, that player discards that card.",
+    "flavor"     : "",
+    
+    "artist"     : "",
+    "artURL"     : "",
+    "imageURL"   : "",
+    "sourceURL"  : "http://www.magicmultiverse.net/cards/125",
+    "cardCode"   : "BC09",
+    "layout"     : "normal"
+  }
+    , 
+  { 
+    "name"       : "Dealer in Despair",
+  
+    "manaCost"   : "1B",
+    "colors"     : ["Black"],
+    "type"       : "Creature — Vampire Rogue",
+    "supertypes" : [""],
+    "types"      : ["Creature"],
+    "subtypes"   : ["Vampire", "Rogue"],
+    "rarity"     : "common",
+    "power"      : "2",
+    "toughness"  : "1",
+    
+    "text"       : "Deathtouch\nReminisce {1}{B} ({1}{B}, Exile this card from your hand: Return target creature card from your graveyard to your hand.)",
+    "flavor"     : "",
+    
+    "artist"     : "",
+    "artURL"     : "",
+    "imageURL"   : "",
+    "sourceURL"  : "http://www.magicmultiverse.net/cards/122",
+    "cardCode"   : "BC06",
+    "layout"     : "normal"
+  }
+    , 
+  { 
+    "name"       : "Clash with the Elusi",
+  
+    "manaCost"   : "1U",
+    "colors"     : ["Blue"],
+    "type"       : "Instant",
+    "supertypes" : [""],
+    "types"      : ["Instant"],
+    "subtypes"   : [""],
+    "rarity"     : "uncommon",
+    "power"      : "",
+    "toughness"  : "",
+    
+    "text"       : "Put the top card of each player's library into that player's graveyard. If a land card was put into a graveyard this way, return Clash with the Elusi to its owner's hand.",
+    "flavor"     : "",
+    
+    "artist"     : "",
+    "artURL"     : "",
+    "imageURL"   : "",
+    "sourceURL"  : "http://www.magicmultiverse.net/cards/103",
+    "cardCode"   : "UU11",
+    "layout"     : "normal"
+  }
+    , 
+  { 
+    "name"       : "History Sculptor",
+  
+    "manaCost"   : "2UU",
+    "colors"     : ["Blue"],
+    "type"       : "Creature — Human Advisor",
+    "supertypes" : [""],
+    "types"      : ["Creature"],
+    "subtypes"   : ["Human", "Advisor"],
+    "rarity"     : "rare",
+    "power"      : "2",
+    "toughness"  : "2",
+    
+    "text"       : "{T}: Target card in a graveyard becomes all card types until end of turn. (Instants or sorceries still can't enter the battlefield.)",
+    "flavor"     : "",
+    
+    "artist"     : "",
+    "artURL"     : "",
+    "imageURL"   : "",
+    "sourceURL"  : "http://www.magicmultiverse.net/cards/110",
+    "cardCode"   : "UR05",
+    "layout"     : "normal"
+  }
+    , 
+  { 
+    "name"       : "Freedom of Will",
+  
+    "manaCost"   : "2U",
+    "colors"     : ["Blue"],
+    "type"       : "Enchantment — Aura",
+    "supertypes" : [""],
+    "types"      : ["Enchantment"],
+    "subtypes"   : ["Aura"],
+    "rarity"     : "uncommon",
+    "power"      : "",
+    "toughness"  : "",
+    
+    "text"       : "Enchant artifact or enchantment\nEnchanted permanent is an X/X creature in addition to its other types, where X is its converted mana cost.",
+    "flavor"     : "The most prized creations are those that exhibit creativity of their own.",
+    
+    "artist"     : "",
+    "artURL"     : "",
+    "imageURL"   : "",
+    "sourceURL"  : "http://www.magicmultiverse.net/cards/100",
+    "cardCode"   : "UU08",
+    "layout"     : "normal"
+  }
+    , 
+  { 
+    "name"       : "Pulse of Pain",
+  
+    "manaCost"   : "2B",
+    "colors"     : ["Black"],
+    "type"       : "Sorcery",
+    "supertypes" : [],
+    "types"      : ["Sorcery"],
+    "subtypes"   : [],
+    "rarity"     : "common",
+    "power"      : "",
+    "toughness"  : "",
+    
+    "text"       : "Target opponent loses 4 life. Then if you have less life than that player, return Pulse of Pain to its owner's hand.",
+    "flavor"     : "The cathedral bells toll the oppressive rhythm of the city.",
+    
+    "artist"     : "",
+    "artURL"     : "",
+    "imageURL"   : "",
+    "sourceURL"  : "http://www.magicmultiverse.net/cards/124",
+    "cardCode"   : "BC08",
+    "layout"     : "normal"
+  }
+    , 
+  { 
+    "name"       : "Crypt Runner",
+  
+    "manaCost"   : "1B",
+    "colors"     : ["Black"],
+    "type"       : "Creature — Vampire Cleric",
+    "supertypes" : [],
+    "types"      : ["Creature"],
+    "subtypes"   : ["Vampire", "Cleric"],
+    "rarity"     : "common",
+    "power"      : "2",
+    "toughness"  : "1",
+    
+    "text"       : "When Crypt Runner deals combat damage to a player, you may return target creature card from your graveyard to your hand.",
+    "flavor"     : "",
+    
+    "artist"     : "",
+    "artURL"     : "",
+    "imageURL"   : "",
+    "sourceURL"  : "http://www.magicmultiverse.net/cards/123",
+    "cardCode"   : "BC07",
+    "layout"     : "normal"
+  }
+    , 
+  { 
+    "name"       : "Chapel-Roof Creeper",
+  
+    "manaCost"   : "2B",
+    "colors"     : ["Black"],
+    "type"       : "Creature — Elemental",
+    "supertypes" : [],
+    "types"      : ["Creature"],
+    "subtypes"   : ["Elemental"],
+    "rarity"     : "common",
+    "power"      : "3",
+    "toughness"  : "2",
+    
+    "text"       : "Whenever you cast a sorcery spell, Chapel-Roof Creeper gets +2/+2 until end of turn.",
+    "flavor"     : "Each new unholy anthem causes it to grow new tendrils.",
+    
+    "artist"     : "",
+    "artURL"     : "",
+    "imageURL"   : "",
+    "sourceURL"  : "http://www.magicmultiverse.net/cards/119",
+    "cardCode"   : "BC03",
+    "layout"     : "normal"
+  }
+    , 
+  { 
+    "name"       : "Compelling Deacon",
+  
+    "manaCost"   : "1B",
+    "colors"     : ["Black"],
+    "type"       : "Creature — Vampire Cleric",
+    "supertypes" : [],
+    "types"      : ["Creature"],
+    "subtypes"   : ["Vampire", "Cleric"],
+    "rarity"     : "common",
+    "power"      : "1",
+    "toughness"  : "1",
+    
+    "text"       : "Whenever you cast an instant or sorcery spell, you may gain 1 life and have target player lose 1 life.",
+    "flavor"     : "The commoners don't enjoy his masses, but they find themselves drawn there nevertheless.",
+    
+    "artist"     : "",
+    "artURL"     : "",
+    "imageURL"   : "",
+    "sourceURL"  : "http://www.magicmultiverse.net/cards/118",
+    "cardCode"   : "BC02",
+    "layout"     : "normal"
+  }
+    , 
+  { 
+    "name"       : "Scuraspire Borderguard",
+  
+    "manaCost"   : "2B",
+    "colors"     : ["Black"],
+    "type"       : "Creature — Human Rogue",
+    "supertypes" : [],
+    "types"      : ["Creature"],
+    "subtypes"   : ["Human", "Rogue"],
+    "rarity"     : "common",
+    "power"      : "2",
+    "toughness"  : "2",
+    
+    "text"       : "Scuraspire Borderguard gets +1/+1 as long as you have a sorcery card in your graveyard.\nScuraspire Borderguard gets +1/+1 as long as you have an instant card in your graveyard.",
+    "flavor"     : "",
+    
+    "artist"     : "",
+    "artURL"     : "",
+    "imageURL"   : "",
+    "sourceURL"  : "http://www.magicmultiverse.net/cards/117",
+    "cardCode"   : "BC01",
+    "layout"     : "normal"
+  }
+    , 
+  { 
+    "name"       : "Cryptic Demand",
+  
+    "manaCost"   : "4UUU",
+    "colors"     : ["Blue"],
+    "type"       : "Instant",
+    "supertypes" : [],
+    "types"      : ["Instant"],
+    "subtypes"   : [],
+    "rarity"     : "rare",
+    "power"      : "",
+    "toughness"  : "",
+    
+    "text"       : "Counter up to one target spell. Return up to one target permanent to its owner's hand. Tap all creatures your opponents control. Draw a card.",
+    "flavor"     : "",
+    
+    "artist"     : "",
+    "artURL"     : "",
+    "imageURL"   : "",
+    "sourceURL"  : "http://www.magicmultiverse.net/cards/116",
+    "cardCode"   : "UR11",
+    "layout"     : "normal"
+  }
+    , 
+  { 
+    "name"       : "Fivefold Braid",
+  
+    "manaCost"   : "4U",
+    "colors"     : ["Blue"],
+    "type"       : "Instant",
+    "supertypes" : [],
+    "types"      : ["Instant"],
+    "subtypes"   : [],
+    "rarity"     : "mythic",
+    "power"      : "",
+    "toughness"  : "",
+    
+    "text"       : "You may reveal exactly five instant cards from your hand. If you do, you may cast any number of those cards without paying their mana costs. If you choose the same target for all five, draw five cards.",
+    "flavor"     : "",
+    
+    "artist"     : "",
+    "artURL"     : "",
+    "imageURL"   : "",
+    "sourceURL"  : "http://www.magicmultiverse.net/cards/115",
+    "cardCode"   : "UR10",
+    "layout"     : "normal"
+  }
+    , 
+  { 
+    "name"       : "Infiltration Raid",
+  
+    "manaCost"   : "2U",
+    "colors"     : ["Blue"],
+    "type"       : "Instant",
+    "supertypes" : [],
+    "types"      : ["Instant"],
+    "subtypes"   : [],
+    "rarity"     : "rare",
+    "power"      : "",
+    "toughness"  : "",
+    
+    "text"       : "Cast Infiltration Raid only on your turn during the declare blockers step.\nYou may reveal a creature card from your hand and pay its mana cost. If you do, put it onto the battlefield tapped, attacking and unblocked.\nDraw a card.",
+    "flavor"     : "",
+    
+    "artist"     : "",
+    "artURL"     : "",
+    "imageURL"   : "",
+    "sourceURL"  : "http://www.magicmultiverse.net/cards/114",
+    "cardCode"   : "UR09",
+    "layout"     : "normal"
+  }
+    , 
+  { 
+    "name"       : "Surprise Roar",
+  
+    "manaCost"   : "5UU",
+    "colors"     : ["Blue"],
+    "type"       : "Instant",
+    "supertypes" : [],
+    "types"      : ["Instant"],
+    "subtypes"   : [],
+    "rarity"     : "rare",
+    "power"      : "",
+    "toughness"  : "",
+    
+    "text"       : "Put three 3/3 blue Drake creature tokens with flying onto the battlefield.",
+    "flavor"     : "The Ecriot love to reveal their trump cards at the latest possible moment.",
+    
+    "artist"     : "",
+    "artURL"     : "",
+    "imageURL"   : "",
+    "sourceURL"  : "http://www.magicmultiverse.net/cards/113",
+    "cardCode"   : "UR08",
+    "layout"     : "normal"
+  }
+    , 
+  { 
+    "name"       : "Twist the Form",
+  
+    "manaCost"   : "U",
+    "colors"     : ["Blue"],
+    "type"       : "Instant",
+    "supertypes" : [],
+    "types"      : ["Instant"],
+    "subtypes"   : [],
+    "rarity"     : "rare",
+    "power"      : "",
+    "toughness"  : "",
+    
+    "text"       : "Change the text of target spell or ability by replacing one permanent type with another, or by replacing instant with sorcery or vice versa. If you need loyalty or toughness, use toughness, loyalty, or converted mana cost. (Irrelevant subtypes disappear. For example, you could change \"Put a 1/1 Faerie creature token\" to \"Put a 1-loyalty planeswalker token\" or \"Put an enchantment token\".)",
+    "flavor"     : "",
+    
+    "artist"     : "",
+    "artURL"     : "",
+    "imageURL"   : "",
+    "sourceURL"  : "http://www.magicmultiverse.net/cards/112",
+    "cardCode"   : "UR07",
+    "layout"     : "normal"
+  }
+    , 
+  { 
+    "name"       : "Aethertouch Spy",
+  
+    "manaCost"   : "3U",
+    "colors"     : ["Blue"],
+    "type"       : "Creature — Human Wizard",
+    "supertypes" : [],
+    "types"      : ["Creature"],
+    "subtypes"   : ["Human", "Wizard"],
+    "rarity"     : "rare",
+    "power"      : "2",
+    "toughness"  : "3",
+    
+    "text"       : "Aethertouch Spy doesn't untap during your untap step.\nWhenever you cast a spell, you may untap Aethertouch Spy.\nWhenever Aethertouch Spy deals combat damage to a creature, return that creature to its owner's hand.",
+    "flavor"     : "",
+    
+    "artist"     : "",
+    "artURL"     : "",
+    "imageURL"   : "",
+    "sourceURL"  : "http://www.magicmultiverse.net/cards/109",
+    "cardCode"   : "UR04",
+    "layout"     : "normal"
+  }
+    , 
+  { 
+    "name"       : "Don Ecriot the Schemer",
+  
+    "manaCost"   : "1UUU",
+    "colors"     : ["Blue"],
+    "type"       : "Legendary Creature — Vampire Rogue",
+    "supertypes" : ["Legendary"],
+    "types"      : ["Creature"],
+    "subtypes"   : ["Vampire", "Rogue"],
+    "rarity"     : "rare",
+    "power"      : "1",
+    "toughness"  : "1",
+    
+    "text"       : "Flying\nWhenever you cast an instant spell, you may draw a card.",
+    "flavor"     : "\"My plans are wheels within wheels. You cannot surprise me.\"",
+    
+    "artist"     : "",
+    "artURL"     : "",
+    "imageURL"   : "",
+    "sourceURL"  : "http://www.magicmultiverse.net/cards/107",
+    "cardCode"   : "UR02",
+    "layout"     : "normal"
+  }
+    , 
+  { 
+    "name"       : "Chokebillows",
+  
+    "manaCost"   : "5B",
+    "colors"     : ["Black"],
+    "type"       : "Creature — Elemental",
+    "supertypes" : [""],
+    "types"      : ["Creature"],
+    "subtypes"   : ["Elemental"],
+    "rarity"     : "common",
+    "power"      : "5",
+    "toughness"  : "1",
+    
+    "text"       : "Overpower {1}{B} ({1}{B}: Target creature blocking Chokebillows gets -1/-1 until end of turn.)",
+    "flavor"     : "When it summons you to church, you don't say no.",
+    
+    "artist"     : "",
+    "artURL"     : "",
+    "imageURL"   : "",
+    "sourceURL"  : "http://www.magicmultiverse.net/cards/121",
+    "cardCode"   : "BC05",
+    "layout"     : "normal"
+  }
+    , 
+  { 
+    "name"       : "Usurp",
+  
+    "manaCost"   : "3UU",
+    "colors"     : ["Blue"],
+    "type"       : "Sorcery",
+    "supertypes" : [],
+    "types"      : ["Sorcery"],
+    "subtypes"   : [],
+    "rarity"     : "uncommon",
+    "power"      : "",
+    "toughness"  : "",
+    
+    "text"       : "Gain control of up to two target nonbasic lands.",
+    "flavor"     : "Businesses which don't pay the Condri protection fees find themselves under new management.",
+    
+    "artist"     : "",
+    "artURL"     : "",
+    "imageURL"   : "",
+    "sourceURL"  : "http://www.magicmultiverse.net/cards/105",
+    "cardCode"   : "UU13",
+    "layout"     : "normal"
+  }
+    , 
+  { 
+    "name"       : "Atrapice Research",
+  
+    "manaCost"   : "2UU",
+    "colors"     : ["Blue"],
+    "type"       : "Instant",
+    "supertypes" : [],
+    "types"      : ["Instant"],
+    "subtypes"   : [],
+    "rarity"     : "uncommon",
+    "power"      : "",
+    "toughness"  : "",
+    
+    "text"       : "Draw two cards. You may discard two cards. If you do, return Atrapice Research to its owner's hand.",
+    "flavor"     : "\"So much truth to uncover, and so many irrelevant distractions on the way!\"",
+    
+    "artist"     : "",
+    "artURL"     : "",
+    "imageURL"   : "",
+    "sourceURL"  : "http://www.magicmultiverse.net/cards/102",
+    "cardCode"   : "UU10",
+    "layout"     : "normal"
+  }
+    , 
+  { 
+    "name"       : "Invisible Tracks",
+  
+    "manaCost"   : "2U",
+    "colors"     : ["Blue"],
+    "type"       : "Instant",
+    "supertypes" : [],
+    "types"      : ["Instant"],
+    "subtypes"   : [],
+    "rarity"     : "uncommon",
+    "power"      : "",
+    "toughness"  : "",
+    
+    "text"       : "Target creature is unblockable this turn. Draw a card.",
+    "flavor"     : "Never ask how the Elusi get in and out. Just pay their fees and follow.",
+    
+    "artist"     : "",
+    "artURL"     : "",
+    "imageURL"   : "",
+    "sourceURL"  : "http://www.magicmultiverse.net/cards/101",
+    "cardCode"   : "UU09",
+    "layout"     : "normal"
+  }
+    , 
+  { 
+    "name"       : "Mind Erosion",
+  
+    "manaCost"   : "2U",
+    "colors"     : ["Blue"],
+    "type"       : "Instant",
+    "supertypes" : [""],
+    "types"      : ["Instant"],
+    "subtypes"   : [""],
+    "rarity"     : "common",
+    "power"      : "",
+    "toughness"  : "",
+    
+    "text"       : "Target player puts the top six cards of his or her library into his or her graveyard.",
+    "flavor"     : "\"We may not be vampires, but don't imagine for a moment that means you're safe.\" - Condri interrogator",
+    
+    "artist"     : "",
+    "artURL"     : "",
+    "imageURL"   : "",
+    "sourceURL"  : "http://www.magicmultiverse.net/cards/89",
+    "cardCode"   : "UC13",
+    "layout"     : "normal"
+  }
+    , 
+  { 
+    "name"       : "Mantle of Insight",
+  
+    "manaCost"   : "2U",
+    "colors"     : ["Blue"],
+    "type"       : "Enchantment — Aura",
+    "supertypes" : [],
+    "types"      : ["Enchantment"],
+    "subtypes"   : ["Aura"],
+    "rarity"     : "uncommon",
+    "power"      : "",
+    "toughness"  : "",
+    
+    "text"       : "Enchant creature\nWhenever enchanted creature deals combat damage to a player, choose one - draw a card; or return target instant card from your graveyard to your hand.",
+    "flavor"     : "",
+    
+    "artist"     : "",
+    "artURL"     : "",
+    "imageURL"   : "",
+    "sourceURL"  : "http://www.magicmultiverse.net/cards/98",
+    "cardCode"   : "UU06",
+    "layout"     : "normal"
+  }
+    , 
+  { 
+    "name"       : "History Disruptor",
+  
+    "manaCost"   : "4U",
+    "colors"     : ["Blue"],
+    "type"       : "Creature — Faerie Rogue",
+    "supertypes" : [],
+    "types"      : ["Creature"],
+    "subtypes"   : ["Faerie", "Rogue"],
+    "rarity"     : "uncommon",
+    "power"      : "3",
+    "toughness"  : "3",
+    
+    "text"       : "Flash, flying\nWhen History Disruptor enters the battlefield, target player shuffles his or her graveyard into his or her library.",
+    "flavor"     : "The Condri prefer the past remain unscrutinised.",
+    
+    "artist"     : "",
+    "artURL"     : "",
+    "imageURL"   : "",
+    "sourceURL"  : "http://www.magicmultiverse.net/cards/95",
+    "cardCode"   : "UU03",
+    "layout"     : "normal"
+  }
+    , 
+  { 
+    "name"       : "Reality Alarm",
+  
+    "manaCost"   : "1UU",
+    "colors"     : ["Blue"],
+    "type"       : "Enchantment — Aura",
+    "supertypes" : [],
+    "types"      : ["Enchantment"],
+    "subtypes"   : ["Aura"],
+    "rarity"     : "common",
+    "power"      : "",
+    "toughness"  : "",
+    
+    "text"       : "Enchant permanent\nWhenever enchanted permanent becomes tapped, return it and Reality Alarm to their owners' hands.",
+    "flavor"     : "Do not touch.",
+    
+    "artist"     : "",
+    "artURL"     : "",
+    "imageURL"   : "",
+    "sourceURL"  : "http://www.magicmultiverse.net/cards/91",
+    "cardCode"   : "UC15",
+    "layout"     : "normal"
+  }
+    , 
+  { 
+    "name"       : "Challenge",
+  
+    "manaCost"   : "UU",
+    "colors"     : ["Blue"],
+    "type"       : "Instant",
+    "supertypes" : [],
+    "types"      : ["Instant"],
+    "subtypes"   : [],
+    "rarity"     : "common",
+    "power"      : "",
+    "toughness"  : "",
+    
+    "text"       : "Counter target permanent spell.",
+    "flavor"     : "Any number of conflicts between criminal families start with a simple dispute.",
+    
+    "artist"     : "",
+    "artURL"     : "",
+    "imageURL"   : "",
+    "sourceURL"  : "http://www.magicmultiverse.net/cards/90",
+    "cardCode"   : "UC14",
+    "layout"     : "normal"
+  }
+    , 
+  { 
+    "name"       : "Aetheric Disruption",
+  
+    "manaCost"   : "2UU",
+    "colors"     : ["Blue"],
+    "type"       : "Instant",
+    "supertypes" : [],
+    "types"      : ["Instant"],
+    "subtypes"   : [],
+    "rarity"     : "common",
+    "power"      : "",
+    "toughness"  : "",
+    
+    "text"       : "Return target creature and target noncreature nonland permanent to their owners' hands.",
+    "flavor"     : "\"Where's your numerical advantage now, Spidra?\" - Don Ecriot",
+    
+    "artist"     : "",
+    "artURL"     : "",
+    "imageURL"   : "",
+    "sourceURL"  : "http://www.magicmultiverse.net/cards/86",
+    "cardCode"   : "UC10",
+    "layout"     : "normal"
+  }
+    , 
+  { 
+    "name"       : "Stunning Kick",
+  
+    "manaCost"   : "2U",
+    "colors"     : ["Blue"],
+    "type"       : "Instant",
+    "supertypes" : [],
+    "types"      : ["Instant"],
+    "subtypes"   : [],
+    "rarity"     : "common",
+    "power"      : "",
+    "toughness"  : "",
+    
+    "text"       : "Target creature gets -4/-0. That creature doesn't untap in its controller's next untap step.\nDraw a card.",
+    "flavor"     : "\"Frankly, I'd be terrified of her kick even without the concussion runes.\"",
+    
+    "artist"     : "",
+    "artURL"     : "",
+    "imageURL"   : "",
+    "sourceURL"  : "http://www.magicmultiverse.net/cards/85",
+    "cardCode"   : "UC09",
+    "layout"     : "normal"
+  }
+    , 
+  { 
+    "name"       : "Winchwind",
+  
+    "manaCost"   : "3U",
+    "colors"     : ["Blue"],
+    "type"       : "Instant",
+    "supertypes" : [],
+    "types"      : ["Instant"],
+    "subtypes"   : [],
+    "rarity"     : "common",
+    "power"      : "",
+    "toughness"  : "",
+    
+    "text"       : "Choose one: tap up to X target permanents; or untap up to X target permanents. X is the number of artifacts you control when you cast Winchwind.",
+    "flavor"     : "\"Raise the drawbridge, lower the portcullis, arm the springblades...\"",
+    
+    "artist"     : "",
+    "artURL"     : "",
+    "imageURL"   : "",
+    "sourceURL"  : "http://www.magicmultiverse.net/cards/84",
+    "cardCode"   : "UC08",
+    "layout"     : "normal"
+  }
+    , 
+  { 
+    "name"       : "Condri Glass-Peeker",
+  
+    "manaCost"   : "3U",
+    "colors"     : ["Blue"],
+    "type"       : "Creature — Faerie Rogue",
+    "supertypes" : [],
+    "types"      : ["Creature"],
+    "subtypes"   : ["Faerie", "Rogue"],
+    "rarity"     : "common",
+    "power"      : "3",
+    "toughness"  : "1",
+    
+    "text"       : "Flying\nWhen Condri Glass-Peeker deals combat damage to a player, look at that player's hand.",
+    "flavor"     : "\"I've always loved peering into places - isn't it great I found people who'd pay me to do it?\"",
+    
+    "artist"     : "",
+    "artURL"     : "",
+    "imageURL"   : "",
+    "sourceURL"  : "http://www.magicmultiverse.net/cards/82",
+    "cardCode"   : "UC06",
+    "layout"     : "normal"
+  }
+    , 
+  { 
+    "name"       : "Watcher of Secrets",
+  
+    "manaCost"   : "1U",
+    "colors"     : ["Blue"],
+    "type"       : "Creature — Human Rogue",
+    "supertypes" : [],
+    "types"      : ["Creature"],
+    "subtypes"   : ["Human", "Rogue"],
+    "rarity"     : "common",
+    "power"      : "1",
+    "toughness"  : "1",
+    
+    "text"       : "Whenever Watcher of Secrets deals combat damage to a player, you may draw a card.",
+    "flavor"     : "\"Remember, your primary aim is reconnaissance. But if you get the chance to rough things up a bit, feel free.\"",
+    
+    "artist"     : "",
+    "artURL"     : "",
+    "imageURL"   : "",
+    "sourceURL"  : "http://www.magicmultiverse.net/cards/81",
+    "cardCode"   : "UC05",
+    "layout"     : "normal"
+  }
+    , 
+  { 
+    "name"       : "Ecriot Mistward",
+  
+    "manaCost"   : "2U",
+    "colors"     : ["Blue"],
+    "type"       : "Creature — Elemental",
+    "supertypes" : [],
+    "types"      : ["Creature"],
+    "subtypes"   : ["Elemental"],
+    "rarity"     : "common",
+    "power"      : "1",
+    "toughness"  : "6",
+    
+    "text"       : "At the beginning of the end step, you may reveal an instant card from your hand. If you don't, sacrifice Ecriot Mistward.",
+    "flavor"     : "It obeys those who have a plan.",
+    
+    "artist"     : "",
+    "artURL"     : "",
+    "imageURL"   : "",
+    "sourceURL"  : "http://www.magicmultiverse.net/cards/80",
+    "cardCode"   : "UC04",
+    "layout"     : "normal"
+  }
+    , 
+  { 
+    "name"       : "Runebound Bouncers",
+  
+    "manaCost"   : "U",
+    "colors"     : ["Blue"],
+    "type"       : "Creature — Human Rogue",
+    "supertypes" : [],
+    "types"      : ["Creature"],
+    "subtypes"   : ["Human", "Rogue"],
+    "rarity"     : "common",
+    "power"      : "1",
+    "toughness"  : "1",
+    
+    "text"       : "Whenever you cast an instant spell, Runebound Bouncers gets +2/+2 until end of turn.",
+    "flavor"     : "The musclerunes deliver a sharp stimulation when magic is nearby. The thugs get hooked on the sensation and seek out dangerous work.",
+    
+    "artist"     : "",
+    "artURL"     : "",
+    "imageURL"   : "",
+    "sourceURL"  : "http://www.magicmultiverse.net/cards/79",
+    "cardCode"   : "UC03",
+    "layout"     : "normal"
+  }
+    , 
+  { 
+    "name"       : "Atrapice Borderguard",
+  
+    "manaCost"   : "1U",
+    "colors"     : ["Blue"],
+    "type"       : "Creature — Human Soldier",
+    "supertypes" : [],
+    "types"      : ["Creature"],
+    "subtypes"   : ["Human", "Soldier"],
+    "rarity"     : "common",
+    "power"      : "1",
+    "toughness"  : "2",
+    
+    "text"       : "Atrapice Borderguard gets +1/+1 as long as you control an artifact.\nAtrapice Borderguard gets +1/+1 as long as you have an instant card in your graveyard.",
+    "flavor"     : "",
+    
+    "artist"     : "",
+    "artURL"     : "",
+    "imageURL"   : "",
+    "sourceURL"  : "http://www.magicmultiverse.net/cards/78",
+    "cardCode"   : "UC02",
+    "layout"     : "normal"
+  }
+    , 
+  { 
+    "name"       : "Decree of Purging",
+  
+    "manaCost"   : "4WW",
+    "colors"     : ["White"],
+    "type"       : "Sorcery",
+    "supertypes" : [],
+    "types"      : ["Sorcery"],
+    "subtypes"   : [],
+    "rarity"     : "rare",
+    "power"      : "",
+    "toughness"  : "",
+    
+    "text"       : "Choose a permanent type. Destroy all permanents of that type. (The permanent types are artifact, creature, enchantment, land and planeswalker.)",
+    "flavor"     : "",
+    
+    "artist"     : "",
+    "artURL"     : "",
+    "imageURL"   : "",
+    "sourceURL"  : "http://www.magicmultiverse.net/cards/76",
+    "cardCode"   : "WR11",
+    "layout"     : "normal"
+  }
+    , 
+  { 
+    "name"       : "Suppress Diversity",
+  
+    "manaCost"   : "2WW",
+    "colors"     : ["White"],
+    "type"       : "Sorcery",
+    "supertypes" : [],
+    "types"      : ["Sorcery"],
+    "subtypes"   : [],
+    "rarity"     : "rare",
+    "power"      : "",
+    "toughness"  : "",
+    
+    "text"       : "Choose target player and target permanent you control. For each card type that permanent has, that player sacrifices a different permanent of that type. (The card types permanents can have are artifact, creature, enchantment, land, planeswalker and tribal.)",
+    "flavor"     : "",
+    
+    "artist"     : "",
+    "artURL"     : "",
+    "imageURL"   : "",
+    "sourceURL"  : "http://www.magicmultiverse.net/cards/75",
+    "cardCode"   : "WR10",
+    "layout"     : "normal"
+  }
+    , 
+  { 
+    "name"       : "Customised Weapon",
+  
+    "manaCost"   : "2W",
+    "colors"     : ["White"],
+    "type"       : "Enchantment — Aura",
+    "supertypes" : [],
+    "types"      : ["Enchantment"],
+    "subtypes"   : ["Aura"],
+    "rarity"     : "rare",
+    "power"      : "",
+    "toughness"  : "",
+    
+    "text"       : "Enchant Equipment\nEnchanted Equipment has \"Whenever equipped creature deals combat damage, gain 2 life, put a +1/+1 counter on equipped creature, and target creature gets -1/-1 until end of turn.\"",
+    "flavor"     : "",
+    
+    "artist"     : "",
+    "artURL"     : "",
+    "imageURL"   : "",
+    "sourceURL"  : "http://www.magicmultiverse.net/cards/73",
+    "cardCode"   : "WR08",
+    "layout"     : "normal"
+  }
+    , 
+  { 
+    "name"       : "Museary Patron",
+  
+    "manaCost"   : "4W",
+    "colors"     : ["White"],
+    "type"       : "Creature — Angel",
+    "supertypes" : [],
+    "types"      : ["Creature"],
+    "subtypes"   : ["Angel"],
+    "rarity"     : "rare",
+    "power"      : "1",
+    "toughness"  : "1",
+    
+    "text"       : "When Museary Patron enters the battlefield, put two 1/1 Bird artifact creature tokens with flying onto the battlefield.\nFlying\nMuseary Patron gets +1/+1 for each artifact you control.",
+    "flavor"     : "",
+    
+    "artist"     : "",
+    "artURL"     : "",
+    "imageURL"   : "",
+    "sourceURL"  : "http://www.magicmultiverse.net/cards/72",
+    "cardCode"   : "WR07",
+    "layout"     : "normal"
+  }
+    , 
+  { 
+    "name"       : "Benevolent Runecaster",
+  
+    "manaCost"   : "W",
+    "colors"     : ["White"],
+    "type"       : "Creature — Human Wizard",
+    "supertypes" : [""],
+    "types"      : ["Creature"],
+    "subtypes"   : ["Human", "Wizard"],
+    "rarity"     : "rare",
+    "power"      : "1",
+    "toughness"  : "1",
+    
+    "text"       : "{1}{W}: Target enchanted creature gains protection from the colour of its controller's choice until end of turn.",
+    "flavor"     : "\"Never venture outdoors without a few good auras.\"",
+    
+    "artist"     : "",
+    "artURL"     : "",
+    "imageURL"   : "",
+    "sourceURL"  : "http://www.magicmultiverse.net/cards/68",
+    "cardCode"   : "WR03",
+    "layout"     : "normal"
+  }
+    , 
+  { 
+    "name"       : "Sanctify",
+  
+    "manaCost"   : "WW",
+    "colors"     : ["White"],
+    "type"       : "Instant",
+    "supertypes" : [],
+    "types"      : ["Instant"],
+    "subtypes"   : [],
+    "rarity"     : "uncommon",
+    "power"      : "",
+    "toughness"  : "",
+    
+    "text"       : "You and permanents you control gain shroud until end of turn.",
+    "flavor"     : "Though the demonic Zerian church is more well-known, there are chapels to a benevolent god in Terina as well. He intervenes for the good of his people, not on a demon's capricious whims.",
+    
+    "artist"     : "",
+    "artURL"     : "",
+    "imageURL"   : "",
+    "sourceURL"  : "http://www.magicmultiverse.net/cards/65",
+    "cardCode"   : "WU12",
+    "layout"     : "normal"
+  }
+    , 
+  { 
+    "name"       : "Chromatic Ward",
+  
+    "manaCost"   : "W",
+    "colors"     : ["White"],
+    "type"       : "Enchantment — Aura",
+    "supertypes" : [""],
+    "types"      : ["Enchantment"],
+    "subtypes"   : ["Aura"],
+    "rarity"     : "common",
+    "power"      : "",
+    "toughness"  : "",
+    
+    "text"       : "Enchant creature\nAs Chromatic Ward enters the battlefield, choose a colour.\nEnchanted creature has protection from the chosen colour. This effect doesn't remove Chromatic Ward.",
+    "flavor"     : "",
+    
+    "artist"     : "",
+    "artURL"     : "",
+    "imageURL"   : "",
+    "sourceURL"  : "http://www.magicmultiverse.net/cards/48",
+    "cardCode"   : "WC11",
+    "layout"     : "normal"
+  }
+    , 
+  { 
+    "name"       : "Lavender Mist",
+  
+    "manaCost"   : "3W",
+    "colors"     : ["White"],
+    "type"       : "Enchantment",
+    "supertypes" : [],
+    "types"      : ["Enchantment"],
+    "subtypes"   : [],
+    "rarity"     : "uncommon",
+    "power"      : "",
+    "toughness"  : "",
+    
+    "text"       : "Lavender Mist enters the battlefield with a fog counter on it.\nRemove a fog counter from Lavender Mist: Prevent all combat damage that would be dealt this turn.\nSacrifice Lavender Mist: Prevent all combat damage any number of target creatures would deal this turn.",
+    "flavor"     : "",
+    
+    "artist"     : "",
+    "artURL"     : "",
+    "imageURL"   : "",
+    "sourceURL"  : "http://www.magicmultiverse.net/cards/63",
+    "cardCode"   : "WU10",
+    "layout"     : "normal"
+  }
+    , 
+  { 
+    "name"       : "Infuse with Energy",
+  
+    "manaCost"   : "1W",
+    "colors"     : ["White"],
+    "type"       : "Enchantment — Aura",
+    "supertypes" : [],
+    "types"      : ["Enchantment"],
+    "subtypes"   : ["Aura"],
+    "rarity"     : "uncommon",
+    "power"      : "",
+    "toughness"  : "",
+    
+    "text"       : "Enchant artifact\nAt the end of your turn, untap enchanted artifact. If it's an Equipment, you may attach it to target creature.",
+    "flavor"     : "\"And besides, now it goes with the lavender on the terrace.\" - Atine, Duchess of Fiescura",
+    
+    "artist"     : "",
+    "artURL"     : "",
+    "imageURL"   : "",
+    "sourceURL"  : "http://www.magicmultiverse.net/cards/62",
+    "cardCode"   : "WU09",
+    "layout"     : "normal"
+  }
+    , 
+  { 
+    "name"       : "Lumina Charger",
+  
+    "manaCost"   : "WW",
+    "colors"     : ["White"],
+    "type"       : "Creature — Human Knight",
+    "supertypes" : [],
+    "types"      : ["Creature"],
+    "subtypes"   : ["Human", "Knight"],
+    "rarity"     : "uncommon",
+    "power"      : "2",
+    "toughness"  : "2",
+    
+    "text"       : "Flash, first strike",
+    "flavor"     : "Traders on the village roads between Ironcaste and the city of Terina know they're safe from bandits thanks to the Lumina patrols.",
+    
+    "artist"     : "",
+    "artURL"     : "",
+    "imageURL"   : "",
+    "sourceURL"  : "http://www.magicmultiverse.net/cards/61",
+    "cardCode"   : "WU08",
+    "layout"     : "normal"
+  }
+    , 
+  { 
+    "name"       : "Seasoned Blademaster",
+  
+    "manaCost"   : "WW",
+    "colors"     : ["White"],
+    "type"       : "Creature — Human Knight",
+    "supertypes" : [],
+    "types"      : ["Creature"],
+    "subtypes"   : ["Human", "Knight"],
+    "rarity"     : "uncommon",
+    "power"      : "2",
+    "toughness"  : "2",
+    
+    "text"       : "Seasoned Blademaster has protection from black as long as it's enchanted.\nSeasoned Blademaster has protection from red as long as it's equipped.",
+    "flavor"     : "\"I've got the right tools for the right quest.  Against vampires, a blessing; against ogres, a sturdy sword.\"",
+    
+    "artist"     : "",
+    "artURL"     : "",
+    "imageURL"   : "",
+    "sourceURL"  : "http://www.magicmultiverse.net/cards/54",
+    "cardCode"   : "WU01",
+    "layout"     : "normal"
+  }
+    , 
+  { 
+    "name"       : "Frantic Cleansing",
+  
+    "manaCost"   : "W",
+    "colors"     : ["White"],
+    "type"       : "Instant",
+    "supertypes" : [],
+    "types"      : ["Instant"],
+    "subtypes"   : [],
+    "rarity"     : "common",
+    "power"      : "",
+    "toughness"  : "",
+    
+    "text"       : "You may sacrifice an artifact. If you do, destroy up to one target artifact.\nYou may sacrifice an enchantment. If you do, destroy up to one target enchantment.",
+    "flavor"     : "",
+    
+    "artist"     : "",
+    "artURL"     : "",
+    "imageURL"   : "",
+    "sourceURL"  : "http://www.magicmultiverse.net/cards/51",
+    "cardCode"   : "WC14",
+    "layout"     : "normal"
+  }
+    , 
+  { 
+    "name"       : "Terina Festival",
+  
+    "manaCost"   : "2W",
+    "colors"     : ["White"],
+    "type"       : "Sorcery",
+    "supertypes" : [],
+    "types"      : ["Sorcery"],
+    "subtypes"   : [],
+    "rarity"     : "common",
+    "power"      : "",
+    "toughness"  : "",
+    
+    "text"       : "Gain 2 life for each enchantment you control and 2 life for each artifact you control.",
+    "flavor"     : "\"Yeah, we celebrate the town's magework in all its forms. It's all just an excuse for wine, really, innit?\"",
+    
+    "artist"     : "",
+    "artURL"     : "",
+    "imageURL"   : "",
+    "sourceURL"  : "http://www.magicmultiverse.net/cards/50",
+    "cardCode"   : "WC13",
+    "layout"     : "normal"
+  }
+    , 
+  { 
+    "name"       : "Cumulus Crown",
+  
+    "manaCost"   : "1W",
+    "colors"     : ["White"],
+    "type"       : "Enchantment — Aura",
+    "supertypes" : [],
+    "types"      : ["Enchantment"],
+    "subtypes"   : ["Aura"],
+    "rarity"     : "common",
+    "power"      : "",
+    "toughness"  : "",
+    
+    "text"       : "Enchant creature\nEnchanted creature has flying.\nWhenever an artifact enters the battlefield under your control, you may return Cumulus Crown and enchanted creature to their owners' hands.",
+    "flavor"     : "",
+    
+    "artist"     : "",
+    "artURL"     : "",
+    "imageURL"   : "",
+    "sourceURL"  : "http://www.magicmultiverse.net/cards/47",
+    "cardCode"   : "WC10",
+    "layout"     : "normal"
+  }
+    , 
+  { 
+    "name"       : "Devoted Skyknight",
+  
+    "manaCost"   : "3W",
+    "colors"     : ["White"],
+    "type"       : "Creature — Human Knight",
+    "supertypes" : [],
+    "types"      : ["Creature"],
+    "subtypes"   : ["Human", "Knight"],
+    "rarity"     : "common",
+    "power"      : "3",
+    "toughness"  : "2",
+    
+    "text"       : "Flying\nWhenever Devoted Skyknight attacks or blocks, you may gain 1 life.",
+    "flavor"     : "The orcs know better than to attack when the skyknights are on patrol.",
+    
+    "artist"     : "",
+    "artURL"     : "",
+    "imageURL"   : "",
+    "sourceURL"  : "http://www.magicmultiverse.net/cards/46",
+    "cardCode"   : "WC09",
+    "layout"     : "normal"
+  }
+    , 
+  { 
+    "name"       : "Guardian of the Ralatine",
+  
+    "manaCost"   : "2W",
+    "colors"     : ["White"],
+    "type"       : "Creature — Human Soldier",
+    "supertypes" : [],
+    "types"      : ["Creature"],
+    "subtypes"   : ["Human", "Soldier"],
+    "rarity"     : "common",
+    "power"      : "1",
+    "toughness"  : "4",
+    
+    "text"       : "Whenever you cast a spell, Guardian of the Ralatine gains vigilance until end of turn.",
+    "flavor"     : "Working in such enhanced surroundings, they're attuned to the slightest magical disturbance.",
+    
+    "artist"     : "",
+    "artURL"     : "",
+    "imageURL"   : "",
+    "sourceURL"  : "http://www.magicmultiverse.net/cards/45",
+    "cardCode"   : "WC08",
+    "layout"     : "normal"
+  }
+    , 
+  { 
+    "name"       : "Soliforge Conscripts",
+  
+    "manaCost"   : "3W",
+    "colors"     : ["White"],
+    "type"       : "Creature — Dwarf Soldier",
+    "supertypes" : [],
+    "types"      : ["Creature"],
+    "subtypes"   : ["Dwarf", "Soldier"],
+    "rarity"     : "common",
+    "power"      : "3",
+    "toughness"  : "3",
+    
+    "text"       : "Whenever an artifact enters the battlefield under your control, Soliforge Conscripts gets +2/+2 until end of turn.",
+    "flavor"     : "It's best not to cross them when they're tetchy. And they're always tetchy.",
+    
+    "artist"     : "",
+    "artURL"     : "",
+    "imageURL"   : "",
+    "sourceURL"  : "http://www.magicmultiverse.net/cards/44",
+    "cardCode"   : "WC07",
+    "layout"     : "normal"
+  }
+    , 
+  { 
+    "name"       : "Steppe Pronghorn",
+  
+    "manaCost"   : "1W",
+    "colors"     : ["White"],
+    "type"       : "Creature — Antelope",
+    "supertypes" : [],
+    "types"      : ["Creature"],
+    "subtypes"   : ["Antelope"],
+    "rarity"     : "common",
+    "power"      : "1",
+    "toughness"  : "1",
+    
+    "text"       : "Lifelink\nWhenever Steppe Pronghorn blocks or becomes blocked, it gets +1/+1 until end of turn.",
+    "flavor"     : "When a pronghorn's cornered, the rest of the herd comes to its defence.",
+    
+    "artist"     : "",
+    "artURL"     : "",
+    "imageURL"   : "",
+    "sourceURL"  : "http://www.magicmultiverse.net/cards/42",
+    "cardCode"   : "WC05",
+    "layout"     : "normal"
+  }
+    , 
+  { 
+    "name"       : "Halberd Evangelist",
+  
+    "manaCost"   : "W",
+    "colors"     : ["White"],
+    "type"       : "Creature — Dwarf Artificer",
+    "supertypes" : [""],
+    "types"      : ["Creature"],
+    "subtypes"   : ["Dwarf", "Artificer"],
+    "rarity"     : "common",
+    "power"      : "1",
+    "toughness"  : "1",
+    
+    "text"       : "Flash\n{1}, Sacrifice an artifact: Target creature gains first strike until end of turn.",
+    "flavor"     : "\"I don't care what your problem is, a good polearm will always help!\"",
+    
+    "artist"     : "",
+    "artURL"     : "",
+    "imageURL"   : "",
+    "sourceURL"  : "http://www.magicmultiverse.net/cards/38",
+    "cardCode"   : "WC01",
+    "layout"     : "normal"
+  }
+    , 
+  { 
+    "name"       : "Terina Borderguard",
+  
+    "manaCost"   : "1W",
+    "colors"     : ["White"],
+    "type"       : "Creature — Human Knight",
+    "supertypes" : [],
+    "types"      : ["Creature"],
+    "subtypes"   : ["Human", "Knight"],
+    "rarity"     : "common",
+    "power"      : "1",
+    "toughness"  : "2",
+    
+    "text"       : "Flying\nTerina Borderguard gets +1/+1 as long as you control an enchantment.\nTerina Borderguard gets +1/+1 as long as you control an artifact.",
+    "flavor"     : "",
+    
+    "artist"     : "",
+    "artURL"     : "",
+    "imageURL"   : "",
+    "sourceURL"  : "http://www.magicmultiverse.net/cards/41",
+    "cardCode"   : "WC04",
+    "layout"     : "normal"
+  }
+    , 
+  { 
+    "name"       : "Journeyman Falconwright",
+  
+    "manaCost"   : "1WW",
+    "colors"     : ["White"],
+    "type"       : "Creature — Dwarf Artificer",
+    "supertypes" : [""],
+    "types"      : ["Creature"],
+    "subtypes"   : ["Dwarf", "Artificer"],
+    "rarity"     : "common",
+    "power"      : "2",
+    "toughness"  : "2",
+    
+    "text"       : "When Journeyman Falconwright enters the battlefield, put a 1/1 Bird artifact creature token with flying onto the battlefield.",
+    "flavor"     : "Crafting a brass falcon is part of Tanith's standard apprenticeship programme.",
+    
+    "artist"     : "",
+    "artURL"     : "",
+    "imageURL"   : "",
+    "sourceURL"  : "http://www.magicmultiverse.net/cards/43",
+    "cardCode"   : "WC06",
+    "layout"     : "normal"
+  }
+    , 
+  { 
+    "name"       : "Glimmerbreath",
+  
+    "manaCost"   : "W",
+    "colors"     : ["White"],
+    "type"       : "Creature — Elemental",
+    "supertypes" : [""],
+    "types"      : ["Creature"],
+    "subtypes"   : ["Elemental"],
+    "rarity"     : "common",
+    "power"      : "0",
+    "toughness"  : "1",
+    
+    "text"       : "Flying\nWhenever an enchantment enters the battlefield under your control, you may put a +1/+1 counter on Glimmerbreath.",
+    "flavor"     : "Some of Atine's living creations serve no purpose but decoration.",
+    
+    "artist"     : "",
+    "artURL"     : "",
+    "imageURL"   : "",
+    "sourceURL"  : "http://www.magicmultiverse.net/cards/40",
+    "cardCode"   : "WC03",
+    "layout"     : "normal"
+  }
+    , 
+  { 
+    "name"       : "Compulsive Sculptor",
+  
+    "manaCost"   : "2W",
+    "colors"     : ["White"],
+    "type"       : "Creature — Human Artificer",
+    "supertypes" : [""],
+    "types"      : ["Creature"],
+    "subtypes"   : ["Human", "Artificer"],
+    "rarity"     : "common",
+    "power"      : "2",
+    "toughness"  : "2",
+    
+    "text"       : "Whenever Compulsive Sculptor becomes tapped, put a 1/1 Construct artifact creature token onto the battlefield.",
+    "flavor"     : "\"I'll be there in a moment! Just let me finish this walker!\"",
+    
+    "artist"     : "",
+    "artURL"     : "",
+    "imageURL"   : "",
+    "sourceURL"  : "http://www.magicmultiverse.net/cards/39",
+    "cardCode"   : "WC02",
+    "layout"     : "normal"
+  }
+    
+                 ]
+}
