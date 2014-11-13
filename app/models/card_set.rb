@@ -64,7 +64,7 @@ private
   def check_cards_for_warnings
     # Check for two or more cards with the same name
     duplicate_names = card_templates.select(:name).group(:name).count.select { |name, count| count > 1 }.map(&:first)
-    add_warning_on_cards('duplicate_cards', duplicate_names)
+    add_warning_on_cards('duplicate_cards', duplicate_names.sort)
   end
 
   def cards_from_set_info(set_info)

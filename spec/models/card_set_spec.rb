@@ -56,7 +56,7 @@ describe CardSet do
       expect(CardTemplate).to receive(:new).with(academy_raider_params, {}).and_return academy_raider
       expect(CardTemplate).to receive(:new).with(glimpse_params, {}).and_return glimpse
 
-      expect(card_set.prepare_for_draft).to be_true
+      expect(card_set.prepare_for_draft).to be_truthy
       expect(card_set.errors).to be_empty
       expect(card_set.card_templates(true).map(&:name).sort).to eq ['Academy Raider', 'Glimpse the Future']
     end
@@ -74,7 +74,7 @@ describe CardSet do
       expect(CardTemplate).to receive(:new).with(academy_raider_params, {}).and_return academy_raider
       expect(CardTemplate).to receive(:new).with(glimpse_params, {}).and_return glimpse
 
-      expect(card_set.prepare_for_draft).to be_true
+      expect(card_set.prepare_for_draft).to be_truthy
       expect(card_set.errors).to be_empty
     end
 
@@ -88,7 +88,7 @@ describe CardSet do
       expect(card_set).not_to receive(:open)
       expect(CardTemplate).not_to receive(:new)
 
-      expect(card_set.prepare_for_draft).to be_true
+      expect(card_set.prepare_for_draft).to be_truthy
       expect(card_set.errors).to be_empty
     end
 
@@ -96,7 +96,7 @@ describe CardSet do
       expect(File).to receive(:read).with(Rails.root + card_set.dictionary_location).
                         and_return File.read(File.join(File.dirname(__FILE__), '../data/awesome_bugged.json'))
 
-      expect(card_set.prepare_for_draft).to be_true
+      expect(card_set.prepare_for_draft).to be_truthy
       expect(card_set.warnings).to include("2 cards in '#{card_set.name}' were received without names. They have been named 'Unnamed Card 1' etc.")
       expect(card_set.warnings).to include("The following cards in '#{card_set.name}' were received without rarities. They have been defaulted to Common: 'Gnawing Zombie', 'Unnamed Card 2'")
 
@@ -118,7 +118,7 @@ describe CardSet do
       expect(File).to receive(:read).with(Rails.root + card_set.dictionary_location).
                         and_return File.read(File.join(File.dirname(__FILE__), '../data/awesome_broken.json'))
 
-      expect(card_set.prepare_for_draft).to be_false
+      expect(card_set.prepare_for_draft).to be_falsey
       expect(card_set.errors).to be_added(:dictionary_location, :unparseable)
     end
 
@@ -127,7 +127,7 @@ describe CardSet do
         raise Errno::ENOENT.new("No such file")
       end
 
-      expect(card_set.prepare_for_draft).to be_false
+      expect(card_set.prepare_for_draft).to be_falsey
       expect(card_set.errors).to be_added(:dictionary_location, :unavailable)
     end
 
@@ -140,7 +140,7 @@ describe CardSet do
         raise Errno::ENOENT.new("No such file")
       end
 
-      expect(card_set.prepare_for_draft).to be_false
+      expect(card_set.prepare_for_draft).to be_falsey
       expect(card_set.errors).to be_added(:dictionary_location, :unavailable)
     end
 
@@ -177,7 +177,7 @@ describe CardSet do
       expect(CardTemplate).to receive(:new).with(alive_well_params, {}).and_return alive_well
       expect(CardTemplate).to receive(:new).with(turn_burn_params, {}).and_return turn_burn
 
-      expect(card_set.prepare_for_draft).to be_true
+      expect(card_set.prepare_for_draft).to be_truthy
       expect(card_set.errors).to be_empty
     end
 
@@ -198,7 +198,7 @@ describe CardSet do
       expect(CardTemplate).to receive(:new).with(academy_raider_params, {}).and_return academy_raider
       expect(CardTemplate).to receive(:new).with(plains_params, {}).and_return plains
 
-      expect(card_set.prepare_for_draft).to be_true
+      expect(card_set.prepare_for_draft).to be_truthy
       expect(card_set.errors).to be_empty
     end
 
@@ -239,7 +239,7 @@ describe CardSet do
       expect(CardTemplate).to receive(:new).with(bushi_params, {}).and_return bushi
       expect(CardTemplate).to receive(:new).with(erayo_params, {}).and_return erayo
 
-      expect(card_set.prepare_for_draft).to be_true
+      expect(card_set.prepare_for_draft).to be_truthy
       expect(card_set.errors).to be_empty
     end
 
@@ -267,7 +267,7 @@ describe CardSet do
       expect(CardTemplate).to receive(:new).with(academy_raider_params, {}).and_return academy_raider
       expect(CardTemplate).to receive(:new).with(hanweir_params, {}).and_return hanweir
 
-      expect(card_set.prepare_for_draft).to be_true
+      expect(card_set.prepare_for_draft).to be_truthy
       expect(card_set.errors).to be_empty
     end
 
@@ -278,7 +278,7 @@ describe CardSet do
       # Expect: 3 Academy Raiders, 2 Turns, Glimpse, Zephyr
       expect(CardTemplate).to receive(:new).exactly(7).times.and_call_original
 
-      expect(card_set.prepare_for_draft).to be_true
+      expect(card_set.prepare_for_draft).to be_truthy
 
       sorted_card_names = CardTemplate.pluck(:name).sort
       expect(sorted_card_names).to eq ['Academy Raider', 'Academy Raider', 'Academy Raider', 'Glimpse the Future', 'Turn', 'Turn', 'Zephyr Charge']
@@ -300,7 +300,7 @@ describe CardSet do
 
       expect(card_set).to receive(:save!).and_call_original
 
-      expect(card_set.prepare_for_draft).to be_true
+      expect(card_set.prepare_for_draft).to be_truthy
       expect(card_set.errors).to be_empty
       expect(card_set.warnings).to be_empty
       expect(card_set).to be_persisted
@@ -311,7 +311,7 @@ describe CardSet do
                         and_return File.read(File.join(File.dirname(__FILE__), '../data/awesome_bugged.json'))
 
       expect(card_set).to receive(:save!).and_call_original
-      expect(card_set.prepare_for_draft).to be_true
+      expect(card_set.prepare_for_draft).to be_truthy
 
       bugged_card = CardTemplate.where(name: 'Unnamed Card 1').first
       expect(bugged_card).to_not be_nil
@@ -337,7 +337,7 @@ describe CardSet do
                         and_return File.read(File.join(File.dirname(__FILE__), '../data/awesome_broken.json'))
 
       expect(card_set).not_to receive(:save!)
-      expect(card_set.prepare_for_draft).to be_false
+      expect(card_set.prepare_for_draft).to be_falsey
       expect(card_set.errors).to be_added(:dictionary_location, :unparseable)
 
       expect(card_set).not_to be_persisted
@@ -349,7 +349,7 @@ describe CardSet do
       end
 
       expect(card_set).not_to receive(:save!)
-      expect(card_set.prepare_for_draft).to be_false
+      expect(card_set.prepare_for_draft).to be_falsey
       expect(card_set.errors).to be_added(:dictionary_location, :unavailable)
 
       expect(card_set).not_to be_persisted

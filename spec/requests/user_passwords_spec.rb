@@ -7,7 +7,7 @@ describe "UserPasswords" do
     visit new_user_session_path
     expect(page).to have_content 'Forgot your password?'
     click_link 'Forgot your password?'
-    expect(current_url).to eql new_user_password_url
+    expect(current_path).to eql new_user_password_path
   end
 
   it "handles a request to reset password" do

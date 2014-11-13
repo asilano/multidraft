@@ -360,7 +360,7 @@ describe "Sign-up and Sign-in by OmniAuth" do
 
         fill_in 'openid_url', with: 'http://pretend.openid.example.com'
         click_button 'submit_openid'
-        expect(current_url).to eql new_user_registration_url
+        expect(current_path).to eql new_user_registration_path
         expect(page).to have_content "Your OpenID authentication succeeded, but we still need some extra details to complete sign up"
       end
 
@@ -377,7 +377,7 @@ describe "Sign-up and Sign-in by OmniAuth" do
         OmniAuth.config.mock_auth[:open_id] = :illegal_penguin
         fill_in 'openid_url', with: 'http://pretend.openid.example.com'
         click_button 'submit_openid'
-        expect(current_url).to eql new_user_session_url
+        expect(current_path).to eql new_user_session_path
         expect(page).to have_content 'Could not authenticate you from OpenID for the following reason: "Illegal penguin"'
       end
 

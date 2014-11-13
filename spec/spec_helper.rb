@@ -23,7 +23,6 @@ Spork.prefork do
   require File.expand_path("../../config/environment", __FILE__)
   require 'rspec/rails'
   require 'capybara/rspec'
-  require 'rspec/autorun'
   require 'timecop'
   #require 'ruby-debug'
 
@@ -62,6 +61,7 @@ Spork.prefork do
     #     --seed 1234
     config.order = "random"
 
+    config.include Rails.application.routes.url_helpers
     config.include Capybara::DSL
     config.include(MailerMacros)
     config.include Warden::Test::Helpers
@@ -72,7 +72,7 @@ Spork.prefork do
       DatabaseCleaner.clean_with :truncation
     end
 
-    config.before(:each) do
+    config.before(:each) do |example|
       if example.metadata[:js]
         DatabaseCleaner.strategy = :truncation
       else

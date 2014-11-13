@@ -122,7 +122,7 @@ describe "UserRegistrations" do
       visit '/'
       expect(page).to have_link(user.name)
       click_link user.name
-      expect(current_url).to eql edit_user_registration_url
+      expect(current_path).to eql edit_user_registration_path
     end
 
     it "should let you change your username" do
