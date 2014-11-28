@@ -373,7 +373,7 @@ describe CardSet do
 
   describe "create boosters" do
     it "should work with a Magic set (no mythics)" do
-      ravnica = FactoryGirl.create(:card_set, name: 'Ravnica, City of Guilds', dictionary_location: 'spec/data/rav.json')
+      ravnica = FactoryGirl.create(:card_set, name: 'Ravnica, City of Guilds', dictionary_location: 'spec/data/RAV.json')
       expect(ravnica.prepare_for_draft).to be_truthy
 
       # Expected booster contents is determined, portably, by srand
@@ -402,7 +402,7 @@ describe CardSet do
     end
 
     it "should work with a Magic set (mythics)" do
-      khans = FactoryGirl.create(:card_set, name: 'Khans of Tarkir', dictionary_location: 'spec/data/ktk.json')
+      khans = FactoryGirl.create(:card_set, name: 'Khans of Tarkir', dictionary_location: 'spec/data/KTK.json')
       expect(khans.prepare_for_draft).to be_truthy
 
       # Expected booster contents is determined, portably, by srand
@@ -418,7 +418,7 @@ describe CardSet do
     end
 
     it "should produce roughly the right number of mythics" do
-      khans = FactoryGirl.create(:card_set, name: 'Khans of Tarkir', dictionary_location: 'spec/data/ktk.json')
+      khans = FactoryGirl.create(:card_set, name: 'Khans of Tarkir', dictionary_location: 'spec/data/KTK.json')
       expect(khans.prepare_for_draft).to be_truthy
 
       # Expected booster contents is determined, portably, by srand
@@ -433,7 +433,7 @@ describe CardSet do
     end
 
     it "should work with an unusual Magic set (Innistrad)" do
-      innistrad = FactoryGirl.create(:card_set, name: 'Innistrad', dictionary_location: "#{Rails.root}/data/local_sets/isd.json")
+      innistrad = FactoryGirl.create(:card_set, name: 'Innistrad', dictionary_location: "data/local_sets/ISD.json")
       expect(innistrad.prepare_for_draft).to be_truthy
 
       # Expected booster contents is determined, portably, by srand
@@ -449,7 +449,7 @@ describe CardSet do
     end
 
     it "should produce roughly the right ratio of unusual card rarities (Innistrad)" do
-      innistrad = FactoryGirl.create(:card_set, name: 'Innistrad', dictionary_location: "#{Rails.root}/data/local_sets/isd.json")
+      innistrad = FactoryGirl.create(:card_set, name: 'Innistrad', dictionary_location: "data/local_sets/ISD.json")
       expect(innistrad.prepare_for_draft).to be_truthy
 
       # Expected booster contents is determined, portably, by srand
