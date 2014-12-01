@@ -19,41 +19,8 @@ class CardSet < ActiveRecord::Base
 
     # Only need to parse the set if the card templates aren't already set up
     if card_templates.empty?
-
-      # Read the JSON. It starts with general info about the set, and contains
-      # a entry "cards" which is an array of hashes descrbing each card
-      set_info = parse_set_dictionary
-      return false if set_info.nil?
-
-      # Store off the booster distribution, adjusting it for common M:tG ideosyncracies
-      unless set_info.has_key? 'booster'
-        errors.add(:dictionary_location, :no_booster)
-        return false
-      end
-      self.booster_distr = set_info['booster'].recursive_map(&:titleize).recursive_map do |slot|
-        case slot
-        when /^(Basic )?Land$/
-          'Basic'
-        when 'Mythic Rare'
-          'Mythic'
-        else
-          slot
-        end
-      end
-      self.booster_distr.delete('Marketing')
-
-      # Read the cards out of the set info and create a CardTemplate for each
-      cards_from_set_info(set_info).each do |c|
-        record = card_templates.build(:name => c.delete('name'),
-                                        :slot => (c.delete('slot') || c['rarity']).titleize,
-                                        :fields => c)
-
-        return false if record.invalid?
-      end
-
-      # All card templates valid - save the set, which will both create it if
-      # it doesn't already exist, and save the card templates
-      save!
+      ret = prepare_from_dictionary
+      return false unless ret
     end
 
     # Check for warnable problems with the cards
@@ -70,6 +37,34 @@ class CardSet < ActiveRecord::Base
 
 private
 
+  # Set up the set's card templates from its dictionary
+  def prepare_from_dictionary
+    # Read the JSON. It starts with general info about the set, and contains
+    # a entry "cards" which is an array of hashes descrbing each card
+    set_info = parse_set_dictionary
+    return false if set_info.nil?
+
+    # Store off the booster distribution, adjusting it for common M:tG ideosyncracies
+    unless set_info.has_key? 'booster'
+      errors.add(:dictionary_location, :no_booster)
+      return false
+    end
+    set_booster_distr set_info['booster']
+
+    # Read the cards out of the set info and create a CardTemplate for each
+    cards_from_set_info(set_info).each do |c|
+      record = card_templates.build(:name => c.delete('name'),
+                                      :slot => (c.delete('slot') || c['rarity']).titleize,
+                                      :fields => c)
+
+      return false if record.invalid?
+    end
+
+    # All card templates valid - save the set, which will both create it if
+    # it doesn't already exist, and save the card templates
+    save!
+  end
+
   # Retrieve and parse the set's JSON. Handle any errors thrown from file opening or parsing
   def parse_set_dictionary
     begin
@@ -82,6 +77,20 @@ private
       errors.add(:dictionary_location, error_type)
       return nil
     end
+  end
+
+  def set_booster_distr(distr_array)
+    self.booster_distr = distr_array.recursive_map(&:titleize).recursive_map do |slot|
+      case slot
+      when /^(Basic )?Land$/
+        'Basic'
+      when 'Mythic Rare'
+        'Mythic'
+      else
+        slot
+      end
+    end
+    self.booster_distr.delete('Marketing')
   end
 
   # See if the card templates for this set need to be warned about.
@@ -107,10 +116,20 @@ private
     # Join the cards back into a single array, sorted by "name"
     (with_names + without_names).each do |c|
       # Force the rarity field to be as we expect wrt certain Magic values
-      c['rarity'] = 'Mythic' if c['rarity'].downcase == 'mythic rare'
-      c['rarity'] = 'Basic' if c['rarity'].downcase == 'basic land'
-      c['rarity'] = c['rarity'].titleize
+      c['rarity'] = canonical_rarity(c['rarity'])
     end.sort_by { |c| c['name'] }
+  end
+
+  # Return a card's rarity in its canonical form
+  def canonical_rarity(rarity)
+    case rarity.downcase
+    when 'mythic rare'
+      'Mythic'
+    when 'basic land'
+      'Basic'
+    else
+      rarity.titleize
+    end
   end
 
   # Make sure the cards are minimally valid - they need a unique name and a

@@ -506,6 +506,25 @@ describe CardSet do
       expect(booster.map(&:slot)).to match_array non_magic.booster_distr
     end
 
+    it "should work with a set with non-Magic multi-rarity slots" do
+      # Fake it - fake_multi_rarity has KTK cards, but Mythic and Rare are reversed
+      multi_rarity = FactoryGirl.create(:card_set, name: 'multi_rarity of Tarkir', dictionary_location: 'spec/data/fake_multi_rarity.json')
+      expect(multi_rarity.prepare_for_draft).to be_truthy
+
+      # Expected booster contents is determined, portably, by srand
+      srand(2014)
+
+      # A sample of 1200 boosters should contain 600 Cihtyms and 600 Erars, Poisson-distributed
+      expected = 1200/2.0
+      1200.times { multi_rarity.generate_booster }
+      expect(CardInstance.joins { card_template }
+                          .where { card_template.slot == 'Cihtym'}
+                          .count).to be_between(expected - 2 * Math.sqrt(expected), expected + 2 * Math.sqrt(expected))
+      expect(CardInstance.joins { card_template }
+                          .where { card_template.slot == 'Erar'}
+                          .count).to be_between(expected - 2 * Math.sqrt(expected), expected + 2 * Math.sqrt(expected))
+    end
+
     it "should work with a Multiverse set (Sienira's Facets)" do
       sienira = FactoryGirl.create(:card_set, name: "Sienira's Facets", dictionary_location: 'spec/data/sienira.json')
       expect(sienira.prepare_for_draft).to be_truthy
