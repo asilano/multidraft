@@ -19,6 +19,7 @@ class BoosterGenerator
 
 private
   def self.create_card_for_booster(templates_by_slot, slot)
+    #Rails.logger.info("TBS: #{templates_by_slot.map{|k,v| "#{k}->#{v.count}"}}; Slot: #{slot}")
     # First, make sure we have a single slot type
     slot = flatten_slot(slot, templates_by_slot.keys) if slot.kind_of? Array
 
@@ -33,7 +34,10 @@ private
     cards = templates_by_slot[slot][rarity]
 
     # Remove and return a random card from that list
-    cards.delete_at(rand(cards.length)).instantiate
+    card = cards.delete_at(rand(cards.length)).instantiate
+    templates_by_slot[slot].delete(rarity) if cards.empty?
+    templates_by_slot.delete(slot) if templates_by_slot[slot].empty?
+    return card
   end
 
   def self.flatten_slot(slot, valid_values)

@@ -508,21 +508,21 @@ describe CardSet do
 
     it "should work with a set with non-Magic multi-rarity slots" do
       # Fake it - fake_multi_rarity has KTK cards, but Mythic and Rare are reversed
-      multi_rarity = FactoryGirl.create(:card_set, name: 'multi_rarity of Tarkir', dictionary_location: 'spec/data/fake_multi_rarity.json')
+      multi_rarity = FactoryGirl.create(:card_set, name: 'Non Magic Multi Rarity', dictionary_location: 'spec/data/fake_multi_rarity.json')
       expect(multi_rarity.prepare_for_draft).to be_truthy
 
       # Expected booster contents is determined, portably, by srand
       srand(2014)
 
-      # A sample of 1200 boosters should contain 600 Cihtyms and 600 Erars, Poisson-distributed
+      # A sample of 1200 boosters should contain 600 Cihtyms and 600 Erars, Poisson-distributed, in the Double Faced slot
+      # (since the set contains only those rarities in that slot)
       expected = 1200/2.0
       1200.times { multi_rarity.generate_booster }
-      expect(CardInstance.joins { card_template }
-                          .where { card_template.slot == 'Cihtym'}
-                          .count).to be_between(expected - 2 * Math.sqrt(expected), expected + 2 * Math.sqrt(expected))
-      expect(CardInstance.joins { card_template }
-                          .where { card_template.slot == 'Erar'}
-                          .count).to be_between(expected - 2 * Math.sqrt(expected), expected + 2 * Math.sqrt(expected))
+      cards_by_rarity = CardInstance.joins { card_template }
+                                    .where { card_template.slot == 'Double Faced'}
+                                    .group_by { |c| c.card_template.fields['rarity'] }
+      expect(cards_by_rarity['Cihtym'].length).to be_between(expected - 2 * Math.sqrt(expected), expected + 2 * Math.sqrt(expected))
+      expect(cards_by_rarity['Erar'].length).to be_between(expected - 2 * Math.sqrt(expected), expected + 2 * Math.sqrt(expected))
     end
 
     it "should work with a Multiverse set (Sienira's Facets)" do
