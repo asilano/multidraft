@@ -12,6 +12,9 @@ unless ENV['DRB']
     Coveralls::SimpleCov::Formatter
   ]
   SimpleCov.start('rails')
+
+  require "codeclimate-test-reporter"
+  CodeClimate::TestReporter.start
 end
 
 Spork.prefork do

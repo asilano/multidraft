@@ -49,6 +49,7 @@ group :test do
   gem "capybara"
   gem 'selenium-webdriver'
   gem 'coveralls', require: false
+  gem 'codeclimate-test-reporter', require: false
   gem 'timecop'
   gem 'shoulda-matchers'
 
