@@ -45,14 +45,11 @@ private
     return false if set_info.nil?
 
     # Store off the booster distribution, adjusting it for common M:tG ideosyncracies
-    unless set_info.has_key? 'booster'
-      errors.add(:dictionary_location, :no_booster)
-      return false
-    end
-    set_booster_distr set_info['booster']
+    set_booster_distr set_info['booster'] or return false
 
     # Read the cards out of the set info and create a CardTemplate for each
-    cards_from_set_info(set_info).each do |c|
+    normaliser = CardNormaliser.new(name, set_info['cards'])
+    normaliser.normalise.each do |c|
       record = card_templates.build(:name => c.delete('name'),
                                       :slot => (c.delete('slot') || c['rarity']).titleize,
                                       :fields => c)
@@ -62,6 +59,7 @@ private
 
     # All card templates valid - save the set, which will both create it if
     # it doesn't already exist, and save the card templates
+    @warnings += normaliser.warnings
     save!
   end
 
@@ -80,6 +78,11 @@ private
   end
 
   def set_booster_distr(distr_array)
+    if !distr_array
+      errors.add(:dictionary_location, :no_booster)
+      return false
+    end
+
     self.booster_distr = distr_array.recursive_map(&:titleize).recursive_map do |slot|
       case slot
       when /^(Basic )?Land$/
@@ -91,6 +94,7 @@ private
       end
     end
     self.booster_distr.delete('Marketing')
+    true
   end
 
   # See if the card templates for this set need to be warned about.
@@ -98,114 +102,6 @@ private
     # Check for two or more cards with the same name
     duplicate_names = card_templates.select(:name).group(:name).count.select { |name, count| count > 1 }.map(&:first)
     add_warning_on_cards('duplicate_cards', duplicate_names.sort)
-  end
-
-  def cards_from_set_info(set_info)
-    get_valid_cards(set_info)
-
-    # Combine any cards with multiple arts.
-    cards = combine_multi_art_cards(set_info['cards'])
-
-    # Split, DFC etc. have a "names" field which is an array of all the names on
-    # the card. We need to treat e.g. "Fire//Ice" as a single card with both sets
-    # of characteristics, so group by "names" and combine any entries that match
-    with_names, without_names = cards.partition { |c| c.has_key? 'names' }
-    grouped_cards = with_names.group_by { |c| c['names'] }
-    with_names = grouped_cards.map { |names, group| combine_multi_cards(names, group) }
-
-    # Join the cards back into a single array, sorted by "name"
-    (with_names + without_names).each do |c|
-      # Force the rarity field to be as we expect wrt certain Magic values
-      c['rarity'] = canonical_rarity(c['rarity'])
-    end.sort_by { |c| c['name'] }
-  end
-
-  # Return a card's rarity in its canonical form
-  def canonical_rarity(rarity)
-    case rarity.downcase
-    when 'mythic rare'
-      'Mythic'
-    when 'basic land'
-      'Basic'
-    else
-      rarity.titleize
-    end
-  end
-
-  # Make sure the cards are minimally valid - they need a unique name and a
-  # defined rarity.
-  def get_valid_cards(set_info)
-    unknown_name_index = 1
-    missing_rarity_cards = []
-    set_info['cards'].each do |c|
-      if c['name'].blank?
-        c['name'] = "Unnamed Card #{unknown_name_index}"
-        unknown_name_index += 1
-      end
-
-      if c['rarity'].blank?
-        c['rarity'] ||= 'common'
-        missing_rarity_cards << c['name']
-      end
-
-      # Keep only those fields that interest us.
-      c.keep_if { |key,_| CardSet.fields_whitelist.include? key }
-    end
-
-    if unknown_name_index > 1
-      @warnings << I18n.t('activerecord.card_set.warnings.cards_without_names', card_set_name: self.name, count: unknown_name_index - 1)
-    end
-    add_warning_on_cards('cards_without_rarity', missing_rarity_cards)
-  end
-
-  # Cards with the same "name" should be exactly the same card, modulo art and/or flavor
-  # Combine any such cards together; but leave separate any cards with differences in
-  # other fields.
-  def combine_multi_art_cards(all_cards)
-    all_cards.group_by { |c| c['name'] }.inject([]) do |memo, group|
-      # Note - group is a two-element array [name, [cards]]
-      parts = group[1]
-      exemplar = parts[0].reject { |key,_| %w<flavor imageName>.include? key }
-      fields_match = parts.size > 1 && parts.all? do |e|
-        exemplar == e.reject { |key,_| %w<flavor imageName>.include? key }
-      end
-
-      if fields_match
-        memo << make_one_card_from_array(parts)
-      else
-        memo += parts
-      end
-
-      memo
-    end
-  end
-
-  def combine_multi_cards(names, parts)
-    # If the card isn't a multi-card, just use it as-is
-    return parts[0] if parts.size == 1
-
-    # First, make sure the card parts are ordered to match the order of their respective
-    # names (so Turn is first in Turn//Burn)
-    if parts[0]['names']
-      ordering_index = ->(card_part) { parts[0]['names'].index card_part['name'] }
-      parts.sort! { |a,b| ordering_index[a] <=> ordering_index[b] }
-    end
-
-    # Combine the multiple part-cards into a single multipart card
-    make_one_card_from_array(parts)
-  end
-
-  # Pivot the parts of a card - which is an array of hashes - into a single card containing
-  # a hash of arrays - each field is an array with the parts' values.
-  def make_one_card_from_array(parts)
-    field_keys = parts.inject(Set.new) { |memo, part| memo.union part.keys }
-    card = Hash[field_keys.map { |k| [k, parts.map { |part| part[k] }] } ]
-
-    # Replace those fields which should only have 1 value.
-    dominant_part = parts[0]
-    %w<name slot rarity layout names>.each { |field| card[field] = dominant_part[field] if dominant_part[field] }
-
-    card
   end
 
   def self.fields_whitelist
