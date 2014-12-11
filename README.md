@@ -5,9 +5,9 @@ A multi-purpose draft server, interfacing with alextfish/multiverse
 
 ----
 
-There's not much code here at the moment, just a bare space for design conversations in the repo [wiki](https://github.com/asilano/multidraft/wiki).
+There's some code here at the moment, and space for design conversations in the repo [wiki](https://github.com/asilano/multidraft/wiki).
 
-But trust me - there will be code. And it will be epic.
+But trust me - there will be more code. And it will be epic.
 
 ----
 
