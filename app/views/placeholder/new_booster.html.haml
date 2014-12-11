@@ -1,0 +1,5 @@
+= form_tag generate_booster_path, remote: true do
+  = select_tag :id, option_groups_from_collection_for_select(CardSet::RealMagicSets, :second, :first, :id, :name)
+  = submit_tag 'Generate booster', disable_with: 'Generating...'
+
+#booster

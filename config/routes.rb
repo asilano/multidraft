@@ -6,6 +6,8 @@ Multidraft::Application.routes.draw do
   end
 
   root :to => 'placeholder#index'
+  get "new_booster" => 'placeholder#new_booster', as: 'new_booster'
+  post "generate_booster" => 'placeholder#generate_booster', as: 'generate_booster'
 
   # The priority is based upon order of creation:
   # first created -> highest priority.

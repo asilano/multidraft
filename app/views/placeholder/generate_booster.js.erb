@@ -1,0 +1,4 @@
+$('#booster').empty();
+<% @booster.each do |card| %>
+  $('#booster').append("<%= j render('shared/card_instance', card: card) -%>");
+<% end %>
