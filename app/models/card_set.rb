@@ -13,6 +13,8 @@ class CardSet < ActiveRecord::Base
 
   attr_reader :warnings
 
+  include MagicSets
+
   # Read the set dictionary pointed to, and create card templates from it
   def prepare_for_draft
     @warnings = []
@@ -32,6 +34,7 @@ class CardSet < ActiveRecord::Base
   # Paying attention to the stored :booster_distr, generate a random booster from among
   # the set's templates.
   def generate_booster
+    prepare_for_draft or return nil
     BoosterGenerator.generate(card_templates, booster_distr)
   end
 
