@@ -54,7 +54,7 @@ header {
   border: 3px outset $logo-colour;
   padding: 0 10px;
 
-  @include small-screen {
+  @include when-smaller-than(small) {
     width: 100%;
     text-align: center;
   }
@@ -65,7 +65,7 @@ nav {
   top: 0;
   right: 0;
 
-  @include small-screen {
+  @include when-smaller-than(small) {
     position: relative;
     width: 100%;
     min-height: 40px;
@@ -285,4 +285,72 @@ table.auth-list {
       }
     }
   }
+}
+
+// Display styling for booster display
+#booster {
+  margin: 0 auto;
+  max-width: 1000px;
+  display: flex;
+  flex-flow: row wrap;
+  img {
+    max-width: 100%;
+  }
+
+  .card {
+    // Display 5 to a line at full-screen sizes
+    flex: 1 20%;
+    padding: 5px;
+
+    @include when-smaller-than(medium) {
+      // Display 3 to a line at smaller sizes
+      flex: 1 33%;
+    }
+  }
+}
+
+/* 3d-flip styles for DFCs */
+.dfc-container {
+  perspective: 1000;
+  position: relative;
+
+  /* flip the pane when hovered */
+  &:hover .dfc-flipper, &.hover .dfc-flipper {
+    transform: rotateY(180deg);
+  }
+}
+
+/* flip speed goes here */
+.dfc-flipper {
+  transition: 0.6s;
+  transform-style: preserve-3d;
+}
+
+/* hide back of pane during swap */
+.dfc-front, .dfc-back {
+  backface-visibility: hidden;
+}
+
+.dfc-flipper, .dfc-front, .dfc-back {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
+
+/* front pane, placed above back */
+.dfc-front {
+  z-index: 2;
+  /* for firefox 31 */
+  transform: rotateY(0deg);
+}
+
+/* back, initially hidden pane */
+.dfc-back {
+  transform: rotateY(180deg);
+}
+
+.invisible-sizer {
+  visibility: hidden;
 }

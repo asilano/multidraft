@@ -12,10 +12,11 @@ $disabled-bg-colour: #eee;
 
 $light-text: #888;
 
-@mixin small-screen {
-  @media (max-width: 650px) { @content; }
-}
-
-@mixin large-screen {
-  @media (min-width: 651px) { @content; }
+@mixin when-smaller-than($breakpoint) {
+  @if $breakpoint == small {
+    @media (max-width: 650px) { @content; }
+  }
+  @else if $breakpoint == medium {
+    @media (max-width: 850px) { @content; }
+  }
 }

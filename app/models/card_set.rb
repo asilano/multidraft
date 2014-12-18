@@ -108,7 +108,7 @@ private
   end
 
   def self.fields_whitelist
-    %w<layout slot name names manaCost type rarity text flavor power toughness loyalty imageName hand life cardCode editURL>
+    %w<layout slot name names manaCost type rarity text flavor power toughness loyalty imageName imageURL hand life cardCode editURL>
   end
 
   def get_json_dictionary

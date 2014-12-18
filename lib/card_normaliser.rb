@@ -70,15 +70,15 @@ private
 
   def combine_cards_if_match(parts)
     exemplar = parts[0].reject { |key,_| %w<flavor imageName>.include? key }
-      fields_match = parts.size > 1 && parts.all? do |e|
-        exemplar == e.reject { |key,_| %w<flavor imageName>.include? key }
-      end
+    fields_match = parts.size > 1 && parts.all? do |e|
+      exemplar == e.reject { |key,_| %w<flavor imageName>.include? key }
+    end
 
-      if fields_match
-        [make_one_card_from_array(parts)]
-      else
-        parts
-      end
+    if fields_match
+      [make_one_card_from_array(parts)]
+    else
+      parts
+    end
   end
 
   # Pivot the parts of a card - which is an array of hashes - into a single card containing
