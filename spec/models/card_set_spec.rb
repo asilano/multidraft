@@ -555,10 +555,13 @@ describe CardSet do
 
       expect(booster).to all(be_a CardInstance)
       expect(booster.map(&:name)).to eq expected_contents
+
+      expected_missing = [nil, 'Uncommon', 'Uncommon', 'Uncommon'] + ([nil] * 11)
+      expect(booster.map(&:missing_slot)).to eq expected_missing
     end
 
     it "should never pick a missing rarity for a multi-rarity slot" do
-      no_rares = FactoryGirl.create(:card_set, name: 'No Uncommons', dictionary_location: "spec/data/no_rares.json")
+      no_rares = FactoryGirl.create(:card_set, name: 'No Rares', dictionary_location: "spec/data/no_rares.json")
       expect(no_rares.prepare_for_draft).to be_truthy
 
       srand(20141127)
@@ -568,6 +571,25 @@ describe CardSet do
       expect(CardInstance.joins { card_template }
                           .where { card_template.slot == 'Mythic'}
                           .count).to eq 100
+    end
+
+    it "should not fail if set is missing rarities from a multi-rarity slot" do
+      bad_multi = FactoryGirl.create(:card_set, name: 'Bad Multi', dictionary_location: "spec/data/bad_multi.json")
+      expect(bad_multi.prepare_for_draft).to be_truthy
+
+      # Expected booster contents is determined, portably, by srand
+      srand(20141224)
+      expected_contents = [nil, "Icefeather Aven", "Blinding Spray", "Venerable Lammasu", "Scout the Borders",
+                            "Summit Prowler", "Wind-Scarred Crag", "Dutiful Return", "Mardu Banner", "Snowhorn Rider",
+                            "Firehoof Cavalry", "Debilitating Injury", "Bitter Revelation", "Throttle", "Plains"]
+      booster = nil
+      expect { booster = bad_multi.generate_booster }.to change{ CardInstance.count }.by bad_multi.booster_distr.length
+
+      expect(booster).to all(be_a CardInstance)
+      expect(booster.map(&:name)).to eq expected_contents
+
+      expected_missing = ['Odd Rare'] + ([nil] * 14)
+      expect(booster.map(&:missing_slot)).to eq expected_missing
     end
   end
 end

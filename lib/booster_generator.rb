@@ -42,14 +42,18 @@ private
 
   def self.flatten_slot(slot, valid_values)
     # Make sure we don't choose a value we have none of
-    slot.reject! { |s| !valid_values.include? s }
+    actual_slot = slot.reject { |s| !valid_values.include? s }
+
+    # ...but if that leaves us with no choice, pick from the original
+    # slot array, so we get a meaningful Missing Slot entry
+    actual_slot = slot if actual_slot.empty?
 
     # If the slot has different rarities in it, pick one
     # In the specific case of the Mythic/Rare slot, weight the choice
-    if slot.sort == ['Mythic', 'Rare']
+    if actual_slot.sort == ['Mythic', 'Rare']
       rand(8) == 0 ? 'Mythic' : 'Rare'
     else
-      slot.sample
+      actual_slot.sample
     end
   end
 

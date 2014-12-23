@@ -1,5 +1,6 @@
 module ApplicationHelper
   def image_for_card(card)
+    return nil unless card.card_template
     set_name = card.card_template.card_set.name
     image_urls = nil
 
