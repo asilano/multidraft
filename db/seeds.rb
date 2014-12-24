@@ -25,7 +25,7 @@ end
   {name: "Avacyn Restored", remote_dictionary: true, dictionary_location: mtgJson_url('AVR')},
 
   {name: "Scars of Mirrodin", remote_dictionary: true, dictionary_location: mtgJson_url('SOM')},
-  {name: "Mirrodin Beseiged", remote_dictionary: true, dictionary_location: mtgJson_url('MBS')},
+  {name: "Mirrodin Besieged", remote_dictionary: true, dictionary_location: mtgJson_url('MBS')},
   {name: "New Phyrexia", remote_dictionary: true, dictionary_location: mtgJson_url('NPH')},
 
   {name: "Zendikar", remote_dictionary: true, dictionary_location: mtgJson_url('ZEN')},

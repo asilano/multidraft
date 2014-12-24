@@ -19,7 +19,7 @@ module MagicSets
     ["Theros", ["Theros", "Born of the Gods", "Journey into Nyx"]],
     ["Return to Ravnica", ["Return to Ravnica", "Gatecrash", "Dragon's Maze"]],
     ["Innistrad", ["Innistrad", "Dark Ascension", "Avacyn Restored"]],
-    ["Scars of Mirrodin", ["Scars of Mirrodin", "Mirrodin Beseiged", "New Phyrexia"]],
+    ["Scars of Mirrodin", ["Scars of Mirrodin", "Mirrodin Besieged", "New Phyrexia"]],
     ["Zendikar", ["Zendikar", "Worldwake", "Rise of the Eldrazi"]],
     ["Alara", ["Shards of Alara", "Conflux", "Alara Reborn"]],
     ["Shadowmoor", ["Shadowmoor", "Eventide"]],
