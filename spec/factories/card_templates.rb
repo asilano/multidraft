@@ -5,9 +5,10 @@ FactoryGirl.define do
     card_set
     name "Shock"
     slot 'Common'
-    fields({rarity: 'Common',
-            types: ['instant'],
-            cost: '{R}',
-            text: 'Deal 2 damage to target creature or player.'})
+    fields({'rarity' => 'Common',
+            'types' => ['instant'],
+            'cost' => '{R}',
+            'text' => 'Deal 2 damage to target creature or player.',
+            'imageName' => 'shock'})
   end
 end

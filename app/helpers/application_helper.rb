@@ -2,32 +2,34 @@ module ApplicationHelper
   def image_for_card(card)
     return nil unless card.card_template
     set_name = card.card_template.card_set.name
-    image_urls = nil
 
-    if card.fields['imageURL']
-      image_urls = [*card.fields['imageURL']]
-    elsif card.fields['imageName']
-      image_urls = [*card.fields['imageName']].map {|name| url_from_image_name(name, set_name)}
-    end
-
-    if image_urls
+    if image_urls = image_urls_for_card(card, set_name)
       # Special case for double-faced cards
-      if card.fields['layout'].downcase == 'double-faced'
+      if card.fields['layout'].andand.downcase == 'double-faced'
         return flip_images(image_urls, card.name)
       end
 
-      image_url = nil
-      if card.fields['layout'] && card.fields['layout'].downcase != 'normal'
-        # Card has several images because of its unusual layout.
-        # Render just the first one
-        image_url = image_urls[0]
-      else
-        # Card has a normal layout, so its images are alternate possibilities
-        # Pick one at random
-        image_url = image_urls.sample
-      end
+      image_tag image_url_by_layout(image_urls, card.fields['layout']), alt: card.name, title: card.name
+    end
+  end
 
-      image_tag image_url, alt: card.name, title: card.name
+  def image_urls_for_card(card, set_name)
+    if card.fields['imageURL']
+      [*card.fields['imageURL']]
+    elsif card.fields['imageName']
+      [*card.fields['imageName']].map {|name| url_from_image_name(name, set_name)}
+    end
+  end
+
+  def image_url_by_layout(image_urls, layout)
+    if layout && layout.downcase != 'normal'
+      # Card has several images because of its unusual layout.
+      # Render just the first one
+      image_urls[0]
+    else
+      # Card has a normal layout, so its images are alternate possibilities
+      # Pick one at random
+      image_urls.sample
     end
   end
 
