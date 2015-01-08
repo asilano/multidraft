@@ -23,3 +23,9 @@ $(function() {
       $this.trigger('ajax:replaced');
     });
 });
+
+$(document).ajaxError(function (e, xhr, settings) {
+  if (xhr.status == 401) {
+    window.location.replace(window.new_user_session_path);
+  }
+});

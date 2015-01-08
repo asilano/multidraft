@@ -3,3 +3,5 @@
   = submit_tag 'Generate booster', disable_with: 'Generating...'
 
 #booster
+  - @booster.andand.each do |card|
+    = render('shared/card_instance', card: card)

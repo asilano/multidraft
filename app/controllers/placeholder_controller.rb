@@ -11,7 +11,10 @@ class PlaceholderController < ActionController::Base
 
   def generate_booster
     @booster = CardSet.find(params[:id]).generate_booster
-    render
+    respond_to do |format|
+      format.js
+      format.html { render :new_booster }
+    end
   ensure
     @booster.andand.each(&:destroy)
   end
