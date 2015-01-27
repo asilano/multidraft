@@ -2,8 +2,9 @@ module ApplicationHelper
   def image_for_card(card)
     return nil unless card.card_template
     set_name = card.card_template.card_set.name
+    image_urls = image_urls_for_card(card, set_name)
 
-    if image_urls = image_urls_for_card(card, set_name)
+    unless image_urls.blank?
       # Special case for double-faced cards
       if card.fields['layout'].andand.downcase == 'double-faced'
         return flip_images(image_urls, card.name)
@@ -15,9 +16,9 @@ module ApplicationHelper
 
   def image_urls_for_card(card, set_name)
     if card.fields['imageURL']
-      [*card.fields['imageURL']]
+      [*card.fields['imageURL']].reject(&:empty?)
     elsif card.fields['imageName']
-      [*card.fields['imageName']].map {|name| url_from_image_name(name, set_name)}
+      [*card.fields['imageName']].reject(&:empty?).map {|name| url_from_image_name(name, set_name)}
     end
   end
 

@@ -15,10 +15,4 @@ describe CardTemplate do
     it { should belong_to :card_set }
     it { should have_many :card_instances }
   end
-
-  describe "delegations" do
-    before(:each) { FactoryGirl.create(:card_template) }
-
-    it "should delegate each field"
-  end
 end

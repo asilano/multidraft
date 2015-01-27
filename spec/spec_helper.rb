@@ -74,6 +74,14 @@ Spork.prefork do
     config.include FixAll
 
     config.expect_with(:rspec) { |c| c.syntax = :expect }
+    config.mock_with :rspec do |mocks|
+
+      # This option should be set when all dependencies are being loaded
+      # before a spec run, as is the case in a typical spec helper. It will
+      # cause any verifying double instantiation for a class that does not
+      # exist to raise, protecting against incorrectly spelt names.
+      mocks.verify_doubled_constant_names = true
+    end
 
     config.before(:suite) do
       DatabaseCleaner.clean_with :truncation
@@ -115,4 +123,9 @@ end
 
 def node(html)
   Capybara::Node::Simple.new(html)
+end
+
+def build_card(attribs)
+  template = FactoryGirl.build(:card_template, attribs)
+  FactoryGirl.build(:card_instance, card_template: template)
 end

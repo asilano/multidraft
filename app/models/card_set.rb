@@ -107,10 +107,6 @@ private
     add_warning_on_cards('duplicate_cards', duplicate_names.sort)
   end
 
-  def self.fields_whitelist
-    %w<layout slot name names manaCost type rarity text flavor power toughness loyalty imageName imageURL hand life cardCode editURL>
-  end
-
   def get_json_dictionary
     if remote_dictionary
       File.read open(dictionary_location)

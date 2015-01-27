@@ -289,8 +289,8 @@ table.auth-list {
 
 // Display styling for booster display
 #booster {
-  margin: 0 auto;
-  max-width: 1000px;
+  margin: 0.5em auto;
+  max-width: 1200px;
   display: flex;
   flex-flow: row wrap;
   img {
@@ -298,14 +298,67 @@ table.auth-list {
   }
 
   .card {
+    border: 1px solid black;
+
     // Display 5 to a line at full-screen sizes
     flex: 1 20%;
-    padding: 5px;
     min-width: 0; // Fix flexbox in FireFox 34
 
     @include when-smaller-than(medium) {
       // Display 3 to a line at smaller sizes
       flex: 1 33%;
+    }
+
+    // Children also flex when we're displaying text-only cards
+    display: flex;
+    flex-flow: row wrap;
+    align-content: flex-start;  // Squash rows to top; don't stretch to fill
+    justify-content: flex-end;  // Right-align elems in rows. Only affects P/T/L, since others are full width
+    align-items: flex-start;    // Make sure card images aren't stretched
+
+    > [class^='card-'] {
+      flex: 1 100%; // All children full width
+      margin-left: 5px;
+      margin-right: 5px;
+
+      &:first-child {
+        margin-top: 5px;
+      }
+      &:last-child {
+        margin-bottom: 5px;
+      }
+    }
+    .card-name {
+      font-weight: bold;
+    }
+    .card-text {
+      margin-top: 0.5em;
+      margin-bottom: 0.5em;
+
+      ~ .card-text {
+        margin-top: -0.5em;
+      }
+    }
+    .card-flavor {
+      font-style: italic;
+      font-size: 0.9em;
+    }
+
+    .card-power, .card-toughness, .card-loyalty {
+      flex: 0 1 auto;   // P/T/L are only as big as needs to be.
+      margin: 0 5px 0 0;
+    }
+    .card-power {
+      margin-right: 0;
+
+      &:after {
+        content: '/';
+      }
+    }
+
+    .card-rarity {
+      margin-top: 0.5em;
+      font-size: 0.8em;
     }
   }
 }

@@ -47,7 +47,7 @@ private
       end
 
       # Keep only those fields that interest us.
-      c.keep_if { |key,_| CardSet.fields_whitelist.include? key }
+      c.keep_if { |key,_| CardTemplate.fields_whitelist.include? key }
     end
 
     if unknown_name_index > 0

@@ -6,9 +6,9 @@ FactoryGirl.define do
     name "Shock"
     slot 'Common'
     fields({'rarity' => 'Common',
-            'types' => ['instant'],
-            'cost' => '{R}',
-            'text' => 'Deal 2 damage to target creature or player.',
+            'type' => 'Instant',
+            'manaCost' => '{R}',
+            'text' => 'Shock deals 2 damage to target creature or player.',
             'imageName' => 'shock'})
   end
 end
