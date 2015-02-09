@@ -12,7 +12,7 @@ describe CardInstance do
       card = FactoryGirl.create(:card_instance)
       template = card.card_template
 
-      [:name, :slot, :fields, :field_keys_ordered_for_text].each do |method|
+      [:name, :slot, :layout, :fields, :field_keys_ordered_for_text].each do |method|
         expect(template).to receive(method).and_return(method.to_s)
         expect(card.send method).to eq method.to_s
       end

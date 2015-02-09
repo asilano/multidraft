@@ -68,7 +68,7 @@ describe ApplicationHelper do
 
     it 'should pick the first image for a non-normal card with several' do
       @shock.card_template.fields['imageName'] = ['shock1', 'shock2', 'shock3']
-      @shock.card_template.fields['layout'] = 'funky'
+      @shock.card_template.layout = 'funky'
       @shock.card_template.save!
 
       images = 1.upto(999).map { image_for_card @shock }
@@ -79,7 +79,7 @@ describe ApplicationHelper do
 
     it 'should create a flipping image for a DFC' do
       @shock.card_template.fields['imageName'] = ['shockFront', 'shockBack']
-      @shock.card_template.fields['layout'] = 'double-faced'
+      @shock.card_template.layout = 'double-faced'
       @shock.card_template.save!
 
       html = image_for_card @shock

@@ -1,11 +1,12 @@
 class CardTemplate < ActiveRecord::Base
-  attr_accessible :card_set, :fields, :name, :slot
+  attr_accessible :card_set, :fields, :name, :slot, :layout
   belongs_to :card_set
   has_many :card_instances, dependent: :destroy
   serialize :fields
 
   validates_presence_of :name
   validates_presence_of :slot
+  validates :layout, presence: true
 
   def instantiate
     card_instances.create
@@ -14,19 +15,31 @@ class CardTemplate < ActiveRecord::Base
   # Produce temporary CardTemplates, each of which is one part of a multipart card
   def text_parts
     # First, see if this is actually a multipart card we can process. That means that:
+    # - the layout is not "normal"
     # - at least one field other than flavor is an array
     # - each field that is an array is the same size
     field_keys = field_keys_ordered_for_text
     text_fields = fields.select { |k| field_keys.include? k }.reject { |k| k == 'flavor' }
     multipart_field = text_fields.find { |_,value| value.kind_of? Array }
-    multipart = multipart_field && text_fields.all? { |_,value| !value.kind_of?(Array) || value.length == multipart_field[1].length}
+    multipart = multipart_field &&
+                text_fields.all? { |_,value| !value.kind_of?(Array) || value.length == multipart_field[1].length}
 
     if multipart
-      (0...multipart_field[1].length).map do |ix|
-        part_fields = Hash[fields.map {|k,v| [k, Array(v)[ix]]}].reject { |_,v| v.blank? }
-        CardTemplate.new(name: part_fields['names'] || name,
-                            slot: slot,
-                            fields: part_fields)
+      if layout == 'normal'
+        # A "normal", but multipart, card we assume to have all its parts the same.
+        # Return a single card taken from the first of each field
+        [CardTemplate.new(name: name,
+                          slot: slot,
+                          layout: layout,
+                          fields: Hash[fields.map { |k,v| [k, [*v][0]] }])
+        ]
+      else
+        (0...multipart_field[1].length).map do |ix|
+          part_fields = Hash[fields.map {|k,v| [k, Array(v)[ix]]}].reject { |_,v| v.blank? }
+          CardTemplate.new(name: part_fields['names'] || name,
+                              slot: slot,
+                              fields: part_fields)
+        end
       end
     else
       [self]

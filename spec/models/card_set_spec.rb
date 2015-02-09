@@ -4,8 +4,8 @@ require 'spec_helper'
 describe CardSet do
   let(:academy_raider_params) {{name: 'Academy Raider',
                         slot: 'Common',
+                        layout: 'normal',
                         fields: {
-                          "layout" => 'normal',
                           'rarity' => 'Common',
                           "type" => 'Creature — Human Warrior',
                           "manaCost" => '{2}{R}',
@@ -18,8 +18,8 @@ describe CardSet do
                     }}}
   let(:glimpse_params) {{name: 'Glimpse the Future',
                          slot: 'Uncommon',
+                        layout: 'normal',
                          fields: {
-                          "layout" => 'normal',
                           'rarity' => 'Uncommon',
                           "type" => 'Sorcery',
                           "manaCost" => '{2}{U}',
@@ -157,8 +157,8 @@ describe CardSet do
     it "should correctly handle split cards" do
       turn_burn_params = {name: 'Turn',
                            slot: 'Uncommon',
+                           layout: 'split',
                            fields: {
-                            "layout" => 'split',
                             'rarity' => 'Uncommon',
                             "names" => ['Turn', 'Burn'],
                             "type" => ['Instant', 'Instant'],
@@ -169,8 +169,8 @@ describe CardSet do
                           }
       alive_well_params = {name: 'Alive',
                            slot: 'Uncommon',
+                           layout: 'split',
                            fields: {
-                            "layout" => 'split',
                             'rarity' => 'Uncommon',
                             "names" => ['Alive', 'Well'],
                             "type" => ['Sorcery', 'Sorcery'],
@@ -196,8 +196,8 @@ describe CardSet do
     it "should correctly handle multiple-art cards" do
       plains_params = {name: 'Plains',
                         slot: 'Basic',
+                        layout: 'normal',
                         fields: {
-                          "layout" => 'normal',
                           'rarity' => 'Basic',
                           "type" => ['Basic Land — Plains'] * 4,
                           "text" => ["W"] * 4,
@@ -218,8 +218,8 @@ describe CardSet do
     it "should correctly handle flip cards" do
       erayo_params = {name: 'Erayo, Soratami Ascendant',
                       slot: 'Rare',
+                      layout: 'flip',
                       fields: {
-                        "layout" => 'flip',
                         'rarity' => 'Rare',
                         "names" => ['Erayo, Soratami Ascendant', "Erayo's Essence"],
                         "type" => ["Legendary Creature — Moonfolk Monk", 'Legendary Enchantment'],
@@ -232,8 +232,8 @@ describe CardSet do
                         }}
       bushi_params = {name: 'Bushi Tenderfoot',
                       slot: 'Uncommon',
+                      layout: 'flip',
                       fields: {
-                        "layout" => 'flip',
                         'rarity' => 'Uncommon',
                         "names" => ['Bushi Tenderfoot', 'Kenzo the Hardhearted'],
                         "type" => ["Creature — Human Soldier", 'Legendary Creature — Human Samurai'],
@@ -261,8 +261,8 @@ describe CardSet do
     it "should correctly handle double-faced cards" do
       hanweir_params = {name: 'Hanweir Watchkeep',
                         slot: 'Double Faced',
+                        layout: 'double-faced',
                         fields: {
-                          "layout" => 'double-faced',
                           'rarity' => 'Uncommon',
                           "names" => ['Hanweir Watchkeep', 'Bane of Hanweir'],
                           "type" => ["Creature — Human Warrior Werewolf", 'Creature — Werewolf'],

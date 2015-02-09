@@ -7,6 +7,7 @@ describe CardTemplate do
 
     it { should validate_presence_of :name }
     it { should validate_presence_of :slot }
+    it { should validate_presence_of :layout }
     it { should_not validate_uniqueness_of(:name).scoped_to :card_set_id }
   end
 
@@ -37,8 +38,7 @@ describe CardTemplate do
       expect(parts).to eq [card.card_template]
     end
 
-    it "should work on a single-part card with the same values in each entry" do
-      pending "Unimplemented"
+    it "should work on a single-part card with 'normal' layout" do
       card = build_card name: 'Island',
                         slot: 'Basic',
                         fields: {'text' => ['{U}', '{U}'],
@@ -47,14 +47,15 @@ describe CardTemplate do
                         }
       parts = nil
       expect { parts = card.text_parts }.not_to change { CardTemplate.count }
-      expect(parts).to eq [card.card_template]
+      expect(parts.length).to eq 1
+      expect(parts[0].fields).to eq({'text' => '{U}'})
     end
 
     it "should work on a double-faced card" do
       watchkeep = build_card name: 'Hanweir Watchkeep',
                               slot: 'Double Faced',
+                              layout: 'double-faced',
                               fields: {
-                                "layout" => 'double-faced',
                                 'rarity' => 'Uncommon',
                                 "names" => ['Hanweir Watchkeep', 'Bane of Hanweir'],
                                 "type" => ['Creature — Human Warrior Werewolf', 'Creature — Werewolf'],
@@ -72,7 +73,6 @@ describe CardTemplate do
       expect(parts.length).to eq 2
       expect(parts[0].name).to eq 'Hanweir Watchkeep'
       expect(parts[0].fields).to eq ({'rarity' => 'Uncommon',
-                                      "layout" => 'double-faced',
                                       "type" => 'Creature — Human Warrior Werewolf',
                                       'names' => 'Hanweir Watchkeep',
                                       "power" => '1',

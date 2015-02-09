@@ -53,9 +53,10 @@ private
     # Read the cards out of the set info and create a CardTemplate for each
     normaliser = CardNormaliser.new(name, set_info['cards'])
     normaliser.normalise.each do |c|
-      record = card_templates.build(:name => c.delete('name'),
-                                      :slot => (c.delete('slot') || c['rarity']).titleize,
-                                      :fields => c)
+      record = card_templates.build(name: c.delete('name'),
+                                    slot: (c.delete('slot') || c['rarity']).titleize,
+                                    layout: c.delete('layout'),
+                                    fields: c)
 
       return false if record.invalid?
     end

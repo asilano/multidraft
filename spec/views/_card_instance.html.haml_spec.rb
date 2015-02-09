@@ -237,8 +237,8 @@ describe 'card_instance partial' do
     it "for a double-faced card" do
       watchkeep = build_card name: 'Hanweir Watchkeep',
                               slot: 'Double Faced',
+                              layout: 'double-faced',
                               fields: {
-                                "layout" => 'double-faced',
                                 'rarity' => 'Uncommon',
                                 "names" => ['Hanweir Watchkeep', 'Bane of Hanweir'],
                                 "type" => ["Creature — Human Warrior Werewolf", 'Creature — Werewolf'],
@@ -275,8 +275,8 @@ describe 'card_instance partial' do
     it "for a flip card" do
       erayo = build_card name: 'Erayo, Soratami Ascendant',
                           slot: 'Rare',
+                          layout: 'flip',
                           fields: {
-                            "layout" => 'flip',
                             'rarity' => 'Rare',
                             "names" => ['Erayo, Soratami Ascendant', "Erayo's Essence"],
                             "type" => ["Legendary Creature — Moonfolk Monk", 'Legendary Enchantment'],
@@ -307,8 +307,8 @@ describe 'card_instance partial' do
     it "for a split card" do
       alive = build_card name: 'Alive',
                          slot: 'Uncommon',
+                         layout: 'split',
                          fields: {
-                          "layout" => 'split',
                           'rarity' => 'Uncommon',
                           "names" => ['Alive', 'Well'],
                           "type" => ['Sorcery', 'Sorcery'],
