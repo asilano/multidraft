@@ -2,9 +2,13 @@
   = card.missing_slot || image_for_card(card)
 
 - card_display.blank? && card_display = capture do
-  .card-name= card.name
-  - card.field_keys_ordered_for_text.each do |key|
-    - card.text_lines_for_field(key).each_with_index do |line|
-      %div{class: "card-#{key}"}= line
+  - (card.text_parts || [card]).map.with_index do |part, ix|
+    - unless ix == 0
+      %hr.card-separator
+    - if part.name.present?
+      .card-name= part.name
+    - part.field_keys_ordered_for_text.each do |key|
+      - part.text_lines_for_field(key).each_with_index do |line|
+        %div{class: "card-#{key}"}= line
 
-.card~ card_display
+.card= card_display

@@ -11,6 +11,28 @@ class CardTemplate < ActiveRecord::Base
     card_instances.create
   end
 
+  # Produce temporary CardTemplates, each of which is one part of a multipart card
+  def text_parts
+    # First, see if this is actually a multipart card we can process. That means that:
+    # - at least one field other than flavor is an array
+    # - each field that is an array is the same size
+    field_keys = field_keys_ordered_for_text
+    text_fields = fields.select { |k| field_keys.include? k }.reject { |k| k == 'flavor' }
+    multipart_field = text_fields.find { |_,value| value.kind_of? Array }
+    multipart = multipart_field && text_fields.all? { |_,value| !value.kind_of?(Array) || value.length == multipart_field[1].length}
+
+    if multipart
+      (0...multipart_field[1].length).map do |ix|
+        part_fields = Hash[fields.map {|k,v| [k, Array(v)[ix]]}].reject { |_,v| v.blank? }
+        CardTemplate.new(name: part_fields['names'] || name,
+                            slot: slot,
+                            fields: part_fields)
+      end
+    else
+      [self]
+    end
+  end
+
   def field_keys_ordered_for_text
     all_keys = fields.keys.reject { |k| fields[k].blank? }
     ordered_keys = []
@@ -25,7 +47,7 @@ class CardTemplate < ActiveRecord::Base
   end
 
   def text_lines_for_field(key)
-    [*fields[key]].map { |val| val.to_s.split "\n" }.flatten
+    [*fields[key]].map { |val| val.to_s.split /\n+/ }.flatten
   end
 
   def self.fields_whitelist

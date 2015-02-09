@@ -318,6 +318,7 @@ table.auth-list {
 
     > [class^='card-'] {
       flex: 1 100%; // All children full width
+      order: 1;     // By default, display in source order
       margin-left: 5px;
       margin-right: 5px;
 
@@ -335,7 +336,7 @@ table.auth-list {
       margin-top: 0.5em;
       margin-bottom: 0.5em;
 
-      ~ .card-text {
+      + .card-text {
         margin-top: -0.5em;
       }
     }
@@ -357,6 +358,7 @@ table.auth-list {
     }
 
     .card-rarity {
+      order: 2; // Force rarity after other children
       margin-top: 0.5em;
       font-size: 0.8em;
     }

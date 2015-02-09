@@ -234,6 +234,104 @@ describe 'card_instance partial' do
       expect(rendered).to have_css('.card-loyalty + .card-rarity:last-child', text: 'Mythic Rare')
     end
 
+    it "for a double-faced card" do
+      watchkeep = build_card name: 'Hanweir Watchkeep',
+                              slot: 'Double Faced',
+                              fields: {
+                                "layout" => 'double-faced',
+                                'rarity' => 'Uncommon',
+                                "names" => ['Hanweir Watchkeep', 'Bane of Hanweir'],
+                                "type" => ["Creature — Human Warrior Werewolf", 'Creature — Werewolf'],
+                                "power" => ['1', '5'],
+                                "toughness" => ['5', '5'],
+                                "manaCost" => ['{2}{R}', nil],
+                                "text" => ["Defender\n\nAt the beginning of each upkeep, if no spells were cast last turn, transform Hanweir Watchkeep.",
+                                            "Bane of Hanweir attacks each turn if able.\n\nAt the beginning of each upkeep, if a player cast two or more spells last turn, transform Bane of Hanweir."],
+                                "flavor" => ["He scans for wolves, knowing there's one he can never anticipate.",
+                                              "Technically he never left his post. He looks after the wolf wherever it goes."]
+                              }
+      render 'shared/card_instance', card: watchkeep
+
+      expect(rendered).to have_css('.card')
+      expect(rendered).to have_css('.card > .card-name:first-child', text: 'Hanweir Watchkeep')
+      expect(rendered).to have_css('.card-name + .card-manaCost', text: '{2}{R}')
+      expect(rendered).to have_css('.card-manaCost + .card-type', text: 'Creature — Human Warrior Werewolf')
+      expect(rendered).to have_css('.card-type + .card-text', text: 'Defender')
+      expect(rendered).to have_css('.card-type + .card-text + .card-text', text: 'At the beginning of each upkeep, if no spells were cast last turn, transform Hanweir Watchkeep.')
+      expect(rendered).to have_css('.card-text + .card-flavor', text: 'He scans for wolves, knowing there\'s one he can never anticipate.')
+      expect(rendered).to have_css('.card-flavor + .card-power', text: '1')
+      expect(rendered).to have_css('.card-power + .card-toughness', text: '5')
+      expect(rendered).to have_css('.card-toughness + .card-rarity', text: 'Uncommon')
+      expect(rendered).to have_css('.card-rarity + hr.card-separator')
+      expect(rendered).to have_css('.card-separator + .card-name', text: 'Bane of Hanweir')
+      expect(rendered).to have_css('.card-name + .card-type', text: 'Creature — Werewolf')
+      expect(rendered).to have_css('.card-type + .card-text', text: 'Bane of Hanweir attacks each turn if able.')
+      expect(rendered).to have_css('.card-type + .card-text + .card-text', text: 'At the beginning of each upkeep, if a player cast two or more spells last turn, transform Bane of Hanweir.')
+      expect(rendered).to have_css('.card-text + .card-flavor', text: 'Technically he never left his post. He looks after the wolf wherever it goes.')
+      expect(rendered).to have_css('.card-flavor + .card-power', text: '5')
+      expect(rendered).to have_css('.card-power + .card-toughness:last-child', text: '5')
+    end
+
+    it "for a flip card" do
+      erayo = build_card name: 'Erayo, Soratami Ascendant',
+                          slot: 'Rare',
+                          fields: {
+                            "layout" => 'flip',
+                            'rarity' => 'Rare',
+                            "names" => ['Erayo, Soratami Ascendant', "Erayo's Essence"],
+                            "type" => ["Legendary Creature — Moonfolk Monk", 'Legendary Enchantment'],
+                            "power" => ['1', nil],
+                            "toughness" => ['1', nil],
+                            "manaCost" => ['{1}{U}', '{1}{U}'],
+                            "text" => ["Flying\n\nWhenever the fourth spell of a turn is cast, flip Erayo, Soratami Ascendant.",
+                                        "Whenever an opponent casts a spell for the first time in a turn, counter that spell."]
+                            }
+      render 'shared/card_instance', card: erayo
+
+      expect(rendered).to have_css('.card')
+      expect(rendered).to have_css('.card > .card-name:first-child', text: 'Erayo, Soratami Ascendant')
+      expect(rendered).to have_css('.card-name + .card-manaCost', text: '{1}{U}')
+      expect(rendered).to have_css('.card-manaCost + .card-type', text: 'Legendary Creature — Moonfolk Monk')
+      expect(rendered).to have_css('.card-type + .card-text', text: 'Flying')
+      expect(rendered).to have_css('.card-type + .card-text + .card-text', text: 'Whenever the fourth spell of a turn is cast, flip Erayo, Soratami Ascendant.')
+      expect(rendered).to have_css('.card-text + .card-power', text: '1')
+      expect(rendered).to have_css('.card-power + .card-toughness', text: '1')
+      expect(rendered).to have_css('.card-toughness + .card-rarity', text: 'Rare')
+      expect(rendered).to have_css('.card-rarity + hr.card-separator')
+      expect(rendered).to have_css('.card-separator + .card-name', text: 'Erayo\'s Essence')
+      expect(rendered).to have_css('.card-name + .card-manaCost', text: '{1}{U}')
+      expect(rendered).to have_css('.card-manaCost + .card-type', text: 'Legendary Enchantment')
+      expect(rendered).to have_css('.card-type + .card-text:last-child', text: 'Whenever an opponent casts a spell for the first time in a turn, counter that spell.')
+    end
+
+    it "for a split card" do
+      alive = build_card name: 'Alive',
+                         slot: 'Uncommon',
+                         fields: {
+                          "layout" => 'split',
+                          'rarity' => 'Uncommon',
+                          "names" => ['Alive', 'Well'],
+                          "type" => ['Sorcery', 'Sorcery'],
+                          "manaCost" => ['{3}{G}','{W}'],
+                          "text" => ["Put a 3/3 green Centaur creature token onto the battlefield.\n\nFuse (You may cast one or both halves of this card from your hand.)",
+                                     "You gain 2 life for each creature you control.\n\nFuse (You may cast one or both halves of this card from your hand.)"]
+                         }
+      render 'shared/card_instance', card: alive
+
+      expect(rendered).to have_css('.card')
+      expect(rendered).to have_css('.card > .card-name:first-child', text: 'Alive')
+      expect(rendered).to have_css('.card-name + .card-manaCost', text: '{3}{G}')
+      expect(rendered).to have_css('.card-manaCost + .card-type', text: 'Sorcery')
+      expect(rendered).to have_css('.card-type + .card-text', text: 'Put a 3/3 green Centaur creature token onto the battlefield.')
+      expect(rendered).to have_css('.card-type + .card-text + .card-text', text: 'Fuse (You may cast one or both halves of this card from your hand.)', count: 2)
+      expect(rendered).to have_css('.card-text + .card-rarity', text: 'Uncommon')
+      expect(rendered).to have_css('.card-rarity + hr.card-separator')
+      expect(rendered).to have_css('.card-separator + .card-name', text: 'Well')
+      expect(rendered).to have_css('.card-name + .card-manaCost', text: '{W}')
+      expect(rendered).to have_css('.card-manaCost + .card-type', text: 'Sorcery')
+      expect(rendered).to have_css('.card-type + .card-text', text: 'You gain 2 life for each creature you control.')
+    end
+
     it "for something that isn't a Magic card" do
       # A 7 Wonders card. Fields will be in order, where they're not matching Magic fields
       temple = build_card name: 'Temple',
@@ -250,8 +348,6 @@ describe 'card_instance partial' do
       expect(rendered).to have_css('.card-cost + .card-upgradeFrom', text: 'Altar ->')
       expect(rendered).to have_css('.card-upgradeFrom + .card-effect', text: '3VP')
       expect(rendered).to have_css('.card-effect + .card-upgradeTo', text: '-> Pantheon')
-
-      puts rendered
     end
   end
 

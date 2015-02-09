@@ -1,5 +1,17 @@
 class CardInstance < ActiveRecord::Base
   attr_accessible :card_template, :missing_slot
   belongs_to :card_template
-  delegate :name, :slot, :fields, :field_keys_ordered_for_text, :text_lines_for_field, to: :card_template, allow_nil: true
+
+  # Delegate attribute fields in the proper way...
+  delegate :name, :slot, :fields, to: :card_template, allow_nil: true
+
+  # ... and delegate "everything else" via method_missing, taking care that a nil
+  # card template isn't a problem
+  def method_missing(name, *args, &block)
+    respond_to_missing?(name) ? card_template.andand.send(name, *args, &block) : super
+  end
+
+  def respond_to_missing?(name, include_priv = false)
+    (CardTemplate.method_defined?(name) && card_template.respond_to?(name)) || super
+  end
 end
