@@ -48,7 +48,7 @@ describe CardTemplate do
       parts = nil
       expect { parts = card.text_parts }.not_to change { CardTemplate.count }
       expect(parts.length).to eq 1
-      expect(parts[0].fields).to eq({'text' => '{U}'})
+      expect(parts[0].fields).to eq({'text' => '{U}', 'flavor' => 'Splosh!', 'imageName' => 'skye'})
     end
 
     it "should work on a double-faced card" do
@@ -95,6 +95,7 @@ describe CardTemplate do
     it "should work on a three-part card" do
       rps = build_card name: 'Rock, Paper, Scissors',
                         slot: 'Any',
+                        layout: 'three',
                         fields: {
                           'rarity' => 'Any',
                           'names' => ['Rock', 'Paper', 'Scissors'],
@@ -119,6 +120,7 @@ describe CardTemplate do
     it "should not work on a confused card" do
       confused = build_card name: 'Confused',
                             slot: 'Common',
+                            layout: 'confusing',
                             fields: {
                               'text' => ['Two', 'parts'],
                               'cost' => ['or', 'three', 'parts?']
