@@ -6,11 +6,11 @@ module ApplicationHelper
 
     unless image_urls.blank?
       # Special case for double-faced cards
-      if card.fields['layout'].andand.downcase == 'double-faced'
+      if card.layout.downcase == 'double-faced'
         return flip_images(image_urls, card.name)
       end
 
-      image_tag image_url_by_layout(image_urls, card.fields['layout']), alt: card.name, title: card.name
+      image_tag image_url_by_layout(image_urls, card.layout), alt: card.name, title: card.name
     end
   end
 
