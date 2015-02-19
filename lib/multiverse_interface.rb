@@ -1,7 +1,17 @@
+require 'open-uri'
+
 module MultiverseInterface
   MULTIVERSE_SETLIST_URI = "http://www.magicmultiverse.net/cardsets/list.json"
 
-  RemoteSetStub = Struct.new(:name, :uri, :owner)
+  class RemoteSetStub < Struct.new(:name, :uri, :owner)
+    def descr
+      "#{name}, by #{owner}"
+    end
+
+    def dump
+      JSON.dump self
+    end
+  end
 
   # Controller helper methods
 
@@ -11,7 +21,7 @@ module MultiverseInterface
     sets_objs = JSON.parse(sets_json)
 
     sets_objs.map do |obj|
-      RemoteSetStub.new(name: obj['name'], uri: obj['sourceURL'], owner: obj['owner'])
+      RemoteSetStub.new(obj['name'].andand.strip, obj['sourceURL'].andand.strip, obj['owner'].andand.strip)
     end
   end
 end

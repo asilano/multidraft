@@ -117,7 +117,7 @@ private
 
   def get_json_dictionary
     if remote_dictionary
-      File.read open(dictionary_location)
+      open(dictionary_location).read
     else
       File.read(Rails.root + dictionary_location)
     end

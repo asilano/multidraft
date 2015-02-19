@@ -63,15 +63,13 @@ describe CardSet do
       expect(card_set.card_templates(true).map(&:name).sort).to eq ['Academy Raider', 'Glimpse the Future']
     end
 
-    # From a unit-testing point of view, this is identical to creating with a local set,
-    # since _open_ returns a temporary file.
     it "with remote set" do
       card_set.remote_dictionary = true
       card_set.dictionary_location = 'http://www.example.com/magicSets/awesome.json'
       card_set.save!
 
       expect(card_set).to receive(:open).with(card_set.dictionary_location).
-                          and_return File.join(File.dirname(__FILE__), '../data/awesome.json')
+                          and_return open File.join(File.dirname(__FILE__), '../data/awesome.json')
 
       expect(CardTemplate).to receive(:new).with(academy_raider_params, {}).and_return academy_raider
       expect(CardTemplate).to receive(:new).with(glimpse_params, {}).and_return glimpse

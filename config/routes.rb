@@ -9,6 +9,8 @@ Multidraft::Application.routes.draw do
   get "new_booster" => 'placeholder#new_booster', as: 'new_booster'
   post "generate_booster" => 'placeholder#generate_booster', as: 'generate_booster'
 
+  get "multiverse_sets" => 'placeholder#setup_multiverse_sets', as: 'multiverse_sets'
+
   # The priority is based upon order of creation:
   # first created -> highest priority.
 

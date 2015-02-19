@@ -22,6 +22,23 @@ $(function() {
       $($this.data('replace')).html(data);
       $this.trigger('ajax:replaced');
     });
+
+  $('[data-multiverse-select]').each( function(ix) {
+    var elem = $(this);
+    elem.animate({'opacity': 0}, function () { $(this).css('visibility', 'hidden') });
+
+    $.ajax({
+      url: elem.data('multiverse-select'),
+      error: function() { elem.css('visibility', 'visible')
+                              .animate({'opacity': 1}); },
+      success: function(data) {
+        var select = $(data);
+        select.hide().insertAfter(elem);
+        elem.remove();
+        select.fadeIn();
+      }
+    });
+  })
 });
 
 $(document).ajaxError(function (e, xhr, settings) {
