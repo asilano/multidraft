@@ -1,6 +1,6 @@
 class CardInstance < ActiveRecord::Base
   attr_accessible :card_template, :missing_slot
-  belongs_to :card_template
+  belongs_to :card_template, touch: true
 
   # Delegate attribute fields in the proper way...
   delegate :name, :slot, :fields, to: :card_template, allow_nil: true

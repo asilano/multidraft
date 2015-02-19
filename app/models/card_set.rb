@@ -11,6 +11,13 @@ class CardSet < ActiveRecord::Base
   validates_uniqueness_of :dictionary_location
   validates_uniqueness_of :last_modified, :scope => :name
 
+  scope :with_no_card_instances, -> {
+    joins("LEFT JOIN card_templates ON card_templates.card_set_id = card_sets.id
+             LEFT JOIN card_instances ON card_instances.card_template_id = card_templates.id").
+    group('card_sets.id').
+    having('COUNT(card_instances.id) = 0 AND COUNT(card_templates.id) > 0')
+  }
+
   attr_reader :warnings
 
   include MagicSets

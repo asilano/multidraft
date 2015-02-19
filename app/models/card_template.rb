@@ -8,6 +8,10 @@ class CardTemplate < ActiveRecord::Base
   validates_presence_of :slot
   validates :layout, presence: true
 
+  scope :day_old, -> {
+    where { updated_at < 24.hours.ago }
+  }
+
   def instantiate
     card_instances.create
   end
