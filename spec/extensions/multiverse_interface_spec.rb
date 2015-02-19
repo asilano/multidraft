@@ -39,10 +39,10 @@ describe MultiverseInterface do
 ]'
       sets = dummy_class.new.multiverse_sets
       expect(sets.length).to eq 4
-      expect(sets[0]).to eq MultiverseInterface::RemoteSetStub.new(name: 'Eragon', uri: 'http://www.magicmultiverse.net/cardsets/772.json', owner: 'Samuel')
-      expect(sets[1]).to eq MultiverseInterface::RemoteSetStub.new(name: 'Okundwa', uri: 'http://www.magicmultiverse.net/cardsets/740.json', owner: 'Sorrow')
-      expect(sets[2]).to eq MultiverseInterface::RemoteSetStub.new(name: 'Cards With No Home', uri: 'http://www.magicmultiverse.net/cardsets/74.json', owner: 'Alex')
-      expect(sets[3]).to eq MultiverseInterface::RemoteSetStub.new(name: 'Arcunda', uri: 'http://www.magicmultiverse.net/cardsets/14.json', owner: 'Chris')
+      expect(sets[0]).to eq MultiverseInterface::RemoteSetStub.new('Eragon', 'http://www.magicmultiverse.net/cardsets/772.json', 'Samuel')
+      expect(sets[1]).to eq MultiverseInterface::RemoteSetStub.new('Okundwa', 'http://www.magicmultiverse.net/cardsets/740.json', 'Sorrow')
+      expect(sets[2]).to eq MultiverseInterface::RemoteSetStub.new('Cards With No Home', 'http://www.magicmultiverse.net/cardsets/74.json', 'Alex')
+      expect(sets[3]).to eq MultiverseInterface::RemoteSetStub.new('Arcunda', 'http://www.magicmultiverse.net/cardsets/14.json', 'Chris')
     end
   end
 end
