@@ -16,9 +16,9 @@ module ApplicationHelper
 
   def image_urls_for_card(card, set_name)
     if card.fields['imageURL']
-      [*card.fields['imageURL']].reject(&:empty?)
+      [*card.fields['imageURL']].reject(&:blank?)
     elsif card.fields['imageName']
-      [*card.fields['imageName']].reject(&:empty?).map {|name| url_from_image_name(name, set_name)}
+      [*card.fields['imageName']].reject(&:blank?).map {|name| url_from_image_name(name, set_name)}
     end
   end
 
