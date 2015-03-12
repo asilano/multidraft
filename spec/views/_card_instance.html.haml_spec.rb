@@ -13,7 +13,7 @@ describe 'card_instance partial' do
     it "for a one-line flavourless instant" do
       shock = FactoryGirl.build(:card_instance)
       shock.fields['imageURL'] = ''
-      shock.fields['imageName'] = ''
+      shock.fields['multiverseid'] = nil
       render 'shared/card_instance', card: shock
 
       expect(rendered).to have_css('.card')

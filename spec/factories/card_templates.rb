@@ -9,6 +9,6 @@ FactoryGirl.define do
             'type' => 'Instant',
             'manaCost' => '{R}',
             'text' => 'Shock deals 2 damage to target creature or player.',
-            'imageName' => 'shock'})
+            'multiverseid' => 123456})
   end
 end

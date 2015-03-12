@@ -69,9 +69,9 @@ private
   end
 
   def combine_cards_if_match(parts)
-    exemplar = parts[0].reject { |key,_| %w<flavor imageName>.include? key }
+    exemplar = parts[0].reject { |key,_| %w<flavor multiverseid>.include? key }
     fields_match = parts.size > 1 && parts.all? do |e|
-      exemplar == e.reject { |key,_| %w<flavor imageName>.include? key }
+      exemplar == e.reject { |key,_| %w<flavor multiverseid>.include? key }
     end
 
     if fields_match

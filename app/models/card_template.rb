@@ -55,7 +55,7 @@ class CardTemplate < ActiveRecord::Base
     ordered_keys = []
 
     # Remove fields we know we don't want to display
-    %w<layout slot names imageName imageURL cardCode editURL>.each { |f| all_keys.delete f }
+    %w<layout slot names multiverseid imageURL cardCode editURL>.each { |f| all_keys.delete f }
 
     # Canonical order for Magic cards
     %w<manaCost type text flavor power toughness loyalty rarity>.each { |f| ordered_keys << all_keys.delete(f) }
@@ -68,7 +68,7 @@ class CardTemplate < ActiveRecord::Base
   end
 
   def self.fields_whitelist
-    %w<layout slot name names manaCost type rarity text flavor power toughness loyalty imageName imageURL hand life cardCode editURL>
+    %w<layout slot name names manaCost type rarity text flavor power toughness loyalty multiverseid imageURL hand life cardCode editURL>
   end
 
 end

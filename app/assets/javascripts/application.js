@@ -38,7 +38,7 @@ $(function() {
         select.fadeIn();
       }
     });
-  })
+  });
 });
 
 $(document).ajaxError(function (e, xhr, settings) {

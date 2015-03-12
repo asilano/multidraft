@@ -293,21 +293,18 @@ table.auth-list {
   max-width: 1200px;
   display: flex;
   flex-flow: row wrap;
+  justify-content: center;  // Extra space split outside #booster, left and right
   img {
-    max-width: 100%;
+    max-width: 100%;  // Don't stretch card images
   }
 
   .card {
     border: 1px solid black;
 
-    // Display 5 to a line at full-screen sizes
-    flex: 1 20%;
+    // Display as many Gatherer-width cards per line as fit, but not fewer than 3.
+    flex: 0 0 $gatherer-image-width;
+    max-width: 33%;
     min-width: 0; // Fix flexbox in FireFox 34
-
-    @include when-smaller-than(medium) {
-      // Display 3 to a line at smaller sizes
-      flex: 1 33%;
-    }
 
     // Children also flex when we're displaying text-only cards
     display: flex;

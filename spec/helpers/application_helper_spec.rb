@@ -4,12 +4,12 @@ describe ApplicationHelper do
   describe '#image_for_card' do
     before(:each) { @shock = FactoryGirl.create(:card_instance) }
 
-    it 'should give the correct mtgimage URL when card has an imageName' do
+    it 'should give the correct Gatherer URL when card has a multiverseid' do
       html = image_for_card @shock
       expect(html).to have_css('img')
 
       image = node(html).first('img')
-      expect(image['src']).to match /^http:\/\/mtgimage.com\/.*\/Awesome.*\/shock.jpg$/
+      expect(image['src']).to eq 'http://gatherer.wizards.com/Handlers/Image.ashx?type=card&multiverseid=123456'
     end
 
     it 'should give the correct URL when card has an imageURL' do
@@ -29,7 +29,7 @@ describe ApplicationHelper do
     end
 
     it 'should give nil if card has no images' do
-      @shock.card_template.fields['imageName'] = nil
+      @shock.card_template.fields['multiverseid'] = nil
       @shock.card_template.fields['imageURL'] = nil
       @shock.save!
 
@@ -37,18 +37,18 @@ describe ApplicationHelper do
     end
 
     it 'should pick a random image for a normal card with several' do
-      @shock.card_template.fields['imageName'] = ['shock', 'shock2', 'shock3']
+      @shock.card_template.fields['multiverseid'] = [123, 456, 789]
       @shock.card_template.save!
 
       images = 1.upto(999).map { image_for_card @shock }
       srcs = images.map { |html| node(html).first('img')['src'] }
 
-      expect(srcs).to all( be_in(['http://mtgimage.com/setname/Awesome Card Set/shock.jpg',
-                                    'http://mtgimage.com/setname/Awesome Card Set/shock2.jpg',
-                                    'http://mtgimage.com/setname/Awesome Card Set/shock3.jpg']))
-      expect(srcs).to satisfy{ |ss| !ss.all? { |s| s == 'http://mtgimage.com/setname/Awesome Card Set/shock.jpg' } }
-      expect(srcs).to satisfy{ |ss| !ss.all? { |s| s == 'http://mtgimage.com/setname/Awesome Card Set/shock2.jpg' } }
-      expect(srcs).to satisfy{ |ss| !ss.all? { |s| s == 'http://mtgimage.com/setname/Awesome Card Set/shock3.jpg' } }
+      expect(srcs).to all( be_in(['http://gatherer.wizards.com/Handlers/Image.ashx?type=card&multiverseid=123',
+                                  'http://gatherer.wizards.com/Handlers/Image.ashx?type=card&multiverseid=456',
+                                  'http://gatherer.wizards.com/Handlers/Image.ashx?type=card&multiverseid=789']))
+      expect(srcs).to satisfy{ |ss| !ss.all? { |s| s == 'http://gatherer.wizards.com/Handlers/Image.ashx?type=card&multiverseid=123' } }
+      expect(srcs).to satisfy{ |ss| !ss.all? { |s| s == 'http://gatherer.wizards.com/Handlers/Image.ashx?type=card&multiverseid=456' } }
+      expect(srcs).to satisfy{ |ss| !ss.all? { |s| s == 'http://gatherer.wizards.com/Handlers/Image.ashx?type=card&multiverseid=789' } }
     end
 
     it 'should pick a random image for a normal card with several URLs' do
@@ -67,18 +67,18 @@ describe ApplicationHelper do
     end
 
     it 'should pick the first image for a non-normal card with several' do
-      @shock.card_template.fields['imageName'] = ['shock1', 'shock2', 'shock3']
+      @shock.card_template.fields['multiverseid'] = [123, 456, 789]
       @shock.card_template.layout = 'funky'
       @shock.card_template.save!
 
       images = 1.upto(999).map { image_for_card @shock }
       srcs = images.map { |html| node(html).first('img')['src'] }
 
-      expect(srcs).to all( eq 'http://mtgimage.com/setname/Awesome Card Set/shock1.jpg' )
+      expect(srcs).to all( eq 'http://gatherer.wizards.com/Handlers/Image.ashx?type=card&multiverseid=123' )
     end
 
     it 'should create a flipping image for a DFC' do
-      @shock.card_template.fields['imageName'] = ['shockFront', 'shockBack']
+      @shock.card_template.fields['multiverseid'] = [123456, 789101]
       @shock.card_template.layout = 'double-faced'
       @shock.card_template.save!
 
@@ -100,8 +100,8 @@ describe ApplicationHelper do
       flipper = div.first('div.dfc-flipper')
       expect(flipper).not_to be_nil
       expect(flipper).to have_css("> img[alt='#{@shock.name}']", count: 2)
-      expect(flipper.first('img.dfc-front')['src']).to match /shockFront\.jpg$/
-      expect(flipper.first('img.dfc-back')['src']).to match /shockBack\.jpg$/
+      expect(flipper.first('img.dfc-front')['src']).to match /multiverseid=123456$/
+      expect(flipper.first('img.dfc-back')['src']).to match /multiverseid=789101$/
     end
   end
 end

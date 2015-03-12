@@ -31,7 +31,7 @@ describe CardTemplate do
                         slot: 'Basic',
                         fields: {'text' => '{U}',
                                   'flavor' => ['Splosh!', 'Glug!'],
-                                  'imageName' => ['skye', 'gigha']
+                                  'multiverseid' => [12345, 67890]
                         }
       parts = nil
       expect { parts = card.text_parts }.not_to change { CardTemplate.count }
@@ -43,12 +43,12 @@ describe CardTemplate do
                         slot: 'Basic',
                         fields: {'text' => ['{U}', '{U}'],
                                   'flavor' => ['Splosh!', 'Glug!'],
-                                  'imageName' => ['skye', 'gigha']
+                                  'multiverseid' => [14916, 253649]
                         }
       parts = nil
       expect { parts = card.text_parts }.not_to change { CardTemplate.count }
       expect(parts.length).to eq 1
-      expect(parts[0].fields).to eq({'text' => '{U}', 'flavor' => 'Splosh!', 'imageName' => 'skye'})
+      expect(parts[0].fields).to eq({'text' => '{U}', 'flavor' => 'Splosh!', 'multiverseid' => 14916})
     end
 
     it "should work on a double-faced card" do

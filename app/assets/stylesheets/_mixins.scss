@@ -12,6 +12,8 @@ $disabled-bg-colour: #eee;
 
 $light-text: #888;
 
+$gatherer-image-width: 223px;
+
 @mixin when-smaller-than($breakpoint) {
   @if $breakpoint == small {
     @media (max-width: 650px) { @content; }

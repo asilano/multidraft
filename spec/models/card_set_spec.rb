@@ -12,7 +12,7 @@ describe CardSet do
                           "text" => "Intimidate (This creature can't be blocked except by artifact creatures and/or creatures that share a color with it.)\n\nWhenever Academy Raider deals combat damage to a player, you may discard a card. If you do, draw a card.",
                           "power" => '1',
                           "toughness" => '1',
-                          "imageName" => 'academy raider',
+                          'multiverseid' => 12345,
                           "cardCode" => 'CR01',
                           "editURL" => 'http://multiverse.example.com/cards/12345'
                     }}}
@@ -25,7 +25,7 @@ describe CardSet do
                           "manaCost" => '{2}{U}',
                           "text" => "Look at the top three cards of your library. Put one of them into your hand and the rest into your graveyard.",
                           "flavor"=> "\"No simple coin toss can solve this riddle. You must think and choose wisely.\"—Shai Fusan, archmage",
-                          "imageName" => 'glimpse the future',
+                          "multiverseid" => 370774,
                           "cardCode" => 'UU10',
                           "editURL" => 'http://multiverse.example.com/cards/54300'
                     }}}
@@ -163,7 +163,7 @@ describe CardSet do
                             "manaCost" => ['{2}{U}','{1}{R}'],
                             "text" => ["Target creature loses all abilities and becomes a 0/1 red Weird until end of turn.\n\nFuse (You may cast one or both halves of this card from your hand.)",
                                         "Burn deals 2 damage to target creature or player.\n\nFuse (You may cast one or both halves of this card from your hand.)"],
-                            "imageName" => ['turnburn', 'turnburn']}
+                            "multiverseid" => [369080, 369080]}
                           }
       alive_well_params = {name: 'Alive',
                            slot: 'Uncommon',
@@ -175,7 +175,7 @@ describe CardSet do
                             "manaCost" => ['{3}{G}','{W}'],
                             "text" => ["Put a 3/3 green Centaur creature token onto the battlefield.\n\nFuse (You may cast one or both halves of this card from your hand.)",
                                        "You gain 2 life for each creature you control.\n\nFuse (You may cast one or both halves of this card from your hand.)"],
-                            "imageName" => ['alivewell', 'alivewell']}
+                            'multiverseid' => [369041, 369041]}
                           }
       turn_burn = CardTemplate.new(turn_burn_params)
       alive_well = CardTemplate.new(alive_well_params)
@@ -199,7 +199,7 @@ describe CardSet do
                           'rarity' => 'Basic',
                           "type" => ['Basic Land — Plains'] * 4,
                           "text" => ["W"] * 4,
-                          "imageName" => %w<plains1 plains2 plains3 plains4>}
+                          'multiverseid' => [370615, 370754, 370679, 370669]}
                       }
       plains = CardTemplate.new(plains_params)
 
@@ -226,7 +226,7 @@ describe CardSet do
                         "manaCost" => ['{1}{U}', '{1}{U}'],
                         "text" => ["Flying\n\nWhenever the fourth spell of a turn is cast, flip Erayo, Soratami Ascendant.",
                                     "Whenever an opponent casts a spell for the first time in a turn, counter that spell."],
-                        "imageName" => ["erayo, soratami ascendant", "erayo's essence"]
+                        'multiverseid' => [87599, 87599]
                         }}
       bushi_params = {name: 'Bushi Tenderfoot',
                       slot: 'Uncommon',
@@ -240,7 +240,7 @@ describe CardSet do
                         "manaCost" => ['{W}', '{W}'],
                         "text" => ["When a creature dealt damage by Bushi Tenderfoot this turn dies, flip Bushi Tenderfoot.",
                                     "Double strike; bushido 2 (When this blocks or becomes blocked, it gets +2/+2 until end of turn.)"],
-                        "imageName" => ["bushi tenderfoot", "kenzo the hardhearted"]
+                        'multiverseid' => [78600, 78600]
                         }}
       erayo = CardTemplate.new(erayo_params)
       bushi = CardTemplate.new(bushi_params)
@@ -271,7 +271,7 @@ describe CardSet do
                                       "Bane of Hanweir attacks each turn if able.\n\nAt the beginning of each upkeep, if a player cast two or more spells last turn, transform Bane of Hanweir."],
                           "flavor" => ["He scans for wolves, knowing there's one he can never anticipate.",
                                         "Technically he never left his post. He looks after the wolf wherever it goes."],
-                          "imageName" => ["hanweir watchkeep", "bane of hanweir"]
+                          'multiverseid' => [244683, 244687]
                         }}
       hanweir = CardTemplate.new(hanweir_params)
 

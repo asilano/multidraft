@@ -17,8 +17,8 @@ module ApplicationHelper
   def image_urls_for_card(card, set_name)
     if card.fields['imageURL']
       [*card.fields['imageURL']].reject(&:blank?)
-    elsif card.fields['imageName']
-      [*card.fields['imageName']].reject(&:blank?).map {|name| url_from_image_name(name, set_name)}
+    elsif card.fields['multiverseid']
+      [*card.fields['multiverseid']].reject(&:blank?).map {|name| url_from_multiverse_id(name, set_name)}
     end
   end
 
@@ -51,7 +51,7 @@ module ApplicationHelper
     end
   end
 
-  def url_from_image_name(image_name, set_name)
-    "http://mtgimage.com/setname/#{set_name}/#{image_name}.jpg"
+  def url_from_multiverse_id(multiverse_id, set_name)
+    "http://gatherer.wizards.com/Handlers/Image.ashx?type=card&multiverseid=#{multiverse_id}"
   end
 end

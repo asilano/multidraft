@@ -33,6 +33,7 @@
     "imageName":"academy raider",
     "artist":"Karl Kopinski",
     "cardCode":"CR01",
+    "multiverseid":12345,
     "editURL":"http://multiverse.example.com/cards/12345"},
   { "layout": "split",
     "type": "Instant",
