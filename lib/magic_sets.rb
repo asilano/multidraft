@@ -15,7 +15,7 @@ end
 
 module MagicSets
   RealMagicSets = [
-    ["Khans of Tarkir", ["Khans of Tarkir", "Fate Reforged"]],
+    ["Khans of Tarkir", ["Khans of Tarkir", "Fate Reforged", "Dragons of Tarkir"]],
     ["Theros", ["Theros", "Born of the Gods", "Journey into Nyx"]],
     ["Return to Ravnica", ["Return to Ravnica", "Gatecrash", "Dragon's Maze"]],
     ["Innistrad", ["Innistrad", "Dark Ascension", "Avacyn Restored"]],

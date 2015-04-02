@@ -12,6 +12,7 @@ end
 [
   {name: "Khans of Tarkir", remote_dictionary: true, dictionary_location: mtgJson_url('KTK')},
   {name: "Fate Reforged", remote_dictionary: false, dictionary_location: 'data/local_sets/FRF.json'},
+  {name: "Dragons of Tarkir", remote_dictionary: true, dictionary_location: mtgJson_url('DTK')},
 
   {name: "Theros", remote_dictionary: true, dictionary_location: mtgJson_url('THS')},
   {name: "Born of the Gods", remote_dictionary: true, dictionary_location: mtgJson_url('BNG')},
