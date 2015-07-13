@@ -1,4 +1,4 @@
-class PlaceholderController < ActionController::Base
+class PlaceholderController < ApplicationController
   include MultiverseInterface
 
   before_filter :authenticate_user!, except: [:index]

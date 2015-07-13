@@ -288,7 +288,7 @@ PLATFORMS
 DEPENDENCIES
   andand
   attribute_normalizer
-  better_errors
+  better_errors (~> 1.0)
   binding_of_caller
   capybara
   codeclimate-test-reporter
