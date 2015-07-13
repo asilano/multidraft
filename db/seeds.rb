@@ -116,12 +116,14 @@ end
   {name: "Magic 2013", remote_dictionary: true, dictionary_location: mtgJson_url('M13')},
   {name: "Magic 2014", remote_dictionary: true, dictionary_location: mtgJson_url('M14')},
   {name: "Magic 2015", remote_dictionary: true, dictionary_location: mtgJson_url('M15')},
+  {name: "Magic Origins", remote_dictionary: true, dictionary_location: mtgJson_url('ORI')},
 
   {name: "Masters Edition", remote_dictionary: true, dictionary_location: mtgJson_url('MED')},
   {name: "Masters Edition II", remote_dictionary: true, dictionary_location: mtgJson_url('ME2')},
   {name: "Masters Edition III", remote_dictionary: true, dictionary_location: mtgJson_url('ME3')},
   {name: "Masters Edition IV", remote_dictionary: true, dictionary_location: mtgJson_url('ME4')},
   {name: "Modern Masters", remote_dictionary: true, dictionary_location: mtgJson_url('MMA')},
+  {name: "Modern Masters 2015", remote_dictionary: true, dictionary_location: mtgJson_url('MM2')},
   {name: "Vintage Masters", remote_dictionary: true, dictionary_location: mtgJson_url('VMA')},
 
   {name: "Unglued", remote_dictionary: true, dictionary_location: mtgJson_url('UGL')},
