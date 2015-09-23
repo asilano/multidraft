@@ -10,6 +10,8 @@ def mtgJson_url(set_code)
 end
 
 [
+  {name: 'Battle for Zendikar', remote_dictionary: true, dictionary_location: mtgJson_url('BFZ')},
+
   {name: "Khans of Tarkir", remote_dictionary: true, dictionary_location: mtgJson_url('KTK')},
   {name: "Fate Reforged", remote_dictionary: false, dictionary_location: 'data/local_sets/FRF.json'},
   {name: "Dragons of Tarkir", remote_dictionary: true, dictionary_location: mtgJson_url('DTK')},
