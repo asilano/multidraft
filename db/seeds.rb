@@ -10,6 +10,8 @@ def mtgJson_url(set_code)
 end
 
 [
+  {name: 'Shadows over Innistrad', remote_dictionary: false, dictionary_location: 'data/local_sets/SOI.json'},
+
   {name: 'Battle for Zendikar', remote_dictionary: true, dictionary_location: mtgJson_url('BFZ')},
   {name: 'Oath of the Gatewatch', remote_dictionary: true, dictionary_location: mtgJson_url('OGW')},
 

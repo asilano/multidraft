@@ -15,6 +15,7 @@ end
 
 module MagicSets
   RealMagicSets = [
+    ['Shadows over Innistrad', ['Shadows over Innistrad']],
     ['Battle for Zendikar', ['Battle for Zendikar', 'Oath of the Gatewatch']],
     ["Khans of Tarkir", ["Khans of Tarkir", "Fate Reforged", "Dragons of Tarkir"]],
     ["Theros", ["Theros", "Born of the Gods", "Journey into Nyx"]],
