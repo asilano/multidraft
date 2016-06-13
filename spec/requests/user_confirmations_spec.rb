@@ -75,7 +75,7 @@ describe "UserConfirmations" do
     expect(page).to have_content "Your account was successfully confirmed."
 
     visit confirm_link
-    expect(page).to have_content "Confirmation token is invalid"
+    expect(page).to have_content "Email was already confirmed; please try signing in"
   end
 
   it "allows resending of a lost confirmation email" do
@@ -91,11 +91,9 @@ describe "UserConfirmations" do
     email = last_email
     text_body = email.body.parts.find {|p| p.content_type.match /plain/}.body.raw_source
     confirm_link2 = text_body.match(/http:.*$/)[0]
-    expect(confirm_link2).to_not eql confirm_link
+    expect(confirm_link2).to eql confirm_link
 
     visit confirm_link
-    expect(page).to have_content "Confirmation token is invalid"
-    visit confirm_link2
     expect(page).to have_content "Your account was successfully confirmed."
   end
 

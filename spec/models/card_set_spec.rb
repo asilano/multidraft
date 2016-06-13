@@ -374,53 +374,42 @@ describe CardSet do
       ravnica = FactoryGirl.create(:card_set, name: 'Ravnica, City of Guilds', dictionary_location: 'spec/data/RAV.json')
       expect(ravnica.prepare_for_draft).to be_truthy
 
-      # Expected booster contents is determined, portably, by srand
-      srand(20051007)
-      expected_contents = ["Woodwraith Corrupter", "Peregrine Mask", "Spectral Searchlight", "Auratouched Mage",
-                          "Conclave's Blessing", "Elves of Deep Shadow", "Goblin Spelunkers", "Vedalken Entrancer",
-                          "Quickchange", "Torpid Moloch", "Gaze of the Gorgon", "Perplex", "Seeds of Strength",
-                          "Strands of Undeath", "Consult the Necrosages"]
       booster = nil
       expect { booster = ravnica.generate_booster }.to change{ CardInstance.count }.by ravnica.booster_distr.length
 
       expect(booster).to all(be_a CardInstance)
-      expect(booster.map(&:name)).to match_array expected_contents
+      expect(booster.map(&:name).uniq.length).to eq booster.length
       expect(booster.map(&:slot)).to match_array ravnica.booster_distr
 
       # Repeat the test to make sure we get a different, valid, booster
-      expected_contents = ["Razia, Boros Archangel", "Halcyon Glaze", "Trophy Hunter", "Sunhome, Fortress of the Legion",
-                          "Sabertooth Alley Cat", "Muddle the Mixture", "Woodwraith Strangler", "Veteran Armorer",
-                          "Transluminant", "Centaur Safeguard", "Surveilling Sprite", "Boros Recruit", "Golgari Rotwurm",
-                          "Necromantic Thirst","Golgari Rot Farm"]
-      expect { booster = ravnica.generate_booster }.to change{ CardInstance.count }.by ravnica.booster_distr.length
+      booster2 = nil
+      expect { booster2 = ravnica.generate_booster }.to change{ CardInstance.count }.by ravnica.booster_distr.length
 
-      expect(booster).to all(be_a CardInstance)
-      expect(booster.map(&:name)).to eq expected_contents
-      expect(booster.map(&:slot)).to match_array ravnica.booster_distr
+      expect(booster2).to all(be_a CardInstance)
+      expect(booster2.map(&:name).uniq.length).to eq booster.length
+      expect(booster2.map(&:slot)).to match_array ravnica.booster_distr
+      expect(booster2).to_not eq booster
     end
 
     it "should work with a Magic set (mythics)" do
+      expect(CardSet.count).to eq 0
       khans = FactoryGirl.create(:card_set, name: 'Khans of Tarkir', dictionary_location: 'spec/data/KTK.json')
       expect(khans.prepare_for_draft).to be_truthy
 
-      # Expected booster contents is determined, portably, by srand
-      srand(20140926)
-      expected_contents = ["Meandering Towershell", "Heir of the Wilds", "Scion of Glaciers", "Mystic Monastery",
-                          "Archers' Parapet", "Temur Banner", "Bitter Revelation", "Arrow Storm", "Molting Snakeskin",
-                          "Siegecraft", "Efreet Weaponmaster", "Kill Shot", "Shambling Attendants", "Jungle Hollow", 'Mountain']
       booster = nil
       expect { booster = khans.generate_booster }.to change{ CardInstance.count }.by khans.booster_distr.length
 
       expect(booster).to all(be_a CardInstance)
-      expect(booster.map(&:name)).to eq expected_contents
+      expect(booster.map(&:name).uniq.length).to eq booster.length
+      expect(booster.length).to eq khans.booster_distr.length
+      expect(booster.map(&:slot)).to satisfy("slots to match distribution") do |slots|
+        slots.each_with_index.all? { |slot, ix| Array(khans.booster_distr[ix]).include? slot }
+      end
     end
 
     it "should produce roughly the right number of mythics" do
       khans = FactoryGirl.create(:card_set, name: 'Khans of Tarkir', dictionary_location: 'spec/data/KTK.json')
       expect(khans.prepare_for_draft).to be_truthy
-
-      # Expected booster contents is determined, portably, by srand
-      srand(2014)
 
       # A sample of 1200 boosters should contain 150 Mythics, Poisson-distributed (sd = sqrt 150)
       expected = 1200/8.0
@@ -434,24 +423,20 @@ describe CardSet do
       innistrad = FactoryGirl.create(:card_set, name: 'Innistrad', dictionary_location: "data/local_sets/ISD.json")
       expect(innistrad.prepare_for_draft).to be_truthy
 
-      # Expected booster contents is determined, portably, by srand
-      srand(20110930)
-      expected_contents = ["Gavony Township", "Village Cannibals", "Memory's Journey", "Murder of Crows", "Naturalize",
-                          "Cobbled Wings", "Feral Ridgewolf", "Grave Bramble", "Avacyn's Pilgrim", "Silent Departure",
-                          "Mulch", "One-Eyed Scarecrow", "Festerhide Boar", 'Swamp', "Screeching Bat"]
       booster = nil
       expect { booster = innistrad.generate_booster }.to change{ CardInstance.count }.by innistrad.booster_distr.length
 
       expect(booster).to all(be_a CardInstance)
-      expect(booster.map(&:name)).to eq expected_contents
+      expect(booster.map(&:name).uniq.length).to eq booster.length
+      expect(booster.length).to eq innistrad.booster_distr.length
+      expect(booster.map(&:slot)).to satisfy("slots to match distribution") do |slots|
+        slots.each_with_index.all? { |slot, ix| Array(innistrad.booster_distr[ix]).include? slot }
+      end
     end
 
     it "should produce roughly the right ratio of unusual card rarities (Innistrad)" do
       innistrad = FactoryGirl.create(:card_set, name: 'Innistrad', dictionary_location: "data/local_sets/ISD.json")
       expect(innistrad.prepare_for_draft).to be_truthy
-
-      # Expected booster contents is determined, portably, by srand
-      srand(2011)
 
       # A sample of 1120 boosters should, by multidraft's rule-of-thumb calculation, contain among its DFCs
       # * 10 Mythics
@@ -474,17 +459,12 @@ describe CardSet do
       cube = FactoryGirl.create(:card_set, name: 'Cube', dictionary_location: "spec/data/fake_cube.json")
       expect(cube.prepare_for_draft).to be_truthy
 
-      # Expected booster contents is determined, portably, by srand
-      srand(20141120)
-      expected_contents = ["Act of Treason", "Surrak Dragonclaw", "Kin-Tree Invocation", "Leaping Master",
-                          "Butcher of the Horde", "Mindswipe", "Scout the Borders", "Meandering Towershell",
-                          "Dragon's Eye Savants", "Alpine Grizzly", "Smite the Monstrous", "Raiders' Spoils",
-                          "Jeskai Student", "Feat of Resistance", "Sage of the Inward Eye"]
       booster = nil
       expect { booster = cube.generate_booster }.to change{ CardInstance.count }.by cube.booster_distr.length
 
       expect(booster).to all(be_a CardInstance)
-      expect(booster.map(&:name)).to eq expected_contents
+      expect(booster.map(&:name).uniq.length).to eq booster.length
+      expect(booster.map(&:slot)).to match_array cube.booster_distr
     end
 
     it "should work with a set of non-Magic rarities (like Agricola)" do
@@ -492,15 +472,11 @@ describe CardSet do
       non_magic = FactoryGirl.create(:card_set, name: 'Fake Agricola', dictionary_location: "spec/data/fake_non_magic.json")
       expect(non_magic.prepare_for_draft).to be_truthy
 
-      # Expected booster contents is determined, portably, by srand
-      srand(20141121)
-      expected_contents = ["Savage Knuckleblade", "Altar of the Brood", "Howl of the Horde", "Armament Corps",
-                          "Watcher of the Roost", "Sultai Charm", "Archers' Parapet", "Monastery Flock", "Wind-Scarred Crag"]
       booster = nil
       expect { booster = non_magic.generate_booster }.to change{ CardInstance.count }.by non_magic.booster_distr.length
 
       expect(booster).to all(be_a CardInstance)
-      expect(booster.map(&:name)).to eq expected_contents
+      expect(booster.map(&:name).uniq.length).to eq booster.length
       expect(booster.map(&:slot)).to match_array non_magic.booster_distr
     end
 
@@ -508,9 +484,6 @@ describe CardSet do
       # Fake it - fake_multi_rarity has KTK cards, but Mythic and Rare are reversed
       multi_rarity = FactoryGirl.create(:card_set, name: 'Non Magic Multi Rarity', dictionary_location: 'spec/data/fake_multi_rarity.json')
       expect(multi_rarity.prepare_for_draft).to be_truthy
-
-      # Expected booster contents is determined, portably, by srand
-      srand(2014)
 
       # A sample of 1200 boosters should contain 600 Cihtyms and 600 Erars, Poisson-distributed, in the Double Faced slot
       # (since the set contains only those rarities in that slot)
@@ -527,32 +500,29 @@ describe CardSet do
       sienira = FactoryGirl.create(:card_set, name: "Sienira's Facets", dictionary_location: 'spec/data/sienira.json')
       expect(sienira.prepare_for_draft).to be_truthy
 
-      # Expected booster contents is determined, portably, by srand
-      srand(20140926)
-      expected_contents = ["Infiltration Raid", "Infiltrator's Cape", "Sanctify", "Ominous Toll", "Challenge", "Watcher of Secrets",
-                          "Cloak in Terror", "Chapel-Roof Creeper", "Ralatine Sentinel", "Terina Borderguard", "Frantic Cleansing",
-                          "Khert Armodon", "Surprise Stab", "Jewelled Prism", nil, nil]
       booster = nil
       expect { booster = sienira.generate_booster }.to change{ CardInstance.count }.by sienira.booster_distr.length
 
       expect(booster).to all(be_a CardInstance)
-      expect(booster.map(&:name)).to eq expected_contents
+
+      # We know Sienira asks for a Basic and a Token, neither of which we have.
+      expect(booster.map(&:missing_slot).compact).to match_array %w<Basic Token>
+      expect(booster.reject { |c| c.missing_slot }.map(&:name).uniq.length).to eq (booster.length - %w<Basic Token>.length)
+      expect(booster.length).to eq sienira.booster_distr.length
+      expect(booster.map(&:slot)).to satisfy("slots to match distribution") do |slots|
+        slots.each_with_index.all? { |slot, ix| slot.nil? || Array(sienira.booster_distr[ix]).include?(slot) }
+      end
     end
 
     it "should not fail if set is missing rarities" do
       no_uncommons = FactoryGirl.create(:card_set, name: 'No Uncommons', dictionary_location: "spec/data/no_uncommons.json")
       expect(no_uncommons.prepare_for_draft).to be_truthy
 
-      # Expected booster contents is determined, portably, by srand
-      srand(20141122)
-      expected_contents = ["Mardu Ascendancy", nil, nil, nil, "Abomination of Gudul", "Snowhorn Rider",
-                          "Dragonscale Boon", "Bloodfell Caves", "Shatter", "Efreet Weaponmaster",
-                          "Swift Kick", "Jungle Hollow", "Awaken the Bear", "Wetland Sambar", 'Mountain']
       booster = nil
       expect { booster = no_uncommons.generate_booster }.to change{ CardInstance.count }.by no_uncommons.booster_distr.length
 
       expect(booster).to all(be_a CardInstance)
-      expect(booster.map(&:name)).to eq expected_contents
+      expect(booster.map{|c| c.name.nil? }).to eq [false, true, true, true] + ([false] * 11)
 
       expected_missing = [nil, 'Uncommon', 'Uncommon', 'Uncommon'] + ([nil] * 11)
       expect(booster.map(&:missing_slot)).to eq expected_missing
@@ -562,9 +532,6 @@ describe CardSet do
       no_rares = FactoryGirl.create(:card_set, name: 'No Rares', dictionary_location: "spec/data/no_rares.json")
       expect(no_rares.prepare_for_draft).to be_truthy
 
-      srand(20141127)
-
-      # Generate lots of boosters, and check that each one contains a Mythic
       100.times { no_rares.generate_booster }
       expect(CardInstance.joins { card_template }
                           .where { card_template.slot == 'Mythic'}
@@ -575,16 +542,11 @@ describe CardSet do
       bad_multi = FactoryGirl.create(:card_set, name: 'Bad Multi', dictionary_location: "spec/data/bad_multi.json")
       expect(bad_multi.prepare_for_draft).to be_truthy
 
-      # Expected booster contents is determined, portably, by srand
-      srand(20141224)
-      expected_contents = [nil, "Icefeather Aven", "Blinding Spray", "Venerable Lammasu", "Scout the Borders",
-                            "Summit Prowler", "Wind-Scarred Crag", "Dutiful Return", "Mardu Banner", "Snowhorn Rider",
-                            "Firehoof Cavalry", "Debilitating Injury", "Bitter Revelation", "Throttle", "Plains"]
       booster = nil
       expect { booster = bad_multi.generate_booster }.to change{ CardInstance.count }.by bad_multi.booster_distr.length
 
       expect(booster).to all(be_a CardInstance)
-      expect(booster.map(&:name)).to eq expected_contents
+      expect(booster.map(&:name)[0]).to be_nil
 
       expected_missing = ['Odd Rare'] + ([nil] * 14)
       expect(booster.map(&:missing_slot)).to eq expected_missing

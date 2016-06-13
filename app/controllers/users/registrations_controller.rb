@@ -36,4 +36,16 @@ protected
     edit_user_registration_path
   end
 
+private
+  def permitted_params
+    [:name, :email, :password, :password_confirmation, authentications_attributes: [:provider, :uid, :nickname]]
+  end
+
+  def sign_up_params
+    params.require(resource_name).permit(permitted_params)
+  end
+
+  def account_update_params
+    params.require(resource_name).permit(permitted_params + [:remove_password])
+  end
 end

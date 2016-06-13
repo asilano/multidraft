@@ -214,7 +214,7 @@ describe "Sign-up and Sign-in by OmniAuth" do
         fill_in 'Password', with: user.password
         click_button 'Sign up'
 
-        expect(page).to have_content "Password doesn't match confirmation"
+        expect(page).to have_content "Password confirmation doesn't match Password"
 
         fill_in 'Password', with: user.password
         fill_in 'Password confirmation', with: user.password
@@ -268,38 +268,70 @@ describe "Sign-up and Sign-in by OmniAuth" do
           expect(page).to have_content "Your OpenID authentication succeeded"
         end
 
-        %w(Google Yahoo StackExchange Steam).each do |provider|
-          it "should support #{provider} with no parameter" do
-            visit new_user_registration_path
+        it "should support Google with no parameter" do
+          visit new_user_registration_path
 
-            expect(page).to have_content('Sign up using a third party')
-            expect(page).not_to have_content('manually enter your OpenID')
-            expect(page).not_to have_field('openid_url')
-            expect(page).to have_link("Sign up with #{provider}")
-            click_link "Sign up with #{provider}"
+          expect(page).to have_content('Sign up using a third party')
+          expect(page).not_to have_content('manually enter your OpenID')
+          expect(page).not_to have_field('openid_url')
+          expect(page).to have_link("Sign up with Google")
+          click_link "Sign up with Google"
 
-            expect(page).not_to have_content "Sign up using a third party"
-            expect(page).to have_content "Your #{provider == "Google" ? "Google" : "OpenID"} authentication succeeded"
-          end
+          expect(page).not_to have_content "Sign up using a third party"
+          expect(page).to have_content "Your Google authentication succeeded"
+        end
+        it "should support Yahoo with no parameter" do
+          visit new_user_registration_path
+
+          expect(page).to have_content('Sign up using a third party')
+          expect(page).not_to have_content('manually enter your OpenID')
+          expect(page).not_to have_field('openid_url')
+          expect(page).to have_link("Sign up with Yahoo")
+          click_link "Sign up with Yahoo"
+
+          expect(page).not_to have_content "Sign up using a third party"
+          expect(page).to have_content "Your OpenID authentication succeeded"
+        end
+        it "should support StackExchange with no parameter" do
+          visit new_user_registration_path
+
+          expect(page).to have_content('Sign up using a third party')
+          expect(page).not_to have_content('manually enter your OpenID')
+          expect(page).not_to have_field('openid_url')
+          expect(page).to have_link("Sign up with StackExchange")
+          click_link "Sign up with StackExchange"
+
+          expect(page).not_to have_content "Sign up using a third party"
+          expect(page).to have_content "Your OpenID authentication succeeded"
+        end
+        it "should support Steam with no parameter" do
+          visit new_user_registration_path
+
+          expect(page).to have_content('Sign up using a third party')
+          expect(page).not_to have_content('manually enter your OpenID')
+          expect(page).not_to have_field('openid_url')
+          expect(page).to have_link("Sign up with Steam")
+          click_link "Sign up with Steam"
+
+          expect(page).not_to have_content "Sign up using a third party"
+          expect(page).to have_content "Your OpenID authentication succeeded"
         end
 
-        %w(LiveJournal).each do |provider|
-          it "should support #{provider} with a parameter" do
-            visit new_user_registration_path
+        it "should support LiveJournal with a parameter" do
+          visit new_user_registration_path
 
-            expect(page).to have_content('Sign up using a third party')
-            expect(page).not_to have_content('manually enter your OpenID')
-            expect(page).not_to have_field('openid_url')
-            expect(page).to have_link("Sign up with #{provider}")
+          expect(page).to have_content('Sign up using a third party')
+          expect(page).not_to have_content('manually enter your OpenID')
+          expect(page).not_to have_field('openid_url')
+          expect(page).to have_link("Sign up with LiveJournal")
 
-            click_link "Sign up with #{provider}"
-            expect(page).to have_field('openid_param')
-            fill_in 'openid_param', with: 'my_username'
-            click_button 'js_submit_openid'
+          click_link "Sign up with LiveJournal"
+          expect(page).to have_field('openid_param')
+          fill_in 'openid_param', with: 'my_username'
+          click_button 'js_submit_openid'
 
-            expect(page).not_to have_content "Sign up using a third party"
-            expect(page).to have_content "Your OpenID authentication succeeded"
-          end
+          expect(page).not_to have_content "Sign up using a third party"
+          expect(page).to have_content "Your OpenID authentication succeeded"
         end
 
         it "should clear the form between choices" do
@@ -400,22 +432,45 @@ describe "Sign-up and Sign-in by OmniAuth" do
           expect(page).to have_content "Sign out"
         end
 
-        %w(Yahoo StackExchange Steam).each do |provider|
-          it "should sign in with #{provider} with no parameter" do
-            visit new_user_session_path
+        it "should sign in with Yahoo with no parameter" do
+          visit new_user_session_path
 
-            expect(page).to have_content('Sign in using a third party')
-            expect(page).not_to have_content('manually enter your OpenID')
-            expect(page).not_to have_field('openid_url')
-            expect(page).to have_link("Sign in with #{provider}")
-            click_link "Sign in with #{provider}"
+          expect(page).to have_content('Sign in using a third party')
+          expect(page).not_to have_content('manually enter your OpenID')
+          expect(page).not_to have_field('openid_url')
+          expect(page).to have_link("Sign in with Yahoo")
+          click_link "Sign in with Yahoo"
 
-            expect(page).to have_content "Successfully authenticated from OpenID account"
-            expect(page).to have_content "Signed in as #{open_id_user.name}"
-            expect(page).to have_content "Sign out"
-          end
+          expect(page).to have_content "Successfully authenticated from OpenID account"
+          expect(page).to have_content "Signed in as #{open_id_user.name}"
+          expect(page).to have_content "Sign out"
         end
+        it "should sign in with StackExchange with no parameter" do
+          visit new_user_session_path
 
+          expect(page).to have_content('Sign in using a third party')
+          expect(page).not_to have_content('manually enter your OpenID')
+          expect(page).not_to have_field('openid_url')
+          expect(page).to have_link("Sign in with StackExchange")
+          click_link "Sign in with StackExchange"
+
+          expect(page).to have_content "Successfully authenticated from OpenID account"
+          expect(page).to have_content "Signed in as #{open_id_user.name}"
+          expect(page).to have_content "Sign out"
+        end
+        it "should sign in with Steam with no parameter" do
+          visit new_user_session_path
+
+          expect(page).to have_content('Sign in using a third party')
+          expect(page).not_to have_content('manually enter your OpenID')
+          expect(page).not_to have_field('openid_url')
+          expect(page).to have_link("Sign in with Steam")
+          click_link "Sign in with Steam"
+
+          expect(page).to have_content "Successfully authenticated from OpenID account"
+          expect(page).to have_content "Signed in as #{open_id_user.name}"
+          expect(page).to have_content "Sign out"
+        end
         it "should sign in with Google" do
           open_id_user.authentications[0].provider ='google'
           open_id_user.authentications[0].save!
@@ -437,24 +492,22 @@ describe "Sign-up and Sign-in by OmniAuth" do
           expect(page).to have_content "Sign out"
         end
 
-        %w(LiveJournal).each do |provider|
-          it "should sign in with #{provider} with a parameter" do
-            visit new_user_session_path
+        it "should sign in with LiveJournal with a parameter" do
+          visit new_user_session_path
 
-            expect(page).to have_content('Sign in using a third party')
-            expect(page).not_to have_content('manually enter your OpenID')
-            expect(page).not_to have_field('openid_url')
-            expect(page).to have_link("Sign in with #{provider}")
+          expect(page).to have_content('Sign in using a third party')
+          expect(page).not_to have_content('manually enter your OpenID')
+          expect(page).not_to have_field('openid_url')
+          expect(page).to have_link("Sign in with LiveJournal")
 
-            click_link "Sign in with #{provider}"
-            expect(page).to have_field('openid_param')
-            fill_in 'openid_param', with: 'my_username'
-            click_button 'js_submit_openid'
+          click_link "Sign in with LiveJournal"
+          expect(page).to have_field('openid_param')
+          fill_in 'openid_param', with: 'my_username'
+          click_button 'js_submit_openid'
 
-            expect(page).to have_content "Successfully authenticated from OpenID account"
-            expect(page).to have_content "Signed in as #{open_id_user.name}"
-            expect(page).to have_content "Sign out"
-          end
+          expect(page).to have_content "Successfully authenticated from OpenID account"
+          expect(page).to have_content "Signed in as #{open_id_user.name}"
+          expect(page).to have_content "Sign out"
         end
       end
     end
@@ -575,7 +628,7 @@ describe "Sign-up and Sign-in by OmniAuth" do
         # Set email. Removal should work
         open_id_user.email = "#{open_id_user.name}@example.com"
         open_id_user.save!
-        open_id_user.confirm!
+        open_id_user.confirm
 
         click_link 'Remove'
         expect(page).to have_content "Successfully removed authentication from http://pretend.openid.example.com"
@@ -675,46 +728,93 @@ describe "Sign-up and Sign-in by OmniAuth" do
           expect(page).to have_link 'Remove', count: 1
         end
 
-        %w(Google Yahoo StackExchange Steam).each do |provider|
-          it "should allow adding #{provider} with no parameter" do
-            login open_id_user
-            visit edit_user_registration_path
+        it "should allow adding Google with no parameter" do
+          login open_id_user
+          visit edit_user_registration_path
 
-            expect(page).to have_content('optional for users with third-party authentication')
-            expect(page).to have_content "This account is linked with the following authentication methods"
-            expect(page).to have_content "http://pretend.openid.example.com"
-            expect(page).to have_link 'Remove', count: 1
-            expect(page).to have_link("Authenticate with #{provider}")
-            click_link "Authenticate with #{provider}"
+          expect(page).to have_content('optional for users with third-party authentication')
+          expect(page).to have_content "This account is linked with the following authentication methods"
+          expect(page).to have_content "http://pretend.openid.example.com"
+          expect(page).to have_link 'Remove', count: 1
+          expect(page).to have_link("Authenticate with Google")
+          click_link "Authenticate with Google"
 
-            expect(page).to have_content "Successfully authenticated from #{provider == "Google" ? "Google" : "OpenID"} account"
-            expect(page).to have_content "This account is linked with the following authentication methods"
-            expect(page).to have_content "http://pretend.openid.example.com"
-            expect(page).to have_css('.auth-nickname', :text => provider)
-            expect(page).to have_link 'Remove', count: 2
-          end
+          expect(page).to have_content "Successfully authenticated from Google account"
+          expect(page).to have_content "This account is linked with the following authentication methods"
+          expect(page).to have_content "http://pretend.openid.example.com"
+          expect(page).to have_css('.auth-nickname', :text => 'Google')
+          expect(page).to have_link 'Remove', count: 2
         end
-        %w(LiveJournal).each do |provider|
-          it "should allow adding #{provider} with a parameter" do
-            login non_oid_user
-            visit edit_user_registration_path
+        it "should allow adding Yahoo with no parameter" do
+          login open_id_user
+          visit edit_user_registration_path
 
-            expect(page).not_to have_content('optional for users with third-party authentication')
-            expect(page).to have_content('Add authentication from a third-party account')
-            expect(page).not_to have_content('manually enter your OpenID')
-            expect(page).not_to have_field('openid_url')
-            expect(page).to have_link("Authenticate with #{provider}")
+          expect(page).to have_content('optional for users with third-party authentication')
+          expect(page).to have_content "This account is linked with the following authentication methods"
+          expect(page).to have_content "http://pretend.openid.example.com"
+          expect(page).to have_link 'Remove', count: 1
+          expect(page).to have_link("Authenticate with Yahoo")
+          click_link "Authenticate with Yahoo"
 
-            click_link "Authenticate with #{provider}"
-            expect(page).to have_field('openid_param')
-            fill_in 'openid_param', with: 'my_username'
-            click_button 'js_submit_openid'
+          expect(page).to have_content "Successfully authenticated from OpenID account"
+          expect(page).to have_content "This account is linked with the following authentication methods"
+          expect(page).to have_content "http://pretend.openid.example.com"
+          expect(page).to have_css('.auth-nickname', :text => 'Yahoo')
+          expect(page).to have_link 'Remove', count: 2
+        end
+        it "should allow adding StackExchange with no parameter" do
+          login open_id_user
+          visit edit_user_registration_path
 
-            expect(page).to have_content "Successfully authenticated from OpenID account"
-            expect(page).to have_content "This account is linked with the following authentication methods"
-            expect(page).to have_css('.auth-nickname', :text => provider)
-            expect(page).to have_link 'Remove', count: 1
-          end
+          expect(page).to have_content('optional for users with third-party authentication')
+          expect(page).to have_content "This account is linked with the following authentication methods"
+          expect(page).to have_content "http://pretend.openid.example.com"
+          expect(page).to have_link 'Remove', count: 1
+          expect(page).to have_link("Authenticate with StackExchange")
+          click_link "Authenticate with StackExchange"
+
+          expect(page).to have_content "Successfully authenticated from OpenID account"
+          expect(page).to have_content "This account is linked with the following authentication methods"
+          expect(page).to have_content "http://pretend.openid.example.com"
+          expect(page).to have_css('.auth-nickname', :text => 'StackExchange')
+          expect(page).to have_link 'Remove', count: 2
+        end
+        it "should allow adding Steam with no parameter" do
+          login open_id_user
+          visit edit_user_registration_path
+
+          expect(page).to have_content('optional for users with third-party authentication')
+          expect(page).to have_content "This account is linked with the following authentication methods"
+          expect(page).to have_content "http://pretend.openid.example.com"
+          expect(page).to have_link 'Remove', count: 1
+          expect(page).to have_link("Authenticate with Steam")
+          click_link "Authenticate with Steam"
+
+          expect(page).to have_content "Successfully authenticated from OpenID account"
+          expect(page).to have_content "This account is linked with the following authentication methods"
+          expect(page).to have_content "http://pretend.openid.example.com"
+          expect(page).to have_css('.auth-nickname', :text => 'Steam')
+          expect(page).to have_link 'Remove', count: 2
+        end
+          it "should allow adding LiveJournal with a parameter" do
+          login non_oid_user
+          visit edit_user_registration_path
+
+          expect(page).not_to have_content('optional for users with third-party authentication')
+          expect(page).to have_content('Add authentication from a third-party account')
+          expect(page).not_to have_content('manually enter your OpenID')
+          expect(page).not_to have_field('openid_url')
+          expect(page).to have_link("Authenticate with LiveJournal")
+
+          click_link "Authenticate with LiveJournal"
+          expect(page).to have_field('openid_param')
+          fill_in 'openid_param', with: 'my_username'
+          click_button 'js_submit_openid'
+
+          expect(page).to have_content "Successfully authenticated from OpenID account"
+          expect(page).to have_content "This account is linked with the following authentication methods"
+          expect(page).to have_css('.auth-nickname', :text => 'LiveJournal')
+          expect(page).to have_link 'Remove', count: 1
         end
 
         it "should handle removing an OpenID" do

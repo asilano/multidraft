@@ -1,12 +1,13 @@
 language: ruby
 rvm:
-  - 1.9.3
+  - 2.0.0
 env:
   global:
     - DEVISE_SECRET=c0ffee
     - secure: "OwAoDcx76gZc1Sq0Q0kaD9u2DJuUn0agFQg2R/btsOgiWBIr3X6kirFqV1oKM3Vchx0LYOwP73XatpLcsZrdIPeA434BZYsQRXsx7wpcW2rNCi6keJaZ2SrEqp8dL2+K2Mufdpfe4ZYNp2azTA2igSwSzthbcMaljt+PAWX3Yl8="
 bundler_args: --without development debug
 before_install:
+  - gem install bundler
   - sed -i /mingw32/d Gemfile.lock
 script:
   - RAILS_ENV=test xvfb-run --server-args="-screen 0 1024x768x24" bundle exec rake db:migrate spec

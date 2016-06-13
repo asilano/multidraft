@@ -1,13 +1,10 @@
 require 'rubygems'
-require 'spork'
-#uncomment the following line to use spork with the debugger
-#require 'spork/ext/ruby-debug'
 
 unless ENV['DRB']
   require 'simplecov'
   require 'coveralls'
 
-  SimpleCov.formatter = SimpleCov::Formatter::MultiFormatter[
+  SimpleCov.formatters = [
     SimpleCov::Formatter::HTMLFormatter,
     Coveralls::SimpleCov::Formatter
   ]
@@ -17,96 +14,96 @@ unless ENV['DRB']
   CodeClimate::TestReporter.start
 end
 
-Spork.prefork do
-  # Loading more in this block will cause your tests to run faster. However,
-  # if you change any configuration or code from libraries loaded here, you'll
-  # need to restart spork for it take effect.
-  # This file is copied to spec/ when you run 'rails generate rspec:install'
-  ENV["RAILS_ENV"] ||= 'test'
-  require File.expand_path("../../config/environment", __FILE__)
-  require 'rspec/rails'
-  require 'capybara/rspec'
-  require 'timecop'
-  #require 'ruby-debug'
+# This file is copied to spec/ when you run 'rails generate rspec:install'
+ENV["RAILS_ENV"] ||= 'test'
+require File.expand_path("../../config/environment", __FILE__)
 
-  Timecop.safe_mode = true
-  Capybara.asset_host = "http://localhost:3000"
+require 'rspec/rails'
+require 'capybara/rspec'
+require 'timecop'
+#require 'ruby-debug'
 
-  # Requires supporting ruby files with custom matchers and macros, etc,
-  # in spec/support/ and its subdirectories.
-  Dir[Rails.root.join("spec/support/**/*.rb")].each { |f| require f }
-
-  RSpec.configure do |config|
-    #config.raise_errors_for_deprecations!
-    # ## Mock Framework
-    #
-    # If you prefer to use mocha, flexmock or RR, uncomment the appropriate line:
-    #
-    # config.mock_with :mocha
-    # config.mock_with :flexmock
-    # config.mock_with :rr
-
-    # Remove this line if you're not using ActiveRecord or ActiveRecord fixtures
-    config.fixture_path = "#{::Rails.root}/spec/factories"
-
-    # If you're not using ActiveRecord, or you'd prefer not to run each of your
-    # examples within a transaction, remove the following line or assign false
-    # instead of true.
-    config.use_transactional_fixtures = false
-
-    # If true, the base class of anonymous controllers will be inferred
-    # automatically. This will be the default behavior in future versions of
-    # rspec-rails.
-    config.infer_base_class_for_anonymous_controllers = false
-
-    config.infer_spec_type_from_file_location!
-
-    # Run specs in random order to surface order dependencies. If you find an
-    # order dependency and want to debug it, you can fix the order by providing
-    # the seed, which is printed after each run.
-    #     --seed 1234
-    config.order = "random"
-
-    config.include Rails.application.routes.url_helpers
-    config.include Capybara::DSL
-    config.include(MailerMacros)
-    config.include Warden::Test::Helpers
-    config.include FixAll
-
-    config.expect_with(:rspec) { |c| c.syntax = :expect }
-    config.mock_with :rspec do |mocks|
-
-      # This option should be set when all dependencies are being loaded
-      # before a spec run, as is the case in a typical spec helper. It will
-      # cause any verifying double instantiation for a class that does not
-      # exist to raise, protecting against incorrectly spelt names.
-      mocks.verify_doubled_constant_names = true
-    end
-
-    config.before(:suite) do
-      DatabaseCleaner.clean_with :truncation
-    end
-
-    config.before(:each) do |example|
-      if example.metadata[:js]
-        DatabaseCleaner.strategy = :truncation
-      else
-        DatabaseCleaner.strategy = :transaction
-      end
-      DatabaseCleaner.start
-
-      ActionMailer::Base.deliveries.clear
-    end
-
-    config.after(:each) do
-      DatabaseCleaner.clean
-    end
+require "bundler/setup"
+::Bundler.require(:default, :test)
+require "shoulda/matchers"
+Shoulda::Matchers.configure do |config|
+  config.integrate do |with|
+    with.test_framework :rspec
+    with.library :rails
   end
 end
+Timecop.safe_mode = true
+Capybara.asset_host = "http://localhost:3000"
 
-Spork.each_run do
-  # This code will be run each time you run your specs.
+# Requires supporting ruby files with custom matchers and macros, etc,
+# in spec/support/ and its subdirectories.
+Dir[Rails.root.join("spec/support/**/*.rb")].each { |f| require f }
 
+RSpec.configure do |config|
+  #config.raise_errors_for_deprecations!
+  # ## Mock Framework
+  #
+  # If you prefer to use mocha, flexmock or RR, uncomment the appropriate line:
+  #
+  # config.mock_with :mocha
+  # config.mock_with :flexmock
+  # config.mock_with :rr
+
+  # Remove this line if you're not using ActiveRecord or ActiveRecord fixtures
+  config.fixture_path = "#{::Rails.root}/spec/factories"
+
+  # If you're not using ActiveRecord, or you'd prefer not to run each of your
+  # examples within a transaction, remove the following line or assign false
+  # instead of true.
+  config.use_transactional_fixtures = false
+
+  # If true, the base class of anonymous controllers will be inferred
+  # automatically. This will be the default behavior in future versions of
+  # rspec-rails.
+  config.infer_base_class_for_anonymous_controllers = false
+
+  config.infer_spec_type_from_file_location!
+
+  # Run specs in random order to surface order dependencies. If you find an
+  # order dependency and want to debug it, you can fix the order by providing
+  # the seed, which is printed after each run.
+  #     --seed 1234
+  config.order = "random"
+
+  config.include Rails.application.routes.url_helpers
+  config.include Capybara::DSL
+  config.include(MailerMacros)
+  config.include Warden::Test::Helpers
+  config.include FixAll
+
+  config.expect_with(:rspec) { |c| c.syntax = :expect }
+  config.mock_with :rspec do |mocks|
+
+    # This option should be set when all dependencies are being loaded
+    # before a spec run, as is the case in a typical spec helper. It will
+    # cause any verifying double instantiation for a class that does not
+    # exist to raise, protecting against incorrectly spelt names.
+    mocks.verify_doubled_constant_names = true
+  end
+
+  config.before(:suite) do
+    DatabaseCleaner.clean_with :truncation
+  end
+
+  config.before(:each) do |example|
+    if example.metadata[:js]
+      DatabaseCleaner.strategy = :truncation
+    else
+      DatabaseCleaner.strategy = :transaction
+    end
+    DatabaseCleaner.start
+
+    ActionMailer::Base.deliveries.clear
+  end
+
+  config.after(:each) do
+    DatabaseCleaner.clean
+  end
 end
 
 def login(user, opts = {})

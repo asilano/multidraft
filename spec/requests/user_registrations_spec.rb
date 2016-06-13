@@ -76,12 +76,12 @@ describe "UserRegistrations" do
 
       fill_in 'Password', with: user.password
       click_button 'Sign up'
-      expect(page).to have_content "Password doesn't match confirmation"
+      expect(page).to have_content "Password confirmation doesn't match Password"
 
       fill_in 'Password', with: user.password
       fill_in 'Password confirmation', with: (user.password + '111')
       click_button 'Sign up'
-      expect(page).to have_content "Password doesn't match confirmation"
+      expect(page).to have_content "Password confirmation doesn't match Password"
 
       fill_in 'Password', with: 'abc'
       fill_in 'Password confirmation', with: 'abc'
@@ -194,12 +194,12 @@ describe "UserRegistrations" do
       it "fails if new password is missing or invalid" do
         fill_in 'Password', with: user.password + "new"
         click_button 'Update'
-        expect(page).to have_content "Password doesn't match confirmation"
+        expect(page).to have_content "Password confirmation doesn't match Password"
 
         fill_in 'Password', with: user.password + "new"
         fill_in 'Password confirmation', with: (user.password + 'new111')
         click_button 'Update'
-        expect(page).to have_content "Password doesn't match confirmation"
+        expect(page).to have_content "Password confirmation doesn't match Password"
 
         fill_in 'Password', with: 'abc'
         fill_in 'Password confirmation', with: 'abc'

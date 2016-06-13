@@ -4,7 +4,10 @@
     - Authentication.providers.in_groups_of(4) do |chunk|
       %div
         - chunk.each do |method|
-          = link_to_function "#{action.capitalize} with #{method[:name]}", '', :class => "omniauth-selector #{method[:css_class]}", :data => (method[:data] || {}).merge({:auth_url => user_omniauth_authorize_url(method[:provider]), :nickname => method[:name]}) if method
+          = link_to "#{action.capitalize} with #{method[:name]}", '', class: "omniauth-selector #{method[:css_class]}",
+                    remote: true,
+                    data: (method[:data] || {}).merge({auth_url: user_omniauth_authorize_url(method[:provider]),
+                                                       nickname: method[:name]}) if method
 .nojs-section
   %div If you already have an account with an OpenID provider you can use it to #{action} here.
   %div.warning Because you do not have Javascript enabled, you must manually enter your OpenID URL.

@@ -1,7 +1,7 @@
 source 'https://rubygems.org'
 
-ruby '1.9.3'
-gem 'rails', '~> 3.2.1'
+ruby '2.0.0'
+gem 'rails', '~> 4.0.0'
 
 # Bundle edge Rails instead:
 # gem 'rails', :git => 'git://github.com/rails/rails.git'
@@ -9,25 +9,27 @@ gem 'rails', '~> 3.2.1'
 gem 'pg'
 
 
+# Gems only used for upgrade process
+gem 'protected_attributes'
+
 # Gems used only for assets and not required
 # in production environments by default.
 #group :assets do
-  gem 'sass-rails',   '~> 3.2.3'
+  gem 'sass-rails'
   gem 'compass-rails'
   gem 'sassy-buttons'
-  gem 'coffee-rails', '~> 3.2.1'
+  gem 'coffee-rails'
   gem 'modernizr-rails'
 
   # See https://github.com/sstephenson/execjs#readme for more supported runtimes
   # gem 'therubyracer'
 
-  gem 'uglifier', '>= 1.0.3'
+  gem 'uglifier'
 #end
 
 group :development, :test do
   gem "rspec-rails"
   gem "factory_girl_rails"
-  gem "spork-rails"
 
   # Use thin web-server in dev
   gem 'thin'

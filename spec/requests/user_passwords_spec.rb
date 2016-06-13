@@ -85,12 +85,12 @@ describe "UserPasswords" do
 
       fill_in 'New password', with: user.password
       click_button 'Change my password'
-      expect(page).to have_content "Password doesn't match confirmation"
+      expect(page).to have_content "Password confirmation doesn't match Password"
 
       fill_in 'New password', with: user.password
       fill_in 'Confirm new password', with: (user.password + '111')
       click_button 'Change my password'
-      expect(page).to have_content "Password doesn't match confirmation"
+      expect(page).to have_content "Password confirmation doesn't match Password"
 
       fill_in 'New password', with: 'abc'
       fill_in 'Confirm new password', with: 'abc'
