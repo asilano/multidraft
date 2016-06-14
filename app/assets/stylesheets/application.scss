@@ -225,7 +225,7 @@ ul {
   box-shadow: 2px 2px 4px $logo-colour;
 
   text-indent: -9999px;
-  //background-image: url('/assets/openid_icons.png');
+  //background-image: image-url('openid_icons.png');
 
   &:hover, &:active {
     box-shadow: none;
@@ -235,30 +235,30 @@ ul {
   }
 
   &.google-icon {
-    background-image: url('/assets/google_icon.png');
+    background-image: image-url('google_icon.png');
   }
   &.yahoo-icon {
-   background-image: url('/assets/openid_yahoo_icon.png');
+   background-image: image-url('openid_yahoo_icon.png');
   }
   &.se-icon {
-    background-image: url('/assets/openid_se_icon.png');
+    background-image: image-url('openid_se_icon.png');
   }
   &.steam-icon {
-    background-image: url('/assets/openid_steam_icon.png');
+    background-image: image-url('openid_steam_icon.png');
   }
   &.lj-icon {
-    background-image: url('/assets/openid_lj_icon.png');
+    background-image: image-url('openid_lj_icon.png');
   }
   &.openid-icon {
-    background-image: url('/assets/openid_openid_icon.png');
+    background-image: image-url('openid_openid_icon.png');
   }
   &.facebook-icon {
-    background-image: url('/assets/facebook_icon.png');
+    background-image: image-url('facebook_icon.png');
   }
 }
 
 #openid_url {
-  background-image: url('/assets/openid-icon-18x18.gif');
+  background-image: image-url('openid-icon-18x18.gif');
   background-repeat: no-repeat;
   padding-left: 20px;
 }
