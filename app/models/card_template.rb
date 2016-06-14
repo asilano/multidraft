@@ -1,5 +1,4 @@
 class CardTemplate < ActiveRecord::Base
-  attr_accessible :card_set, :fields, :name, :slot, :layout
   belongs_to :card_set
   has_many :card_instances, dependent: :destroy
   serialize :fields

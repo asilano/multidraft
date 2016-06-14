@@ -55,8 +55,8 @@ describe CardSet do
       expect(File).to receive(:read).with(Rails.root + card_set.dictionary_location).
                         and_return File.read(File.join(File.dirname(__FILE__), '../data/awesome.json'))
 
-      expect(CardTemplate).to receive(:new).with(academy_raider_params, {}).and_return academy_raider
-      expect(CardTemplate).to receive(:new).with(glimpse_params, {}).and_return glimpse
+      expect(CardTemplate).to receive(:new).with(academy_raider_params).and_return academy_raider
+      expect(CardTemplate).to receive(:new).with(glimpse_params).and_return glimpse
 
       expect(card_set.prepare_for_draft).to be_truthy
       expect(card_set.errors).to be_empty
@@ -71,8 +71,8 @@ describe CardSet do
       expect(card_set).to receive(:open).with(card_set.dictionary_location).
                           and_return open File.join(File.dirname(__FILE__), '../data/awesome.json')
 
-      expect(CardTemplate).to receive(:new).with(academy_raider_params, {}).and_return academy_raider
-      expect(CardTemplate).to receive(:new).with(glimpse_params, {}).and_return glimpse
+      expect(CardTemplate).to receive(:new).with(academy_raider_params).and_return academy_raider
+      expect(CardTemplate).to receive(:new).with(glimpse_params).and_return glimpse
 
       expect(card_set.prepare_for_draft).to be_truthy
       expect(card_set.errors).to be_empty
@@ -183,9 +183,9 @@ describe CardSet do
       expect(File).to receive(:read).with(Rails.root + card_set.dictionary_location).
                         and_return File.read(File.join(File.dirname(__FILE__), '../data/splits_set.json'))
 
-      expect(CardTemplate).to receive(:new).with(academy_raider_params, {}).and_return academy_raider
-      expect(CardTemplate).to receive(:new).with(alive_well_params, {}).and_return alive_well
-      expect(CardTemplate).to receive(:new).with(turn_burn_params, {}).and_return turn_burn
+      expect(CardTemplate).to receive(:new).with(academy_raider_params).and_return academy_raider
+      expect(CardTemplate).to receive(:new).with(alive_well_params).and_return alive_well
+      expect(CardTemplate).to receive(:new).with(turn_burn_params).and_return turn_burn
 
       expect(card_set.prepare_for_draft).to be_truthy
       expect(card_set.errors).to be_empty
@@ -206,8 +206,8 @@ describe CardSet do
       expect(File).to receive(:read).with(Rails.root + card_set.dictionary_location).
                         and_return File.read(File.join(File.dirname(__FILE__), '../data/multi_art.json'))
 
-      expect(CardTemplate).to receive(:new).with(academy_raider_params, {}).and_return academy_raider
-      expect(CardTemplate).to receive(:new).with(plains_params, {}).and_return plains
+      expect(CardTemplate).to receive(:new).with(academy_raider_params).and_return academy_raider
+      expect(CardTemplate).to receive(:new).with(plains_params).and_return plains
 
       expect(card_set.prepare_for_draft).to be_truthy
       expect(card_set.errors).to be_empty
@@ -248,9 +248,9 @@ describe CardSet do
       expect(File).to receive(:read).with(Rails.root + card_set.dictionary_location).
                         and_return File.read(File.join(File.dirname(__FILE__), '../data/flips_set.json'))
 
-      expect(CardTemplate).to receive(:new).with(academy_raider_params, {}).and_return academy_raider
-      expect(CardTemplate).to receive(:new).with(bushi_params, {}).and_return bushi
-      expect(CardTemplate).to receive(:new).with(erayo_params, {}).and_return erayo
+      expect(CardTemplate).to receive(:new).with(academy_raider_params).and_return academy_raider
+      expect(CardTemplate).to receive(:new).with(bushi_params).and_return bushi
+      expect(CardTemplate).to receive(:new).with(erayo_params).and_return erayo
 
       expect(card_set.prepare_for_draft).to be_truthy
       expect(card_set.errors).to be_empty
@@ -278,8 +278,8 @@ describe CardSet do
       expect(File).to receive(:read).with(Rails.root + card_set.dictionary_location).
                         and_return File.read(File.join(File.dirname(__FILE__), '../data/dfc_set.json'))
 
-      expect(CardTemplate).to receive(:new).with(academy_raider_params, {}).and_return academy_raider
-      expect(CardTemplate).to receive(:new).with(hanweir_params, {}).and_return hanweir
+      expect(CardTemplate).to receive(:new).with(academy_raider_params).and_return academy_raider
+      expect(CardTemplate).to receive(:new).with(hanweir_params).and_return hanweir
 
       expect(card_set.prepare_for_draft).to be_truthy
       expect(card_set.errors).to be_empty
@@ -308,8 +308,8 @@ describe CardSet do
       expect(File).to receive(:read).with(Rails.root + card_set.dictionary_location).
                         and_return File.read(File.join(File.dirname(__FILE__), '../data/awesome.json'))
 
-      expect(CardTemplate).to receive(:new).with(academy_raider_params, {}).and_return academy_raider
-      expect(CardTemplate).to receive(:new).with(glimpse_params, {}).and_return glimpse
+      expect(CardTemplate).to receive(:new).with(academy_raider_params).and_return academy_raider
+      expect(CardTemplate).to receive(:new).with(glimpse_params).and_return glimpse
 
       expect(card_set).to receive(:save!).and_call_original
 
@@ -402,7 +402,7 @@ describe CardSet do
       expect(booster).to all(be_a CardInstance)
       expect(booster.map(&:name).uniq.length).to eq booster.length
       expect(booster.length).to eq khans.booster_distr.length
-      expect(booster.map(&:slot)).to satisfy("slots to match distribution") do |slots|
+      expect(booster.map(&:slot)).to satisfy("match distribution") do |slots|
         slots.each_with_index.all? { |slot, ix| Array(khans.booster_distr[ix]).include? slot }
       end
     end
@@ -429,7 +429,7 @@ describe CardSet do
       expect(booster).to all(be_a CardInstance)
       expect(booster.map(&:name).uniq.length).to eq booster.length
       expect(booster.length).to eq innistrad.booster_distr.length
-      expect(booster.map(&:slot)).to satisfy("slots to match distribution") do |slots|
+      expect(booster.map(&:slot)).to satisfy("match distribution") do |slots|
         slots.each_with_index.all? { |slot, ix| Array(innistrad.booster_distr[ix]).include? slot }
       end
     end
@@ -509,7 +509,7 @@ describe CardSet do
       expect(booster.map(&:missing_slot).compact).to match_array %w<Basic Token>
       expect(booster.reject { |c| c.missing_slot }.map(&:name).uniq.length).to eq (booster.length - %w<Basic Token>.length)
       expect(booster.length).to eq sienira.booster_distr.length
-      expect(booster.map(&:slot)).to satisfy("slots to match distribution") do |slots|
+      expect(booster.map(&:slot)).to satisfy("match distribution") do |slots|
         slots.each_with_index.all? { |slot, ix| slot.nil? || Array(sienira.booster_distr[ix]).include?(slot) }
       end
     end
@@ -549,7 +549,9 @@ describe CardSet do
       expect(booster.map(&:name)[0]).to be_nil
 
       expected_missing = ['Odd Rare'] + ([nil] * 14)
-      expect(booster.map(&:missing_slot)).to eq expected_missing
+      expect(booster.map(&:missing_slot)).to satisfy('be missing just an Odd Rare or Mythic') do |missing|
+        missing.each_with_index.all? { |slot, ix| ix == 0 ? slot =~ /^Odd (Mythic )?Rare$/ : slot.nil? }
+      end
     end
   end
 end

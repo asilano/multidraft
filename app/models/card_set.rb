@@ -3,7 +3,6 @@
 require 'open-uri'
 
 class CardSet < ActiveRecord::Base
-  attr_accessible :dictionary_location, :last_modified, :name, :remote_dictionary, :booster_distr
   serialize :booster_distr, Array
   has_many :card_templates, dependent: :destroy
 

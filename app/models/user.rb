@@ -8,8 +8,6 @@ class User < ActiveRecord::Base
   has_many :authentications, dependent: :destroy
   accepts_nested_attributes_for :authentications
 
-  # Setup accessible (or protected) attributes for your model
-  attr_accessible :email, :password, :password_confirmation, :remember_me, :name, :authentications_attributes
   attr_accessor :remove_password
   normalize_attributes :name, :email
 
@@ -48,6 +46,7 @@ class User < ActiveRecord::Base
   # Override Devise's lookup mechanism to be case-insensitive (for postgres)
   def self.find_first_by_auth_conditions(warden_conditions)
     conditions = warden_conditions.dup
+    conditions.permit! if conditions.class.to_s == "ActionController::Parameters"
     if login = conditions.delete(:name)
       where(conditions).where("lower(name) = ?", login.downcase).first
     else

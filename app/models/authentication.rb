@@ -1,6 +1,5 @@
 class Authentication < ActiveRecord::Base
   belongs_to :user
-  attr_accessible :nickname, :provider, :uid
 
   def self.auth_methods
     [:open_id, :facebook, :google_oauth2]

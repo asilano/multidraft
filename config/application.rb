@@ -8,9 +8,6 @@ Bundler.require(*Rails.groups)
 
 module Multidraft
   class Application < Rails::Application
-    # Temp setting to get things running
-    config.active_record.whitelist_attributes = false
-
     # Settings in config/environments/* take precedence over those specified here.
     # Application configuration should go into files in config/initializers
     # -- all .rb files in that directory are automatically loaded.
