@@ -1,4 +1,5 @@
 require 'spec_helper'
+require 'multiverse_interface'
 
 describe MultiverseInterface do
   let(:dummy_class) { Class.new { include MultiverseInterface } }

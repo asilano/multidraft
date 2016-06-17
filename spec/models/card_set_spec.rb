@@ -1,5 +1,5 @@
 # encoding: utf-8
-require 'spec_helper'
+require 'rails_helper'
 
 describe CardSet do
   let(:academy_raider_params) {{name: 'Academy Raider',

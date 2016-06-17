@@ -1,4 +1,4 @@
-require 'spec_helper'
+require 'rails_helper'
 
 describe "Sign-up and Sign-in by OmniAuth" do
   before(:all) { OmniAuth.config.test_mode = true }

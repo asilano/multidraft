@@ -1,5 +1,6 @@
 # encoding: utf-8
-require 'spec_helper'
+require 'rails_helper'
+require 'unique_suggestion'
 
 describe UniqueSuggestion do
   describe "default" do

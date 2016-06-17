@@ -1,4 +1,4 @@
-require 'spec_helper'
+require 'rails_helper'
 
 describe "UserPasswords" do
   let(:user) { FactoryGirl.create(:confirmed_user) }

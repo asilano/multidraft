@@ -1,4 +1,4 @@
-require 'spec_helper'
+require 'rails_helper'
 
 describe "UserSessions" do
   let(:user) { FactoryGirl.create(:confirmed_user) }

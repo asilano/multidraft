@@ -1,4 +1,4 @@
-require 'spec_helper'
+require 'rails_helper'
 
 describe "UserRegistrations" do
   it "is linked from the homepage" do

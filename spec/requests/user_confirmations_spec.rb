@@ -1,4 +1,4 @@
-require 'spec_helper'
+require 'rails_helper'
 
 describe "UserConfirmations" do
   let(:user) { FactoryGirl.build(:user) }
