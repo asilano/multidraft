@@ -68,7 +68,6 @@ RSpec.configure do |config|
   # config.filter_gems_from_backtrace("gem name")
 
   config.include Rails.application.routes.url_helpers
-  config.include Capybara::DSL
   config.include(MailerMacros)
   config.include Warden::Test::Helpers
   config.include FixAll
