@@ -8,6 +8,7 @@ require 'rspec/rails'
 require 'capybara/rspec'
 # Add additional requires below this line. Rails is not loaded until this point!
 require_relative './support/mailer_macros'
+require_relative './support/login_macros'
 
 # Requires supporting ruby files with custom matchers and macros, etc, in
 # spec/support/ and its subdirectories. Files matching `spec/**/*_spec.rb` are
@@ -71,6 +72,8 @@ RSpec.configure do |config|
   config.include(MailerMacros)
   config.include Warden::Test::Helpers
   config.include FixAll
+  config.include LoginMacros::Feature, type: :feature
+  config.include LoginMacros::Request, type: :request
 
   config.before(:suite) do
     DatabaseCleaner.clean_with :truncation
@@ -90,11 +93,6 @@ RSpec.configure do |config|
   config.after(:each) do
     DatabaseCleaner.clean
   end
-end
-
-
-def login(user, opts = {})
-  post user_session_path, user: { name: user.name, password: user.password }
 end
 
 def node(html)

@@ -12,7 +12,8 @@ describe 'UserRegistrations requests' do
   it "redisplays the sign-up page on cancelling" do
     get cancel_user_registration_path
 
-    expect(response.status).to eq 200
+    expect(response.status).to redirect_to(new_user_registration_path)
+    follow_redirect!
     expect(response).to render_template :new
   end
 
