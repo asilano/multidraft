@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-describe "UserConfirmations" do
+feature "UserConfirmations" do
   let(:user) { FactoryGirl.build(:user) }
   before(:each) do
     visit new_user_registration_path
@@ -11,7 +11,7 @@ describe "UserConfirmations" do
     click_button 'Sign up'
   end
 
-  it "processes sign-up (with confirmation)" do
+  scenario "processes sign-up (with confirmation)" do
     email = last_email
     text_body = email.body.parts.find {|p| p.content_type.match /plain/}.body.raw_source
     expect(email.to).to include user.email
@@ -46,7 +46,7 @@ describe "UserConfirmations" do
     expect(page).to have_content 'Signed in successfully.'
   end
 
-  it "doesn't time out confirmation" do
+  scenario "doesn't time out confirmation" do
     email = last_email
     text_body = email.body.parts.find {|p| p.content_type.match /plain/}.body.raw_source
     confirm_link = text_body.match(/http:.*$/)[0]
@@ -57,7 +57,7 @@ describe "UserConfirmations" do
     end
   end
 
-  it "rejects confirmation with a bad token" do
+  scenario "rejects confirmation with a bad token" do
     email = last_email
     text_body = email.body.parts.find {|p| p.content_type.match /plain/}.body.raw_source
     confirm_link = text_body.match(/http:.*$/)[0]
@@ -67,7 +67,7 @@ describe "UserConfirmations" do
     expect(page).to have_content 'Confirmation token is invalid'
   end
 
-  it "rejects confirmation of an already-confirmed account" do
+  scenario "rejects confirmation of an already-confirmed account" do
     email = last_email
     text_body = email.body.parts.find {|p| p.content_type.match /plain/}.body.raw_source
     confirm_link = text_body.match(/http:.*$/)[0]
@@ -78,7 +78,7 @@ describe "UserConfirmations" do
     expect(page).to have_content "Email was already confirmed; please try signing in"
   end
 
-  it "allows resending of a lost confirmation email" do
+  scenario "allows resending of a lost confirmation email" do
     email = last_email
     text_body = email.body.parts.find {|p| p.content_type.match /plain/}.body.raw_source
     confirm_link = text_body.match(/http:.*$/)[0]
@@ -97,7 +97,7 @@ describe "UserConfirmations" do
     expect(page).to have_content "Your account was successfully confirmed."
   end
 
-  it "prevents resending a confirmation email for an already-confirmed account" do
+  scenario "prevents resending a confirmation email for an already-confirmed account" do
     email = last_email
     text_body = email.body.parts.find {|p| p.content_type.match /plain/}.body.raw_source
     confirm_link = text_body.match(/http:.*$/)[0]
@@ -113,7 +113,7 @@ describe "UserConfirmations" do
     expect(last_email).to be_nil
   end
 
-  it "processes confirmation of an email address change" do
+  scenario "processes confirmation of an email address change" do
     email = last_email
     text_body = email.body.parts.find {|p| p.content_type.match /plain/}.body.raw_source
     confirm_link = text_body.match(/http:.*$/)[0]

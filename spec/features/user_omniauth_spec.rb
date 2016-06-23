@@ -1,15 +1,15 @@
 require 'rails_helper'
 
-describe "Sign-up and Sign-in by OmniAuth" do
+feature "Sign-up and Sign-in by OmniAuth" do
   before(:all) { OmniAuth.config.test_mode = true }
 
-  describe "OpenID" do
-    it "should not have any special links" do
+  feature "OpenID" do
+    scenario "should not have any special links" do
       visit '/'
       expect(page).not_to have_content(/OpenID/i)
     end
 
-    describe "sign-up" do
+    feature "sign-up" do
       let(:user) { FactoryGirl.build(:user) }
       before(:each) do
         OmniAuth.config.mock_auth[:open_id] = OmniAuth::AuthHash.new({
@@ -18,7 +18,7 @@ describe "Sign-up and Sign-in by OmniAuth" do
         })
       end
 
-      it "should make use of the standard Sign Up form (no JS)" do
+      scenario "should make use of the standard Sign Up form (no JS)" do
         visit new_user_registration_path
         expect(page).to have_content "Sign up using a third party"
         expect(page).to have_content "If you already have an account with one of these providers"
@@ -31,7 +31,7 @@ describe "Sign-up and Sign-in by OmniAuth" do
         expect(page).to have_field('user[password_confirmation]')
       end
 
-      it "should still require username, but not email" do
+      scenario "should still require username, but not email" do
         visit new_user_registration_path
         fill_in 'openid_url', with: 'http://pretend.openid.example.com'
         click_button 'submit_openid'
@@ -46,7 +46,7 @@ describe "Sign-up and Sign-in by OmniAuth" do
         expect(page).to_not have_content "Email can't be blank"
       end
 
-      it "should persist the OpenID to the database" do
+      scenario "should persist the OpenID to the database" do
         visit new_user_registration_path
         fill_in 'openid_url', with: 'http://pretend.openid.example.com'
         click_button 'submit_openid'
@@ -63,8 +63,8 @@ describe "Sign-up and Sign-in by OmniAuth" do
         expect(saved_user.authentications[0].provider).to eql 'open_id'
       end
 
-      describe "with extra info from OpenID response" do
-        it "should make use of a supplied email" do
+      feature "with extra info from OpenID response" do
+        scenario "should make use of a supplied email" do
           OmniAuth.config.mock_auth[:open_id][:info] = {
             :email => user.email
           }
@@ -76,7 +76,7 @@ describe "Sign-up and Sign-in by OmniAuth" do
           expect(find_field('Email').value).to eql user.email
         end
 
-        it "should make use of a supplied nickname" do
+        scenario "should make use of a supplied nickname" do
           OmniAuth.config.mock_auth[:open_id][:info] = {
             :nickname => user.name
           }
@@ -88,7 +88,7 @@ describe "Sign-up and Sign-in by OmniAuth" do
           expect(find_field('Username').value).to eql user.name
         end
 
-        it "should make use fo a supplied fullname" do
+        scenario "should make use fo a supplied fullname" do
           OmniAuth.config.mock_auth[:open_id][:info] = {
             :name => user.name + ' the First'
           }
@@ -113,7 +113,7 @@ describe "Sign-up and Sign-in by OmniAuth" do
           expect(find_field('Username').value).to eql(user.name + 'TheSecond')
         end
 
-        it "should make use of a supplied firstname, lastname" do
+        scenario "should make use of a supplied firstname, lastname" do
           OmniAuth.config.mock_auth[:open_id][:info] = {
             :first_name => 'Zaphod',
             :last_name => 'beeblebroX'
@@ -126,7 +126,7 @@ describe "Sign-up and Sign-in by OmniAuth" do
           expect(find_field('Username').value).to eql 'ZaphodBeeblebroX'
         end
 
-        it "should make use of a supplied firstname only" do
+        scenario "should make use of a supplied firstname only" do
           OmniAuth.config.mock_auth[:open_id][:info] = {
             :first_name => 'arthur'
           }
@@ -138,7 +138,7 @@ describe "Sign-up and Sign-in by OmniAuth" do
           expect(find_field('Username').value).to eql 'Arthur'
         end
 
-        it "should make use of a supplied lastname only" do
+        scenario "should make use of a supplied lastname only" do
           OmniAuth.config.mock_auth[:open_id][:info] = {
             :last_name => 'PrEfEcT'
           }
@@ -150,7 +150,7 @@ describe "Sign-up and Sign-in by OmniAuth" do
           expect(find_field('Username').value).to eql 'PrEfEcT'
         end
 
-        it "should handle the supplied email already existing" do
+        scenario "should handle the supplied email already existing" do
           user.save
           OmniAuth.config.mock_auth[:open_id][:info] = {
             :email => user.email
@@ -165,7 +165,7 @@ describe "Sign-up and Sign-in by OmniAuth" do
           expect(page).to have_content 'Email has already been taken'
         end
 
-        it "should handle the supplied username already existing" do
+        scenario "should handle the supplied username already existing" do
           user.save
           OmniAuth.config.mock_auth[:open_id][:info] = {
             :name => user.name
@@ -181,7 +181,7 @@ describe "Sign-up and Sign-in by OmniAuth" do
         end
       end
 
-      it "should handle cancelling an in-progress registration" do
+      scenario "should handle cancelling an in-progress registration" do
         OmniAuth.config.mock_auth[:open_id][:info] = {
           :email => user.email,
           :name => user.name
@@ -205,7 +205,7 @@ describe "Sign-up and Sign-in by OmniAuth" do
         expect(page).not_to have_content "This account will be associated with a third-party provider"
       end
 
-      it "should allow a user to sign up with password and email" do
+      scenario "should allow a user to sign up with password and email" do
         visit new_user_registration_path
         fill_in 'openid_url', with: 'http://pretend.openid.example.com'
         click_button 'submit_openid'
@@ -222,7 +222,7 @@ describe "Sign-up and Sign-in by OmniAuth" do
         expect(page).to have_content 'Welcome! You have signed up successfully.'
       end
 
-      it "should allow a user to sign up without password or email" do
+      scenario "should allow a user to sign up without password or email" do
         visit new_user_registration_path
         fill_in 'openid_url', with: 'http://pretend.openid.example.com'
         click_button 'submit_openid'
@@ -233,7 +233,7 @@ describe "Sign-up and Sign-in by OmniAuth" do
         expect(page).to have_content 'Welcome! You have signed up successfully.'
       end
 
-      it "should handle a failure response" do
+      scenario "should handle a failure response" do
         OmniAuth.config.mock_auth[:open_id] = :unexpected_moose
 
         visit new_user_registration_path
@@ -250,8 +250,8 @@ describe "Sign-up and Sign-in by OmniAuth" do
         expect(page).to have_field('user[password_confirmation]')
       end
 
-      describe "making use of javascript", :js => true do
-        it "should support manual entry of OpenID" do
+      feature "making use of javascript", :js => true do
+        scenario "should support manual entry of OpenID" do
           visit new_user_registration_path
 
           expect(page).to have_content('Sign up using a third party')
@@ -268,7 +268,7 @@ describe "Sign-up and Sign-in by OmniAuth" do
           expect(page).to have_content "Your OpenID authentication succeeded"
         end
 
-        it "should support Google with no parameter" do
+        scenario "should support Google with no parameter" do
           visit new_user_registration_path
 
           expect(page).to have_content('Sign up using a third party')
@@ -280,7 +280,7 @@ describe "Sign-up and Sign-in by OmniAuth" do
           expect(page).not_to have_content "Sign up using a third party"
           expect(page).to have_content "Your Google authentication succeeded"
         end
-        it "should support Yahoo with no parameter" do
+        scenario "should support Yahoo with no parameter" do
           visit new_user_registration_path
 
           expect(page).to have_content('Sign up using a third party')
@@ -292,7 +292,7 @@ describe "Sign-up and Sign-in by OmniAuth" do
           expect(page).not_to have_content "Sign up using a third party"
           expect(page).to have_content "Your OpenID authentication succeeded"
         end
-        it "should support StackExchange with no parameter" do
+        scenario "should support StackExchange with no parameter" do
           visit new_user_registration_path
 
           expect(page).to have_content('Sign up using a third party')
@@ -304,7 +304,7 @@ describe "Sign-up and Sign-in by OmniAuth" do
           expect(page).not_to have_content "Sign up using a third party"
           expect(page).to have_content "Your OpenID authentication succeeded"
         end
-        it "should support Steam with no parameter" do
+        scenario "should support Steam with no parameter" do
           visit new_user_registration_path
 
           expect(page).to have_content('Sign up using a third party')
@@ -317,7 +317,7 @@ describe "Sign-up and Sign-in by OmniAuth" do
           expect(page).to have_content "Your OpenID authentication succeeded"
         end
 
-        it "should support LiveJournal with a parameter" do
+        scenario "should support LiveJournal with a parameter" do
           visit new_user_registration_path
 
           expect(page).to have_content('Sign up using a third party')
@@ -334,7 +334,7 @@ describe "Sign-up and Sign-in by OmniAuth" do
           expect(page).to have_content "Your OpenID authentication succeeded"
         end
 
-        it "should clear the form between choices" do
+        scenario "should clear the form between choices" do
           visit new_user_registration_path
 
           click_link 'Sign up with OpenID'
@@ -351,7 +351,7 @@ describe "Sign-up and Sign-in by OmniAuth" do
       end
     end
 
-    describe "sign-in" do
+    feature "sign-in" do
       let(:open_id_user) { FactoryGirl.create :open_id_user }
       let(:non_oid_user) { FactoryGirl.create :confirmed_user }
       before(:each) do
@@ -361,7 +361,7 @@ describe "Sign-up and Sign-in by OmniAuth" do
         })
       end
 
-      it "should allow an existing OpenID user to sign in" do
+      scenario "should allow an existing OpenID user to sign in" do
         visit new_user_session_path
         expect(page).to have_content "Sign in using a third party"
         expect(page).to have_content "If you already have an account with one of these providers"
@@ -378,7 +378,7 @@ describe "Sign-up and Sign-in by OmniAuth" do
         expect(page).to have_content "Sign out"
       end
 
-      it "should redirect to sign-up form if an unknown UID is given" do
+      scenario "should redirect to sign-up form if an unknown UID is given" do
         visit new_user_session_path
         expect(page).to have_content "Sign in using a third party"
         expect(page).to have_content "If you already have an account with one of these providers"
@@ -396,7 +396,7 @@ describe "Sign-up and Sign-in by OmniAuth" do
         expect(page).to have_content "Your OpenID authentication succeeded, but we still need some extra details to complete sign up"
       end
 
-      it "should not allow an existing OpenID user to sign in if there is an OpenID error" do
+      scenario "should not allow an existing OpenID user to sign in if there is an OpenID error" do
         visit new_user_session_path
         expect(page).to have_content "Sign in using a third party"
         expect(page).to have_content "If you already have an account with one of these providers"
@@ -413,8 +413,8 @@ describe "Sign-up and Sign-in by OmniAuth" do
         expect(page).to have_content 'Could not authenticate you from OpenID for the following reason: "Illegal penguin"'
       end
 
-      describe "making use of javascript", :js => true do
-        it "should sign in with manual entry of OpenID" do
+      feature "making use of javascript", :js => true do
+        scenario "should sign in with manual entry of OpenID" do
           visit new_user_session_path
 
           expect(page).to have_content('Sign in using a third party')
@@ -432,7 +432,7 @@ describe "Sign-up and Sign-in by OmniAuth" do
           expect(page).to have_content "Sign out"
         end
 
-        it "should sign in with Yahoo with no parameter" do
+        scenario "should sign in with Yahoo with no parameter" do
           visit new_user_session_path
 
           expect(page).to have_content('Sign in using a third party')
@@ -445,7 +445,7 @@ describe "Sign-up and Sign-in by OmniAuth" do
           expect(page).to have_content "Signed in as #{open_id_user.name}"
           expect(page).to have_content "Sign out"
         end
-        it "should sign in with StackExchange with no parameter" do
+        scenario "should sign in with StackExchange with no parameter" do
           visit new_user_session_path
 
           expect(page).to have_content('Sign in using a third party')
@@ -458,7 +458,7 @@ describe "Sign-up and Sign-in by OmniAuth" do
           expect(page).to have_content "Signed in as #{open_id_user.name}"
           expect(page).to have_content "Sign out"
         end
-        it "should sign in with Steam with no parameter" do
+        scenario "should sign in with Steam with no parameter" do
           visit new_user_session_path
 
           expect(page).to have_content('Sign in using a third party')
@@ -471,7 +471,7 @@ describe "Sign-up and Sign-in by OmniAuth" do
           expect(page).to have_content "Signed in as #{open_id_user.name}"
           expect(page).to have_content "Sign out"
         end
-        it "should sign in with Google" do
+        scenario "should sign in with Google" do
           open_id_user.authentications[0].provider ='google'
           open_id_user.authentications[0].save!
           OmniAuth.config.mock_auth[:google_oauth2] = OmniAuth::AuthHash.new({
@@ -492,7 +492,7 @@ describe "Sign-up and Sign-in by OmniAuth" do
           expect(page).to have_content "Sign out"
         end
 
-        it "should sign in with LiveJournal with a parameter" do
+        scenario "should sign in with LiveJournal with a parameter" do
           visit new_user_session_path
 
           expect(page).to have_content('Sign in using a third party')
@@ -512,11 +512,11 @@ describe "Sign-up and Sign-in by OmniAuth" do
       end
     end
 
-    describe "adding and removing OpenID on existing accounts" do
+    feature "adding and removing OpenID on existing accounts" do
       let(:open_id_user) { FactoryGirl.create :open_id_user }
       let(:non_oid_user) { FactoryGirl.create :confirmed_user }
 
-      it "should allow an existing non-OpenID user to add an OpenID" do
+      scenario "should allow an existing non-OpenID user to add an OpenID" do
         login non_oid_user
         visit edit_user_registration_path
 
@@ -541,7 +541,7 @@ describe "Sign-up and Sign-in by OmniAuth" do
         expect(page).to have_link 'Remove', count: 1
       end
 
-      it "should allow an existing OpenID user to add another OpenID" do
+      scenario "should allow an existing OpenID user to add another OpenID" do
         login open_id_user
         visit edit_user_registration_path
 
@@ -569,7 +569,7 @@ describe "Sign-up and Sign-in by OmniAuth" do
         expect(page).to have_link 'Remove', count: 2
       end
 
-      it "should allow an existing multi-OpenID user to remove an OpenID" do
+      scenario "should allow an existing multi-OpenID user to remove an OpenID" do
         auth_two = FactoryGirl.create(:second_openid, user: open_id_user)
         login open_id_user
         open_id_user.email = ''
@@ -588,7 +588,7 @@ describe "Sign-up and Sign-in by OmniAuth" do
         expect(page).to have_link 'Remove', count: 1
       end
 
-      it "should allow an existing OpenID user to remove the last OpenID if they have an email and password" do
+      scenario "should allow an existing OpenID user to remove the last OpenID if they have an email and password" do
         login open_id_user
         open_id_user.encrypted_password = ''
         open_id_user.save!
@@ -636,7 +636,7 @@ describe "Sign-up and Sign-in by OmniAuth" do
         expect(page).not_to have_content "This account is linked with the following authentication methods"
       end
 
-      it "should prevent removal of an authentication the user doesn't own" do
+      scenario "should prevent removal of an authentication the user doesn't own" do
         auth_two = FactoryGirl.create(:second_openid, user: open_id_user)
         login open_id_user
         visit edit_user_registration_path
@@ -664,7 +664,7 @@ describe "Sign-up and Sign-in by OmniAuth" do
         expect(page).to have_link 'Remove', count: 1
       end
 
-      it "should be a no-op if a logged-in user adds an existing OpenID they own" do
+      scenario "should be a no-op if a logged-in user adds an existing OpenID they own" do
         login open_id_user
         visit edit_user_registration_path
 
@@ -682,7 +682,7 @@ describe "Sign-up and Sign-in by OmniAuth" do
         expect(page).to have_link 'Remove', count: 1
       end
 
-      it "should warn and fail if a logged-in user adds an existing OpenID they don't own" do
+      scenario "should warn and fail if a logged-in user adds an existing OpenID they don't own" do
         login non_oid_user
         visit edit_user_registration_path
 
@@ -699,7 +699,7 @@ describe "Sign-up and Sign-in by OmniAuth" do
         expect(page).not_to have_content "This account is linked with the following authentication methods"
       end
 
-      describe "by javascript", :js => true do
+      feature "by javascript", :js => true do
         before(:each) do
           OmniAuth.config.mock_auth[:open_id] = OmniAuth::AuthHash.new({
             :provider => open_id_user.authentications[0].provider,
@@ -707,7 +707,7 @@ describe "Sign-up and Sign-in by OmniAuth" do
           })
         end
 
-        it "should allow adding a manual URL" do
+        scenario "should allow adding a manual URL" do
           login non_oid_user
           visit edit_user_registration_path
 
@@ -728,7 +728,7 @@ describe "Sign-up and Sign-in by OmniAuth" do
           expect(page).to have_link 'Remove', count: 1
         end
 
-        it "should allow adding Google with no parameter" do
+        scenario "should allow adding Google with no parameter" do
           login open_id_user
           visit edit_user_registration_path
 
@@ -745,7 +745,7 @@ describe "Sign-up and Sign-in by OmniAuth" do
           expect(page).to have_css('.auth-nickname', :text => 'Google')
           expect(page).to have_link 'Remove', count: 2
         end
-        it "should allow adding Yahoo with no parameter" do
+        scenario "should allow adding Yahoo with no parameter" do
           login open_id_user
           visit edit_user_registration_path
 
@@ -762,7 +762,7 @@ describe "Sign-up and Sign-in by OmniAuth" do
           expect(page).to have_css('.auth-nickname', :text => 'Yahoo')
           expect(page).to have_link 'Remove', count: 2
         end
-        it "should allow adding StackExchange with no parameter" do
+        scenario "should allow adding StackExchange with no parameter" do
           login open_id_user
           visit edit_user_registration_path
 
@@ -779,7 +779,7 @@ describe "Sign-up and Sign-in by OmniAuth" do
           expect(page).to have_css('.auth-nickname', :text => 'StackExchange')
           expect(page).to have_link 'Remove', count: 2
         end
-        it "should allow adding Steam with no parameter" do
+        scenario "should allow adding Steam with no parameter" do
           login open_id_user
           visit edit_user_registration_path
 
@@ -796,7 +796,7 @@ describe "Sign-up and Sign-in by OmniAuth" do
           expect(page).to have_css('.auth-nickname', :text => 'Steam')
           expect(page).to have_link 'Remove', count: 2
         end
-          it "should allow adding LiveJournal with a parameter" do
+          scenario "should allow adding LiveJournal with a parameter" do
           login non_oid_user
           visit edit_user_registration_path
 
@@ -817,7 +817,7 @@ describe "Sign-up and Sign-in by OmniAuth" do
           expect(page).to have_link 'Remove', count: 1
         end
 
-        it "should handle removing an OpenID" do
+        scenario "should handle removing an OpenID" do
           auth_two = FactoryGirl.create(:second_openid, user: open_id_user)
           login open_id_user
           visit edit_user_registration_path
@@ -834,7 +834,7 @@ describe "Sign-up and Sign-in by OmniAuth" do
           expect(page).to have_link 'Remove', count: 1
         end
 
-        it "should handle failure to remove the last OpenID" do
+        scenario "should handle failure to remove the last OpenID" do
           login open_id_user
           open_id_user.email = ''
           open_id_user.save!
@@ -854,7 +854,7 @@ describe "Sign-up and Sign-in by OmniAuth" do
       end
     end
 
-    describe "adding and removing password to OpenID account" do
+    feature "adding and removing password to OpenID account" do
       let(:user) do
         user = FactoryGirl.create :open_id_user
         user.encrypted_password = ""
@@ -874,7 +874,7 @@ describe "Sign-up and Sign-in by OmniAuth" do
         expect(page).to have_content "Signed in as #{user.name}"
       end
 
-      it "should allow an existing OpenID user with no password to add one, then remove it" do
+      scenario "should allow an existing OpenID user with no password to add one, then remove it" do
         visit edit_user_registration_path
 
         expect(page).not_to have_field 'Remove password'
@@ -901,7 +901,7 @@ describe "Sign-up and Sign-in by OmniAuth" do
       end
     end
 
-    describe "adding and removing email to OpenID account" do
+    feature "adding and removing email to OpenID account" do
       let(:user) do
         user = FactoryGirl.create :open_id_user
         user.email = ""
@@ -921,7 +921,7 @@ describe "Sign-up and Sign-in by OmniAuth" do
         expect(page).to have_content "Signed in as #{user.name}"
       end
 
-      it "should allow an existing OpenID user with no email to add one, then remove it" do
+      scenario "should allow an existing OpenID user with no email to add one, then remove it" do
         visit edit_user_registration_path
 
         fill_in 'Email', with: user.email
@@ -939,8 +939,8 @@ describe "Sign-up and Sign-in by OmniAuth" do
 
   # Because we mock the response, there's not a lot of point doing the
   # full suite of tests for Facebook
-  describe "Facebook", :js => true do
-    describe "sign-up" do
+  feature "Facebook", :js => true do
+    feature "sign-up" do
       let(:user) { FactoryGirl.build(:user) }
       before(:each) do
         OmniAuth.config.mock_auth[:facebook] = OmniAuth::AuthHash.new({
@@ -951,7 +951,7 @@ describe "Sign-up and Sign-in by OmniAuth" do
         })
       end
 
-      it "should support Facebook with no parameter" do
+      scenario "should support Facebook with no parameter" do
         visit new_user_registration_path
 
         expect(page).to have_content('Sign up using a third party')

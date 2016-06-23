@@ -1,16 +1,16 @@
 require 'rails_helper'
 
-describe "UserPasswords" do
+feature "UserPasswords" do
   let(:user) { FactoryGirl.create(:confirmed_user) }
 
-  it "is linked from Sign In page" do
+  scenario "is linked from Sign In page" do
     visit new_user_session_path
     expect(page).to have_content 'Forgot your password?'
     click_link 'Forgot your password?'
     expect(current_path).to eql new_user_password_path
   end
 
-  it "handles a request to reset password" do
+  scenario "handles a request to reset password" do
     visit new_user_password_path
     fill_in 'Email', with: user.email
     click_button 'Send me reset password instructions'
@@ -41,15 +41,15 @@ describe "UserPasswords" do
     login user
   end
 
-  describe "password reset failures" do
-    it "doesn't send instructions to an unregistered user" do
+  feature "password reset failures" do
+    scenario "doesn't send instructions to an unregistered user" do
       visit new_user_password_path
       fill_in 'Email', with: "alt.#{user.email}"
       click_button 'Send me reset password instructions'
       expect(page).to have_content 'Email not found'
     end
 
-    it "doesn't accept an invalid token" do
+    scenario "doesn't accept an invalid token" do
       visit new_user_password_path
       fill_in 'Email', with: user.email
       click_button 'Send me reset password instructions'
@@ -70,7 +70,7 @@ describe "UserPasswords" do
       expect(page).to have_content 'Reset password token is invalid'
     end
 
-    it "doesn't accept invalid passwords" do
+    scenario "doesn't accept invalid passwords" do
       visit new_user_password_path
       fill_in 'Email', with: user.email
       click_button 'Send me reset password instructions'

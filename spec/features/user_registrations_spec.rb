@@ -1,12 +1,12 @@
 require 'rails_helper'
 
-describe "UserRegistrations" do
-  it "is linked from the homepage" do
+feature "UserRegistrations" do
+  scenario "is linked from the homepage" do
     visit '/'
     expect(page).to have_link('Sign up')
   end
 
-  it "processes sign-up (not confirmation)" do
+  scenario "processes sign-up (not confirmation)" do
     user = FactoryGirl.build(:user)
     visit '/'
     click_link 'Sign up'
@@ -25,13 +25,13 @@ describe "UserRegistrations" do
     expect(text_body).to include 'You can confirm your account through the link below:'
   end
 
-  describe "validation errors on create" do
+  feature "validation errors on create" do
     let(:user) { FactoryGirl.build(:user) }
     before(:each) do
       visit new_user_registration_path
     end
 
-    it "fails if username is missing" do
+    scenario "fails if username is missing" do
       fill_in 'Email', with: user.email
       fill_in 'Password', with: user.password
       fill_in 'Password confirmation', with: user.password
@@ -40,7 +40,7 @@ describe "UserRegistrations" do
       expect(page).to have_content "Username can't be blank"
     end
 
-    it "fails if email is missing or invalid" do
+    scenario "fails if email is missing or invalid" do
       fill_in 'Username', with: user.name
       fill_in 'Password', with: user.password
       fill_in 'Password confirmation', with: user.password
@@ -68,7 +68,7 @@ describe "UserRegistrations" do
       expect(page).to have_content "A message with a confirmation link has been sent to your email address."
     end
 
-    it "fails if password is missing or invalid" do
+    scenario "fails if password is missing or invalid" do
       fill_in 'Username', with: user.name
       fill_in 'Email', with: user.email
       click_button 'Sign up'
@@ -89,7 +89,7 @@ describe "UserRegistrations" do
       expect(page).to have_content "Password is too short (minimum is 5 characters)"
     end
 
-    it "fails if username already exists modulo case" do
+    scenario "fails if username already exists modulo case" do
       fill_in 'Username', with: user.name
       fill_in 'Email', with: user.email
       fill_in 'Password', with: user.password
@@ -114,18 +114,18 @@ describe "UserRegistrations" do
     end
   end
 
-  describe "edit registrations" do
+  feature "edit registrations" do
     let(:user) { FactoryGirl.create(:confirmed_user) }
     before(:each) { login user }
 
-    it "should be linked from the homepage" do
+    scenario "should be linked from the homepage" do
       visit '/'
       expect(page).to have_link(user.name)
       click_link user.name
       expect(current_path).to eql edit_user_registration_path
     end
 
-    it "should let you change your username" do
+    scenario "should let you change your username" do
       visit edit_user_registration_path
       fill_in 'Username', with: "#{user.name}AlterEgo"
       click_button 'Update'
@@ -137,7 +137,7 @@ describe "UserRegistrations" do
       login user
     end
 
-    it "should let you change your email address" do
+    scenario "should let you change your email address" do
       visit edit_user_registration_path
       fill_in 'Email', with: "alt.#{user.email}"
       click_button 'Update'
@@ -151,7 +151,7 @@ describe "UserRegistrations" do
       expect(text_body).to include 'You can confirm your account through the link below:'
     end
 
-    it "should let you change your password" do
+    scenario "should let you change your password" do
       visit edit_user_registration_path
       fill_in 'Email', with: user.email
       fill_in 'Password', with: "another#{user.password}"
@@ -165,10 +165,10 @@ describe "UserRegistrations" do
       login user
     end
 
-    describe "validation errors on edit" do
+    feature "validation errors on edit" do
       before(:each) { visit edit_user_registration_path }
 
-      it "fails if email is missing or invalid" do
+      scenario "fails if email is missing or invalid" do
         fill_in 'Email', with: ''
         click_button 'Update'
         expect(page).to have_content "Email can't be blank"
@@ -191,7 +191,7 @@ describe "UserRegistrations" do
         expect(page).to have_content "You updated your account successfully, but we need to verify"
       end
 
-      it "fails if new password is missing or invalid" do
+      scenario "fails if new password is missing or invalid" do
         fill_in 'Password', with: user.password + "new"
         click_button 'Update'
         expect(page).to have_content "Password confirmation doesn't match Password"
@@ -209,10 +209,10 @@ describe "UserRegistrations" do
     end
   end
 
-  describe "tests requiring JavaScript", js: true do
+  feature "tests requiring JavaScript", js: true do
     self.use_transactional_fixtures = false
 
-    it "should allow the user to destroy their account" do
+    scenario "should allow the user to destroy their account" do
       leaving_user = FactoryGirl.create(:confirmed_user)
       login leaving_user
       visit edit_user_registration_path
