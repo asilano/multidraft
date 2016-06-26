@@ -1,0 +1,10 @@
+%p#notice= notice
+
+%p
+  %b Name:
+  = @draft.name
+%p
+  %b State:
+  = @draft.state
+
+= link_to 'Back', drafts_path

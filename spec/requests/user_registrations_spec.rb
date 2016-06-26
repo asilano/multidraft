@@ -46,7 +46,7 @@ describe 'UserRegistrations requests' do
     before(:each) { user.confirm }
 
     it "prevents visiting the edit page when not logged in" do
-      get edit_user_registration_path, id: user.to_param
+      get edit_user_registration_path
 
       expect(response).to redirect_to(new_user_session_path)
       follow_redirect!
@@ -56,7 +56,7 @@ describe 'UserRegistrations requests' do
     describe 'when logged in' do
       before(:each) { login user }
       it "permits visiting your edit page" do
-        get edit_user_registration_path, id: user.to_param
+        get edit_user_registration_path
 
         expect(response.status).to eq 200
         expect(response).to render_template :edit

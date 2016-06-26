@@ -1,0 +1,23 @@
+%h1 Listing drafts
+
+%table
+  %thead
+    %tr
+      %th Name
+      %th State
+      %th
+      %th
+      %th
+
+  %tbody
+    - @drafts.each do |draft|
+      %tr
+        %td= draft.name
+        %td= draft.state
+        %td= link_to 'Show', draft
+        %td= link_to 'Edit', edit_draft_path(draft)
+        %td= link_to 'Destroy', draft, :method => :delete, :data => { :confirm => 'Are you sure?' }
+
+%br
+
+= link_to 'New Draft', new_draft_path

@@ -5,10 +5,12 @@ require File.expand_path('../../config/environment', __FILE__)
 abort("The Rails environment is running in production mode!") if Rails.env.production?
 require 'spec_helper'
 require 'rspec/rails'
-require 'capybara/rspec'
 # Add additional requires below this line. Rails is not loaded until this point!
+require 'capybara/rspec'
+require 'devise'
 require_relative './support/mailer_macros'
 require_relative './support/login_macros'
+require_relative './support/controller_macros'
 
 # Requires supporting ruby files with custom matchers and macros, etc, in
 # spec/support/ and its subdirectories. Files matching `spec/**/*_spec.rb` are
@@ -70,6 +72,8 @@ RSpec.configure do |config|
 
   config.include Rails.application.routes.url_helpers
   config.include(MailerMacros)
+  config.include Devise::TestHelpers, :type => :controller
+  config.extend ControllerMacros, :type => :controller
   config.include Warden::Test::Helpers
   config.include FixAll
   config.include LoginMacros::Feature, type: :feature
@@ -93,6 +97,11 @@ RSpec.configure do |config|
   config.after(:each) do
     DatabaseCleaner.clean
   end
+end
+
+Capybara.configure do |config|
+  config.app_host   = 'http://127.0.0.1'
+  config.server_port = 3000
 end
 
 def node(html)
