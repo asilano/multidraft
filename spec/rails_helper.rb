@@ -99,11 +99,6 @@ RSpec.configure do |config|
   end
 end
 
-Capybara.configure do |config|
-  config.app_host   = 'http://127.0.0.1'
-  config.server_port = 3000
-end
-
 def node(html)
   Capybara::Node::Simple.new(html)
 end
