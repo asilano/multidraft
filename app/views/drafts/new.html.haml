@@ -1,5 +1,16 @@
-%h1 New draft
-
-= render 'form'
+= form_for @draft do |f|
+  - if @draft.errors.any?
+    #error_explanation
+      %h2= "#{pluralize(@draft.errors.count, "error")} prohibited this draft from being saved:"
+      %ul
+        - @draft.errors.full_messages.each do |msg|
+          %li= msg
+  %fieldset
+    %legend Create a new draft
+    .field
+      = f.label :name
+      = f.text_field :name
+    .actions
+      = f.submit 'Create'
 
 = link_to 'Back', drafts_path
