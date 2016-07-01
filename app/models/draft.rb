@@ -11,6 +11,9 @@ class Draft < ActiveRecord::Base
   validates :name, presence: true, uniqueness: true
   validates :state, presence: true, numericality: true, inclusion: { in: States::AllStates }
 
+  has_many :drafters, dependent: :destroy
+  has_many :users, -> { uniq }, through: :drafters
+
   before_validation :init_state, on: :create
 
 private

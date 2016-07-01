@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160617081401) do
+ActiveRecord::Schema.define(version: 20160630141255) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -21,16 +21,16 @@ ActiveRecord::Schema.define(version: 20160617081401) do
     t.string   "provider"
     t.string   "uid"
     t.string   "nickname"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.datetime "created_at"
+    t.datetime "updated_at"
   end
 
   add_index "authentications", ["user_id"], name: "index_authentications_on_user_id", using: :btree
 
   create_table "card_instances", force: true do |t|
     t.integer  "card_template_id"
-    t.datetime "created_at",       null: false
-    t.datetime "updated_at",       null: false
+    t.datetime "created_at"
+    t.datetime "updated_at"
     t.string   "missing_slot"
   end
 
@@ -39,8 +39,8 @@ ActiveRecord::Schema.define(version: 20160617081401) do
     t.time     "last_modified",       default: '2000-01-01 00:00:00', null: false
     t.boolean  "remote_dictionary"
     t.string   "dictionary_location",                                 null: false
-    t.datetime "created_at",                                          null: false
-    t.datetime "updated_at",                                          null: false
+    t.datetime "created_at"
+    t.datetime "updated_at"
     t.text     "booster_distr"
   end
 
@@ -51,10 +51,20 @@ ActiveRecord::Schema.define(version: 20160617081401) do
     t.string   "name",                           null: false
     t.string   "slot",                           null: false
     t.text     "fields"
-    t.datetime "created_at",                     null: false
-    t.datetime "updated_at",                     null: false
+    t.datetime "created_at"
+    t.datetime "updated_at"
     t.string   "layout",      default: "normal"
   end
+
+  create_table "drafters", force: true do |t|
+    t.integer  "user_id"
+    t.integer  "draft_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "drafters", ["draft_id"], name: "index_drafters_on_draft_id", using: :btree
+  add_index "drafters", ["user_id"], name: "index_drafters_on_user_id", using: :btree
 
   create_table "drafts", force: true do |t|
     t.string   "name",       null: false
@@ -78,8 +88,8 @@ ActiveRecord::Schema.define(version: 20160617081401) do
     t.datetime "confirmed_at"
     t.datetime "confirmation_sent_at"
     t.string   "unconfirmed_email"
-    t.datetime "created_at",                          null: false
-    t.datetime "updated_at",                          null: false
+    t.datetime "created_at"
+    t.datetime "updated_at"
     t.string   "name"
   end
 

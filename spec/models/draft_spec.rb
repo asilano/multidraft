@@ -19,4 +19,9 @@ RSpec.describe Draft, type: :model do
       end
     end
   end
+
+  describe 'relations' do
+    it { should have_many :drafters }
+    it { should have_many(:users).through(:drafters) }
+  end
 end

@@ -8,17 +8,17 @@ class User < ActiveRecord::Base
   has_many :authentications, dependent: :destroy
   accepts_nested_attributes_for :authentications
 
+  has_many :drafters, dependent: :destroy
+  has_many :drafts, -> { uniq }, through: :drafters
+
   attr_accessor :remove_password
   normalize_attributes :name, :email
 
-  validates_presence_of :name
-  validates_presence_of :email, :if => :email_required?
-  validates_uniqueness_of :name, :email, :case_sensitive => false, :allow_blank => true
-  validates_format_of :email, :with => /\A[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}\z/i, :allow_blank => true
-
-  validates_presence_of :password, :if => :password_required?
-  validates_confirmation_of :password, :if => :password_required?
-  validates_length_of :password, :minimum => 5, :allow_blank => true
+  validates :name, presence: true, uniqueness: { case_sensitive: false, allow_blank: true }
+  validates :email, presence: { if: :email_required? },
+                    format: { with: /\A[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}\z/i, allow_blank: true },
+                    uniqueness: { case_sensitive: false }
+  validates :password, presence: true, confirmation: true, length: { minimum: 5 }, if: :password_required?
 
   before_save :auto_confirm_openid, :on => 'create'
 
