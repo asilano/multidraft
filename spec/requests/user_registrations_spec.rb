@@ -35,10 +35,10 @@ describe 'UserRegistrations requests' do
 
     expect(response.status).to eq 200
     expect(response).to render_template :new
-    expect(response.body).to include("Username can't be blank")
-    expect(response.body).to include("Password can't be blank")
+    expect(response.body).to include(CGI.escape_html "Username can't be blank")
+    expect(response.body).to include(CGI.escape_html "Password can't be blank")
     expect(response.body).to include("Email is invalid")
-    expect(response.body).to include("Password confirmation doesn't match Password")
+    expect(response.body).to include(CGI.escape_html "Password confirmation doesn't match Password")
   end
 
   describe 'requiring an existing user' do
@@ -83,10 +83,10 @@ describe 'UserRegistrations requests' do
 
         expect(response.status).to eq 200
         expect(response).to render_template :edit
-        expect(response.body).not_to include("Username can't be blank")
-        expect(response.body).to include("Password can't be blank")
+        expect(response.body).not_to include(CGI.escape_html "Username can't be blank")
+        expect(response.body).to include(CGI.escape_html "Password can't be blank")
         expect(response.body).to include("Email is invalid")
-        expect(response.body).to include("Password confirmation doesn't match Password")
+        expect(response.body).to include(CGI.escape_html "Password confirmation doesn't match Password")
       end
 
       it "deletes by DELETE" do
