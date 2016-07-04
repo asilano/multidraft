@@ -250,6 +250,15 @@ GEM
       json (~> 1.8)
       simplecov-html (~> 0.10.0)
     simplecov-html (0.10.0)
+    slim (3.0.6)
+      temple (~> 0.7.3)
+      tilt (>= 1.3.3, < 2.1)
+    slim-rails (3.0.1)
+      actionmailer (>= 3.1, < 5.0)
+      actionpack (>= 3.1, < 5.0)
+      activesupport (>= 3.1, < 5.0)
+      railties (>= 3.1, < 5.0)
+      slim (~> 3.0)
     sprockets (3.6.0)
       concurrent-ruby (~> 1.0)
       rack (> 1, < 3)
@@ -261,6 +270,7 @@ GEM
       activerecord (>= 3.0)
       activesupport (>= 3.0)
       polyamorous (~> 1.1.0)
+    temple (0.7.6)
     term-ansicolor (1.3.2)
       tins (~> 1.0)
     thin (1.7.0)
@@ -321,6 +331,7 @@ DEPENDENCIES
   sassy-buttons
   selenium-webdriver
   shoulda-matchers
+  slim-rails
   squeel
   thin
   timecop

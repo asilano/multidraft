@@ -1,0 +1,5 @@
+tr(id="auth_row_#{authentication.id}")
+  td.auth-nickname= authentication.nickname
+  td
+    = link_to remove_authentication_path(authentication), :method => :delete, :remote => true, :class => 'auth-remove' do
+      span.icon-cancel-circle(aria-hidden=true) Remove

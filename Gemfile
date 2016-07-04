@@ -65,6 +65,7 @@ end
 gem 'jquery-rails'
 gem 'haml'
 gem 'haml-rails'
+gem 'slim-rails'
 
 gem 'attribute_normalizer'
 gem 'andand'

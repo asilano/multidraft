@@ -1,14 +1,14 @@
 = form_tag generate_booster_path, remote: true, class: 'gen-booster' do
-  %fieldset
-    %legend Magic: the Gathering sets
+  fieldset
+    legend Magic: the Gathering sets
     .fields
       = hidden_field_tag :multiverse, :false
-      = select_tag :id, option_groups_from_collection_for_select(CardSet::RealMagicSets, :second, :first, :id, :name)
+      = select_tag(:id, option_groups_from_collection_for_select(CardSet::RealMagicSets, :second, :first, :id, :name))
       = submit_tag 'Generate booster', disable_with: 'Generating...'
 
 = form_tag generate_booster_path, remote: true, class: 'gen-booster' do
-  %fieldset
-    %legend Multiverse sets
+  fieldset
+    legend Multiverse sets
     .fields
       = hidden_field_tag :multiverse, :true
       = text_field_tag :uri, nil, placeholder: 'JSON URL for set', data: { multiverse_select: multiverse_sets_path }

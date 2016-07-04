@@ -1,22 +1,22 @@
-!!! html5
-%html.no-js
-  %head
-    %title Multidraft
-    = stylesheet_link_tag    "application", :media => "all"
+doctype html
+html.no-js
+  head
+    title Multidraft
+    = stylesheet_link_tag "application", :media => "all"
     = yield :stylesheets
     = render partial: 'shared/favicon_links'
     = javascript_include_tag "application"
-    :javascript
+    javascript:
       document.documentElement.className = "js";
       $(function(){$('.nojs-section').remove()});
       window.new_user_session_path = '#{new_user_session_path}'
     = csrf_meta_tags
-    %meta{name: 'viewport', content: 'width=device-width, minimum-scale=1.0'}
+    meta(name='viewport', content='width=device-width, minimum-scale=1.0')
 
-  %body
-    %header
+  body
+    header
       #site-logo= link_to 'Multidraft', root_path
-      %nav
+      nav
         - if user_signed_in?
           = raw("Signed in as " + link_to(current_user.name, edit_user_registration_path) + " | " + link_to('Sign out', destroy_user_session_path, method: :delete))
         - else
