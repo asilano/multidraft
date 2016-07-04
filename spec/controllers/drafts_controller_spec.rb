@@ -72,7 +72,7 @@ RSpec.describe DraftsController, type: :controller do
   end
 
   context "when signed in" do
-    login_user
+    before(:each) { login_user }
 
     describe "GET #index" do
       it "assigns all drafts as @drafts" do

@@ -1,6 +1,6 @@
 Multidraft::Application.routes.draw do
   resources :drafts, except: [:edit, :update]
-
+  resources :drafters, only: [:create, :destroy]
   devise_for :users, :controllers => { :omniauth_callbacks => "users/omniauth_callbacks",
                                        :registrations => 'users/registrations' }
   devise_scope :user do

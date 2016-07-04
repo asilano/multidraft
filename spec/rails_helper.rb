@@ -73,7 +73,7 @@ RSpec.configure do |config|
   config.include Rails.application.routes.url_helpers
   config.include(MailerMacros)
   config.include Devise::TestHelpers, :type => :controller
-  config.extend ControllerMacros, :type => :controller
+  config.include ControllerMacros::SpecMethods, :type => :controller
   config.include Warden::Test::Helpers
   config.include FixAll
   config.include LoginMacros::Feature, type: :feature
