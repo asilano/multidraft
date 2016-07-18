@@ -117,6 +117,10 @@ nav {
   }
 }
 
+.left-indent {
+  margin-left: 2em;
+}
+
 button, input[type=button], input[type=submit], a.button {
   @include sassy-button;
   font-family: inherit;
@@ -411,3 +415,20 @@ table.auth-list {
 .invisible-sizer {
   visibility: hidden;
 }
+
+.central-notice {
+  width: 60%;
+  margin: 10em auto;
+  border-radius: 1em;
+  border: 2px solid $neutral-border-colour;
+  background-color: $neutral-bg-colour;
+  padding: 2em 0;
+  text-align: center;
+
+  .notice-text {
+    font-size: 2em;
+    margin: 0.5em;
+  }
+}
+
+@import "drafts"

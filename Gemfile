@@ -36,6 +36,7 @@ group :development do
   gem "better_errors", '~> 1.0'
   gem "binding_of_caller"
   gem "erb2haml"
+  gem 'i18n-debug'
 end
 
 group :test do

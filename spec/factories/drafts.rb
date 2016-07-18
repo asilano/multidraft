@@ -1,6 +1,6 @@
 FactoryGirl.define do
   factory :draft do
-    name "MyString"
+    sequence(:name) { |n| "Draft number #{n}" }
   end
 
   factory :bad_draft, class: Draft do

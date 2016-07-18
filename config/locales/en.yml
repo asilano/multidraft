@@ -18,6 +18,20 @@ en:
             "%{count} cards in '%{card_set_name}' were received without names. They have been named 'Unnamed Card 1' etc."
         cards_without_rarity:
           "The following cards in '%{card_set_name}' were received without rarities. They have been defaulted to Common: %{card_names}"
+  drafts:
+    draft_list:
+      waiting_count: "Drafts waiting to start: %{count}"
+      running_count: "Drafts in progress: %{count}"
+      ended_count: "Drafts completed: %{count}"
+      third_header:
+        waiting: Number of Drafters
+        running: ''
+        ended: ''
+      states:
+        :1: Waiting to start
+        :2: Drafting
+        :3: Deck-building
+        :4: Ended
   google_oauth2: Google
   open_id: OpenID
   facebook: Facebook

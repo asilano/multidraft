@@ -1,0 +1,83 @@
+.draft-group {
+  border-radius: 2px;
+  padding: 5px;
+  &:not(:last-child) {
+    margin-bottom: 2em;
+  }
+
+  &.user-drafts {
+    background: $neutral-bg-colour;
+    box-shadow: 2px 2px 2px black, inset 1px 1px $neutral-border-colour;
+  }
+
+  //&.nonuser-drafts {
+  //  box-shadow: inset 2px 2px 2px black, inset -1px -1px $neutral-border-colour;
+  //}
+
+  .group--header {
+    font-size: 1.5em;
+    font-weight: bold;
+  }
+}
+
+.draft-list {
+  &:not(:last-child) {
+    margin-bottom: 2em;
+  }
+}
+
+.draft-table {
+  display: table;
+  border-collapse: collapse;
+  width: 80%;
+  margin: 0 5em;
+
+  .table-row {
+    display: table-row;
+    &:not(:first-child) {
+      border-top: 1px solid black;
+    }
+    &.table-header-row {
+      border-bottom: 2px solid black;
+    }
+
+    @at-root a.table-row {
+      text-decoration: none;
+      color: inherit;
+    }
+
+    @mixin row-with-hover($colour) {
+      background: $colour;
+      &:hover {
+        background: lighten($colour, 5%);
+      }
+    }
+
+    &.draft--waiting {
+      @include row-with-hover($notice-bg-colour);
+    }
+
+    &.draft--running {
+      @include row-with-hover(darken($notice-bg-colour, 10%));
+    }
+
+    &.draft--ended {
+      @include row-with-hover(desaturate($notice-bg-colour, 100%));
+    }
+  }
+
+  .table-cell {
+    display: table-cell;
+    &:not(:first-child) {
+      padding-left: 5px;
+    }
+
+    &.draft-id {
+      width: 4em;
+      text-align: center;
+    }
+    &.draft-name {
+      width: 300px;
+    }
+  }
+}

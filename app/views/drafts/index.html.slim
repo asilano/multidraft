@@ -1,0 +1,37 @@
+- if @drafts.empty?
+  .central-notice
+    .notice-text There aren't any drafts at the moment.
+    .block-button
+      = link_to 'Create one!', new_draft_path, class: 'button'
+- else
+  - if current_user
+    - drafts = current_user.drafts
+    .draft-group.user-drafts
+      .group--header Your drafts
+      - if drafts.empty?
+        .left-indent You aren't in any drafts at the moment.
+      - if !drafts.waiting.empty?
+        = render partial: 'draft_list', object: drafts.waiting, locals: { type: :waiting }
+
+      - if !drafts.running.empty?
+        = render partial: 'draft_list', object: drafts.running, locals: { type: :running }
+
+      - if !drafts.ended.empty?
+        = render partial: 'draft_list', object: drafts.ended, locals: { type: :ended }
+
+  .draft-group.nonuser-drafts
+    - drafts = @drafts
+    - if current_user
+      .group--header Other drafts
+      - drafts = @drafts.without_user(current_user.id)
+    - if !drafts.waiting.empty?
+      = render partial: 'draft_list', object: drafts.waiting, locals: { type: :waiting }
+
+    - if !drafts.running.empty?
+      = render partial: 'draft_list', object: drafts.running, locals: { type: :running }
+
+    - if !drafts.ended.empty?
+      = render partial: 'draft_list', object: drafts.ended, locals: { type: :ended }
+  br
+
+  = link_to 'New draft', new_draft_path
