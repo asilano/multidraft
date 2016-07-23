@@ -1,10 +1,24 @@
-p#notice= notice
+h1.draft-name= @draft.name
 
-p
-  b Name:
-  = @draft.name
-p
-  b State:
-  = @draft.state
+- if @draft.drafters.empty?
+  .central-notice
+    .notice-text There are no drafters in this draft.
+    .sub-notice-text Not even the creator...
+    - if @draft.state == Draft::States::WAITING && !(current_user && @draft.drafters.pluck(:user_id).include?(current_user.id))
+      = form_for(Drafter.new) do |f|
+        = f.hidden_field :draft_id, value: @draft.id
+        = f.hidden_field :user_id, value: current_user.id
+        = f.submit 'Join this draft!'
+- else
+  table.drafters-list
+    thead: tr: th Drafters
+    tbody
+      - @draft.drafters.each do |drafter|
+        tr.row--drafter: td.cell--drafter-name= drafter.user.name
+  - if @draft.state == Draft::States::WAITING && !(current_user && @draft.drafters.pluck(:user_id).include?(current_user.id))
+    = form_for(Drafter.new) do |f|
+      = f.hidden_field :draft_id, value: @draft.id
+      = f.hidden_field :user_id, value: current_user.id
+      = f.submit 'Join this draft!'
 
-= link_to 'Back', drafts_path
+= link_to 'All Drafts', drafts_path

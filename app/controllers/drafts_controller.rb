@@ -1,6 +1,7 @@
 class DraftsController < ApplicationController
   before_action :set_draft, only: [:show, :destroy]
   before_filter :authenticate_user!, except: [:index]
+  rescue_from ActiveRecord::RecordNotFound, :with => :record_not_found
 
   respond_to :html
 
@@ -36,5 +37,9 @@ class DraftsController < ApplicationController
 
     def draft_params
       params.require(:draft).permit(:name)
+    end
+
+    def record_not_found
+      redirect_to drafts_path, notice: t('drafts.not_found')
     end
 end

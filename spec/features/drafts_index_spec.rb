@@ -28,8 +28,8 @@ feature "/drafts" do
 
         expect(page).to have_content("Drafts waiting to start: #{drafts.length}")
         drafts.each do |draft|
-          expect(page).to have_css('.draft--waiting .draft-id', text: draft.id)
-          expect(page).to have_css('.draft--waiting .draft-name', text: draft.name)
+          expect(page).to have_css('.draft--waiting .cell--draft-id', text: draft.id)
+          expect(page).to have_css('.draft--waiting .cell--draft-name', text: draft.name)
         end
 
         expect(page).to_not have_link("Create one!", href: new_draft_path)
@@ -65,21 +65,21 @@ feature "/drafts" do
 
           expect(page).to have_content("Drafts waiting to start: 2")
           drafts[3..4].each do |draft|
-            expect(page).to have_css('.draft--waiting .draft-id', text: draft.id)
-            expect(page).to have_css('.draft--waiting .draft-name', text: draft.name)
+            expect(page).to have_css('.draft--waiting .cell--draft-id', text: draft.id)
+            expect(page).to have_css('.draft--waiting .cell--draft-name', text: draft.name)
           end
 
           expect(page).to have_content("Drafts in progress: 2")
           drafts[0..1].each do |draft|
-            expect(page).to have_css('.draft--running .draft-id', text: draft.id)
-            expect(page).to have_css('.draft--running .draft-name', text: draft.name)
-            expect(page).to have_css('.draft--running .draft-state', text: I18n.t("drafts.draft_list.states.#{draft.state}"))
+            expect(page).to have_css('.draft--running .cell--draft-id', text: draft.id)
+            expect(page).to have_css('.draft--running .cell--draft-name', text: draft.name)
+            expect(page).to have_css('.draft--running .cell--draft-state', text: I18n.t("drafts.draft_list.states.#{draft.state}"))
           end
 
           expect(page).to have_content("Drafts completed: 1")
           drafts[2..2].each do |draft|
-            expect(page).to have_css('.draft--ended .draft-id', text: draft.id)
-            expect(page).to have_css('.draft--ended .draft-name', text: draft.name)
+            expect(page).to have_css('.draft--ended .cell--draft-id', text: draft.id)
+            expect(page).to have_css('.draft--ended .cell--draft-name', text: draft.name)
           end
 
           expect(page).to_not have_link("Create one!", href: new_draft_path)
@@ -127,21 +127,21 @@ feature "/drafts" do
         within('.nonuser-drafts') do
           expect(page).to have_content("Drafts waiting to start: 2")
           drafts[3..4].each do |draft|
-            expect(page).to have_css('.draft--waiting .draft-id', text: draft.id)
-            expect(page).to have_css('.draft--waiting .draft-name', text: draft.name)
+            expect(page).to have_css('.draft--waiting .cell--draft-id', text: draft.id)
+            expect(page).to have_css('.draft--waiting .cell--draft-name', text: draft.name)
           end
 
           expect(page).to have_content("Drafts in progress: 2")
           drafts[0..1].each do |draft|
-            expect(page).to have_css('.draft--running .draft-id', text: draft.id)
-            expect(page).to have_css('.draft--running .draft-name', text: draft.name)
-            expect(page).to have_css('.draft--running .draft-state', text: I18n.t("drafts.draft_list.states.#{draft.state}"))
+            expect(page).to have_css('.draft--running .cell--draft-id', text: draft.id)
+            expect(page).to have_css('.draft--running .cell--draft-name', text: draft.name)
+            expect(page).to have_css('.draft--running .cell--draft-state', text: I18n.t("drafts.draft_list.states.#{draft.state}"))
           end
 
           expect(page).to have_content("Drafts completed: 1")
           drafts[2..2].each do |draft|
-            expect(page).to have_css('.draft--ended .draft-id', text: draft.id)
-            expect(page).to have_css('.draft--ended .draft-name', text: draft.name)
+            expect(page).to have_css('.draft--ended .cell--draft-id', text: draft.id)
+            expect(page).to have_css('.draft--ended .cell--draft-name', text: draft.name)
           end
         end
 
@@ -168,8 +168,8 @@ feature "/drafts" do
         within('.user-drafts') do
           expect(page).to have_content("Drafts waiting to start: #{user.drafts.length}")
           user.drafts.each do |draft|
-            expect(page).to have_css('.draft--waiting .draft-id', text: draft.id)
-            expect(page).to have_css('.draft--waiting .draft-name', text: draft.name)
+            expect(page).to have_css('.draft--waiting .cell--draft-id', text: draft.id)
+            expect(page).to have_css('.draft--waiting .cell--draft-name', text: draft.name)
           end
         end
 
@@ -177,8 +177,8 @@ feature "/drafts" do
           nonuser_drafts = Draft.all - user.drafts
           expect(page).to have_content("Drafts waiting to start: #{nonuser_drafts.length}")
           nonuser_drafts.each do |draft|
-            expect(page).to have_css('.draft--waiting .draft-id', text: draft.id)
-            expect(page).to have_css('.draft--waiting .draft-name', text: draft.name)
+            expect(page).to have_css('.draft--waiting .cell--draft-id', text: draft.id)
+            expect(page).to have_css('.draft--waiting .cell--draft-name', text: draft.name)
           end
         end
 
@@ -203,42 +203,42 @@ feature "/drafts" do
           within('.user-drafts') do
             expect(page).to have_content("Drafts waiting to start: 2")
             drafts[8..9].each do |draft|
-              expect(page).to have_css('.draft--waiting .draft-id', text: draft.id)
-              expect(page).to have_css('.draft--waiting .draft-name', text: draft.name)
+              expect(page).to have_css('.draft--waiting .cell--draft-id', text: draft.id)
+              expect(page).to have_css('.draft--waiting .cell--draft-name', text: draft.name)
             end
 
             expect(page).to have_content("Drafts in progress: 2")
             drafts[5..6].each do |draft|
-              expect(page).to have_css('.draft--running .draft-id', text: draft.id)
-              expect(page).to have_css('.draft--running .draft-name', text: draft.name)
-              expect(page).to have_css('.draft--running .draft-state', text: I18n.t("drafts.draft_list.states.#{draft.state}"))
+              expect(page).to have_css('.draft--running .cell--draft-id', text: draft.id)
+              expect(page).to have_css('.draft--running .cell--draft-name', text: draft.name)
+              expect(page).to have_css('.draft--running .cell--draft-state', text: I18n.t("drafts.draft_list.states.#{draft.state}"))
             end
 
             expect(page).to have_content("Drafts completed: 1")
             drafts[7..6].each do |draft|
-              expect(page).to have_css('.draft--ended .draft-id', text: draft.id)
-              expect(page).to have_css('.draft--ended .draft-name', text: draft.name)
+              expect(page).to have_css('.draft--ended .cell--draft-id', text: draft.id)
+              expect(page).to have_css('.draft--ended .cell--draft-name', text: draft.name)
             end
           end
 
           within('.nonuser-drafts') do
             expect(page).to have_content("Drafts waiting to start: 2")
             drafts[3..4].each do |draft|
-              expect(page).to have_css('.draft--waiting .draft-id', text: draft.id)
-              expect(page).to have_css('.draft--waiting .draft-name', text: draft.name)
+              expect(page).to have_css('.draft--waiting .cell--draft-id', text: draft.id)
+              expect(page).to have_css('.draft--waiting .cell--draft-name', text: draft.name)
             end
 
             expect(page).to have_content("Drafts in progress: 2")
             drafts[0..1].each do |draft|
-              expect(page).to have_css('.draft--running .draft-id', text: draft.id)
-              expect(page).to have_css('.draft--running .draft-name', text: draft.name)
-              expect(page).to have_css('.draft--running .draft-state', text: I18n.t("drafts.draft_list.states.#{draft.state}"))
+              expect(page).to have_css('.draft--running .cell--draft-id', text: draft.id)
+              expect(page).to have_css('.draft--running .cell--draft-name', text: draft.name)
+              expect(page).to have_css('.draft--running .cell--draft-state', text: I18n.t("drafts.draft_list.states.#{draft.state}"))
             end
 
             expect(page).to have_content("Drafts completed: 1")
             drafts[2..2].each do |draft|
-              expect(page).to have_css('.draft--ended .draft-id', text: draft.id)
-              expect(page).to have_css('.draft--ended .draft-name', text: draft.name)
+              expect(page).to have_css('.draft--ended .cell--draft-id', text: draft.id)
+              expect(page).to have_css('.draft--ended .cell--draft-name', text: draft.name)
             end
           end
 
@@ -277,7 +277,7 @@ feature "/drafts" do
 
         drafts.each.with_index do |d, ix|
           within('.table-row.draft--waiting', text: d.name) do
-            expect(page).to have_css('.draft-drafters', text: "#{d.drafters.count} #{'drafter'.pluralize d.drafters.count}")
+            expect(page).to have_css('.cell--draft-drafters', text: "#{d.drafters.count} #{'drafter'.pluralize d.drafters.count}")
           end
         end
       end

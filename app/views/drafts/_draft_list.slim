@@ -1,17 +1,17 @@
 .draft-list
   .list--header= t(".#{type}_count", count: draft_list.count)
-  - third_cell_class = {waiting: 'draft-drafters', running: 'draft-state', ended: 'draft-placeholder'}
+  - third_cell_class = {waiting: 'cell--draft-drafters', running: 'cell--draft-state', ended: 'cell--draft-placeholder'}
   - third_cell_fn = {waiting: ->(d){ pluralize(d.drafters.count, 'drafter') },
                       running: ->(d){ t(".states.#{d.state}") },
                       ended: ->(d){ '' }}
   .draft-table
     .table-row.table-header-row
-      .table-cell.draft-id Draft #
-      .table-cell.draft-name Name
+      .table-cell.cell--draft-id Draft #
+      .table-cell.cell--draft-name Name
       .table-cell{class=third_cell_class[type]}= t(".third_header.#{type}")
 
     - draft_list.each do |draft|
       = link_to draft, class: "table-row draft--#{type}" do
-        .table-cell.draft-id= draft.id
-        .table-cell.draft-name= draft.name
+        .table-cell.cell--draft-id= draft.id
+        .table-cell.cell--draft-name= draft.name
         .table-cell{class=third_cell_class[type]}= third_cell_fn[type].call(draft)

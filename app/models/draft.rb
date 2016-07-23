@@ -20,7 +20,7 @@ class Draft < ActiveRecord::Base
   scope :running, -> { where(state: [States::DRAFTING, States::DECK_BUILDING])}
   scope :ended, -> { where(state: States::ENDED) }
 
-  scope :without_user, -> (user_id) { includes{drafters}.where{(drafters.user_id != user_id) | (drafters.user_id.eq nil)}.references(:all) }
+  scope :without_user, -> (omit_user_id) { where{id.not_in (Drafter.where{(draft_id == drafts.id) & (user_id == omit_user_id)}.select(:draft_id))} }
 
   before_validation :init_state, on: :create
 

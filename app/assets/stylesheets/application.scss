@@ -429,6 +429,16 @@ table.auth-list {
     font-size: 2em;
     margin: 0.5em;
   }
+
+  .sub-notice-text {
+    margin: -0.5em 0 0.5em;
+  }
+}
+
+#content {
+  h1 {
+    font-size: 2em;
+  }
 }
 
 @import "drafts"

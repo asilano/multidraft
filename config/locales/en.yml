@@ -19,6 +19,7 @@ en:
         cards_without_rarity:
           "The following cards in '%{card_set_name}' were received without rarities. They have been defaulted to Common: %{card_names}"
   drafts:
+    not_found: "Sorry, that draft doesn't seem to exist."
     draft_list:
       waiting_count: "Drafts waiting to start: %{count}"
       running_count: "Drafts in progress: %{count}"
