@@ -1,3 +1,5 @@
+- content_for :title, @draft.name
+
 h1.draft-name= @draft.name
 - in_draft = current_user && @draft.drafters.pluck(:user_id).include?(current_user.id)
 - if @draft.drafters.empty?

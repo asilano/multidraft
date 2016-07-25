@@ -1,7 +1,7 @@
 doctype html
 html.no-js
   head
-    title Multidraft
+    title= ((content_for(:title).andand + " | ") || '') + 'Multidraft'
     = stylesheet_link_tag "application", :media => "all"
     = yield :stylesheets
     = render partial: 'shared/favicon_links'
