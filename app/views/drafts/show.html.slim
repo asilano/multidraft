@@ -1,10 +1,10 @@
 h1.draft-name= @draft.name
-
+- in_draft = current_user && @draft.drafters.pluck(:user_id).include?(current_user.id)
 - if @draft.drafters.empty?
   .central-notice
     .notice-text There are no drafters in this draft.
     .sub-notice-text Not even the creator...
-    - if @draft.state == Draft::States::WAITING && !(current_user && @draft.drafters.pluck(:user_id).include?(current_user.id))
+    - if @draft.state == Draft::States::WAITING && !in_draft
       = form_for(Drafter.new) do |f|
         = f.hidden_field :draft_id, value: @draft.id
         = f.hidden_field :user_id, value: current_user.id
@@ -15,10 +15,13 @@ h1.draft-name= @draft.name
     tbody
       - @draft.drafters.each do |drafter|
         tr.row--drafter: td.cell--drafter-name= drafter.user.name
-  - if @draft.state == Draft::States::WAITING && !(current_user && @draft.drafters.pluck(:user_id).include?(current_user.id))
+  - if @draft.state == Draft::States::WAITING && !in_draft
     = form_for(Drafter.new) do |f|
       = f.hidden_field :draft_id, value: @draft.id
       = f.hidden_field :user_id, value: current_user.id
       = f.submit 'Join this draft!'
+
+- if in_draft && @draft.state == Draft::States::WAITING
+  = button_to 'Leave this draft', drafter_path(@draft.drafters.for_user(current_user.id).first), method: :delete, class: 'danger'
 
 = link_to 'All Drafts', drafts_path

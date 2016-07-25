@@ -15,11 +15,12 @@ class DraftersController < ApplicationController
 
   def destroy
     drafter = current_user.drafters.find_by_id(params[:id])
+    draft = drafter.andand.draft
     if drafter
       drafter.destroy
     end
 
-    redirect_to drafts_path
+    redirect_to draft || drafts_path
   end
 
 private

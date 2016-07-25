@@ -94,6 +94,56 @@ feature "/drafts/:id" do
         expect(page).to_not have_css('table.drafters-list tr.row--drafter td.cell--drafter-name', text: user.name)
         expect(page).to_not have_button('Join this draft!')
       end
+
+      scenario "displays a Leave button if the user is in a waiting draft" do
+        Drafter.create(draft: draft, user: user)
+
+        visit "/drafts/#{draft.to_param}"
+        expect(page).to have_css('table.drafters-list tr.row--drafter td.cell--drafter-name', text: user.name)
+        expect(page).to have_button('Leave this draft')
+      end
+
+      scenario "clicking the Leave button leaves the draft" do
+        Drafter.create(draft: draft, user: user)
+
+        visit "/drafts/#{draft.to_param}"
+        expect(page).to have_css('table.drafters-list tr.row--drafter td.cell--drafter-name', text: user.name)
+        click_button('Leave this draft')
+
+        expect(current_path).to eq draft_path(draft)
+        expect(page).to_not have_css('table.drafters-list tr.row--drafter td.cell--drafter-name', text: user.name)
+        expect(page).to have_button('Join this draft!')
+      end
+
+      scenario "doesn't display the Leave button if the user isn't in" do
+        expect(draft.drafters.map(&:user_id)).to_not include(user.id)
+
+        visit "/drafts/#{draft.to_param}"
+        expect(page).to_not have_css('table.drafters-list tr.row--drafter td.cell--drafter-name', text: user.name)
+        expect(page).to_not have_button('Leave this draft')
+      end
+
+      scenario "doesn't display the Leave button for non-waiting drafts" do
+        Drafter.create(draft: draft, user: user)
+        draft.update(state: Draft::States::DRAFTING)
+
+        visit "/drafts/#{draft.to_param}"
+        expect(page).to have_css('table.drafters-list tr.row--drafter td.cell--drafter-name', text: user.name)
+        expect(page).to_not have_button('Leave this draft')
+
+        draft.update(state: Draft::States::DECK_BUILDING)
+
+        visit "/drafts/#{draft.to_param}"
+        expect(page).to have_css('table.drafters-list tr.row--drafter td.cell--drafter-name', text: user.name)
+        expect(page).to_not have_button('Leave this draft')
+
+        draft.update(state: Draft::States::ENDED)
+
+        visit "/drafts/#{draft.to_param}"
+        expect(page).to have_css('table.drafters-list tr.row--drafter td.cell--drafter-name', text: user.name)
+        expect(page).to_not have_button('Leave this draft')
+      end
+
     end
   end
 end
