@@ -90,11 +90,12 @@ RSpec.describe "Drafts", type: :request do
     describe "POST #create" do
       context "with valid params" do
         it "redirects to the draft's edit page" do
-          post drafts_path, {:draft => FactoryGirl.attributes_for(:draft)}
+          draft_attrs = FactoryGirl.attributes_for(:draft)
+          post drafts_path, {:draft => draft_attrs}
 
           expect(response).to redirect_to(draft_path(Draft.last))
           follow_redirect!
-          expect(response.body).to include(FactoryGirl.attributes_for(:draft)[:name])
+          expect(response.body).to include(draft_attrs[:name])
         end
 
         it "assigns a newly created draft as @draft" do

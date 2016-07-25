@@ -62,9 +62,10 @@ RSpec.describe DraftersController, type: :controller do
         }.to change(Drafter, :count).by -1
       end
 
-      it "redirects to the drafts index" do
+      it "redirects to the same draft" do
+        draft = drafter.draft
         delete :destroy, id: drafter.to_param
-        expect(response).to redirect_to(drafts_path)
+        expect(response).to redirect_to(draft)
       end
 
       it "deletes nothing if no drafter specified" do
