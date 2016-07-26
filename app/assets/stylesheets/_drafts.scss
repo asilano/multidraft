@@ -32,6 +32,11 @@
   width: 80%;
   margin: 0 5em;
 
+  @include when-smaller-than(small) {
+    width: 90%;
+    margin: 0.5em auto;
+  }
+
   .table-row {
     display: table-row;
     &:not(:first-child) {
@@ -39,6 +44,10 @@
     }
     &.table-header-row {
       border-bottom: 2px solid black;
+
+      @include when-smaller-than(small) {
+        display: none;
+      }
     }
 
     @at-root a.table-row {
@@ -68,6 +77,12 @@
 
   .table-cell {
     display: table-cell;
+
+    @include when-smaller-than(small) {
+      display: block;
+      padding-left: 5px;
+    }
+
     &:not(:first-child) {
       padding-left: 5px;
     }
@@ -75,9 +90,17 @@
     &.cell--draft-id {
       width: 4em;
       text-align: center;
+
+      @include when-smaller-than(small) {
+        display: none;
+      }
     }
     &.cell--draft-name {
       width: 300px;
+
+      @include when-smaller-than(small) {
+        width: auto;
+      }
     }
   }
 }

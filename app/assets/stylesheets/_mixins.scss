@@ -19,7 +19,7 @@ $gatherer-image-width: 223px;
 
 @mixin when-smaller-than($breakpoint) {
   @if $breakpoint == small {
-    @media (max-width: 650px) { @content; }
+    @media (max-width: 700px) { @content; }
   }
   @else if $breakpoint == medium {
     @media (max-width: 850px) { @content; }

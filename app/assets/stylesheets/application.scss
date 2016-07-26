@@ -57,6 +57,7 @@ header {
   @include when-smaller-than(small) {
     width: 100%;
     text-align: center;
+    font-size: 15vw;  // Scale text size with width
   }
 }
 
