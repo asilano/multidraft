@@ -131,6 +131,7 @@ end
   {name: "Modern Masters", remote_dictionary: true, dictionary_location: mtgJson_url('MMA')},
   {name: "Modern Masters 2015", remote_dictionary: true, dictionary_location: mtgJson_url('MM2')},
   {name: "Vintage Masters", remote_dictionary: true, dictionary_location: mtgJson_url('VMA')},
+  {name: 'Eternal Masters', remote_dictionary: true, dictionary_location: mtgJson_url('EMA')},
 
   {name: "Unglued", remote_dictionary: true, dictionary_location: mtgJson_url('UGL')},
   {name: "Unhinged", remote_dictionary: true, dictionary_location: mtgJson_url('UNH')},
