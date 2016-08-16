@@ -133,6 +133,8 @@ end
   {name: "Vintage Masters", remote_dictionary: true, dictionary_location: mtgJson_url('VMA')},
   {name: 'Eternal Masters', remote_dictionary: true, dictionary_location: mtgJson_url('EMA')},
 
+  {name: 'Conspiracy', remote_dictionary: false, dictionary_location: 'data/local_sets/CNS.json'},
+
   {name: "Unglued", remote_dictionary: true, dictionary_location: mtgJson_url('UGL')},
   {name: "Unhinged", remote_dictionary: true, dictionary_location: mtgJson_url('UNH')},
 ].each { |details| CardSet.create(details) unless CardSet.where { name == details[:name] }.present? }
