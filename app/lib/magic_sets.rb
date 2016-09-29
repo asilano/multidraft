@@ -15,6 +15,7 @@ end
 
 module MagicSets
   RealMagicSets = [
+    ['Kaladesh', ['Kaladesh']],
     ['Shadows over Innistrad', ['Shadows over Innistrad', 'Eldritch Moon']],
     ['Battle for Zendikar', ['Battle for Zendikar', 'Oath of the Gatewatch']],
     ["Khans of Tarkir", ["Khans of Tarkir", "Fate Reforged", "Dragons of Tarkir"]],
