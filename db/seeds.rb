@@ -11,6 +11,7 @@ end
 
 [
   {name: 'Kaladesh', remote_dictionary: true, dictionary_location: mtgJson_url('KLD')},
+  {name: 'Aether Revolt', remote_dictionary: true, dictionary_location: mtgJson_url('AER')},
 
   {name: 'Shadows over Innistrad', remote_dictionary: false, dictionary_location: 'data/local_sets/SOI.json'},
   {name: 'Eldritch Moon', remote_dictionary: false, dictionary_location: 'data/local_sets/EMN.json'},
