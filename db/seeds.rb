@@ -10,6 +10,8 @@ def mtgJson_url(set_code)
 end
 
 [
+  {name: 'Amonkhet', remote_dictionary: true, dictionary_location: mtgJson_url('AKH')},
+
   {name: 'Kaladesh', remote_dictionary: true, dictionary_location: mtgJson_url('KLD')},
   {name: 'Aether Revolt', remote_dictionary: true, dictionary_location: mtgJson_url('AER')},
 
