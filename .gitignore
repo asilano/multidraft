@@ -20,3 +20,5 @@
 
 # For the moment, ignore the card-set JSON files. They're not production-ready yet.
 /card_sets
+# Ignore application configuration
+/config/application.yml
