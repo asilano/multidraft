@@ -11,6 +11,7 @@ end
 
 [
   {name: 'Amonkhet', remote_dictionary: true, dictionary_location: mtgJson_url('AKH')},
+  {name: 'Hour of Devastation', remote_dictionary: true, dictionary_location: mtgJson_url('HOU')},
 
   {name: 'Kaladesh', remote_dictionary: true, dictionary_location: mtgJson_url('KLD')},
   {name: 'Aether Revolt', remote_dictionary: true, dictionary_location: mtgJson_url('AER')},
