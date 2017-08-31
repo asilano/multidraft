@@ -48,8 +48,4 @@ test:
 
 production:
   adapter: postgresql
-  encoding: unicode
-  database: multidraft_production
-  pool: 5
-  username: multidraft
-  password: multidraft
+  url: <%= ENV['DATABASE_URL'] %>
