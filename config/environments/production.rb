@@ -88,7 +88,7 @@ Multidraft::Application.configure do
     :password => ENV['SENDGRID_PASSWORD'],
     :domain => 'app-multidraft.rhcloud.com',
     :address => 'smtp.sendgrid.net',
-    :port => 587,
+    :port => 2525,
     :authentication => :plain,
     :enable_starttls_auto => true
   }
