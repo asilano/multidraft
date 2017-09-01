@@ -78,14 +78,14 @@ Multidraft::Application.configure do
   config.log_formatter = ::Logger::Formatter.new
 
   # Gmail configuration for mail sending. Do we want to use SendGrid instead??
-  config.action_mailer.default_url_options = { :host => 'multidraft.nsict.com' }
+  config.action_mailer.default_url_options = { :host => 'multidraft.nsict.org' }
   config.action_mailer.delivery_method = :smtp
   config.action_mailer.perform_deliveries = true
   config.action_mailer.raise_delivery_errors = false
   config.action_mailer.smtp_settings = {
     :user_name => ENV['SENDGRID_USERNAME'],
     :password => ENV['SENDGRID_PASSWORD'],
-    :domain => 'multidraft.nsict.com',
+    :domain => 'multidraft.nsict.org',
     :address => 'smtp.sendgrid.net',
     :port => 2525,
     :authentication => :plain,
