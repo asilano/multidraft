@@ -237,7 +237,7 @@ Devise.setup do |config|
   # Disable SSL on development. CA paths for Facebook etc. are for heroku
   OpenSSL::SSL::VERIFY_PEER = OpenSSL::SSL::VERIFY_NONE if Rails.env.development?
   config.omniauth :facebook, ENV['FACEBOOK_APP_ID'], ENV['FACEBOOK_SECRET'],
-    {:scope => 'email, offline_access',
+    {:scope => 'email',
      :client_options => {:ssl => {:ca_file => '/usr/lib/ssl/certs/ca-certificates.crt'}}}
 
   config.omniauth :google_oauth2, ENV['GOOGLE_APP_ID'], ENV['GOOGLE_APP_SECRET'], { access_type: "offline", approval_prompt: "" }
