@@ -63,7 +63,6 @@ Multidraft::Application.configure do
   # Ignore bad email addresses and do not raise email delivery errors.
   # Set this to true and configure the email server for immediate delivery to raise delivery errors.
   # config.action_mailer.raise_delivery_errors = false
-  config.action_mailer.default_url_options = {:host => 'app-multidraft.rhcloud.com'}
 
   # Enable locale fallbacks for I18n (makes lookups for any locale fall back to
   # the I18n.default_locale when a translation can not be found).
@@ -79,14 +78,14 @@ Multidraft::Application.configure do
   config.log_formatter = ::Logger::Formatter.new
 
   # Gmail configuration for mail sending. Do we want to use SendGrid instead??
-  config.action_mailer.default_url_options = { :host => 'app-multidraft.rhcloud.com' }
+  config.action_mailer.default_url_options = { :host => 'multidraft.nsict.com' }
   config.action_mailer.delivery_method = :smtp
   config.action_mailer.perform_deliveries = true
   config.action_mailer.raise_delivery_errors = false
   config.action_mailer.smtp_settings = {
     :user_name => ENV['SENDGRID_USERNAME'],
     :password => ENV['SENDGRID_PASSWORD'],
-    :domain => 'app-multidraft.rhcloud.com',
+    :domain => 'multidraft.nsict.com',
     :address => 'smtp.sendgrid.net',
     :port => 2525,
     :authentication => :plain,
