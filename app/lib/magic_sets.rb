@@ -15,6 +15,7 @@ end
 
 module MagicSets
   RealMagicSets = [
+    ['Ixalan', ['Ixalan']],
     ['Amonkhet', ['Amonkhet', 'Hour of Devastation']],
     ['Kaladesh', ['Kaladesh', 'Aether Revolt']],
     ['Shadows over Innistrad', ['Shadows over Innistrad', 'Eldritch Moon']],
