@@ -11,6 +11,7 @@ end
 
 [
   {name: 'Ixalan', remote_dictionary: true, dictionary_location: mtgJson_url('XLN')},
+  {name: 'Rivals of Ixalan', remote_dictionary: true, dictionary_location: mtgJson_url('RIX')},
 
   {name: 'Amonkhet', remote_dictionary: true, dictionary_location: mtgJson_url('AKH')},
   {name: 'Hour of Devastation', remote_dictionary: true, dictionary_location: mtgJson_url('HOU')},
@@ -145,4 +146,5 @@ end
 
   {name: "Unglued", remote_dictionary: true, dictionary_location: mtgJson_url('UGL')},
   {name: "Unhinged", remote_dictionary: true, dictionary_location: mtgJson_url('UNH')},
+  {name: "Unstable", remote_dictionary: true, dictionary_location: mtgJson_url('UST')},
 ].each { |details| CardSet.create(details) unless CardSet.where { name == details[:name] }.present? }

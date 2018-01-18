@@ -15,7 +15,7 @@ end
 
 module MagicSets
   RealMagicSets = [
-    ['Ixalan', ['Ixalan']],
+    ['Ixalan', ['Ixalan', 'Rivals of Ixalan']],
     ['Amonkhet', ['Amonkhet', 'Hour of Devastation']],
     ['Kaladesh', ['Kaladesh', 'Aether Revolt']],
     ['Shadows over Innistrad', ['Shadows over Innistrad', 'Eldritch Moon']],
@@ -48,7 +48,7 @@ module MagicSets
     ["'Masters' Sets", ["Masters Edition", "Masters Edition II", "Masters Edition III", "Masters Edition IV",
                         "Modern Masters", "Modern Masters 2015", "Vintage Masters", 'Eternal Masters']],
     ["'Conspiracy' Sets", ['Conspiracy']],
-    ["Un-Sets", ["Unglued", "Unhinged"]]
+    ["Un-Sets", ["Unglued", "Unhinged", 'Unstable']]
   ].map do |cycle|
     [cycle[0], cycle[1].map { |n| LazyCardSet.new n }]
   end

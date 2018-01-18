@@ -1,9 +1,0 @@
-#!/bin/bash
-
-source $OPENSHIFT_CARTRIDGE_SDK_BASH
-source "${OPENSHIFT_RUBY_DIR}/lib/ruby_context"
-
-pushd ${OPENSHIFT_REPO_DIR} > /dev/null
-echo "Aging old CardTemplates" >> $OPENSHIFT_LOG_DIR/scheduler.log
-ruby_context "rails runner script/age_templates.rb" >> $OPENSHIFT_LOG_DIR/scheduler.log
-popd > /dev/null
